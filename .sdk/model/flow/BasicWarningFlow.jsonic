@@ -1,0 +1,48 @@
+# BasicWarningFlow
+
+main: kit: flow: BasicWarningFlow:
+{
+  entity: "warning",
+  kind: "basic",
+  name: "BasicWarningFlow",
+  step: [
+    {
+      match: {
+        road_id: "road01"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "warning_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "warning_ref01",
+        srcdatavar: "warning_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "warning01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-warning_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicWarningFlow"
+}

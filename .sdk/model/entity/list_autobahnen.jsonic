@@ -1,0 +1,34 @@
+# Entity: list_autobahnen
+
+main: kit: entity: list_autobahnen: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "road"
+      req: false
+      type: "`$ARRAY`"
+    }
+  ]
+
+  name: "list_autobahnen"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/"
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

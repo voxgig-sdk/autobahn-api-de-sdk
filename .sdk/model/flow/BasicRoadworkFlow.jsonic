@@ -1,0 +1,48 @@
+# BasicRoadworkFlow
+
+main: kit: flow: BasicRoadworkFlow:
+{
+  entity: "roadwork",
+  kind: "basic",
+  name: "BasicRoadworkFlow",
+  step: [
+    {
+      match: {
+        road_id: "road01"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "roadwork_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "roadwork_ref01",
+        srcdatavar: "roadwork_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "roadwork01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-roadwork_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRoadworkFlow"
+}

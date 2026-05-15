@@ -1,0 +1,26 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        email: "kontakt@autobahn.de"
+        name: "Die Autobahn GmbH des Bundes"
+        url: "https://www.autobahn.de/datenschutz/"
+      }
+      description: `Was passiert auf Deutschlands Bundesstraßen? API für aktuelle Verwaltungsdaten zu Baustellen, Staus und Ladestationen. Außerdem Zugang zu Verkehrsüberwachungskameras und vielen weiteren Datensätzen.
+`
+      servers: [
+        {
+          url: "https://verkehr.autobahn.de/o/autobahn"
+        }
+      ]
+      title: "Autobahn App API"
+      version: "1.0.1"
+      "x-office": "Bundesministerium für Digitales und Verkehr"
+    }
+  }
+}
+
+}

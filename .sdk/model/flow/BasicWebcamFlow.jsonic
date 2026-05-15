@@ -1,0 +1,48 @@
+# BasicWebcamFlow
+
+main: kit: flow: BasicWebcamFlow:
+{
+  entity: "webcam",
+  kind: "basic",
+  name: "BasicWebcamFlow",
+  step: [
+    {
+      match: {
+        road_id: "road01"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "webcam_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "webcam_ref01",
+        srcdatavar: "webcam_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "webcam01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-webcam_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicWebcamFlow"
+}

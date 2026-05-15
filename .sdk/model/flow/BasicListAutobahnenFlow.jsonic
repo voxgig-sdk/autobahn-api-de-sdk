@@ -1,0 +1,22 @@
+# BasicListAutobahnenFlow
+
+main: kit: flow: BasicListAutobahnenFlow:
+{
+  entity: "list_autobahnen",
+  kind: "basic",
+  name: "BasicListAutobahnenFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "list_autobahnen_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicListAutobahnenFlow"
+}

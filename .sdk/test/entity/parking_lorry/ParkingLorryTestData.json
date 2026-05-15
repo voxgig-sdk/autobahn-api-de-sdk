@@ -1,0 +1,77 @@
+{
+  "existing": {
+    "parking_lorry": {
+      "PARKING_LORRY00": {
+        "coordinate": {},
+        "description": [],
+        "display_type": "s8e",
+        "extent": "s8f",
+        "footer": [],
+        "future": false,
+        "icon": "s92",
+        "identifier": "s93",
+        "is_blocked": true,
+        "lorry_parking_feature_icon": [],
+        "point": "s96",
+        "route_recommendation": [],
+        "subtitle": "s98",
+        "title": "s99",
+        "road_id": "ROAD01"
+      },
+      "PARKING_LORRY01": {
+        "coordinate": {},
+        "description": [],
+        "display_type": "s11a",
+        "extent": "s11b",
+        "footer": [],
+        "future": false,
+        "icon": "s11e",
+        "identifier": "s11f",
+        "is_blocked": true,
+        "lorry_parking_feature_icon": [],
+        "point": "s122",
+        "route_recommendation": [],
+        "subtitle": "s124",
+        "title": "s125",
+        "road_id": "ROAD01"
+      },
+      "PARKING_LORRY02": {
+        "coordinate": {},
+        "description": [],
+        "display_type": "s1a6",
+        "extent": "s1a7",
+        "footer": [],
+        "future": false,
+        "icon": "s1aa",
+        "identifier": "s1ab",
+        "is_blocked": true,
+        "lorry_parking_feature_icon": [],
+        "point": "s1ae",
+        "route_recommendation": [],
+        "subtitle": "s1b0",
+        "title": "s1b1",
+        "road_id": "ROAD01"
+      }
+    }
+  },
+  "new": {
+    "parking_lorry": {
+      "parking_lorry_ref01": {
+        "coordinate": {},
+        "description": [],
+        "display_type": "s232",
+        "extent": "s233",
+        "footer": [],
+        "future": false,
+        "icon": "s236",
+        "identifier": "s237",
+        "is_blocked": true,
+        "lorry_parking_feature_icon": [],
+        "point": "s23a",
+        "route_recommendation": [],
+        "subtitle": "s23c",
+        "title": "s23d"
+      }
+    }
+  }
+}

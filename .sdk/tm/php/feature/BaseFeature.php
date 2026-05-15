@@ -1,0 +1,37 @@
+<?php
+declare(strict_types=1);
+
+// AutobahnApiDe SDK base feature
+
+class AutobahnApiDeBaseFeature
+{
+    public string $version;
+    public string $name;
+    public bool $active;
+
+    public function __construct()
+    {
+        $this->version = '0.0.1';
+        $this->name = 'base';
+        $this->active = true;
+    }
+
+    public function get_version(): string { return $this->version; }
+    public function get_name(): string { return $this->name; }
+    public function get_active(): bool { return $this->active; }
+
+    public function init(AutobahnApiDeContext $ctx, array $options): void {}
+    public function PostConstruct(AutobahnApiDeContext $ctx): void {}
+    public function PostConstructEntity(AutobahnApiDeContext $ctx): void {}
+    public function SetData(AutobahnApiDeContext $ctx): void {}
+    public function GetData(AutobahnApiDeContext $ctx): void {}
+    public function GetMatch(AutobahnApiDeContext $ctx): void {}
+    public function SetMatch(AutobahnApiDeContext $ctx): void {}
+    public function PrePoint(AutobahnApiDeContext $ctx): void {}
+    public function PreSpec(AutobahnApiDeContext $ctx): void {}
+    public function PreRequest(AutobahnApiDeContext $ctx): void {}
+    public function PreResponse(AutobahnApiDeContext $ctx): void {}
+    public function PreResult(AutobahnApiDeContext $ctx): void {}
+    public function PreDone(AutobahnApiDeContext $ctx): void {}
+    public function PreUnexpected(AutobahnApiDeContext $ctx): void {}
+}

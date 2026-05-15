@@ -1,0 +1,48 @@
+# BasicElectricChargingStationFlow
+
+main: kit: flow: BasicElectricChargingStationFlow:
+{
+  entity: "electric_charging_station",
+  kind: "basic",
+  name: "BasicElectricChargingStationFlow",
+  step: [
+    {
+      match: {
+        road_id: "road01"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "electric_charging_station_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "electric_charging_station_ref01",
+        srcdatavar: "electric_charging_station_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "electric_charging_station01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-electric_charging_station_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicElectricChargingStationFlow"
+}

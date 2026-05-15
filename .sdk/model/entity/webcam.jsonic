@@ -1,0 +1,181 @@
+# Entity: webcam
+
+main: kit: entity: webcam: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "coordinate"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "description"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "display_type"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "extent"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "footer"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "future"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "icon"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "identifier"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "imageurl"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "is_blocked"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "linkurl"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "lorry_parking_feature_icon"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "operator"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "point"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "route_recommendation"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "subtitle"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "title"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "webcam"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                example: "A1"
+                kind: "param"
+                name: "road_id"
+                orig: "road_id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/{roadId}/services/webcam"
+          parts: [
+            "{road_id}"
+            "services"
+            "webcam"
+          ]
+          rename: {
+            param: {
+              roadId: "road_id"
+            }
+          }
+          select: {
+            exist: [
+              "road_id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                example: "V0VCQ0FNX19OUldfU2lsYS1TaWduYWxiYXVfMTAxMDgxNDE3MjM4ODYzOTk5MTU="
+                kind: "param"
+                name: "id"
+                orig: "webcam_id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/details/webcam/{webcamId}"
+          parts: [
+            "details"
+            "webcam"
+            "{id}"
+          ]
+          rename: {
+            param: {
+              webcamId: "id"
+            }
+          }
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

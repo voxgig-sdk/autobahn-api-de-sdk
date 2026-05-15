@@ -1,0 +1,48 @@
+# BasicParkingLorryFlow
+
+main: kit: flow: BasicParkingLorryFlow:
+{
+  entity: "parking_lorry",
+  kind: "basic",
+  name: "BasicParkingLorryFlow",
+  step: [
+    {
+      match: {
+        road_id: "road01"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "parking_lorry_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "parking_lorry_ref01",
+        srcdatavar: "parking_lorry_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "parking_lorry01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-parking_lorry_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicParkingLorryFlow"
+}

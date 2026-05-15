@@ -1,0 +1,48 @@
+# BasicClosureFlow
+
+main: kit: flow: BasicClosureFlow:
+{
+  entity: "closure",
+  kind: "basic",
+  name: "BasicClosureFlow",
+  step: [
+    {
+      match: {
+        road_id: "road01"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "closure_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "closure_ref01",
+        srcdatavar: "closure_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "closure01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-closure_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicClosureFlow"
+}

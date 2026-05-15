@@ -1,0 +1,85 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 7
+  metrics: count: path: 13
+  metrics: count: method: 13
+
+  entity: closure: {
+    path: "/details/closure/{closureId}": {
+      rename: param: "closureId": *"id"
+      op: load: method: *GET
+    }
+    path: "/{roadId}/services/closure": {
+      rename: param: "roadId": *"road_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.closure`")|top
+    }
+  }
+
+  entity: electric_charging_station: {
+    path: "/details/electric_charging_station/{stationId}": {
+      rename: param: "stationId": *"id"
+      op: load: method: *GET
+    }
+    path: "/{roadId}/services/electric_charging_station": {
+      rename: param: "roadId": *"road_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.electric_charging_station`")|top
+    }
+  }
+
+  entity: list_autobahnen: {
+    path: "/": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: parking_lorry: {
+    path: "/details/parking_lorry/{lorryId}": {
+      rename: param: "lorryId": *"id"
+      op: load: method: *GET
+    }
+    path: "/{roadId}/services/parking_lorry": {
+      rename: param: "roadId": *"road_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.parking_lorry`")|top
+    }
+  }
+
+  entity: roadwork: {
+    path: "/details/roadworks/{roadworkId}": {
+      rename: param: "roadworkId": *"id"
+      op: load: method: *GET
+    }
+    path: "/{roadId}/services/roadworks": {
+      rename: param: "roadId": *"road_id"
+      op: list: method: *GET
+    }
+  }
+
+  entity: warning: {
+    path: "/details/warning/{warningId}": {
+      rename: param: "warningId": *"id"
+      op: load: method: *GET
+    }
+    path: "/{roadId}/services/warning": {
+      rename: param: "roadId": *"road_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.warning`")|top
+    }
+  }
+
+  entity: webcam: {
+    path: "/details/webcam/{webcamId}": {
+      rename: param: "webcamId": *"id"
+      op: load: method: *GET
+    }
+    path: "/{roadId}/services/webcam": {
+      rename: param: "roadId": *"road_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.webcam`")|top
+    }
+  }
+
+}

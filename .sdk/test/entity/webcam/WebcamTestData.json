@@ -1,0 +1,89 @@
+{
+  "existing": {
+    "webcam": {
+      "WEBCAM00": {
+        "coordinate": {},
+        "description": [],
+        "display_type": "sac",
+        "extent": "sad",
+        "footer": [],
+        "future": false,
+        "icon": "sb0",
+        "identifier": "sb1",
+        "imageurl": "sb2",
+        "is_blocked": false,
+        "linkurl": "sb4",
+        "lorry_parking_feature_icon": [],
+        "operator": "sb6",
+        "point": "sb7",
+        "route_recommendation": [],
+        "subtitle": "sb9",
+        "title": "sba",
+        "road_id": "ROAD01"
+      },
+      "WEBCAM01": {
+        "coordinate": {},
+        "description": [],
+        "display_type": "s156",
+        "extent": "s157",
+        "footer": [],
+        "future": false,
+        "icon": "s15a",
+        "identifier": "s15b",
+        "imageurl": "s15c",
+        "is_blocked": false,
+        "linkurl": "s15e",
+        "lorry_parking_feature_icon": [],
+        "operator": "s160",
+        "point": "s161",
+        "route_recommendation": [],
+        "subtitle": "s163",
+        "title": "s164",
+        "road_id": "ROAD01"
+      },
+      "WEBCAM02": {
+        "coordinate": {},
+        "description": [],
+        "display_type": "s200",
+        "extent": "s201",
+        "footer": [],
+        "future": false,
+        "icon": "s204",
+        "identifier": "s205",
+        "imageurl": "s206",
+        "is_blocked": false,
+        "linkurl": "s208",
+        "lorry_parking_feature_icon": [],
+        "operator": "s20a",
+        "point": "s20b",
+        "route_recommendation": [],
+        "subtitle": "s20d",
+        "title": "s20e",
+        "road_id": "ROAD01"
+      }
+    }
+  },
+  "new": {
+    "webcam": {
+      "webcam_ref01": {
+        "coordinate": {},
+        "description": [],
+        "display_type": "s2aa",
+        "extent": "s2ab",
+        "footer": [],
+        "future": false,
+        "icon": "s2ae",
+        "identifier": "s2af",
+        "imageurl": "s2b0",
+        "is_blocked": false,
+        "linkurl": "s2b2",
+        "lorry_parking_feature_icon": [],
+        "operator": "s2b4",
+        "point": "s2b5",
+        "route_recommendation": [],
+        "subtitle": "s2b7",
+        "title": "s2b8"
+      }
+    }
+  }
+}

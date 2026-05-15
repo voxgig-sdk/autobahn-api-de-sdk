@@ -1,0 +1,22 @@
+{
+  "existing": {
+    "list_autobahnen": {
+      "LIST_AUTOBAHNEN00": {
+        "road": []
+      },
+      "LIST_AUTOBAHNEN01": {
+        "road": []
+      },
+      "LIST_AUTOBAHNEN02": {
+        "road": []
+      }
+    }
+  },
+  "new": {
+    "list_autobahnen": {
+      "list_autobahnen_ref01": {
+        "road": []
+      }
+    }
+  }
+}

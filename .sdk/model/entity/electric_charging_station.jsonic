@@ -1,0 +1,166 @@
+# Entity: electric_charging_station
+
+main: kit: entity: electric_charging_station: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "coordinate"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "description"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "display_type"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "extent"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "footer"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "future"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "icon"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "identifier"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "is_blocked"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "lorry_parking_feature_icon"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "point"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "route_recommendation"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "subtitle"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "title"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "electric_charging_station"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                example: "A1"
+                kind: "param"
+                name: "road_id"
+                orig: "road_id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/{roadId}/services/electric_charging_station"
+          parts: [
+            "{road_id}"
+            "services"
+            "electric_charging_station"
+          ]
+          rename: {
+            param: {
+              roadId: "road_id"
+            }
+          }
+          select: {
+            exist: [
+              "road_id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                example: "RUxFQ1RSSUNfQ0hBUkdJTkdfU1RBVElPTl9fMTczMzM="
+                kind: "param"
+                name: "id"
+                orig: "station_id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/details/electric_charging_station/{stationId}"
+          parts: [
+            "details"
+            "electric_charging_station"
+            "{id}"
+          ]
+          rename: {
+            param: {
+              stationId: "id"
+            }
+          }
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

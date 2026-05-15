@@ -1,0 +1,81 @@
+{
+  "existing": {
+    "closure": {
+      "CLOSURE00": {
+        "coordinate": {},
+        "description": [],
+        "display_type": "s98",
+        "extent": "s99",
+        "footer": [],
+        "future": false,
+        "icon": "s9c",
+        "identifier": "s9d",
+        "is_blocked": true,
+        "lorry_parking_feature_icon": [],
+        "point": "sa0",
+        "route_recommendation": [],
+        "start_timestamp": "sa2",
+        "subtitle": "sa3",
+        "title": "sa4",
+        "road_id": "ROAD01"
+      },
+      "CLOSURE01": {
+        "coordinate": {},
+        "description": [],
+        "display_type": "s12e",
+        "extent": "s12f",
+        "footer": [],
+        "future": false,
+        "icon": "s132",
+        "identifier": "s133",
+        "is_blocked": true,
+        "lorry_parking_feature_icon": [],
+        "point": "s136",
+        "route_recommendation": [],
+        "start_timestamp": "s138",
+        "subtitle": "s139",
+        "title": "s13a",
+        "road_id": "ROAD01"
+      },
+      "CLOSURE02": {
+        "coordinate": {},
+        "description": [],
+        "display_type": "s1c4",
+        "extent": "s1c5",
+        "footer": [],
+        "future": false,
+        "icon": "s1c8",
+        "identifier": "s1c9",
+        "is_blocked": true,
+        "lorry_parking_feature_icon": [],
+        "point": "s1cc",
+        "route_recommendation": [],
+        "start_timestamp": "s1ce",
+        "subtitle": "s1cf",
+        "title": "s1d0",
+        "road_id": "ROAD01"
+      }
+    }
+  },
+  "new": {
+    "closure": {
+      "closure_ref01": {
+        "coordinate": {},
+        "description": [],
+        "display_type": "s25a",
+        "extent": "s25b",
+        "footer": [],
+        "future": false,
+        "icon": "s25e",
+        "identifier": "s25f",
+        "is_blocked": true,
+        "lorry_parking_feature_icon": [],
+        "point": "s262",
+        "route_recommendation": [],
+        "start_timestamp": "s264",
+        "subtitle": "s265",
+        "title": "s266"
+      }
+    }
+  }
+}
