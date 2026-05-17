@@ -4,7 +4,7 @@ import (
 	"log/slog"
 	"os"
 
-	"github.com/voxgig-sdk/autobahn-api-de-sdk/core"
+	"github.com/voxgig-sdk/autobahn-api-de-sdk/go/core"
 )
 
 type LogFeature struct {

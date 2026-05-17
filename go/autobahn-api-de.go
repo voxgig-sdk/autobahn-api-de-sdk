@@ -1,10 +1,10 @@
 package voxgigautobahnapidesdk
 
 import (
-	"github.com/voxgig-sdk/autobahn-api-de-sdk/core"
-	"github.com/voxgig-sdk/autobahn-api-de-sdk/entity"
-	"github.com/voxgig-sdk/autobahn-api-de-sdk/feature"
-	_ "github.com/voxgig-sdk/autobahn-api-de-sdk/utility"
+	"github.com/voxgig-sdk/autobahn-api-de-sdk/go/core"
+	"github.com/voxgig-sdk/autobahn-api-de-sdk/go/entity"
+	"github.com/voxgig-sdk/autobahn-api-de-sdk/go/feature"
+	_ "github.com/voxgig-sdk/autobahn-api-de-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

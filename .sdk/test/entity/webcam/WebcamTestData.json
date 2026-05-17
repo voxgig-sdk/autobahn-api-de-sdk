@@ -19,7 +19,8 @@
         "route_recommendation": [],
         "subtitle": "sb9",
         "title": "sba",
-        "road_id": "ROAD01"
+        "road_id": "ROAD01",
+        "id": "WEBCAM00"
       },
       "WEBCAM01": {
         "coordinate": {},
@@ -39,7 +40,8 @@
         "route_recommendation": [],
         "subtitle": "s163",
         "title": "s164",
-        "road_id": "ROAD01"
+        "road_id": "ROAD01",
+        "id": "WEBCAM01"
       },
       "WEBCAM02": {
         "coordinate": {},
@@ -59,7 +61,8 @@
         "route_recommendation": [],
         "subtitle": "s20d",
         "title": "s20e",
-        "road_id": "ROAD01"
+        "road_id": "ROAD01",
+        "id": "WEBCAM02"
       }
     }
   },

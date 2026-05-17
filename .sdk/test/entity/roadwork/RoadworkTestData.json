@@ -17,7 +17,8 @@
         "start_timestamp": "sa2",
         "subtitle": "sa3",
         "title": "sa4",
-        "road_id": "ROAD01"
+        "road_id": "ROAD01",
+        "id": "ROADWORK00"
       },
       "ROADWORK01": {
         "coordinate": {},
@@ -35,7 +36,8 @@
         "start_timestamp": "s138",
         "subtitle": "s139",
         "title": "s13a",
-        "road_id": "ROAD01"
+        "road_id": "ROAD01",
+        "id": "ROADWORK01"
       },
       "ROADWORK02": {
         "coordinate": {},
@@ -53,7 +55,8 @@
         "start_timestamp": "s1ce",
         "subtitle": "s1cf",
         "title": "s1d0",
-        "road_id": "ROAD01"
+        "road_id": "ROAD01",
+        "id": "ROADWORK02"
       }
     }
   },

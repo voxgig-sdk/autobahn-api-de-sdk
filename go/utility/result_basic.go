@@ -3,7 +3,7 @@ package utility
 import (
 	"fmt"
 
-	"github.com/voxgig-sdk/autobahn-api-de-sdk/core"
+	"github.com/voxgig-sdk/autobahn-api-de-sdk/go/core"
 )
 
 func resultBasicUtil(ctx *core.Context) *core.Result {

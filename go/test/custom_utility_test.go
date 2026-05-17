@@ -3,7 +3,7 @@ package sdktest
 import (
 	"testing"
 
-	sdk "github.com/voxgig-sdk/autobahn-api-de-sdk"
+	sdk "github.com/voxgig-sdk/autobahn-api-de-sdk/go"
 )
 
 func TestCustomUtility(t *testing.T) {

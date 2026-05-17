@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/autobahn-api-de-sdk/core"
+	"github.com/voxgig-sdk/autobahn-api-de-sdk/go/core"
 )
 
 type BaseFeature struct {

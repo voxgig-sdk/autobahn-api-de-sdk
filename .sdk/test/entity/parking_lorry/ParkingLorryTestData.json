@@ -16,7 +16,8 @@
         "route_recommendation": [],
         "subtitle": "s98",
         "title": "s99",
-        "road_id": "ROAD01"
+        "road_id": "ROAD01",
+        "id": "PARKING_LORRY00"
       },
       "PARKING_LORRY01": {
         "coordinate": {},
@@ -33,7 +34,8 @@
         "route_recommendation": [],
         "subtitle": "s124",
         "title": "s125",
-        "road_id": "ROAD01"
+        "road_id": "ROAD01",
+        "id": "PARKING_LORRY01"
       },
       "PARKING_LORRY02": {
         "coordinate": {},
@@ -50,7 +52,8 @@
         "route_recommendation": [],
         "subtitle": "s1b0",
         "title": "s1b1",
-        "road_id": "ROAD01"
+        "road_id": "ROAD01",
+        "id": "PARKING_LORRY02"
       }
     }
   },

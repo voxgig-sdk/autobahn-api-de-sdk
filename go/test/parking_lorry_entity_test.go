@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/autobahn-api-de-sdk"
-	"github.com/voxgig-sdk/autobahn-api-de-sdk/core"
+	sdk "github.com/voxgig-sdk/autobahn-api-de-sdk/go"
+	"github.com/voxgig-sdk/autobahn-api-de-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/autobahn-api-de-sdk/go/utility/struct"
 )
 
 func TestParkingLorryEntity(t *testing.T) {

@@ -16,7 +16,8 @@
         "route_recommendation": [],
         "subtitle": "s98",
         "title": "s99",
-        "road_id": "ROAD01"
+        "road_id": "ROAD01",
+        "id": "ELECTRIC_CHARGING_STATION00"
       },
       "ELECTRIC_CHARGING_STATION01": {
         "coordinate": {},
@@ -33,7 +34,8 @@
         "route_recommendation": [],
         "subtitle": "s124",
         "title": "s125",
-        "road_id": "ROAD01"
+        "road_id": "ROAD01",
+        "id": "ELECTRIC_CHARGING_STATION01"
       },
       "ELECTRIC_CHARGING_STATION02": {
         "coordinate": {},
@@ -50,7 +52,8 @@
         "route_recommendation": [],
         "subtitle": "s1b0",
         "title": "s1b1",
-        "road_id": "ROAD01"
+        "road_id": "ROAD01",
+        "id": "ELECTRIC_CHARGING_STATION02"
       }
     }
   },

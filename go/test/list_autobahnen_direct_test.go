@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/autobahn-api-de-sdk"
-	"github.com/voxgig-sdk/autobahn-api-de-sdk/core"
+	sdk "github.com/voxgig-sdk/autobahn-api-de-sdk/go"
+	"github.com/voxgig-sdk/autobahn-api-de-sdk/go/core"
 )
 
 func TestListAutobahnenDirect(t *testing.T) {
