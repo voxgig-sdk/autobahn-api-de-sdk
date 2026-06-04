@@ -118,14 +118,12 @@ def _parking_lorry_direct_setup(mockres):
     env = runner.env_override({
         "AUTOBAHNAPIDE_TEST_PARKING_LORRY_ENTID": {},
         "AUTOBAHNAPIDE_TEST_LIVE": "FALSE",
-        "AUTOBAHNAPIDE_APIKEY": "NONE",
     })
 
     live = env.get("AUTOBAHNAPIDE_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("AUTOBAHNAPIDE_APIKEY"),
         }
         client = AutobahnApiDeSDK(merged_opts)
         return {

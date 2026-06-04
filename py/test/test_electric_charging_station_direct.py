@@ -118,14 +118,12 @@ def _electric_charging_station_direct_setup(mockres):
     env = runner.env_override({
         "AUTOBAHNAPIDE_TEST_ELECTRIC_CHARGING_STATION_ENTID": {},
         "AUTOBAHNAPIDE_TEST_LIVE": "FALSE",
-        "AUTOBAHNAPIDE_APIKEY": "NONE",
     })
 
     live = env.get("AUTOBAHNAPIDE_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("AUTOBAHNAPIDE_APIKEY"),
         }
         client = AutobahnApiDeSDK(merged_opts)
         return {

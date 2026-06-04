@@ -94,7 +94,6 @@ function parking_lorry_basic_setup($extra)
         "AUTOBAHNAPIDE_TEST_PARKING_LORRY_ENTID" => $idmap,
         "AUTOBAHNAPIDE_TEST_LIVE" => "FALSE",
         "AUTOBAHNAPIDE_TEST_EXPLAIN" => "FALSE",
-        "AUTOBAHNAPIDE_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -106,7 +105,6 @@ function parking_lorry_basic_setup($extra)
     if ($env["AUTOBAHNAPIDE_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["AUTOBAHNAPIDE_APIKEY"],
             ],
             $extra ?? [],
         ]);

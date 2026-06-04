@@ -31,9 +31,7 @@ loading a specific record.
 ```ruby
 require_relative "AutobahnApiDe_sdk"
 
-client = AutobahnApiDeSDK.new({
-  "apikey" => ENV["AUTOBAHN-API-DE_APIKEY"],
-})
+client = AutobahnApiDeSDK.new({})
 ```
 
 ### 2. List closures
@@ -135,7 +133,6 @@ Create a `.env.local` file at the project root:
 
 ```
 AUTOBAHN-API-DE_TEST_LIVE=TRUE
-AUTOBAHN-API-DE_APIKEY=<your-key>
 ```
 
 Then run:
@@ -158,7 +155,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `String` | API key for authentication. |
 | `base` | `String` | Base URL of the API server. |
 | `prefix` | `String` | URL path prefix prepended to all requests. |
 | `suffix` | `String` | URL path suffix appended to all requests. |

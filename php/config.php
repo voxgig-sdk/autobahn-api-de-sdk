@@ -20,9 +20,6 @@ class AutobahnApiDeConfig
             ],
             "options" => [
                 "base" => "https://verkehr.autobahn.de/o/autobahn",
-                "auth" => [
-                    "prefix" => "Bearer",
-                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],
