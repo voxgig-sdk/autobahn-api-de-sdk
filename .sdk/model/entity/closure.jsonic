@@ -119,7 +119,7 @@ main: kit: entity: closure: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.closure`"
           }
         }
       ]

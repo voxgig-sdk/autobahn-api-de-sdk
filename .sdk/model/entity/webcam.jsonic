@@ -129,7 +129,7 @@ main: kit: entity: webcam: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.webcam`"
           }
         }
       ]

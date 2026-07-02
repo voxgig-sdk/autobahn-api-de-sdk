@@ -19,36 +19,7 @@ main: {
       title: "Autobahn App API"
       version: "1.0.1"
       "x-office": "Bundesministerium für Digitales und Verkehr"
-      tagline: "Live data on Germany's federal motorways: roadworks, closures, traffic warnings, lorry parking, EV charging and webcams"
-      homepage: "https://verkehr.autobahn.de/o/autobahn"
-      docs_url: "https://autobahn.api.bund.dev/"
-      license_short: "No licence terms published in the API documentation."
-      license_md: `- The API is operated by Autobahn GmbH des Bundes, the German federal motorway company.
-- No explicit licence is published in the OpenAPI documentation; treat the data as official public-sector information and check Autobahn GmbH's terms before redistribution.
-- Attribution to Autobahn GmbH is a sensible default when reusing the data.`
-      about_md: `The Autobahn App API is the public data feed behind the [Autobahn App](https://verkehr.autobahn.de/o/autobahn) operated by [Autobahn GmbH des Bundes](https://www.autobahn.de/), the company that runs Germany's federal motorway network (Bundesautobahnen).
-
-It exposes the same live status information that powers the official app, organised per motorway designation (A1 through A995). For each motorway you can query:
-
-- the list of all Bundesautobahnen currently covered
-- current roadworks (Baustellen)
-- closures (Sperrungen)
-- traffic warnings (Verkehrsmeldungen)
-- lorry parking areas (Lkw-Parkplätze)
-- electric charging stations along the route
-- live traffic webcams
-
-The service is unauthenticated and CORS-enabled, so it can be called directly from browser-based clients. No rate limits are documented in the OpenAPI spec; data is published in German.`
-      entity_desc: {
-        closure: "Current full or partial road closures (Sperrungen) on a given Bundesautobahn."
-        electric_charging_station: "EV charging stations located on or near the selected motorway, surfaced under the API's `/services/electric_charging_station` grouping."
-        list_autobahnen: "Index of all Bundesautobahnen covered by the API (designations like `A1`, `A2`, ... `A995`), used as the parent identifier for every other entity."
-        parking_lorry: "Lorry / truck parking areas (Lkw-Parkplätze) along the selected motorway."
-        roadwork: "Active construction sites (Baustellen) on the selected motorway, including location and status information."
-        warning: "Traffic warnings and incident messages (Verkehrsmeldungen) for the selected motorway."
-        webcam: "Live traffic webcams positioned along the selected motorway."
-      }
-      auth: false
     }
   }
 }
+

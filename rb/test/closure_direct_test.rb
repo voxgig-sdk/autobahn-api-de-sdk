@@ -128,12 +128,14 @@ def closure_direct_setup(mockres)
   env = Runner.env_override({
     "AUTOBAHNAPIDE_TEST_CLOSURE_ENTID" => {},
     "AUTOBAHNAPIDE_TEST_LIVE" => "FALSE",
+    "AUTOBAHNAPIDE_APIKEY" => "NONE",
   })
 
   live = env["AUTOBAHNAPIDE_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
+      "apikey" => env["AUTOBAHNAPIDE_APIKEY"],
     }
     client = AutobahnApiDeSDK.new(merged_opts)
     return {

@@ -124,12 +124,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'AUTOBAHNAPIDE_TEST_WARNING_ENTID': {},
     'AUTOBAHNAPIDE_TEST_LIVE': 'FALSE',
+    'AUTOBAHNAPIDE_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.AUTOBAHNAPIDE_TEST_LIVE
 
   if (live) {
     const client = new AutobahnApiDeSDK({
+      apikey: env.AUTOBAHNAPIDE_APIKEY,
     })
 
     let idmap: any = env['AUTOBAHNAPIDE_TEST_WARNING_ENTID']

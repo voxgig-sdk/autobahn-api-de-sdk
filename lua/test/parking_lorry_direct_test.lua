@@ -129,12 +129,14 @@ function parking_lorry_direct_setup(mockres)
   local env = runner.env_override({
     ["AUTOBAHNAPIDE_TEST_PARKING_LORRY_ENTID"] = {},
     ["AUTOBAHNAPIDE_TEST_LIVE"] = "FALSE",
+    ["AUTOBAHNAPIDE_APIKEY"] = "NONE",
   })
 
   local live = env["AUTOBAHNAPIDE_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
+      apikey = env["AUTOBAHNAPIDE_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

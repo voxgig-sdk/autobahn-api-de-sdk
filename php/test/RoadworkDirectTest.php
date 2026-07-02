@@ -135,12 +135,14 @@ function roadwork_direct_setup($mockres)
     $env = Runner::env_override([
         "AUTOBAHNAPIDE_TEST_ROADWORK_ENTID" => [],
         "AUTOBAHNAPIDE_TEST_LIVE" => "FALSE",
+        "AUTOBAHNAPIDE_APIKEY" => "NONE",
     ]);
 
     $live = $env["AUTOBAHNAPIDE_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
+            "apikey" => $env["AUTOBAHNAPIDE_APIKEY"],
         ];
         $client = new AutobahnApiDeSDK($merged_opts);
         return [

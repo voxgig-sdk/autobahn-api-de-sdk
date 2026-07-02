@@ -119,7 +119,7 @@ main: kit: entity: warning: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.warning`"
           }
         }
       ]

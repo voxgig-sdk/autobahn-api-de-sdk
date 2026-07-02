@@ -131,6 +131,7 @@ func parking_lorryBasicSetup(extra map[string]any) *entityTestSetup {
 		"AUTOBAHNAPIDE_TEST_PARKING_LORRY_ENTID": idmap,
 		"AUTOBAHNAPIDE_TEST_LIVE":      "FALSE",
 		"AUTOBAHNAPIDE_TEST_EXPLAIN":   "FALSE",
+		"AUTOBAHNAPIDE_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["AUTOBAHNAPIDE_TEST_PARKING_LORRY_ENTID"])
@@ -141,6 +142,7 @@ func parking_lorryBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["AUTOBAHNAPIDE_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
+				"apikey": env["AUTOBAHNAPIDE_APIKEY"],
 			},
 			extra,
 		})

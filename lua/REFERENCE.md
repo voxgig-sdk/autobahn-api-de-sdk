@@ -30,12 +30,12 @@ Create a new SDK client instance.
 
 ### Static Methods
 
-#### `sdk.test(testopts, sdkopts)`
+#### `sdk.test(testopts?, sdkopts?)`
 
-Create a test client with mock features active. Both arguments may be `nil`.
+Create a test client with mock features active. Both arguments are optional.
 
 ```lua
-local client = sdk.test(nil, nil)
+local client = sdk.test()
 ```
 
 
@@ -138,7 +138,7 @@ local closure = client:Closure(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Closure(nil):list(nil, nil)
+local results, err = client:Closure():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -146,7 +146,7 @@ local results, err = client:Closure(nil):list(nil, nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Closure(nil):load({ id = "closure_id" }, nil)
+local result, err = client:Closure():load({ id = "closure_id" })
 ```
 
 ### Common Methods
@@ -211,7 +211,7 @@ local electric_charging_station = client:ElectricChargingStation(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:ElectricChargingStation(nil):list(nil, nil)
+local results, err = client:ElectricChargingStation():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -219,7 +219,7 @@ local results, err = client:ElectricChargingStation(nil):list(nil, nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:ElectricChargingStation(nil):load({ id = "electric_charging_station_id" }, nil)
+local result, err = client:ElectricChargingStation():load({ id = "electric_charging_station_id" })
 ```
 
 ### Common Methods
@@ -271,7 +271,7 @@ local list_autobahnen = client:ListAutobahnen(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:ListAutobahnen(nil):list(nil, nil)
+local results, err = client:ListAutobahnen():list()
 ```
 
 ### Common Methods
@@ -336,7 +336,7 @@ local parking_lorry = client:ParkingLorry(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:ParkingLorry(nil):list(nil, nil)
+local results, err = client:ParkingLorry():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -344,7 +344,7 @@ local results, err = client:ParkingLorry(nil):list(nil, nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:ParkingLorry(nil):load({ id = "parking_lorry_id" }, nil)
+local result, err = client:ParkingLorry():load({ id = "parking_lorry_id" })
 ```
 
 ### Common Methods
@@ -410,7 +410,7 @@ local roadwork = client:Roadwork(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Roadwork(nil):list(nil, nil)
+local results, err = client:Roadwork():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -418,7 +418,7 @@ local results, err = client:Roadwork(nil):list(nil, nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Roadwork(nil):load({ id = "roadwork_id" }, nil)
+local result, err = client:Roadwork():load({ id = "roadwork_id" })
 ```
 
 ### Common Methods
@@ -484,7 +484,7 @@ local warning = client:Warning(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Warning(nil):list(nil, nil)
+local results, err = client:Warning():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -492,7 +492,7 @@ local results, err = client:Warning(nil):list(nil, nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Warning(nil):load({ id = "warning_id" }, nil)
+local result, err = client:Warning():load({ id = "warning_id" })
 ```
 
 ### Common Methods
@@ -560,7 +560,7 @@ local webcam = client:Webcam(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Webcam(nil):list(nil, nil)
+local results, err = client:Webcam():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -568,7 +568,7 @@ local results, err = client:Webcam(nil):list(nil, nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Webcam(nil):load({ id = "webcam_id" }, nil)
+local result, err = client:Webcam():load({ id = "webcam_id" })
 ```
 
 ### Common Methods

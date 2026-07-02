@@ -200,12 +200,14 @@ func warningDirectSetup(mockres any) *warningDirectSetupResult {
 	env := envOverride(map[string]any{
 		"AUTOBAHNAPIDE_TEST_WARNING_ENTID": map[string]any{},
 		"AUTOBAHNAPIDE_TEST_LIVE":    "FALSE",
+		"AUTOBAHNAPIDE_APIKEY":       "NONE",
 	})
 
 	live := env["AUTOBAHNAPIDE_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["AUTOBAHNAPIDE_APIKEY"],
 		}
 		client := sdk.NewAutobahnApiDeSDK(mergedOpts)
 

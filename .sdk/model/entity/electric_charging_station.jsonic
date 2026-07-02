@@ -114,7 +114,7 @@ main: kit: entity: electric_charging_station: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.electric_charging_station`"
           }
         }
       ]

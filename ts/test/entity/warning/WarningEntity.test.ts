@@ -115,6 +115,7 @@ function basicSetup(extra?: any) {
     'AUTOBAHN_API_DE_TEST_WARNING_ENTID': idmap,
     'AUTOBAHN_API_DE_TEST_LIVE': 'FALSE',
     'AUTOBAHN_API_DE_TEST_EXPLAIN': 'FALSE',
+    'AUTOBAHN_API_DE_APIKEY': 'NONE',
   })
 
   idmap = env['AUTOBAHN_API_DE_TEST_WARNING_ENTID']
@@ -124,6 +125,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new AutobahnApiDeSDK(merge([
       {
+        apikey: env.AUTOBAHN_API_DE_APIKEY,
       },
       extra
     ]))
