@@ -10,7 +10,7 @@ The PHP SDK for the AutobahnApiDe API — an entity-oriented client using PHP co
 
 ## Install
 ```bash
-composer require voxgig/autobahn-api-de-sdk
+composer require voxgig-sdk/autobahn-api-de
 ```
 
 

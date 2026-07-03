@@ -10,7 +10,7 @@ The Python SDK for the AutobahnApiDe API — an entity-oriented client following
 
 ## Install
 ```bash
-pip install autobahn-api-de-sdk
+pip install voxgig-sdk-autobahn-api-de
 ```
 
 Or install from source:

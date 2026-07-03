@@ -10,7 +10,7 @@ The Lua SDK for the AutobahnApiDe API — an entity-oriented client using Lua co
 
 ## Install
 ```bash
-luarocks install autobahn-api-de-sdk
+luarocks install voxgig-sdk-autobahn-api-de
 ```
 
 If the module is not yet published, add the source directory to

@@ -10,13 +10,13 @@ The Ruby SDK for the AutobahnApiDe API — an entity-oriented client using idiom
 
 ## Install
 ```bash
-gem install autobahn-api-de-sdk
+gem install voxgig-sdk-autobahn-api-de
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "autobahn-api-de-sdk"
+gem "voxgig-sdk-autobahn-api-de"
 ```
 
 Then run:

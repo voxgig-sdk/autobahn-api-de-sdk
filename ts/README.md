@@ -10,7 +10,7 @@ The TypeScript SDK for the AutobahnApiDe API — a type-safe, entity-oriented cl
 
 ## Install
 ```bash
-npm install autobahn-api-de
+npm install @voxgig-sdk/autobahn-api-de
 ```
 ## Tutorial: your first API call
 
