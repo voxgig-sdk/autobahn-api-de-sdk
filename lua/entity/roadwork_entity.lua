@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch RoadworkLoadMatch
+---@param ctrl? table
+---@return Roadwork
+---@return string? err
 function RoadworkEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch RoadworkListMatch
+---@param ctrl? table
+---@return Roadwork[]
+---@return string? err
 function RoadworkEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

@@ -244,42 +244,133 @@ end
 
 
 
+-- Idiomatic facade: client:closure():list() / client:closure():load({ id = ... })
+function AutobahnApiDeSDK:closure(data)
+  local EntityMod = require("entity.closure_entity")
+  if data == nil then
+    if self._closure == nil then
+      self._closure = EntityMod.new(self, nil)
+    end
+    return self._closure
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:closure() instead.
 function AutobahnApiDeSDK:Closure(data)
   local EntityMod = require("entity.closure_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:electric_charging_station():list() / client:electric_charging_station():load({ id = ... })
+function AutobahnApiDeSDK:electric_charging_station(data)
+  local EntityMod = require("entity.electric_charging_station_entity")
+  if data == nil then
+    if self._electric_charging_station == nil then
+      self._electric_charging_station = EntityMod.new(self, nil)
+    end
+    return self._electric_charging_station
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:electric_charging_station() instead.
 function AutobahnApiDeSDK:ElectricChargingStation(data)
   local EntityMod = require("entity.electric_charging_station_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:list_autobahnen():list() / client:list_autobahnen():load({ id = ... })
+function AutobahnApiDeSDK:list_autobahnen(data)
+  local EntityMod = require("entity.list_autobahnen_entity")
+  if data == nil then
+    if self._list_autobahnen == nil then
+      self._list_autobahnen = EntityMod.new(self, nil)
+    end
+    return self._list_autobahnen
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:list_autobahnen() instead.
 function AutobahnApiDeSDK:ListAutobahnen(data)
   local EntityMod = require("entity.list_autobahnen_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:parking_lorry():list() / client:parking_lorry():load({ id = ... })
+function AutobahnApiDeSDK:parking_lorry(data)
+  local EntityMod = require("entity.parking_lorry_entity")
+  if data == nil then
+    if self._parking_lorry == nil then
+      self._parking_lorry = EntityMod.new(self, nil)
+    end
+    return self._parking_lorry
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:parking_lorry() instead.
 function AutobahnApiDeSDK:ParkingLorry(data)
   local EntityMod = require("entity.parking_lorry_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:roadwork():list() / client:roadwork():load({ id = ... })
+function AutobahnApiDeSDK:roadwork(data)
+  local EntityMod = require("entity.roadwork_entity")
+  if data == nil then
+    if self._roadwork == nil then
+      self._roadwork = EntityMod.new(self, nil)
+    end
+    return self._roadwork
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:roadwork() instead.
 function AutobahnApiDeSDK:Roadwork(data)
   local EntityMod = require("entity.roadwork_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:warning():list() / client:warning():load({ id = ... })
+function AutobahnApiDeSDK:warning(data)
+  local EntityMod = require("entity.warning_entity")
+  if data == nil then
+    if self._warning == nil then
+      self._warning = EntityMod.new(self, nil)
+    end
+    return self._warning
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:warning() instead.
 function AutobahnApiDeSDK:Warning(data)
   local EntityMod = require("entity.warning_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:webcam():list() / client:webcam():load({ id = ... })
+function AutobahnApiDeSDK:webcam(data)
+  local EntityMod = require("entity.webcam_entity")
+  if data == nil then
+    if self._webcam == nil then
+      self._webcam = EntityMod.new(self, nil)
+    end
+    return self._webcam
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:webcam() instead.
 function AutobahnApiDeSDK:Webcam(data)
   local EntityMod = require("entity.webcam_entity")
   return EntityMod.new(self, data)

@@ -45,14 +45,12 @@ class WebcamEntityTest < Minitest::Test
       "road_id" => setup[:idmap]["road01"],
     }
 
-    webcam_ref01_list_result, err = webcam_ref01_ent.list(webcam_ref01_match, nil)
-    assert_nil err
+    webcam_ref01_list_result = webcam_ref01_ent.list(webcam_ref01_match, nil)
     assert webcam_ref01_list_result.is_a?(Array)
 
     # LOAD
     webcam_ref01_match_dt0 = {}
-    webcam_ref01_data_dt0_loaded, err = webcam_ref01_ent.load(webcam_ref01_match_dt0, nil)
-    assert_nil err
+    webcam_ref01_data_dt0_loaded = webcam_ref01_ent.load(webcam_ref01_match_dt0, nil)
     assert !webcam_ref01_data_dt0_loaded.nil?
 
   end
@@ -91,7 +89,6 @@ def webcam_basic_setup(extra)
     "AUTOBAHNAPIDE_TEST_WEBCAM_ENTID" => idmap,
     "AUTOBAHNAPIDE_TEST_LIVE" => "FALSE",
     "AUTOBAHNAPIDE_TEST_EXPLAIN" => "FALSE",
-    "AUTOBAHNAPIDE_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -103,7 +100,6 @@ def webcam_basic_setup(extra)
   if env["AUTOBAHNAPIDE_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["AUTOBAHNAPIDE_APIKEY"],
       },
       extra || {},
     ])

@@ -45,14 +45,12 @@ class ElectricChargingStationEntityTest < Minitest::Test
       "road_id" => setup[:idmap]["road01"],
     }
 
-    electric_charging_station_ref01_list_result, err = electric_charging_station_ref01_ent.list(electric_charging_station_ref01_match, nil)
-    assert_nil err
+    electric_charging_station_ref01_list_result = electric_charging_station_ref01_ent.list(electric_charging_station_ref01_match, nil)
     assert electric_charging_station_ref01_list_result.is_a?(Array)
 
     # LOAD
     electric_charging_station_ref01_match_dt0 = {}
-    electric_charging_station_ref01_data_dt0_loaded, err = electric_charging_station_ref01_ent.load(electric_charging_station_ref01_match_dt0, nil)
-    assert_nil err
+    electric_charging_station_ref01_data_dt0_loaded = electric_charging_station_ref01_ent.load(electric_charging_station_ref01_match_dt0, nil)
     assert !electric_charging_station_ref01_data_dt0_loaded.nil?
 
   end
@@ -91,7 +89,6 @@ def electric_charging_station_basic_setup(extra)
     "AUTOBAHNAPIDE_TEST_ELECTRIC_CHARGING_STATION_ENTID" => idmap,
     "AUTOBAHNAPIDE_TEST_LIVE" => "FALSE",
     "AUTOBAHNAPIDE_TEST_EXPLAIN" => "FALSE",
-    "AUTOBAHNAPIDE_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -103,7 +100,6 @@ def electric_charging_station_basic_setup(extra)
   if env["AUTOBAHNAPIDE_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["AUTOBAHNAPIDE_APIKEY"],
       },
       extra || {},
     ])

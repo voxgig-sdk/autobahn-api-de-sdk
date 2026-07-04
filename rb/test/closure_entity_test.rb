@@ -45,14 +45,12 @@ class ClosureEntityTest < Minitest::Test
       "road_id" => setup[:idmap]["road01"],
     }
 
-    closure_ref01_list_result, err = closure_ref01_ent.list(closure_ref01_match, nil)
-    assert_nil err
+    closure_ref01_list_result = closure_ref01_ent.list(closure_ref01_match, nil)
     assert closure_ref01_list_result.is_a?(Array)
 
     # LOAD
     closure_ref01_match_dt0 = {}
-    closure_ref01_data_dt0_loaded, err = closure_ref01_ent.load(closure_ref01_match_dt0, nil)
-    assert_nil err
+    closure_ref01_data_dt0_loaded = closure_ref01_ent.load(closure_ref01_match_dt0, nil)
     assert !closure_ref01_data_dt0_loaded.nil?
 
   end
@@ -91,7 +89,6 @@ def closure_basic_setup(extra)
     "AUTOBAHNAPIDE_TEST_CLOSURE_ENTID" => idmap,
     "AUTOBAHNAPIDE_TEST_LIVE" => "FALSE",
     "AUTOBAHNAPIDE_TEST_EXPLAIN" => "FALSE",
-    "AUTOBAHNAPIDE_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -103,7 +100,6 @@ def closure_basic_setup(extra)
   if env["AUTOBAHNAPIDE_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["AUTOBAHNAPIDE_APIKEY"],
       },
       extra || {},
     ])

@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch WebcamLoadMatch
+---@param ctrl? table
+---@return Webcam
+---@return string? err
 function WebcamEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch WebcamListMatch
+---@param ctrl? table
+---@return Webcam[]
+---@return string? err
 function WebcamEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

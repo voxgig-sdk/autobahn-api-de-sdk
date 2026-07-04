@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -182,7 +181,7 @@ Alias for `AutobahnApiDeSDK.test()`.
 ## ClosureEntity
 
 ```ts
-const closure = client.Closure()
+const closure = client.closure
 ```
 
 ### Fields
@@ -212,7 +211,7 @@ const closure = client.Closure()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Closure().list()
+const results = await client.closure.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -220,7 +219,7 @@ const results = await client.Closure().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Closure().load({ id: 'closure_id' })
+const result = await client.closure.load({ id: 'closure_id' })
 ```
 
 ### Common Methods
@@ -254,7 +253,7 @@ Return a copy of the entity options.
 ## ElectricChargingStationEntity
 
 ```ts
-const electric_charging_station = client.ElectricChargingStation()
+const electric_charging_station = client.electric_charging_station
 ```
 
 ### Fields
@@ -283,7 +282,7 @@ const electric_charging_station = client.ElectricChargingStation()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.ElectricChargingStation().list()
+const results = await client.electric_charging_station.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -291,7 +290,7 @@ const results = await client.ElectricChargingStation().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.ElectricChargingStation().load({ id: 'electric_charging_station_id' })
+const result = await client.electric_charging_station.load({ id: 'electric_charging_station_id' })
 ```
 
 ### Common Methods
@@ -325,7 +324,7 @@ Return a copy of the entity options.
 ## ListAutobahnenEntity
 
 ```ts
-const list_autobahnen = client.ListAutobahnen()
+const list_autobahnen = client.list_autobahnen
 ```
 
 ### Fields
@@ -341,7 +340,7 @@ const list_autobahnen = client.ListAutobahnen()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.ListAutobahnen().list()
+const results = await client.list_autobahnen.list()
 ```
 
 ### Common Methods
@@ -375,7 +374,7 @@ Return a copy of the entity options.
 ## ParkingLorryEntity
 
 ```ts
-const parking_lorry = client.ParkingLorry()
+const parking_lorry = client.parking_lorry
 ```
 
 ### Fields
@@ -404,7 +403,7 @@ const parking_lorry = client.ParkingLorry()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.ParkingLorry().list()
+const results = await client.parking_lorry.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -412,7 +411,7 @@ const results = await client.ParkingLorry().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.ParkingLorry().load({ id: 'parking_lorry_id' })
+const result = await client.parking_lorry.load({ id: 'parking_lorry_id' })
 ```
 
 ### Common Methods
@@ -446,7 +445,7 @@ Return a copy of the entity options.
 ## RoadworkEntity
 
 ```ts
-const roadwork = client.Roadwork()
+const roadwork = client.roadwork
 ```
 
 ### Fields
@@ -476,7 +475,7 @@ const roadwork = client.Roadwork()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Roadwork().list()
+const results = await client.roadwork.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -484,7 +483,7 @@ const results = await client.Roadwork().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Roadwork().load({ id: 'roadwork_id' })
+const result = await client.roadwork.load({ id: 'roadwork_id' })
 ```
 
 ### Common Methods
@@ -518,7 +517,7 @@ Return a copy of the entity options.
 ## WarningEntity
 
 ```ts
-const warning = client.Warning()
+const warning = client.warning
 ```
 
 ### Fields
@@ -548,7 +547,7 @@ const warning = client.Warning()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Warning().list()
+const results = await client.warning.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -556,7 +555,7 @@ const results = await client.Warning().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Warning().load({ id: 'warning_id' })
+const result = await client.warning.load({ id: 'warning_id' })
 ```
 
 ### Common Methods
@@ -590,7 +589,7 @@ Return a copy of the entity options.
 ## WebcamEntity
 
 ```ts
-const webcam = client.Webcam()
+const webcam = client.webcam
 ```
 
 ### Fields
@@ -622,7 +621,7 @@ const webcam = client.Webcam()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Webcam().list()
+const results = await client.webcam.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -630,7 +629,7 @@ const results = await client.Webcam().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Webcam().load({ id: 'webcam_id' })
+const result = await client.webcam.load({ id: 'webcam_id' })
 ```
 
 ### Common Methods

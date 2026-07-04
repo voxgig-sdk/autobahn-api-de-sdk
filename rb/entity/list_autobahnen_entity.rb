@@ -45,6 +45,7 @@ class ListAutobahnenEntity
     end
   end
 
+  # @return [ListAutobahnen, Hash] the current ListAutobahnen data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class ListAutobahnenEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of ListAutobahnen fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class ListAutobahnenEntity
   
 
   
+  # List ListAutobahnen items matching the given filter.
+  #
+  # @param reqmatch [ListAutobahnenListMatch, Hash, nil] match filter (any subset of ListAutobahnen fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<ListAutobahnen>, Array] the matching ListAutobahnen items; raises AutobahnApiDeError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

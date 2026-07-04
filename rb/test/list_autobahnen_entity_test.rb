@@ -43,8 +43,7 @@ class ListAutobahnenEntityTest < Minitest::Test
     list_autobahnen_ref01_ent = client.ListAutobahnen(nil)
     list_autobahnen_ref01_match = {}
 
-    list_autobahnen_ref01_list_result, err = list_autobahnen_ref01_ent.list(list_autobahnen_ref01_match, nil)
-    assert_nil err
+    list_autobahnen_ref01_list_result = list_autobahnen_ref01_ent.list(list_autobahnen_ref01_match, nil)
     assert list_autobahnen_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def list_autobahnen_basic_setup(extra)
     "AUTOBAHNAPIDE_TEST_LIST_AUTOBAHNEN_ENTID" => idmap,
     "AUTOBAHNAPIDE_TEST_LIVE" => "FALSE",
     "AUTOBAHNAPIDE_TEST_EXPLAIN" => "FALSE",
-    "AUTOBAHNAPIDE_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def list_autobahnen_basic_setup(extra)
   if env["AUTOBAHNAPIDE_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["AUTOBAHNAPIDE_APIKEY"],
       },
       extra || {},
     ])

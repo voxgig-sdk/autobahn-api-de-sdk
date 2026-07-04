@@ -45,6 +45,7 @@ class ElectricChargingStationEntity
     end
   end
 
+  # @return [ElectricChargingStation, Hash] the current ElectricChargingStation data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class ElectricChargingStationEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of ElectricChargingStation fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single ElectricChargingStation.
+  #
+  # @param reqmatch [ElectricChargingStationLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [ElectricChargingStation, Hash] the loaded ElectricChargingStation; raises AutobahnApiDeError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
@@ -86,6 +93,11 @@ class ElectricChargingStationEntity
 
 
   
+  # List ElectricChargingStation items matching the given filter.
+  #
+  # @param reqmatch [ElectricChargingStationListMatch, Hash, nil] match filter (any subset of ElectricChargingStation fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<ElectricChargingStation>, Array] the matching ElectricChargingStation items; raises AutobahnApiDeError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

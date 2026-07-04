@@ -100,7 +100,6 @@ function closure_basic_setup(extra)
     ["AUTOBAHNAPIDE_TEST_CLOSURE_ENTID"] = idmap,
     ["AUTOBAHNAPIDE_TEST_LIVE"] = "FALSE",
     ["AUTOBAHNAPIDE_TEST_EXPLAIN"] = "FALSE",
-    ["AUTOBAHNAPIDE_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -112,7 +111,6 @@ function closure_basic_setup(extra)
   if env["AUTOBAHNAPIDE_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
-        apikey = env["AUTOBAHNAPIDE_APIKEY"],
       },
       extra or {},
     })

@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Closure,
+  ClosureLoadMatch,
+  ClosureListMatch,
+} from '../AutobahnApiDeTypes'
 
 // TODO: needs Entity superclass
-class ClosureEntity extends AutobahnApiDeEntityBase {
+class ClosureEntity extends AutobahnApiDeEntityBase<Closure> {
 
   constructor(client: AutobahnApiDeSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class ClosureEntity extends AutobahnApiDeEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: ClosureLoadMatch, ctrl?: Control): Promise<Closure> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class ClosureEntity extends AutobahnApiDeEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Closure> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: ClosureListMatch, ctrl?: Control): Promise<Closure[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class ClosureEntity extends AutobahnApiDeEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Closure[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

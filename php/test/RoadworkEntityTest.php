@@ -52,14 +52,12 @@ class RoadworkEntityTest extends TestCase
             "road_id" => $setup["idmap"]["road01"],
         ];
 
-        [$roadwork_ref01_list_result, $err] = $roadwork_ref01_ent->list($roadwork_ref01_match, null);
-        $this->assertNull($err);
+        $roadwork_ref01_list_result = $roadwork_ref01_ent->list($roadwork_ref01_match, null);
         $this->assertIsArray($roadwork_ref01_list_result);
 
         // LOAD
         $roadwork_ref01_match_dt0 = [];
-        [$roadwork_ref01_data_dt0_loaded, $err] = $roadwork_ref01_ent->load($roadwork_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $roadwork_ref01_data_dt0_loaded = $roadwork_ref01_ent->load($roadwork_ref01_match_dt0, null);
         $this->assertNotNull($roadwork_ref01_data_dt0_loaded);
 
     }
@@ -94,7 +92,6 @@ function roadwork_basic_setup($extra)
         "AUTOBAHNAPIDE_TEST_ROADWORK_ENTID" => $idmap,
         "AUTOBAHNAPIDE_TEST_LIVE" => "FALSE",
         "AUTOBAHNAPIDE_TEST_EXPLAIN" => "FALSE",
-        "AUTOBAHNAPIDE_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -106,7 +103,6 @@ function roadwork_basic_setup($extra)
     if ($env["AUTOBAHNAPIDE_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["AUTOBAHNAPIDE_APIKEY"],
             ],
             $extra ?? [],
         ]);

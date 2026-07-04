@@ -103,7 +103,7 @@ class AutobahnApiDeSDK
         return $this->_rootctx;
     }
 
-    public function prepare(array $fetchargs = []): array
+    public function prepare(array $fetchargs = []): mixed
     {
         $utility = $this->_utility;
         $fetchargs = $fetchargs ?? [];
@@ -149,19 +149,27 @@ class AutobahnApiDeSDK
 
         [$_, $err] = ($utility->prepare_auth)($ctx);
         if ($err) {
-            return [null, $err];
+            return ($utility->make_error)($ctx, $err);
         }
 
-        return ($utility->make_fetch_def)($ctx);
+        [$fetchdef, $fd_err] = ($utility->make_fetch_def)($ctx);
+        if ($fd_err) {
+            return ($utility->make_error)($ctx, $fd_err);
+        }
+        return $fetchdef;
     }
 
-    public function direct(array $fetchargs = []): array
+    public function direct(array $fetchargs = []): mixed
     {
         $utility = $this->_utility;
 
-        [$fetchdef, $err] = $this->prepare($fetchargs);
-        if ($err) {
-            return [["ok" => false, "err" => $err], null];
+        // direct() is the raw-HTTP escape hatch: it never throws, it returns
+        // an {ok, err, ...} dict. prepare() now raises on error, so catch it
+        // and surface the failure through the dict instead.
+        try {
+            $fetchdef = $this->prepare($fetchargs);
+        } catch (\Throwable $err) {
+            return ["ok" => false, "err" => $err];
         }
 
         $fetchargs = $fetchargs ?? [];
@@ -176,14 +184,14 @@ class AutobahnApiDeSDK
         [$fetched, $fetch_err] = ($utility->fetcher)($ctx, $url, $fetchdef);
 
         if ($fetch_err) {
-            return [["ok" => false, "err" => $fetch_err], null];
+            return ["ok" => false, "err" => $fetch_err];
         }
 
         if ($fetched === null) {
-            return [[
+            return [
                 "ok" => false,
                 "err" => $ctx->make_error("direct_no_response", "response: undefined"),
-            ], null];
+            ];
         }
 
         if (is_array($fetched)) {
@@ -208,66 +216,143 @@ class AutobahnApiDeSDK
                 }
             }
 
-            return [[
+            return [
                 "ok" => $status >= 200 && $status < 300,
                 "status" => $status,
                 "headers" => Struct::getprop($fetched, "headers"),
                 "data" => $json_data,
-            ], null];
+            ];
         }
 
-        return [[
+        return [
             "ok" => false,
             "err" => $ctx->make_error("direct_invalid", "invalid response type"),
-        ], null];
+        ];
     }
 
 
-    public function Closure($data = null)
+    private $_closure = null;
+
+    // Idiomatic facade: $client->closure()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Closure() (PHP method
+    // names are case-insensitive).
+    public function closure($data = null)
     {
         require_once __DIR__ . '/entity/closure_entity.php';
+        if ($data === null) {
+            if ($this->_closure === null) {
+                $this->_closure = new ClosureEntity($this, null);
+            }
+            return $this->_closure;
+        }
         return new ClosureEntity($this, $data);
     }
 
 
-    public function ElectricChargingStation($data = null)
+    private $_electric_charging_station = null;
+
+    // Idiomatic facade: $client->electric_charging_station()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias ElectricChargingStation() (PHP method
+    // names are case-insensitive).
+    public function electric_charging_station($data = null)
     {
         require_once __DIR__ . '/entity/electric_charging_station_entity.php';
+        if ($data === null) {
+            if ($this->_electric_charging_station === null) {
+                $this->_electric_charging_station = new ElectricChargingStationEntity($this, null);
+            }
+            return $this->_electric_charging_station;
+        }
         return new ElectricChargingStationEntity($this, $data);
     }
 
 
-    public function ListAutobahnen($data = null)
+    private $_list_autobahnen = null;
+
+    // Idiomatic facade: $client->list_autobahnen()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias ListAutobahnen() (PHP method
+    // names are case-insensitive).
+    public function list_autobahnen($data = null)
     {
         require_once __DIR__ . '/entity/list_autobahnen_entity.php';
+        if ($data === null) {
+            if ($this->_list_autobahnen === null) {
+                $this->_list_autobahnen = new ListAutobahnenEntity($this, null);
+            }
+            return $this->_list_autobahnen;
+        }
         return new ListAutobahnenEntity($this, $data);
     }
 
 
-    public function ParkingLorry($data = null)
+    private $_parking_lorry = null;
+
+    // Idiomatic facade: $client->parking_lorry()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias ParkingLorry() (PHP method
+    // names are case-insensitive).
+    public function parking_lorry($data = null)
     {
         require_once __DIR__ . '/entity/parking_lorry_entity.php';
+        if ($data === null) {
+            if ($this->_parking_lorry === null) {
+                $this->_parking_lorry = new ParkingLorryEntity($this, null);
+            }
+            return $this->_parking_lorry;
+        }
         return new ParkingLorryEntity($this, $data);
     }
 
 
-    public function Roadwork($data = null)
+    private $_roadwork = null;
+
+    // Idiomatic facade: $client->roadwork()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Roadwork() (PHP method
+    // names are case-insensitive).
+    public function roadwork($data = null)
     {
         require_once __DIR__ . '/entity/roadwork_entity.php';
+        if ($data === null) {
+            if ($this->_roadwork === null) {
+                $this->_roadwork = new RoadworkEntity($this, null);
+            }
+            return $this->_roadwork;
+        }
         return new RoadworkEntity($this, $data);
     }
 
 
-    public function Warning($data = null)
+    private $_warning = null;
+
+    // Idiomatic facade: $client->warning()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Warning() (PHP method
+    // names are case-insensitive).
+    public function warning($data = null)
     {
         require_once __DIR__ . '/entity/warning_entity.php';
+        if ($data === null) {
+            if ($this->_warning === null) {
+                $this->_warning = new WarningEntity($this, null);
+            }
+            return $this->_warning;
+        }
         return new WarningEntity($this, $data);
     }
 
 
-    public function Webcam($data = null)
+    private $_webcam = null;
+
+    // Idiomatic facade: $client->webcam()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Webcam() (PHP method
+    // names are case-insensitive).
+    public function webcam($data = null)
     {
         require_once __DIR__ . '/entity/webcam_entity.php';
+        if ($data === null) {
+            if ($this->_webcam === null) {
+                $this->_webcam = new WebcamEntity($this, null);
+            }
+            return $this->_webcam;
+        }
         return new WebcamEntity($this, $data);
     }
 

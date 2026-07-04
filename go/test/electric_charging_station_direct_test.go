@@ -200,14 +200,12 @@ func electric_charging_stationDirectSetup(mockres any) *electric_charging_statio
 	env := envOverride(map[string]any{
 		"AUTOBAHNAPIDE_TEST_ELECTRIC_CHARGING_STATION_ENTID": map[string]any{},
 		"AUTOBAHNAPIDE_TEST_LIVE":    "FALSE",
-		"AUTOBAHNAPIDE_APIKEY":       "NONE",
 	})
 
 	live := env["AUTOBAHNAPIDE_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["AUTOBAHNAPIDE_APIKEY"],
 		}
 		client := sdk.NewAutobahnApiDeSDK(mergedOpts)
 

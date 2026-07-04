@@ -9,11 +9,9 @@ The Python SDK for the AutobahnApiDe API — an entity-oriented client following
 
 
 ## Install
-```bash
-pip install voxgig-sdk-autobahn-api-de
-```
-
-Or install from source:
+This package is not yet published to PyPI. Install it from the GitHub
+release tag (`py/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/autobahn-api-de-sdk/releases)) or
+from a source checkout:
 
 ```bash
 pip install -e .
@@ -28,34 +26,31 @@ loading a specific record.
 ### 1. Create a client
 
 ```python
-import os
 from autobahnapide_sdk import AutobahnApiDeSDK
 
-client = AutobahnApiDeSDK({
-    "apikey": os.environ.get("AUTOBAHN-API-DE_APIKEY"),
-})
+client = AutobahnApiDeSDK()
 ```
 
 ### 2. List closures
 
 ```python
-result, err = client.Closure().list()
-if err:
-    raise Exception(err)
-
-if isinstance(result, list):
+try:
+    result = client.closure.list()
     for item in result:
         d = item.data_get()
         print(d["id"], d["name"])
+except Exception as err:
+    print(f"list failed: {err}")
 ```
 
 ### 3. Load a closure
 
 ```python
-result, err = client.Closure().load({"id": "example_id"})
-if err:
-    raise Exception(err)
-print(result)
+try:
+    result = client.closure.load({"id": "example_id"})
+    print(result)
+except Exception as err:
+    print(f"load failed: {err}")
 ```
 
 
@@ -66,29 +61,28 @@ print(result)
 For endpoints not covered by entity methods:
 
 ```python
-result, err = client.direct({
+result = client.direct({
     "path": "/api/resource/{id}",
     "method": "GET",
     "params": {"id": "example"},
 })
-if err:
-    raise Exception(err)
 
 if result["ok"]:
     print(result["status"])  # 200
     print(result["data"])    # response body
+else:
+    print(result["err"])     # error value
 ```
 
 ### Prepare a request without sending it
 
 ```python
-fetchdef, err = client.prepare({
+# prepare() returns the fetch definition and raises on error.
+fetchdef = client.prepare({
     "path": "/api/resource/{id}",
     "method": "DELETE",
     "params": {"id": "example"},
 })
-if err:
-    raise Exception(err)
 
 print(fetchdef["url"])
 print(fetchdef["method"])
@@ -102,7 +96,7 @@ Create a mock client for unit testing — no server required:
 ```python
 client = AutobahnApiDeSDK.test()
 
-result, err = client.AutobahnApiDe().load({"id": "test01"})
+result = client.closure.load({"id": "test01"})
 # result contains mock response data
 ```
 
@@ -132,8 +126,7 @@ client = AutobahnApiDeSDK({
 Create a `.env.local` file at the project root:
 
 ```
-AUTOBAHN-API-DE_TEST_LIVE=TRUE
-AUTOBAHN-API-DE_APIKEY=<your-key>
+AUTOBAHN_API_DE_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -157,7 +150,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `str` | API key for authentication. |
 | `base` | `str` | Base URL of the API server. |
 | `prefix` | `str` | URL path prefix prepended to all requests. |
 | `suffix` | `str` | URL path suffix appended to all requests. |
@@ -179,8 +171,8 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | --- | --- | --- |
 | `options_map` | `() -> dict` | Deep copy of current SDK options. |
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
-| `prepare` | `(fetchargs) -> (dict, err)` | Build an HTTP request definition without sending. |
-| `direct` | `(fetchargs) -> (dict, err)` | Build and send an HTTP request. |
+| `prepare` | `(fetchargs) -> dict` | Build an HTTP request definition without sending. Raises on error. |
+| `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
 | `Closure` | `(data) -> ClosureEntity` | Create a Closure entity instance. |
 | `ElectricChargingStation` | `(data) -> ElectricChargingStationEntity` | Create a ElectricChargingStation entity instance. |
 | `ListAutobahnen` | `(data) -> ListAutobahnenEntity` | Create a ListAutobahnen entity instance. |
@@ -195,11 +187,11 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `(reqmatch, ctrl) -> (any, err)` | Load a single entity by match criteria. |
-| `list` | `(reqmatch, ctrl) -> (any, err)` | List entities matching the criteria. |
-| `create` | `(reqdata, ctrl) -> (any, err)` | Create a new entity. |
-| `update` | `(reqdata, ctrl) -> (any, err)` | Update an existing entity. |
-| `remove` | `(reqmatch, ctrl) -> (any, err)` | Remove an entity. |
+| `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
+| `list` | `(reqmatch, ctrl) -> list` | List entities matching the criteria. Raises on error. |
+| `create` | `(reqdata, ctrl) -> any` | Create a new entity. Raises on error. |
+| `update` | `(reqdata, ctrl) -> any` | Update an existing entity. Raises on error. |
+| `remove` | `(reqmatch, ctrl) -> any` | Remove an entity. Raises on error. |
 | `data_get` | `() -> dict` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> dict` | Get entity match criteria. |
@@ -209,8 +201,12 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`dict` with these keys:
+Entity operations return the bare result data (a `dict` for single-entity
+ops, a `list` for `list`) and raise on error. Wrap calls in
+`try`/`except` to handle failures.
+
+The `direct()` escape hatch never raises — it returns a result `dict`
+you branch on via `result["ok"]`:
 
 | Key | Type | Description |
 | --- | --- | --- |
@@ -384,7 +380,7 @@ API path: `/{roadId}/services/webcam`
 
 ### Closure
 
-Create an instance: `const closure = client.Closure()`
+Create an instance: `const closure = client.closure`
 
 #### Operations
 
@@ -416,19 +412,19 @@ Create an instance: `const closure = client.Closure()`
 #### Example: Load
 
 ```ts
-const closure = await client.Closure().load({ id: 'closure_id' })
+const closure = await client.closure.load({ id: 'closure_id' })
 ```
 
 #### Example: List
 
 ```ts
-const closures = await client.Closure().list()
+const closures = await client.closure.list()
 ```
 
 
 ### ElectricChargingStation
 
-Create an instance: `const electric_charging_station = client.ElectricChargingStation()`
+Create an instance: `const electric_charging_station = client.electric_charging_station`
 
 #### Operations
 
@@ -459,19 +455,19 @@ Create an instance: `const electric_charging_station = client.ElectricChargingSt
 #### Example: Load
 
 ```ts
-const electric_charging_station = await client.ElectricChargingStation().load({ id: 'electric_charging_station_id' })
+const electric_charging_station = await client.electric_charging_station.load({ id: 'electric_charging_station_id' })
 ```
 
 #### Example: List
 
 ```ts
-const electric_charging_stations = await client.ElectricChargingStation().list()
+const electric_charging_stations = await client.electric_charging_station.list()
 ```
 
 
 ### ListAutobahnen
 
-Create an instance: `const list_autobahnen = client.ListAutobahnen()`
+Create an instance: `const list_autobahnen = client.list_autobahnen`
 
 #### Operations
 
@@ -488,13 +484,13 @@ Create an instance: `const list_autobahnen = client.ListAutobahnen()`
 #### Example: List
 
 ```ts
-const list_autobahnens = await client.ListAutobahnen().list()
+const list_autobahnens = await client.list_autobahnen.list()
 ```
 
 
 ### ParkingLorry
 
-Create an instance: `const parking_lorry = client.ParkingLorry()`
+Create an instance: `const parking_lorry = client.parking_lorry`
 
 #### Operations
 
@@ -525,19 +521,19 @@ Create an instance: `const parking_lorry = client.ParkingLorry()`
 #### Example: Load
 
 ```ts
-const parking_lorry = await client.ParkingLorry().load({ id: 'parking_lorry_id' })
+const parking_lorry = await client.parking_lorry.load({ id: 'parking_lorry_id' })
 ```
 
 #### Example: List
 
 ```ts
-const parking_lorrys = await client.ParkingLorry().list()
+const parking_lorrys = await client.parking_lorry.list()
 ```
 
 
 ### Roadwork
 
-Create an instance: `const roadwork = client.Roadwork()`
+Create an instance: `const roadwork = client.roadwork`
 
 #### Operations
 
@@ -569,19 +565,19 @@ Create an instance: `const roadwork = client.Roadwork()`
 #### Example: Load
 
 ```ts
-const roadwork = await client.Roadwork().load({ id: 'roadwork_id' })
+const roadwork = await client.roadwork.load({ id: 'roadwork_id' })
 ```
 
 #### Example: List
 
 ```ts
-const roadworks = await client.Roadwork().list()
+const roadworks = await client.roadwork.list()
 ```
 
 
 ### Warning
 
-Create an instance: `const warning = client.Warning()`
+Create an instance: `const warning = client.warning`
 
 #### Operations
 
@@ -613,19 +609,19 @@ Create an instance: `const warning = client.Warning()`
 #### Example: Load
 
 ```ts
-const warning = await client.Warning().load({ id: 'warning_id' })
+const warning = await client.warning.load({ id: 'warning_id' })
 ```
 
 #### Example: List
 
 ```ts
-const warnings = await client.Warning().list()
+const warnings = await client.warning.list()
 ```
 
 
 ### Webcam
 
-Create an instance: `const webcam = client.Webcam()`
+Create an instance: `const webcam = client.webcam`
 
 #### Operations
 
@@ -659,13 +655,13 @@ Create an instance: `const webcam = client.Webcam()`
 #### Example: Load
 
 ```ts
-const webcam = await client.Webcam().load({ id: 'webcam_id' })
+const webcam = await client.webcam.load({ id: 'webcam_id' })
 ```
 
 #### Example: List
 
 ```ts
-const webcams = await client.Webcam().list()
+const webcams = await client.webcam.list()
 ```
 
 
@@ -739,11 +735,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-moon = client.Moon()
-moon.load({"planet_id": "earth", "id": "luna"})
+closure = client.closure
+closure.load({"id": "example_id"})
 
-# moon.data_get() now returns the loaded moon data
-# moon.match_get() returns the last match criteria
+# closure.data_get() now returns the loaded closure data
+# closure.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -45,6 +45,7 @@ class WebcamEntity
     end
   end
 
+  # @return [Webcam, Hash] the current Webcam data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class WebcamEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Webcam fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Webcam.
+  #
+  # @param reqmatch [WebcamLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Webcam, Hash] the loaded Webcam; raises AutobahnApiDeError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
@@ -86,6 +93,11 @@ class WebcamEntity
 
 
   
+  # List Webcam items matching the given filter.
+  #
+  # @param reqmatch [WebcamListMatch, Hash, nil] match filter (any subset of Webcam fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Webcam>, Array] the matching Webcam items; raises AutobahnApiDeError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

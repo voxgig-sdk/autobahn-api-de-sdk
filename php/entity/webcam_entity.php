@@ -55,6 +55,9 @@ class WebcamEntity
         return new WebcamEntity($this->_client, $opts);
     }
 
+    /**
+     * @param Webcam|array $args Webcam data (assoc-array) to store.
+     */
     public function data_set($args): void
     {
         if ($args) {
@@ -63,12 +66,18 @@ class WebcamEntity
         }
     }
 
+    /**
+     * @return Webcam|array The current Webcam data as an assoc-array.
+     */
     public function data_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetData");
         return Struct::clone($this->_data);
     }
 
+    /**
+     * @param array $args Match filter (any subset of Webcam fields).
+     */
     public function match_set($args): void
     {
         if ($args) {
@@ -77,6 +86,9 @@ class WebcamEntity
         }
     }
 
+    /**
+     * @return array The current match filter (any subset of Webcam fields).
+     */
     public function match_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetMatch");
@@ -84,7 +96,16 @@ class WebcamEntity
     }
 
     
-    public function load($reqmatch, $ctrl = null): array
+    /**
+     * Load a single Webcam.
+     *
+     * @param WebcamLoadMatch|array|null $reqmatch Match criteria (id/query
+     *   fields) as an assoc-array; a typed WebcamLoadMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return Webcam|array The loaded Webcam as an assoc-array at the
+     *   SDK boundary; throws AutobahnApiDeError on failure (item-5 convention).
+     */
+    public function load(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -110,7 +131,16 @@ class WebcamEntity
 
 
     
-    public function list($reqmatch, $ctrl = null): array
+    /**
+     * List Webcam items matching the given filter.
+     *
+     * @param WebcamListMatch|array|null $reqmatch Match filter (any subset
+     *   of Webcam fields) as an assoc-array; WebcamListMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return Webcam[]|array A list of Webcam items as assoc-arrays at
+     *   the SDK boundary; throws AutobahnApiDeError on failure (item-5 convention).
+     */
+    public function list(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -138,7 +168,7 @@ class WebcamEntity
 
     
 
-    private function _run_op($ctx, callable $post_done): array
+    private function _run_op($ctx, callable $post_done): mixed
     {
         $utility = $this->_utility;
 

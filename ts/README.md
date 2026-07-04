@@ -9,9 +9,12 @@ The TypeScript SDK for the AutobahnApiDe API — a type-safe, entity-oriented cl
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/autobahn-api-de
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/autobahn-api-de-sdk/releases](https://github.com/voxgig-sdk/autobahn-api-de-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { AutobahnApiDeSDK } from 'autobahn-api-de'
+import { AutobahnApiDeSDK } from '@voxgig-sdk/autobahn-api-de'
 
-const client = new AutobahnApiDeSDK({
-  apikey: process.env.AUTOBAHN-API-DE_APIKEY,
-})
+const client = new AutobahnApiDeSDK()
 ```
 
 ### 2. List closures
 
 ```ts
-const result = await client.Closure().list()
+const result = await client.closure.list()
 
 if (result.ok) {
   for (const item of result.data) {
@@ -42,7 +43,7 @@ if (result.ok) {
 ### 3. Load a closure
 
 ```ts
-const result = await client.Closure().load({ id: 'example_id' })
+const result = await client.closure.load({ id: 'example_id' })
 
 if (result.ok) {
   console.log(result.data)
@@ -91,7 +92,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = AutobahnApiDeSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.closure.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -99,7 +100,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new AutobahnApiDeSDK({ apikey: '...' })
+const client = new AutobahnApiDeSDK()
 const testClient = client.tester()
 ```
 
@@ -108,7 +109,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.closure
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -135,7 +136,6 @@ const logger = {
 }
 
 const client = new AutobahnApiDeSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -145,8 +145,7 @@ const client = new AutobahnApiDeSDK({
 Create a `.env.local` file at the project root:
 
 ```
-AUTOBAHN-API-DE_TEST_LIVE=TRUE
-AUTOBAHN-API-DE_APIKEY=<your-key>
+AUTOBAHN_API_DE_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -164,7 +163,6 @@ cd ts && npm test
 
 ```ts
 new AutobahnApiDeSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -175,7 +173,6 @@ new AutobahnApiDeSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -428,7 +425,7 @@ API path: `/{roadId}/services/webcam`
 
 ### Closure
 
-Create an instance: `const closure = client.Closure()`
+Create an instance: `const closure = client.closure`
 
 #### Operations
 
@@ -460,19 +457,19 @@ Create an instance: `const closure = client.Closure()`
 #### Example: Load
 
 ```ts
-const closure = await client.Closure().load({ id: 'closure_id' })
+const closure = await client.closure.load({ id: 'closure_id' })
 ```
 
 #### Example: List
 
 ```ts
-const closures = await client.Closure().list()
+const closures = await client.closure.list()
 ```
 
 
 ### ElectricChargingStation
 
-Create an instance: `const electric_charging_station = client.ElectricChargingStation()`
+Create an instance: `const electric_charging_station = client.electric_charging_station`
 
 #### Operations
 
@@ -503,19 +500,19 @@ Create an instance: `const electric_charging_station = client.ElectricChargingSt
 #### Example: Load
 
 ```ts
-const electric_charging_station = await client.ElectricChargingStation().load({ id: 'electric_charging_station_id' })
+const electric_charging_station = await client.electric_charging_station.load({ id: 'electric_charging_station_id' })
 ```
 
 #### Example: List
 
 ```ts
-const electric_charging_stations = await client.ElectricChargingStation().list()
+const electric_charging_stations = await client.electric_charging_station.list()
 ```
 
 
 ### ListAutobahnen
 
-Create an instance: `const list_autobahnen = client.ListAutobahnen()`
+Create an instance: `const list_autobahnen = client.list_autobahnen`
 
 #### Operations
 
@@ -532,13 +529,13 @@ Create an instance: `const list_autobahnen = client.ListAutobahnen()`
 #### Example: List
 
 ```ts
-const list_autobahnens = await client.ListAutobahnen().list()
+const list_autobahnens = await client.list_autobahnen.list()
 ```
 
 
 ### ParkingLorry
 
-Create an instance: `const parking_lorry = client.ParkingLorry()`
+Create an instance: `const parking_lorry = client.parking_lorry`
 
 #### Operations
 
@@ -569,19 +566,19 @@ Create an instance: `const parking_lorry = client.ParkingLorry()`
 #### Example: Load
 
 ```ts
-const parking_lorry = await client.ParkingLorry().load({ id: 'parking_lorry_id' })
+const parking_lorry = await client.parking_lorry.load({ id: 'parking_lorry_id' })
 ```
 
 #### Example: List
 
 ```ts
-const parking_lorrys = await client.ParkingLorry().list()
+const parking_lorrys = await client.parking_lorry.list()
 ```
 
 
 ### Roadwork
 
-Create an instance: `const roadwork = client.Roadwork()`
+Create an instance: `const roadwork = client.roadwork`
 
 #### Operations
 
@@ -613,19 +610,19 @@ Create an instance: `const roadwork = client.Roadwork()`
 #### Example: Load
 
 ```ts
-const roadwork = await client.Roadwork().load({ id: 'roadwork_id' })
+const roadwork = await client.roadwork.load({ id: 'roadwork_id' })
 ```
 
 #### Example: List
 
 ```ts
-const roadworks = await client.Roadwork().list()
+const roadworks = await client.roadwork.list()
 ```
 
 
 ### Warning
 
-Create an instance: `const warning = client.Warning()`
+Create an instance: `const warning = client.warning`
 
 #### Operations
 
@@ -657,19 +654,19 @@ Create an instance: `const warning = client.Warning()`
 #### Example: Load
 
 ```ts
-const warning = await client.Warning().load({ id: 'warning_id' })
+const warning = await client.warning.load({ id: 'warning_id' })
 ```
 
 #### Example: List
 
 ```ts
-const warnings = await client.Warning().list()
+const warnings = await client.warning.list()
 ```
 
 
 ### Webcam
 
-Create an instance: `const webcam = client.Webcam()`
+Create an instance: `const webcam = client.webcam`
 
 #### Operations
 
@@ -703,13 +700,13 @@ Create an instance: `const webcam = client.Webcam()`
 #### Example: Load
 
 ```ts
-const webcam = await client.Webcam().load({ id: 'webcam_id' })
+const webcam = await client.webcam.load({ id: 'webcam_id' })
 ```
 
 #### Example: List
 
 ```ts
-const webcams = await client.Webcam().list()
+const webcams = await client.webcam.list()
 ```
 
 
@@ -770,7 +767,7 @@ autobahn-api-de/
 Import the SDK from the package root:
 
 ```ts
-import { AutobahnApiDeSDK } from 'autobahn-api-de'
+import { AutobahnApiDeSDK } from '@voxgig-sdk/autobahn-api-de'
 ```
 
 ### Entity state
@@ -780,11 +777,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const closure = client.closure
+await closure.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// closure.data() now returns the loaded closure data
+// closure.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -85,6 +85,27 @@ func (e *ClosureEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an Closure; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *ClosureEntity) DataTyped(data ...Closure) Closure {
+	if len(data) > 0 {
+		return typedFrom[Closure](e.Data(asMap(data[0])))
+	}
+	return typedFrom[Closure](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through Closure (all fields
+// optional at the wire level).
+func (e *ClosureEntity) MatchTyped(match ...Closure) Closure {
+	if len(match) > 0 {
+		return typedFrom[Closure](e.Match(asMap(match[0])))
+	}
+	return typedFrom[Closure](e.Match())
+}
+
 
 func (e *ClosureEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
@@ -111,6 +132,17 @@ func (e *ClosureEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any,
 	})
 }
 
+// LoadTyped is the statically-typed variant of Load: it takes an
+// ClosureLoadMatch and returns an Closure. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *ClosureEntity) LoadTyped(reqmatch ClosureLoadMatch, ctrl map[string]any) (Closure, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
+	if err != nil {
+		return Closure{}, err
+	}
+	return typedFrom[Closure](res), nil
+}
+
 
 
 
@@ -131,6 +163,17 @@ func (e *ClosureEntity) List(reqmatch map[string]any, ctrl map[string]any) (any,
 			}
 		}
 	})
+}
+
+// ListTyped is the statically-typed variant of List: it takes an
+// ClosureListMatch and returns []Closure. It delegates to the untyped
+// List (identical runtime) and converts at the typed boundary.
+func (e *ClosureEntity) ListTyped(reqmatch ClosureListMatch, ctrl map[string]any) ([]Closure, error) {
+	res, err := e.List(asMap(reqmatch), ctrl)
+	if err != nil {
+		return nil, err
+	}
+	return typedSliceFrom[Closure](res), nil
 }
 
 

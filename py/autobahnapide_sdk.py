@@ -144,16 +144,23 @@ class AutobahnApiDeSDK:
 
         _, err = utility.prepare_auth(ctx)
         if err is not None:
-            return None, err
+            raise err
 
-        return utility.make_fetch_def(ctx)
+        fetchdef, err = utility.make_fetch_def(ctx)
+        if err is not None:
+            raise err
+
+        return fetchdef
 
     def direct(self, fetchargs=None):
         utility = self._utility
 
-        fetchdef, err = self.prepare(fetchargs)
-        if err is not None:
-            return {"ok": False, "err": err}, None
+        try:
+            fetchdef = self.prepare(fetchargs)
+        except Exception as err:
+            # direct() is the raw-HTTP escape hatch: it never raises, it
+            # returns a result object callers branch on via result["ok"].
+            return {"ok": False, "err": err}
 
         if fetchargs is None:
             fetchargs = {}
@@ -170,13 +177,13 @@ class AutobahnApiDeSDK:
         fetched, fetch_err = utility.fetcher(ctx, url, fetchdef)
 
         if fetch_err is not None:
-            return {"ok": False, "err": fetch_err}, None
+            return {"ok": False, "err": fetch_err}
 
         if fetched is None:
             return {
                 "ok": False,
                 "err": ctx.make_error("direct_no_response", "response: undefined"),
-            }, None
+            }
 
         if isinstance(fetched, dict):
             status = helpers.to_int(vs.getprop(fetched, "status"))
@@ -205,45 +212,122 @@ class AutobahnApiDeSDK:
                 "status": status,
                 "headers": headers,
                 "data": json_data,
-            }, None
+            }
 
         return {
             "ok": False,
             "err": ctx.make_error("direct_invalid", "invalid response type"),
-        }, None
+        }
 
+
+    @property
+    def closure(self):
+        """Idiomatic facade: client.closure.list() / client.closure.load({"id": ...})."""
+        from entity.closure_entity import ClosureEntity
+        cached = getattr(self, "_closure", None)
+        if cached is None:
+            cached = ClosureEntity(self, None)
+            self._closure = cached
+        return cached
 
     def Closure(self, data=None):
+        # Deprecated: use client.closure instead.
         from entity.closure_entity import ClosureEntity
         return ClosureEntity(self, data)
 
 
+    @property
+    def electric_charging_station(self):
+        """Idiomatic facade: client.electric_charging_station.list() / client.electric_charging_station.load({"id": ...})."""
+        from entity.electric_charging_station_entity import ElectricChargingStationEntity
+        cached = getattr(self, "_electric_charging_station", None)
+        if cached is None:
+            cached = ElectricChargingStationEntity(self, None)
+            self._electric_charging_station = cached
+        return cached
+
     def ElectricChargingStation(self, data=None):
+        # Deprecated: use client.electric_charging_station instead.
         from entity.electric_charging_station_entity import ElectricChargingStationEntity
         return ElectricChargingStationEntity(self, data)
 
 
+    @property
+    def list_autobahnen(self):
+        """Idiomatic facade: client.list_autobahnen.list() / client.list_autobahnen.load({"id": ...})."""
+        from entity.list_autobahnen_entity import ListAutobahnenEntity
+        cached = getattr(self, "_list_autobahnen", None)
+        if cached is None:
+            cached = ListAutobahnenEntity(self, None)
+            self._list_autobahnen = cached
+        return cached
+
     def ListAutobahnen(self, data=None):
+        # Deprecated: use client.list_autobahnen instead.
         from entity.list_autobahnen_entity import ListAutobahnenEntity
         return ListAutobahnenEntity(self, data)
 
 
+    @property
+    def parking_lorry(self):
+        """Idiomatic facade: client.parking_lorry.list() / client.parking_lorry.load({"id": ...})."""
+        from entity.parking_lorry_entity import ParkingLorryEntity
+        cached = getattr(self, "_parking_lorry", None)
+        if cached is None:
+            cached = ParkingLorryEntity(self, None)
+            self._parking_lorry = cached
+        return cached
+
     def ParkingLorry(self, data=None):
+        # Deprecated: use client.parking_lorry instead.
         from entity.parking_lorry_entity import ParkingLorryEntity
         return ParkingLorryEntity(self, data)
 
 
+    @property
+    def roadwork(self):
+        """Idiomatic facade: client.roadwork.list() / client.roadwork.load({"id": ...})."""
+        from entity.roadwork_entity import RoadworkEntity
+        cached = getattr(self, "_roadwork", None)
+        if cached is None:
+            cached = RoadworkEntity(self, None)
+            self._roadwork = cached
+        return cached
+
     def Roadwork(self, data=None):
+        # Deprecated: use client.roadwork instead.
         from entity.roadwork_entity import RoadworkEntity
         return RoadworkEntity(self, data)
 
 
+    @property
+    def warning(self):
+        """Idiomatic facade: client.warning.list() / client.warning.load({"id": ...})."""
+        from entity.warning_entity import WarningEntity
+        cached = getattr(self, "_warning", None)
+        if cached is None:
+            cached = WarningEntity(self, None)
+            self._warning = cached
+        return cached
+
     def Warning(self, data=None):
+        # Deprecated: use client.warning instead.
         from entity.warning_entity import WarningEntity
         return WarningEntity(self, data)
 
 
+    @property
+    def webcam(self):
+        """Idiomatic facade: client.webcam.list() / client.webcam.load({"id": ...})."""
+        from entity.webcam_entity import WebcamEntity
+        cached = getattr(self, "_webcam", None)
+        if cached is None:
+            cached = WebcamEntity(self, None)
+            self._webcam = cached
+        return cached
+
     def Webcam(self, data=None):
+        # Deprecated: use client.webcam instead.
         from entity.webcam_entity import WebcamEntity
         return WebcamEntity(self, data)
 

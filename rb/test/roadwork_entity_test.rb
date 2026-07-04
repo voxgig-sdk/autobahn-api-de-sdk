@@ -45,14 +45,12 @@ class RoadworkEntityTest < Minitest::Test
       "road_id" => setup[:idmap]["road01"],
     }
 
-    roadwork_ref01_list_result, err = roadwork_ref01_ent.list(roadwork_ref01_match, nil)
-    assert_nil err
+    roadwork_ref01_list_result = roadwork_ref01_ent.list(roadwork_ref01_match, nil)
     assert roadwork_ref01_list_result.is_a?(Array)
 
     # LOAD
     roadwork_ref01_match_dt0 = {}
-    roadwork_ref01_data_dt0_loaded, err = roadwork_ref01_ent.load(roadwork_ref01_match_dt0, nil)
-    assert_nil err
+    roadwork_ref01_data_dt0_loaded = roadwork_ref01_ent.load(roadwork_ref01_match_dt0, nil)
     assert !roadwork_ref01_data_dt0_loaded.nil?
 
   end
@@ -91,7 +89,6 @@ def roadwork_basic_setup(extra)
     "AUTOBAHNAPIDE_TEST_ROADWORK_ENTID" => idmap,
     "AUTOBAHNAPIDE_TEST_LIVE" => "FALSE",
     "AUTOBAHNAPIDE_TEST_EXPLAIN" => "FALSE",
-    "AUTOBAHNAPIDE_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -103,7 +100,6 @@ def roadwork_basic_setup(extra)
   if env["AUTOBAHNAPIDE_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["AUTOBAHNAPIDE_APIKEY"],
       },
       extra || {},
     ])

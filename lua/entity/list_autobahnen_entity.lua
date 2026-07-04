@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch ListAutobahnenListMatch
+---@param ctrl? table
+---@return ListAutobahnen[]
+---@return string? err
 function ListAutobahnenEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

@@ -45,6 +45,7 @@ class RoadworkEntity
     end
   end
 
+  # @return [Roadwork, Hash] the current Roadwork data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class RoadworkEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Roadwork fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Roadwork.
+  #
+  # @param reqmatch [RoadworkLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Roadwork, Hash] the loaded Roadwork; raises AutobahnApiDeError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
@@ -86,6 +93,11 @@ class RoadworkEntity
 
 
   
+  # List Roadwork items matching the given filter.
+  #
+  # @param reqmatch [RoadworkListMatch, Hash, nil] match filter (any subset of Roadwork fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Roadwork>, Array] the matching Roadwork items; raises AutobahnApiDeError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

@@ -52,14 +52,12 @@ class TestRoadworkEntity:
             "road_id": setup["idmap"]["road01"],
         }
 
-        roadwork_ref01_list_result, err = roadwork_ref01_ent.list(roadwork_ref01_match, None)
-        assert err is None
+        roadwork_ref01_list_result = roadwork_ref01_ent.list(roadwork_ref01_match, None)
         assert isinstance(roadwork_ref01_list_result, list)
 
         # LOAD
         roadwork_ref01_match_dt0 = {}
-        roadwork_ref01_data_dt0_loaded, err = roadwork_ref01_ent.load(roadwork_ref01_match_dt0, None)
-        assert err is None
+        roadwork_ref01_data_dt0_loaded = roadwork_ref01_ent.load(roadwork_ref01_match_dt0, None)
         assert roadwork_ref01_data_dt0_loaded is not None
 
 
@@ -100,7 +98,6 @@ def _roadwork_basic_setup(extra):
         "AUTOBAHNAPIDE_TEST_ROADWORK_ENTID": idmap,
         "AUTOBAHNAPIDE_TEST_LIVE": "FALSE",
         "AUTOBAHNAPIDE_TEST_EXPLAIN": "FALSE",
-        "AUTOBAHNAPIDE_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -111,7 +108,6 @@ def _roadwork_basic_setup(extra):
     if env.get("AUTOBAHNAPIDE_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("AUTOBAHNAPIDE_APIKEY"),
             },
             extra or {},
         ])

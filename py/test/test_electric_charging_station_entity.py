@@ -52,14 +52,12 @@ class TestElectricChargingStationEntity:
             "road_id": setup["idmap"]["road01"],
         }
 
-        electric_charging_station_ref01_list_result, err = electric_charging_station_ref01_ent.list(electric_charging_station_ref01_match, None)
-        assert err is None
+        electric_charging_station_ref01_list_result = electric_charging_station_ref01_ent.list(electric_charging_station_ref01_match, None)
         assert isinstance(electric_charging_station_ref01_list_result, list)
 
         # LOAD
         electric_charging_station_ref01_match_dt0 = {}
-        electric_charging_station_ref01_data_dt0_loaded, err = electric_charging_station_ref01_ent.load(electric_charging_station_ref01_match_dt0, None)
-        assert err is None
+        electric_charging_station_ref01_data_dt0_loaded = electric_charging_station_ref01_ent.load(electric_charging_station_ref01_match_dt0, None)
         assert electric_charging_station_ref01_data_dt0_loaded is not None
 
 
@@ -100,7 +98,6 @@ def _electric_charging_station_basic_setup(extra):
         "AUTOBAHNAPIDE_TEST_ELECTRIC_CHARGING_STATION_ENTID": idmap,
         "AUTOBAHNAPIDE_TEST_LIVE": "FALSE",
         "AUTOBAHNAPIDE_TEST_EXPLAIN": "FALSE",
-        "AUTOBAHNAPIDE_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -111,7 +108,6 @@ def _electric_charging_station_basic_setup(extra):
     if env.get("AUTOBAHNAPIDE_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("AUTOBAHNAPIDE_APIKEY"),
             },
             extra or {},
         ])

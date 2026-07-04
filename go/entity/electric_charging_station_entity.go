@@ -85,6 +85,27 @@ func (e *ElectricChargingStationEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an ElectricChargingStation; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *ElectricChargingStationEntity) DataTyped(data ...ElectricChargingStation) ElectricChargingStation {
+	if len(data) > 0 {
+		return typedFrom[ElectricChargingStation](e.Data(asMap(data[0])))
+	}
+	return typedFrom[ElectricChargingStation](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through ElectricChargingStation (all fields
+// optional at the wire level).
+func (e *ElectricChargingStationEntity) MatchTyped(match ...ElectricChargingStation) ElectricChargingStation {
+	if len(match) > 0 {
+		return typedFrom[ElectricChargingStation](e.Match(asMap(match[0])))
+	}
+	return typedFrom[ElectricChargingStation](e.Match())
+}
+
 
 func (e *ElectricChargingStationEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
@@ -111,6 +132,17 @@ func (e *ElectricChargingStationEntity) Load(reqmatch map[string]any, ctrl map[s
 	})
 }
 
+// LoadTyped is the statically-typed variant of Load: it takes an
+// ElectricChargingStationLoadMatch and returns an ElectricChargingStation. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *ElectricChargingStationEntity) LoadTyped(reqmatch ElectricChargingStationLoadMatch, ctrl map[string]any) (ElectricChargingStation, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
+	if err != nil {
+		return ElectricChargingStation{}, err
+	}
+	return typedFrom[ElectricChargingStation](res), nil
+}
+
 
 
 
@@ -131,6 +163,17 @@ func (e *ElectricChargingStationEntity) List(reqmatch map[string]any, ctrl map[s
 			}
 		}
 	})
+}
+
+// ListTyped is the statically-typed variant of List: it takes an
+// ElectricChargingStationListMatch and returns []ElectricChargingStation. It delegates to the untyped
+// List (identical runtime) and converts at the typed boundary.
+func (e *ElectricChargingStationEntity) ListTyped(reqmatch ElectricChargingStationListMatch, ctrl map[string]any) ([]ElectricChargingStation, error) {
+	res, err := e.List(asMap(reqmatch), ctrl)
+	if err != nil {
+		return nil, err
+	}
+	return typedSliceFrom[ElectricChargingStation](res), nil
 }
 
 

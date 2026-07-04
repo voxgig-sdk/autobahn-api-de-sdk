@@ -1,7 +1,14 @@
 # AutobahnApiDe SDK Roadwork entity
 
+from __future__ import annotations
+
 from utility.voxgig_struct import voxgig_struct as vs
 from core import helpers
+from autobahnapide_types import (
+    Roadwork,
+    RoadworkLoadMatch,
+    RoadworkListMatch,
+)
 
 
 class RoadworkEntity:
@@ -44,7 +51,7 @@ class RoadworkEntity:
             self._data = helpers.to_map(vs.clone(args)) or {}
             self._utility.feature_hook(self._entctx, "SetData")
 
-    def data_get(self):
+    def data_get(self) -> Roadwork:
         self._utility.feature_hook(self._entctx, "GetData")
         return vs.clone(self._data)
 
@@ -53,12 +60,12 @@ class RoadworkEntity:
             self._match = helpers.to_map(vs.clone(args)) or {}
             self._utility.feature_hook(self._entctx, "SetMatch")
 
-    def match_get(self):
+    def match_get(self) -> Roadwork:
         self._utility.feature_hook(self._entctx, "GetMatch")
         return vs.clone(self._match)
 
     
-    def load(self, reqmatch, ctrl=None):
+    def load(self, reqmatch: RoadworkLoadMatch, ctrl=None) -> Roadwork:
         utility = self._utility
         ctx = utility.make_context({
             "opname": "load",
@@ -80,7 +87,7 @@ class RoadworkEntity:
 
 
     
-    def list(self, reqmatch, ctrl=None):
+    def list(self, reqmatch: RoadworkListMatch, ctrl=None) -> list[Roadwork]:
         utility = self._utility
         ctx = utility.make_context({
             "opname": "list",

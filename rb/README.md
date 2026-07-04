@@ -9,21 +9,10 @@ The Ruby SDK for the AutobahnApiDe API — an entity-oriented client using idiom
 
 
 ## Install
-```bash
-gem install voxgig-sdk-autobahn-api-de
-```
+This package is not yet published to RubyGems. Install it from the
+GitHub release tag (`rb/vX.Y.Z`):
 
-Or add to your `Gemfile`:
-
-```ruby
-gem "voxgig-sdk-autobahn-api-de"
-```
-
-Then run:
-
-```bash
-bundle install
-```
+- Releases: [https://github.com/voxgig-sdk/autobahn-api-de-sdk/releases](https://github.com/voxgig-sdk/autobahn-api-de-sdk/releases)
 
 
 ## Tutorial: your first API call
@@ -36,31 +25,34 @@ loading a specific record.
 ```ruby
 require_relative "AutobahnApiDe_sdk"
 
-client = AutobahnApiDeSDK.new({
-  "apikey" => ENV["AUTOBAHN-API-DE_APIKEY"],
-})
+client = AutobahnApiDeSDK.new
 ```
 
 ### 2. List closures
 
 ```ruby
-result, err = client.Closure().list
-raise err if err
-
-if result.is_a?(Array)
-  result.each do |item|
-    d = item.data_get
-    puts "#{d["id"]} #{d["name"]}"
+begin
+  result = client.closure.list
+  if result.is_a?(Array)
+    result.each do |item|
+      d = item.data_get
+      puts "#{d["id"]} #{d["name"]}"
+    end
   end
+rescue => err
+  warn "list failed: #{err}"
 end
 ```
 
 ### 3. Load a closure
 
 ```ruby
-result, err = client.Closure().load({ "id" => "example_id" })
-raise err if err
-puts result
+begin
+  result = client.closure.load({ "id" => "example_id" })
+  puts result
+rescue => err
+  warn "load failed: #{err}"
+end
 ```
 
 
@@ -71,32 +63,35 @@ puts result
 For endpoints not covered by entity methods:
 
 ```ruby
-result, err = client.direct({
+result = client.direct({
   "path" => "/api/resource/{id}",
   "method" => "GET",
   "params" => { "id" => "example" },
 })
-raise err if err
 
 if result["ok"]
   puts result["status"]  # 200
   puts result["data"]    # response body
+else
+  warn result["err"]
 end
 ```
 
 ### Prepare a request without sending it
 
 ```ruby
-fetchdef, err = client.prepare({
-  "path" => "/api/resource/{id}",
-  "method" => "DELETE",
-  "params" => { "id" => "example" },
-})
-raise err if err
-
-puts fetchdef["url"]
-puts fetchdef["method"]
-puts fetchdef["headers"]
+begin
+  fetchdef = client.prepare({
+    "path" => "/api/resource/{id}",
+    "method" => "DELETE",
+    "params" => { "id" => "example" },
+  })
+  puts fetchdef["url"]
+  puts fetchdef["method"]
+  puts fetchdef["headers"]
+rescue => err
+  warn "prepare failed: #{err}"
+end
 ```
 
 ### Use test mode
@@ -106,7 +101,7 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = AutobahnApiDeSDK.test
 
-result, err = client.AutobahnApiDe().load({ "id" => "test01" })
+result = client.closure.load({ "id" => "test01" })
 # result contains mock response data
 ```
 
@@ -137,8 +132,7 @@ client = AutobahnApiDeSDK.new({
 Create a `.env.local` file at the project root:
 
 ```
-AUTOBAHN-API-DE_TEST_LIVE=TRUE
-AUTOBAHN-API-DE_APIKEY=<your-key>
+AUTOBAHN_API_DE_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -161,7 +155,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `String` | API key for authentication. |
 | `base` | `String` | Base URL of the API server. |
 | `prefix` | `String` | URL path prefix prepended to all requests. |
 | `suffix` | `String` | URL path suffix appended to all requests. |
@@ -183,8 +176,8 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | --- | --- | --- |
 | `options_map` | `() -> Hash` | Deep copy of current SDK options. |
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
-| `prepare` | `(fetchargs) -> [Hash, err]` | Build an HTTP request definition without sending. |
-| `direct` | `(fetchargs) -> [Hash, err]` | Build and send an HTTP request. |
+| `prepare` | `(fetchargs) -> Hash` | Build an HTTP request definition without sending. Raises on error. |
+| `direct` | `(fetchargs) -> Hash` | Build and send an HTTP request. Returns a result hash (`result["ok"]`); does not raise. |
 | `Closure` | `(data) -> ClosureEntity` | Create a Closure entity instance. |
 | `ElectricChargingStation` | `(data) -> ElectricChargingStationEntity` | Create a ElectricChargingStation entity instance. |
 | `ListAutobahnen` | `(data) -> ListAutobahnenEntity` | Create a ListAutobahnen entity instance. |
@@ -199,11 +192,11 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `(reqmatch, ctrl) -> [any, err]` | Load a single entity by match criteria. |
-| `list` | `(reqmatch, ctrl) -> [any, err]` | List entities matching the criteria. |
-| `create` | `(reqdata, ctrl) -> [any, err]` | Create a new entity. |
-| `update` | `(reqdata, ctrl) -> [any, err]` | Update an existing entity. |
-| `remove` | `(reqmatch, ctrl) -> [any, err]` | Remove an entity. |
+| `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
+| `list` | `(reqmatch, ctrl) -> Array` | List entities matching the criteria. Raises on error. |
+| `create` | `(reqdata, ctrl) -> any` | Create a new entity. Raises on error. |
+| `update` | `(reqdata, ctrl) -> any` | Update an existing entity. Raises on error. |
+| `remove` | `(reqmatch, ctrl) -> any` | Remove an entity. Raises on error. |
 | `data_get` | `() -> Hash` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> Hash` | Get entity match criteria. |
@@ -213,8 +206,12 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `[any, err]`. The first value is a
-`Hash` with these keys:
+Entity operations return the result data directly. On failure they
+raise a `AutobahnApiDeError` (a `StandardError` subclass), so wrap
+calls in `begin`/`rescue` where you need to handle errors.
+
+The `direct` escape hatch is the exception: it never raises and instead
+returns a result `Hash` with these keys:
 
 | Key | Type | Description |
 | --- | --- | --- |
@@ -222,8 +219,7 @@ Entity operations return `[any, err]`. The first value is a
 | `status` | `Integer` | HTTP status code. |
 | `headers` | `Hash` | Response headers. |
 | `data` | `any` | Parsed JSON response body. |
-
-On error, `ok` is `false` and `err` contains the error value.
+| `err` | `Error` | Present when `ok` is `false`. |
 
 ### Entities
 
@@ -388,7 +384,7 @@ API path: `/{roadId}/services/webcam`
 
 ### Closure
 
-Create an instance: `const closure = client.Closure()`
+Create an instance: `const closure = client.closure`
 
 #### Operations
 
@@ -420,19 +416,19 @@ Create an instance: `const closure = client.Closure()`
 #### Example: Load
 
 ```ts
-const closure = await client.Closure().load({ id: 'closure_id' })
+const closure = await client.closure.load({ id: 'closure_id' })
 ```
 
 #### Example: List
 
 ```ts
-const closures = await client.Closure().list()
+const closures = await client.closure.list()
 ```
 
 
 ### ElectricChargingStation
 
-Create an instance: `const electric_charging_station = client.ElectricChargingStation()`
+Create an instance: `const electric_charging_station = client.electric_charging_station`
 
 #### Operations
 
@@ -463,19 +459,19 @@ Create an instance: `const electric_charging_station = client.ElectricChargingSt
 #### Example: Load
 
 ```ts
-const electric_charging_station = await client.ElectricChargingStation().load({ id: 'electric_charging_station_id' })
+const electric_charging_station = await client.electric_charging_station.load({ id: 'electric_charging_station_id' })
 ```
 
 #### Example: List
 
 ```ts
-const electric_charging_stations = await client.ElectricChargingStation().list()
+const electric_charging_stations = await client.electric_charging_station.list()
 ```
 
 
 ### ListAutobahnen
 
-Create an instance: `const list_autobahnen = client.ListAutobahnen()`
+Create an instance: `const list_autobahnen = client.list_autobahnen`
 
 #### Operations
 
@@ -492,13 +488,13 @@ Create an instance: `const list_autobahnen = client.ListAutobahnen()`
 #### Example: List
 
 ```ts
-const list_autobahnens = await client.ListAutobahnen().list()
+const list_autobahnens = await client.list_autobahnen.list()
 ```
 
 
 ### ParkingLorry
 
-Create an instance: `const parking_lorry = client.ParkingLorry()`
+Create an instance: `const parking_lorry = client.parking_lorry`
 
 #### Operations
 
@@ -529,19 +525,19 @@ Create an instance: `const parking_lorry = client.ParkingLorry()`
 #### Example: Load
 
 ```ts
-const parking_lorry = await client.ParkingLorry().load({ id: 'parking_lorry_id' })
+const parking_lorry = await client.parking_lorry.load({ id: 'parking_lorry_id' })
 ```
 
 #### Example: List
 
 ```ts
-const parking_lorrys = await client.ParkingLorry().list()
+const parking_lorrys = await client.parking_lorry.list()
 ```
 
 
 ### Roadwork
 
-Create an instance: `const roadwork = client.Roadwork()`
+Create an instance: `const roadwork = client.roadwork`
 
 #### Operations
 
@@ -573,19 +569,19 @@ Create an instance: `const roadwork = client.Roadwork()`
 #### Example: Load
 
 ```ts
-const roadwork = await client.Roadwork().load({ id: 'roadwork_id' })
+const roadwork = await client.roadwork.load({ id: 'roadwork_id' })
 ```
 
 #### Example: List
 
 ```ts
-const roadworks = await client.Roadwork().list()
+const roadworks = await client.roadwork.list()
 ```
 
 
 ### Warning
 
-Create an instance: `const warning = client.Warning()`
+Create an instance: `const warning = client.warning`
 
 #### Operations
 
@@ -617,19 +613,19 @@ Create an instance: `const warning = client.Warning()`
 #### Example: Load
 
 ```ts
-const warning = await client.Warning().load({ id: 'warning_id' })
+const warning = await client.warning.load({ id: 'warning_id' })
 ```
 
 #### Example: List
 
 ```ts
-const warnings = await client.Warning().list()
+const warnings = await client.warning.list()
 ```
 
 
 ### Webcam
 
-Create an instance: `const webcam = client.Webcam()`
+Create an instance: `const webcam = client.webcam`
 
 #### Operations
 
@@ -663,13 +659,13 @@ Create an instance: `const webcam = client.Webcam()`
 #### Example: Load
 
 ```ts
-const webcam = await client.Webcam().load({ id: 'webcam_id' })
+const webcam = await client.webcam.load({ id: 'webcam_id' })
 ```
 
 #### Example: List
 
 ```ts
-const webcams = await client.Webcam().list()
+const webcams = await client.webcam.list()
 ```
 
 
@@ -744,11 +740,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-moon = client.Moon
-moon.load({ "planet_id" => "earth", "id" => "luna" })
+closure = client.closure
+closure.load({ "id" => "example_id" })
 
-# moon.data_get now returns the loaded moon data
-# moon.match_get returns the last match criteria
+# closure.data_get now returns the loaded closure data
+# closure.match_get returns the last match criteria
 ```
 
 Call `make` to create a fresh instance with the same configuration

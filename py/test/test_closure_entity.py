@@ -52,14 +52,12 @@ class TestClosureEntity:
             "road_id": setup["idmap"]["road01"],
         }
 
-        closure_ref01_list_result, err = closure_ref01_ent.list(closure_ref01_match, None)
-        assert err is None
+        closure_ref01_list_result = closure_ref01_ent.list(closure_ref01_match, None)
         assert isinstance(closure_ref01_list_result, list)
 
         # LOAD
         closure_ref01_match_dt0 = {}
-        closure_ref01_data_dt0_loaded, err = closure_ref01_ent.load(closure_ref01_match_dt0, None)
-        assert err is None
+        closure_ref01_data_dt0_loaded = closure_ref01_ent.load(closure_ref01_match_dt0, None)
         assert closure_ref01_data_dt0_loaded is not None
 
 
@@ -100,7 +98,6 @@ def _closure_basic_setup(extra):
         "AUTOBAHNAPIDE_TEST_CLOSURE_ENTID": idmap,
         "AUTOBAHNAPIDE_TEST_LIVE": "FALSE",
         "AUTOBAHNAPIDE_TEST_EXPLAIN": "FALSE",
-        "AUTOBAHNAPIDE_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -111,7 +108,6 @@ def _closure_basic_setup(extra):
     if env.get("AUTOBAHNAPIDE_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("AUTOBAHNAPIDE_APIKEY"),
             },
             extra or {},
         ])

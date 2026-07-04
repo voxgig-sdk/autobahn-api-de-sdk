@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch ClosureLoadMatch
+---@param ctrl? table
+---@return Closure
+---@return string? err
 function ClosureEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch ClosureListMatch
+---@param ctrl? table
+---@return Closure[]
+---@return string? err
 function ClosureEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

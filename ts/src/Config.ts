@@ -38,10 +38,6 @@ class Config {
   options = {
     base: 'https://verkehr.autobahn.de/o/autobahn',
 
-    auth: {
-      prefix: 'Bearer',
-    },
-
     headers: {
       "content-type": "application/json"
     },
@@ -199,7 +195,8 @@ class Config {
                     "name": "road_id",
                     "orig": "road_id",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -244,7 +241,8 @@ class Config {
                     "name": "id",
                     "orig": "closure_id",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -397,7 +395,8 @@ class Config {
                     "name": "road_id",
                     "orig": "road_id",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -442,7 +441,8 @@ class Config {
                     "name": "id",
                     "orig": "station_id",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -632,7 +632,8 @@ class Config {
                     "name": "road_id",
                     "orig": "road_id",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -677,7 +678,8 @@ class Config {
                     "name": "id",
                     "orig": "lorry_id",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -837,7 +839,8 @@ class Config {
                     "name": "road_id",
                     "orig": "road_id",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -882,7 +885,8 @@ class Config {
                     "name": "id",
                     "orig": "roadwork_id",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -1042,7 +1046,8 @@ class Config {
                     "name": "road_id",
                     "orig": "road_id",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -1087,7 +1092,8 @@ class Config {
                     "name": "id",
                     "orig": "warning_id",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -1261,7 +1267,8 @@ class Config {
                     "name": "road_id",
                     "orig": "road_id",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -1306,7 +1313,8 @@ class Config {
                     "name": "id",
                     "orig": "webcam_id",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },

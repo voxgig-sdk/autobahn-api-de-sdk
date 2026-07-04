@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch ParkingLorryLoadMatch
+---@param ctrl? table
+---@return ParkingLorry
+---@return string? err
 function ParkingLorryEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch ParkingLorryListMatch
+---@param ctrl? table
+---@return ParkingLorry[]
+---@return string? err
 function ParkingLorryEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

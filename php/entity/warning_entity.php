@@ -55,6 +55,9 @@ class WarningEntity
         return new WarningEntity($this->_client, $opts);
     }
 
+    /**
+     * @param Warning|array $args Warning data (assoc-array) to store.
+     */
     public function data_set($args): void
     {
         if ($args) {
@@ -63,12 +66,18 @@ class WarningEntity
         }
     }
 
+    /**
+     * @return Warning|array The current Warning data as an assoc-array.
+     */
     public function data_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetData");
         return Struct::clone($this->_data);
     }
 
+    /**
+     * @param array $args Match filter (any subset of Warning fields).
+     */
     public function match_set($args): void
     {
         if ($args) {
@@ -77,6 +86,9 @@ class WarningEntity
         }
     }
 
+    /**
+     * @return array The current match filter (any subset of Warning fields).
+     */
     public function match_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetMatch");
@@ -84,7 +96,16 @@ class WarningEntity
     }
 
     
-    public function load($reqmatch, $ctrl = null): array
+    /**
+     * Load a single Warning.
+     *
+     * @param WarningLoadMatch|array|null $reqmatch Match criteria (id/query
+     *   fields) as an assoc-array; a typed WarningLoadMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return Warning|array The loaded Warning as an assoc-array at the
+     *   SDK boundary; throws AutobahnApiDeError on failure (item-5 convention).
+     */
+    public function load(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -110,7 +131,16 @@ class WarningEntity
 
 
     
-    public function list($reqmatch, $ctrl = null): array
+    /**
+     * List Warning items matching the given filter.
+     *
+     * @param WarningListMatch|array|null $reqmatch Match filter (any subset
+     *   of Warning fields) as an assoc-array; WarningListMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return Warning[]|array A list of Warning items as assoc-arrays at
+     *   the SDK boundary; throws AutobahnApiDeError on failure (item-5 convention).
+     */
+    public function list(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -138,7 +168,7 @@ class WarningEntity
 
     
 
-    private function _run_op($ctx, callable $post_done): array
+    private function _run_op($ctx, callable $post_done): mixed
     {
         $utility = $this->_utility;
 

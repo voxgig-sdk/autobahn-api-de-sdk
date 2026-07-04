@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch ElectricChargingStationLoadMatch
+---@param ctrl? table
+---@return ElectricChargingStation
+---@return string? err
 function ElectricChargingStationEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch ElectricChargingStationListMatch
+---@param ctrl? table
+---@return ElectricChargingStation[]
+---@return string? err
 function ElectricChargingStationEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

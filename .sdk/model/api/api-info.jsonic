@@ -4,6 +4,7 @@
 main: {
   kit: {
     info: {
+      auth: false
       contact: {
         email: "kontakt@autobahn.de"
         name: "Die Autobahn GmbH des Bundes"

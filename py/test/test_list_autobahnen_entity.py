@@ -50,8 +50,7 @@ class TestListAutobahnenEntity:
         list_autobahnen_ref01_ent = client.ListAutobahnen(None)
         list_autobahnen_ref01_match = {}
 
-        list_autobahnen_ref01_list_result, err = list_autobahnen_ref01_ent.list(list_autobahnen_ref01_match, None)
-        assert err is None
+        list_autobahnen_ref01_list_result = list_autobahnen_ref01_ent.list(list_autobahnen_ref01_match, None)
         assert isinstance(list_autobahnen_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _list_autobahnen_basic_setup(extra):
         "AUTOBAHNAPIDE_TEST_LIST_AUTOBAHNEN_ENTID": idmap,
         "AUTOBAHNAPIDE_TEST_LIVE": "FALSE",
         "AUTOBAHNAPIDE_TEST_EXPLAIN": "FALSE",
-        "AUTOBAHNAPIDE_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _list_autobahnen_basic_setup(extra):
     if env.get("AUTOBAHNAPIDE_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("AUTOBAHNAPIDE_APIKEY"),
             },
             extra or {},
         ])

@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  ListAutobahnen,
+  ListAutobahnenListMatch,
+} from '../AutobahnApiDeTypes'
 
 // TODO: needs Entity superclass
-class ListAutobahnenEntity extends AutobahnApiDeEntityBase {
+class ListAutobahnenEntity extends AutobahnApiDeEntityBase<ListAutobahnen> {
 
   constructor(client: AutobahnApiDeSDK, entopts: any) {
     super(client, entopts)
@@ -33,7 +37,7 @@ class ListAutobahnenEntity extends AutobahnApiDeEntityBase {
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: ListAutobahnenListMatch, ctrl?: Control): Promise<ListAutobahnen[]> {
 
     const utility = this._utility
 
@@ -133,7 +137,9 @@ class ListAutobahnenEntity extends AutobahnApiDeEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<ListAutobahnen[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

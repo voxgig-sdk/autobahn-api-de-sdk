@@ -13,6 +13,9 @@ require_relative 'config'
 require_relative 'feature/base_feature'
 require_relative 'features'
 
+# Load typed models (Struct value objects).
+require_relative 'AutobahnApiDe_types'
+
 
 class AutobahnApiDeSDK
   attr_accessor :mode, :features, :options
@@ -131,7 +134,7 @@ class AutobahnApiDeSDK
     end
 
     _, err = utility.prepare_auth.call(ctx)
-    return nil, err if err
+    raise err if err
 
     utility.make_fetch_def.call(ctx)
   end
@@ -139,8 +142,14 @@ class AutobahnApiDeSDK
   def direct(fetchargs = {})
     utility = @_utility
 
-    fetchdef, err = prepare(fetchargs)
-    return { "ok" => false, "err" => err }, nil if err
+    # direct() is the raw-HTTP escape hatch: it always returns a result hash
+    # ({ "ok" => ..., ... }) and never raises. prepare() raises on error, so
+    # trap that and surface it in the hash.
+    begin
+      fetchdef = prepare(fetchargs)
+    rescue AutobahnApiDeError => err
+      return { "ok" => false, "err" => err }
+    end
 
     fetchargs ||= {}
     ctrl = AutobahnApiDeHelpers.to_map(VoxgigStruct.getprop(fetchargs, "ctrl")) || {}
@@ -153,13 +162,13 @@ class AutobahnApiDeSDK
     url = fetchdef["url"] || ""
     fetched, fetch_err = utility.fetcher.call(ctx, url, fetchdef)
 
-    return { "ok" => false, "err" => fetch_err }, nil if fetch_err
+    return { "ok" => false, "err" => fetch_err } if fetch_err
 
     if fetched.nil?
       return {
         "ok" => false,
         "err" => ctx.make_error("direct_no_response", "response: undefined"),
-      }, nil
+      }
     end
 
     if fetched.is_a?(Hash)
@@ -189,52 +198,101 @@ class AutobahnApiDeSDK
         "status" => status,
         "headers" => headers,
         "data" => json_data,
-      }, nil
+      }
     end
 
     return {
       "ok" => false,
       "err" => ctx.make_error("direct_invalid", "invalid response type"),
-    }, nil
+    }
   end
 
 
+  # Idiomatic facade: client.closure.list / client.closure.load({ "id" => ... })
+  def closure
+    require_relative 'entity/closure_entity'
+    @closure ||= ClosureEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.closure instead.
   def Closure(data = nil)
     require_relative 'entity/closure_entity'
     ClosureEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.electric_charging_station.list / client.electric_charging_station.load({ "id" => ... })
+  def electric_charging_station
+    require_relative 'entity/electric_charging_station_entity'
+    @electric_charging_station ||= ElectricChargingStationEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.electric_charging_station instead.
   def ElectricChargingStation(data = nil)
     require_relative 'entity/electric_charging_station_entity'
     ElectricChargingStationEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.list_autobahnen.list / client.list_autobahnen.load({ "id" => ... })
+  def list_autobahnen
+    require_relative 'entity/list_autobahnen_entity'
+    @list_autobahnen ||= ListAutobahnenEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.list_autobahnen instead.
   def ListAutobahnen(data = nil)
     require_relative 'entity/list_autobahnen_entity'
     ListAutobahnenEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.parking_lorry.list / client.parking_lorry.load({ "id" => ... })
+  def parking_lorry
+    require_relative 'entity/parking_lorry_entity'
+    @parking_lorry ||= ParkingLorryEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.parking_lorry instead.
   def ParkingLorry(data = nil)
     require_relative 'entity/parking_lorry_entity'
     ParkingLorryEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.roadwork.list / client.roadwork.load({ "id" => ... })
+  def roadwork
+    require_relative 'entity/roadwork_entity'
+    @roadwork ||= RoadworkEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.roadwork instead.
   def Roadwork(data = nil)
     require_relative 'entity/roadwork_entity'
     RoadworkEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.warning.list / client.warning.load({ "id" => ... })
+  def warning
+    require_relative 'entity/warning_entity'
+    @warning ||= WarningEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.warning instead.
   def Warning(data = nil)
     require_relative 'entity/warning_entity'
     WarningEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.webcam.list / client.webcam.load({ "id" => ... })
+  def webcam
+    require_relative 'entity/webcam_entity'
+    @webcam ||= WebcamEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.webcam instead.
   def Webcam(data = nil)
     require_relative 'entity/webcam_entity'
     WebcamEntity.new(self, data)

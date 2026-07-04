@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch WarningLoadMatch
+---@param ctrl? table
+---@return Warning
+---@return string? err
 function WarningEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch WarningListMatch
+---@param ctrl? table
+---@return Warning[]
+---@return string? err
 function WarningEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

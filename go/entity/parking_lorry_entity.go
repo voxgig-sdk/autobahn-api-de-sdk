@@ -85,6 +85,27 @@ func (e *ParkingLorryEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an ParkingLorry; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *ParkingLorryEntity) DataTyped(data ...ParkingLorry) ParkingLorry {
+	if len(data) > 0 {
+		return typedFrom[ParkingLorry](e.Data(asMap(data[0])))
+	}
+	return typedFrom[ParkingLorry](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through ParkingLorry (all fields
+// optional at the wire level).
+func (e *ParkingLorryEntity) MatchTyped(match ...ParkingLorry) ParkingLorry {
+	if len(match) > 0 {
+		return typedFrom[ParkingLorry](e.Match(asMap(match[0])))
+	}
+	return typedFrom[ParkingLorry](e.Match())
+}
+
 
 func (e *ParkingLorryEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
@@ -111,6 +132,17 @@ func (e *ParkingLorryEntity) Load(reqmatch map[string]any, ctrl map[string]any) 
 	})
 }
 
+// LoadTyped is the statically-typed variant of Load: it takes an
+// ParkingLorryLoadMatch and returns an ParkingLorry. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *ParkingLorryEntity) LoadTyped(reqmatch ParkingLorryLoadMatch, ctrl map[string]any) (ParkingLorry, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
+	if err != nil {
+		return ParkingLorry{}, err
+	}
+	return typedFrom[ParkingLorry](res), nil
+}
+
 
 
 
@@ -131,6 +163,17 @@ func (e *ParkingLorryEntity) List(reqmatch map[string]any, ctrl map[string]any) 
 			}
 		}
 	})
+}
+
+// ListTyped is the statically-typed variant of List: it takes an
+// ParkingLorryListMatch and returns []ParkingLorry. It delegates to the untyped
+// List (identical runtime) and converts at the typed boundary.
+func (e *ParkingLorryEntity) ListTyped(reqmatch ParkingLorryListMatch, ctrl map[string]any) ([]ParkingLorry, error) {
+	res, err := e.List(asMap(reqmatch), ctrl)
+	if err != nil {
+		return nil, err
+	}
+	return typedSliceFrom[ParkingLorry](res), nil
 }
 
 

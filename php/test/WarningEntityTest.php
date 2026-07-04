@@ -52,14 +52,12 @@ class WarningEntityTest extends TestCase
             "road_id" => $setup["idmap"]["road01"],
         ];
 
-        [$warning_ref01_list_result, $err] = $warning_ref01_ent->list($warning_ref01_match, null);
-        $this->assertNull($err);
+        $warning_ref01_list_result = $warning_ref01_ent->list($warning_ref01_match, null);
         $this->assertIsArray($warning_ref01_list_result);
 
         // LOAD
         $warning_ref01_match_dt0 = [];
-        [$warning_ref01_data_dt0_loaded, $err] = $warning_ref01_ent->load($warning_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $warning_ref01_data_dt0_loaded = $warning_ref01_ent->load($warning_ref01_match_dt0, null);
         $this->assertNotNull($warning_ref01_data_dt0_loaded);
 
     }
@@ -94,7 +92,6 @@ function warning_basic_setup($extra)
         "AUTOBAHNAPIDE_TEST_WARNING_ENTID" => $idmap,
         "AUTOBAHNAPIDE_TEST_LIVE" => "FALSE",
         "AUTOBAHNAPIDE_TEST_EXPLAIN" => "FALSE",
-        "AUTOBAHNAPIDE_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -106,7 +103,6 @@ function warning_basic_setup($extra)
     if ($env["AUTOBAHNAPIDE_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["AUTOBAHNAPIDE_APIKEY"],
             ],
             $extra ?? [],
         ]);

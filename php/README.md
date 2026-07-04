@@ -9,9 +9,10 @@ The PHP SDK for the AutobahnApiDe API — an entity-oriented client using PHP co
 
 
 ## Install
-```bash
-composer require voxgig-sdk/autobahn-api-de
-```
+This package is not yet published to Packagist. Install it from the
+GitHub release tag (`php/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/autobahn-api-de-sdk/releases](https://github.com/voxgig-sdk/autobahn-api-de-sdk/releases)
 
 
 ## Tutorial: your first API call
@@ -25,31 +26,34 @@ loading a specific record.
 <?php
 require_once 'autobahnapide_sdk.php';
 
-$client = new AutobahnApiDeSDK([
-    "apikey" => getenv("AUTOBAHN-API-DE_APIKEY"),
-]);
+$client = new AutobahnApiDeSDK();
 ```
 
 ### 2. List closures
 
 ```php
-[$result, $err] = $client->Closure()->list();
-if ($err) { throw new \Exception($err); }
-
-if (is_array($result)) {
-    foreach ($result as $item) {
-        $d = $item->data_get();
-        echo $d["id"] . " " . $d["name"] . "\n";
+try {
+    $result = $client->closure()->list();
+    if (is_array($result)) {
+        foreach ($result as $item) {
+            $d = $item->data_get();
+            echo $d["id"] . " " . $d["name"] . "\n";
+        }
     }
+} catch (\Exception $err) {
+    echo "Error: " . $err->getMessage();
 }
 ```
 
 ### 3. Load a closure
 
 ```php
-[$result, $err] = $client->Closure()->load(["id" => "example_id"]);
-if ($err) { throw new \Exception($err); }
-print_r($result);
+try {
+    $result = $client->closure()->load(["id" => "example_id"]);
+    print_r($result);
+} catch (\Exception $err) {
+    echo "Error: " . $err->getMessage();
+}
 ```
 
 
@@ -60,28 +64,31 @@ print_r($result);
 For endpoints not covered by entity methods:
 
 ```php
-[$result, $err] = $client->direct([
+// direct() is the raw-HTTP escape hatch: it returns a result array
+// (it does not throw). Branch on $result["ok"].
+$result = $client->direct([
     "path" => "/api/resource/{id}",
     "method" => "GET",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 if ($result["ok"]) {
     echo $result["status"];  // 200
     print_r($result["data"]);  // response body
+} else {
+    echo "Error: " . $result["err"]->getMessage();
 }
 ```
 
 ### Prepare a request without sending it
 
 ```php
-[$fetchdef, $err] = $client->prepare([
+// prepare() throws on error and returns the fetch definition.
+$fetchdef = $client->prepare([
     "path" => "/api/resource/{id}",
     "method" => "DELETE",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 echo $fetchdef["url"];
 echo $fetchdef["method"];
@@ -95,7 +102,7 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = AutobahnApiDeSDK::test();
 
-[$result, $err] = $client->AutobahnApiDe()->load(["id" => "test01"]);
+$result = $client->closure()->load(["id" => "test01"]);
 // $result contains mock response data
 ```
 
@@ -129,8 +136,7 @@ $client = new AutobahnApiDeSDK([
 Create a `.env.local` file at the project root:
 
 ```
-AUTOBAHN-API-DE_TEST_LIVE=TRUE
-AUTOBAHN-API-DE_APIKEY=<your-key>
+AUTOBAHN_API_DE_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -153,7 +159,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -205,8 +210,12 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `[$result, $err]`. The first value is an
-`array` with these keys:
+Entity operations return the bare result data (an `array` for single-entity
+ops, a `list` for `list`) and throw on error. Wrap calls in
+`try`/`catch` to handle failures.
+
+The `direct()` escape hatch never throws — it returns a result `array`
+you branch on via `$result["ok"]`:
 
 | Key | Type | Description |
 | --- | --- | --- |
@@ -380,7 +389,7 @@ API path: `/{roadId}/services/webcam`
 
 ### Closure
 
-Create an instance: `const closure = client.Closure()`
+Create an instance: `const closure = client.closure`
 
 #### Operations
 
@@ -412,19 +421,19 @@ Create an instance: `const closure = client.Closure()`
 #### Example: Load
 
 ```ts
-const closure = await client.Closure().load({ id: 'closure_id' })
+const closure = await client.closure.load({ id: 'closure_id' })
 ```
 
 #### Example: List
 
 ```ts
-const closures = await client.Closure().list()
+const closures = await client.closure.list()
 ```
 
 
 ### ElectricChargingStation
 
-Create an instance: `const electric_charging_station = client.ElectricChargingStation()`
+Create an instance: `const electric_charging_station = client.electric_charging_station`
 
 #### Operations
 
@@ -455,19 +464,19 @@ Create an instance: `const electric_charging_station = client.ElectricChargingSt
 #### Example: Load
 
 ```ts
-const electric_charging_station = await client.ElectricChargingStation().load({ id: 'electric_charging_station_id' })
+const electric_charging_station = await client.electric_charging_station.load({ id: 'electric_charging_station_id' })
 ```
 
 #### Example: List
 
 ```ts
-const electric_charging_stations = await client.ElectricChargingStation().list()
+const electric_charging_stations = await client.electric_charging_station.list()
 ```
 
 
 ### ListAutobahnen
 
-Create an instance: `const list_autobahnen = client.ListAutobahnen()`
+Create an instance: `const list_autobahnen = client.list_autobahnen`
 
 #### Operations
 
@@ -484,13 +493,13 @@ Create an instance: `const list_autobahnen = client.ListAutobahnen()`
 #### Example: List
 
 ```ts
-const list_autobahnens = await client.ListAutobahnen().list()
+const list_autobahnens = await client.list_autobahnen.list()
 ```
 
 
 ### ParkingLorry
 
-Create an instance: `const parking_lorry = client.ParkingLorry()`
+Create an instance: `const parking_lorry = client.parking_lorry`
 
 #### Operations
 
@@ -521,19 +530,19 @@ Create an instance: `const parking_lorry = client.ParkingLorry()`
 #### Example: Load
 
 ```ts
-const parking_lorry = await client.ParkingLorry().load({ id: 'parking_lorry_id' })
+const parking_lorry = await client.parking_lorry.load({ id: 'parking_lorry_id' })
 ```
 
 #### Example: List
 
 ```ts
-const parking_lorrys = await client.ParkingLorry().list()
+const parking_lorrys = await client.parking_lorry.list()
 ```
 
 
 ### Roadwork
 
-Create an instance: `const roadwork = client.Roadwork()`
+Create an instance: `const roadwork = client.roadwork`
 
 #### Operations
 
@@ -565,19 +574,19 @@ Create an instance: `const roadwork = client.Roadwork()`
 #### Example: Load
 
 ```ts
-const roadwork = await client.Roadwork().load({ id: 'roadwork_id' })
+const roadwork = await client.roadwork.load({ id: 'roadwork_id' })
 ```
 
 #### Example: List
 
 ```ts
-const roadworks = await client.Roadwork().list()
+const roadworks = await client.roadwork.list()
 ```
 
 
 ### Warning
 
-Create an instance: `const warning = client.Warning()`
+Create an instance: `const warning = client.warning`
 
 #### Operations
 
@@ -609,19 +618,19 @@ Create an instance: `const warning = client.Warning()`
 #### Example: Load
 
 ```ts
-const warning = await client.Warning().load({ id: 'warning_id' })
+const warning = await client.warning.load({ id: 'warning_id' })
 ```
 
 #### Example: List
 
 ```ts
-const warnings = await client.Warning().list()
+const warnings = await client.warning.list()
 ```
 
 
 ### Webcam
 
-Create an instance: `const webcam = client.Webcam()`
+Create an instance: `const webcam = client.webcam`
 
 #### Operations
 
@@ -655,13 +664,13 @@ Create an instance: `const webcam = client.Webcam()`
 #### Example: Load
 
 ```ts
-const webcam = await client.Webcam().load({ id: 'webcam_id' })
+const webcam = await client.webcam.load({ id: 'webcam_id' })
 ```
 
 #### Example: List
 
 ```ts
-const webcams = await client.Webcam().list()
+const webcams = await client.webcam.list()
 ```
 
 
@@ -736,11 +745,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$moon = $client->Moon();
-[$result, $err] = $moon->load(["planet_id" => "earth", "id" => "luna"]);
+$closure = $client->closure();
+$closure->load(["id" => "example_id"]);
 
-// $moon->dataGet() now returns the loaded moon data
-// $moon->matchGet() returns the last match criteria
+// $closure->dataGet() now returns the loaded closure data
+// $closure->matchGet() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

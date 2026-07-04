@@ -45,14 +45,12 @@ class ParkingLorryEntityTest < Minitest::Test
       "road_id" => setup[:idmap]["road01"],
     }
 
-    parking_lorry_ref01_list_result, err = parking_lorry_ref01_ent.list(parking_lorry_ref01_match, nil)
-    assert_nil err
+    parking_lorry_ref01_list_result = parking_lorry_ref01_ent.list(parking_lorry_ref01_match, nil)
     assert parking_lorry_ref01_list_result.is_a?(Array)
 
     # LOAD
     parking_lorry_ref01_match_dt0 = {}
-    parking_lorry_ref01_data_dt0_loaded, err = parking_lorry_ref01_ent.load(parking_lorry_ref01_match_dt0, nil)
-    assert_nil err
+    parking_lorry_ref01_data_dt0_loaded = parking_lorry_ref01_ent.load(parking_lorry_ref01_match_dt0, nil)
     assert !parking_lorry_ref01_data_dt0_loaded.nil?
 
   end
@@ -91,7 +89,6 @@ def parking_lorry_basic_setup(extra)
     "AUTOBAHNAPIDE_TEST_PARKING_LORRY_ENTID" => idmap,
     "AUTOBAHNAPIDE_TEST_LIVE" => "FALSE",
     "AUTOBAHNAPIDE_TEST_EXPLAIN" => "FALSE",
-    "AUTOBAHNAPIDE_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -103,7 +100,6 @@ def parking_lorry_basic_setup(extra)
   if env["AUTOBAHNAPIDE_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["AUTOBAHNAPIDE_APIKEY"],
       },
       extra || {},
     ])

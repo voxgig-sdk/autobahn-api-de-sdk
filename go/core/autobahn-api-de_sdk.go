@@ -245,36 +245,57 @@ func (sdk *AutobahnApiDeSDK) Direct(fetchargs map[string]any) (map[string]any, e
 }
 
 
+// Closure returns a Closure entity bound to this client.
+// Idiomatic usage: client.Closure(nil).List(nil, nil) or
+// client.Closure(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *AutobahnApiDeSDK) Closure(data map[string]any) AutobahnApiDeEntity {
 	return NewClosureEntityFunc(sdk, data)
 }
 
 
+// ElectricChargingStation returns a ElectricChargingStation entity bound to this client.
+// Idiomatic usage: client.ElectricChargingStation(nil).List(nil, nil) or
+// client.ElectricChargingStation(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *AutobahnApiDeSDK) ElectricChargingStation(data map[string]any) AutobahnApiDeEntity {
 	return NewElectricChargingStationEntityFunc(sdk, data)
 }
 
 
+// ListAutobahnen returns a ListAutobahnen entity bound to this client.
+// Idiomatic usage: client.ListAutobahnen(nil).List(nil, nil) or
+// client.ListAutobahnen(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *AutobahnApiDeSDK) ListAutobahnen(data map[string]any) AutobahnApiDeEntity {
 	return NewListAutobahnenEntityFunc(sdk, data)
 }
 
 
+// ParkingLorry returns a ParkingLorry entity bound to this client.
+// Idiomatic usage: client.ParkingLorry(nil).List(nil, nil) or
+// client.ParkingLorry(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *AutobahnApiDeSDK) ParkingLorry(data map[string]any) AutobahnApiDeEntity {
 	return NewParkingLorryEntityFunc(sdk, data)
 }
 
 
+// Roadwork returns a Roadwork entity bound to this client.
+// Idiomatic usage: client.Roadwork(nil).List(nil, nil) or
+// client.Roadwork(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *AutobahnApiDeSDK) Roadwork(data map[string]any) AutobahnApiDeEntity {
 	return NewRoadworkEntityFunc(sdk, data)
 }
 
 
+// Warning returns a Warning entity bound to this client.
+// Idiomatic usage: client.Warning(nil).List(nil, nil) or
+// client.Warning(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *AutobahnApiDeSDK) Warning(data map[string]any) AutobahnApiDeEntity {
 	return NewWarningEntityFunc(sdk, data)
 }
 
 
+// Webcam returns a Webcam entity bound to this client.
+// Idiomatic usage: client.Webcam(nil).List(nil, nil) or
+// client.Webcam(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *AutobahnApiDeSDK) Webcam(data map[string]any) AutobahnApiDeEntity {
 	return NewWebcamEntityFunc(sdk, data)
 }

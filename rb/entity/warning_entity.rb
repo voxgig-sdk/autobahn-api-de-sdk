@@ -45,6 +45,7 @@ class WarningEntity
     end
   end
 
+  # @return [Warning, Hash] the current Warning data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class WarningEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Warning fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Warning.
+  #
+  # @param reqmatch [WarningLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Warning, Hash] the loaded Warning; raises AutobahnApiDeError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
@@ -86,6 +93,11 @@ class WarningEntity
 
 
   
+  # List Warning items matching the given filter.
+  #
+  # @param reqmatch [WarningListMatch, Hash, nil] match filter (any subset of Warning fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Warning>, Array] the matching Warning items; raises AutobahnApiDeError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

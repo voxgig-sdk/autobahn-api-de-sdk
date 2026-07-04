@@ -52,14 +52,12 @@ class TestParkingLorryEntity:
             "road_id": setup["idmap"]["road01"],
         }
 
-        parking_lorry_ref01_list_result, err = parking_lorry_ref01_ent.list(parking_lorry_ref01_match, None)
-        assert err is None
+        parking_lorry_ref01_list_result = parking_lorry_ref01_ent.list(parking_lorry_ref01_match, None)
         assert isinstance(parking_lorry_ref01_list_result, list)
 
         # LOAD
         parking_lorry_ref01_match_dt0 = {}
-        parking_lorry_ref01_data_dt0_loaded, err = parking_lorry_ref01_ent.load(parking_lorry_ref01_match_dt0, None)
-        assert err is None
+        parking_lorry_ref01_data_dt0_loaded = parking_lorry_ref01_ent.load(parking_lorry_ref01_match_dt0, None)
         assert parking_lorry_ref01_data_dt0_loaded is not None
 
 
@@ -100,7 +98,6 @@ def _parking_lorry_basic_setup(extra):
         "AUTOBAHNAPIDE_TEST_PARKING_LORRY_ENTID": idmap,
         "AUTOBAHNAPIDE_TEST_LIVE": "FALSE",
         "AUTOBAHNAPIDE_TEST_EXPLAIN": "FALSE",
-        "AUTOBAHNAPIDE_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -111,7 +108,6 @@ def _parking_lorry_basic_setup(extra):
     if env.get("AUTOBAHNAPIDE_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("AUTOBAHNAPIDE_APIKEY"),
             },
             extra or {},
         ])

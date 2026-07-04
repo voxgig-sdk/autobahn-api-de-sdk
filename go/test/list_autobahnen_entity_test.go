@@ -119,7 +119,6 @@ func list_autobahnenBasicSetup(extra map[string]any) *entityTestSetup {
 		"AUTOBAHNAPIDE_TEST_LIST_AUTOBAHNEN_ENTID": idmap,
 		"AUTOBAHNAPIDE_TEST_LIVE":      "FALSE",
 		"AUTOBAHNAPIDE_TEST_EXPLAIN":   "FALSE",
-		"AUTOBAHNAPIDE_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["AUTOBAHNAPIDE_TEST_LIST_AUTOBAHNEN_ENTID"])
@@ -130,7 +129,6 @@ func list_autobahnenBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["AUTOBAHNAPIDE_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["AUTOBAHNAPIDE_APIKEY"],
 			},
 			extra,
 		})

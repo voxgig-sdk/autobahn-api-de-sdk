@@ -52,14 +52,12 @@ class TestWebcamEntity:
             "road_id": setup["idmap"]["road01"],
         }
 
-        webcam_ref01_list_result, err = webcam_ref01_ent.list(webcam_ref01_match, None)
-        assert err is None
+        webcam_ref01_list_result = webcam_ref01_ent.list(webcam_ref01_match, None)
         assert isinstance(webcam_ref01_list_result, list)
 
         # LOAD
         webcam_ref01_match_dt0 = {}
-        webcam_ref01_data_dt0_loaded, err = webcam_ref01_ent.load(webcam_ref01_match_dt0, None)
-        assert err is None
+        webcam_ref01_data_dt0_loaded = webcam_ref01_ent.load(webcam_ref01_match_dt0, None)
         assert webcam_ref01_data_dt0_loaded is not None
 
 
@@ -100,7 +98,6 @@ def _webcam_basic_setup(extra):
         "AUTOBAHNAPIDE_TEST_WEBCAM_ENTID": idmap,
         "AUTOBAHNAPIDE_TEST_LIVE": "FALSE",
         "AUTOBAHNAPIDE_TEST_EXPLAIN": "FALSE",
-        "AUTOBAHNAPIDE_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -111,7 +108,6 @@ def _webcam_basic_setup(extra):
     if env.get("AUTOBAHNAPIDE_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("AUTOBAHNAPIDE_APIKEY"),
             },
             extra or {},
         ])
