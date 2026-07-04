@@ -208,91 +208,49 @@ class AutobahnApiDeSDK
   end
 
 
-  # Idiomatic facade: client.closure.list / client.closure.load({ "id" => ... })
-  def closure
-    require_relative 'entity/closure_entity'
-    @closure ||= ClosureEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.closure instead.
+  # Canonical facade: client.Closure.list / client.Closure.load({ "id" => ... })
   def Closure(data = nil)
     require_relative 'entity/closure_entity'
     ClosureEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.electric_charging_station.list / client.electric_charging_station.load({ "id" => ... })
-  def electric_charging_station
-    require_relative 'entity/electric_charging_station_entity'
-    @electric_charging_station ||= ElectricChargingStationEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.electric_charging_station instead.
+  # Canonical facade: client.ElectricChargingStation.list / client.ElectricChargingStation.load({ "id" => ... })
   def ElectricChargingStation(data = nil)
     require_relative 'entity/electric_charging_station_entity'
     ElectricChargingStationEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.list_autobahnen.list / client.list_autobahnen.load({ "id" => ... })
-  def list_autobahnen
-    require_relative 'entity/list_autobahnen_entity'
-    @list_autobahnen ||= ListAutobahnenEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.list_autobahnen instead.
+  # Canonical facade: client.ListAutobahnen.list / client.ListAutobahnen.load({ "id" => ... })
   def ListAutobahnen(data = nil)
     require_relative 'entity/list_autobahnen_entity'
     ListAutobahnenEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.parking_lorry.list / client.parking_lorry.load({ "id" => ... })
-  def parking_lorry
-    require_relative 'entity/parking_lorry_entity'
-    @parking_lorry ||= ParkingLorryEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.parking_lorry instead.
+  # Canonical facade: client.ParkingLorry.list / client.ParkingLorry.load({ "id" => ... })
   def ParkingLorry(data = nil)
     require_relative 'entity/parking_lorry_entity'
     ParkingLorryEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.roadwork.list / client.roadwork.load({ "id" => ... })
-  def roadwork
-    require_relative 'entity/roadwork_entity'
-    @roadwork ||= RoadworkEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.roadwork instead.
+  # Canonical facade: client.Roadwork.list / client.Roadwork.load({ "id" => ... })
   def Roadwork(data = nil)
     require_relative 'entity/roadwork_entity'
     RoadworkEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.warning.list / client.warning.load({ "id" => ... })
-  def warning
-    require_relative 'entity/warning_entity'
-    @warning ||= WarningEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.warning instead.
+  # Canonical facade: client.Warning.list / client.Warning.load({ "id" => ... })
   def Warning(data = nil)
     require_relative 'entity/warning_entity'
     WarningEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.webcam.list / client.webcam.load({ "id" => ... })
-  def webcam
-    require_relative 'entity/webcam_entity'
-    @webcam ||= WebcamEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.webcam instead.
+  # Canonical facade: client.Webcam.list / client.Webcam.load({ "id" => ... })
   def Webcam(data = nil)
     require_relative 'entity/webcam_entity'
     WebcamEntity.new(self, data)

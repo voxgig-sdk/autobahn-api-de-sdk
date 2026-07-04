@@ -109,7 +109,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## ClosureEntity
 
 ```php
-$closure = $client->closure();
+$closure = $client->Closure();
 ```
 
 ### Fields
@@ -139,7 +139,7 @@ $closure = $client->closure();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->closure()->list([]);
+$results = $client->Closure()->list([]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -147,7 +147,7 @@ $results = $client->closure()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->closure()->load(["id" => "closure_id"]);
+$result = $client->Closure()->load(["id" => "closure_id"]);
 ```
 
 ### Common Methods
@@ -183,7 +183,7 @@ Return the entity name.
 ## ElectricChargingStationEntity
 
 ```php
-$electric_charging_station = $client->electric_charging_station();
+$electric_charging_station = $client->ElectricChargingStation();
 ```
 
 ### Fields
@@ -212,7 +212,7 @@ $electric_charging_station = $client->electric_charging_station();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->electric_charging_station()->list([]);
+$results = $client->ElectricChargingStation()->list([]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -220,7 +220,7 @@ $results = $client->electric_charging_station()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->electric_charging_station()->load(["id" => "electric_charging_station_id"]);
+$result = $client->ElectricChargingStation()->load(["id" => "electric_charging_station_id"]);
 ```
 
 ### Common Methods
@@ -256,7 +256,7 @@ Return the entity name.
 ## ListAutobahnenEntity
 
 ```php
-$list_autobahnen = $client->list_autobahnen();
+$list_autobahnen = $client->ListAutobahnen();
 ```
 
 ### Fields
@@ -272,7 +272,7 @@ $list_autobahnen = $client->list_autobahnen();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->list_autobahnen()->list([]);
+$results = $client->ListAutobahnen()->list([]);
 ```
 
 ### Common Methods
@@ -308,7 +308,7 @@ Return the entity name.
 ## ParkingLorryEntity
 
 ```php
-$parking_lorry = $client->parking_lorry();
+$parking_lorry = $client->ParkingLorry();
 ```
 
 ### Fields
@@ -337,7 +337,7 @@ $parking_lorry = $client->parking_lorry();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->parking_lorry()->list([]);
+$results = $client->ParkingLorry()->list([]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -345,7 +345,7 @@ $results = $client->parking_lorry()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->parking_lorry()->load(["id" => "parking_lorry_id"]);
+$result = $client->ParkingLorry()->load(["id" => "parking_lorry_id"]);
 ```
 
 ### Common Methods
@@ -381,7 +381,7 @@ Return the entity name.
 ## RoadworkEntity
 
 ```php
-$roadwork = $client->roadwork();
+$roadwork = $client->Roadwork();
 ```
 
 ### Fields
@@ -411,7 +411,7 @@ $roadwork = $client->roadwork();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->roadwork()->list([]);
+$results = $client->Roadwork()->list([]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -419,7 +419,7 @@ $results = $client->roadwork()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->roadwork()->load(["id" => "roadwork_id"]);
+$result = $client->Roadwork()->load(["id" => "roadwork_id"]);
 ```
 
 ### Common Methods
@@ -455,7 +455,7 @@ Return the entity name.
 ## WarningEntity
 
 ```php
-$warning = $client->warning();
+$warning = $client->Warning();
 ```
 
 ### Fields
@@ -485,7 +485,7 @@ $warning = $client->warning();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->warning()->list([]);
+$results = $client->Warning()->list([]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -493,7 +493,7 @@ $results = $client->warning()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->warning()->load(["id" => "warning_id"]);
+$result = $client->Warning()->load(["id" => "warning_id"]);
 ```
 
 ### Common Methods
@@ -529,7 +529,7 @@ Return the entity name.
 ## WebcamEntity
 
 ```php
-$webcam = $client->webcam();
+$webcam = $client->Webcam();
 ```
 
 ### Fields
@@ -561,7 +561,7 @@ $webcam = $client->webcam();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->webcam()->list([]);
+$results = $client->Webcam()->list([]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -569,7 +569,7 @@ $results = $client->webcam()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->webcam()->load(["id" => "webcam_id"]);
+$result = $client->Webcam()->load(["id" => "webcam_id"]);
 ```
 
 ### Common Methods

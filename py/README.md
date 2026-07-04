@@ -31,24 +31,28 @@ from autobahnapide_sdk import AutobahnApiDeSDK
 client = AutobahnApiDeSDK()
 ```
 
-### 2. List closures
+### 2. List closure records
+
+`list()` returns a `list` of records (each a `dict`) and raises on
+error — iterate it directly.
 
 ```python
 try:
-    result = client.closure.list()
-    for item in result:
-        d = item.data_get()
-        print(d["id"], d["name"])
+    closures = client.Closure().list({})
+    for closure in closures:
+        print(closure)
 except Exception as err:
     print(f"list failed: {err}")
 ```
 
 ### 3. Load a closure
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.closure.load({"id": "example_id"})
-    print(result)
+    closure = client.Closure().load({"id": "example_id"})
+    print(closure)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -96,8 +100,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = AutobahnApiDeSDK.test()
 
-result = client.closure.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+closure = client.Closure().load({"id": "test01"})
+# closure contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -174,7 +179,7 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `prepare` | `(fetchargs) -> dict` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
 | `Closure` | `(data) -> ClosureEntity` | Create a Closure entity instance. |
-| `ElectricChargingStation` | `(data) -> ElectricChargingStationEntity` | Create a ElectricChargingStation entity instance. |
+| `ElectricChargingStation` | `(data) -> ElectricChargingStationEntity` | Create an ElectricChargingStation entity instance. |
 | `ListAutobahnen` | `(data) -> ListAutobahnenEntity` | Create a ListAutobahnen entity instance. |
 | `ParkingLorry` | `(data) -> ParkingLorryEntity` | Create a ParkingLorry entity instance. |
 | `Roadwork` | `(data) -> RoadworkEntity` | Create a Roadwork entity instance. |
@@ -380,7 +385,7 @@ API path: `/{roadId}/services/webcam`
 
 ### Closure
 
-Create an instance: `const closure = client.closure`
+Create an instance: `closure = client.Closure()`
 
 #### Operations
 
@@ -411,20 +416,20 @@ Create an instance: `const closure = client.closure`
 
 #### Example: Load
 
-```ts
-const closure = await client.closure.load({ id: 'closure_id' })
+```python
+closure = client.Closure().load({"id": "closure_id"})
 ```
 
 #### Example: List
 
-```ts
-const closures = await client.closure.list()
+```python
+closures = client.Closure().list({})
 ```
 
 
 ### ElectricChargingStation
 
-Create an instance: `const electric_charging_station = client.electric_charging_station`
+Create an instance: `electric_charging_station = client.ElectricChargingStation()`
 
 #### Operations
 
@@ -454,20 +459,20 @@ Create an instance: `const electric_charging_station = client.electric_charging_
 
 #### Example: Load
 
-```ts
-const electric_charging_station = await client.electric_charging_station.load({ id: 'electric_charging_station_id' })
+```python
+electric_charging_station = client.ElectricChargingStation().load({"id": "electric_charging_station_id"})
 ```
 
 #### Example: List
 
-```ts
-const electric_charging_stations = await client.electric_charging_station.list()
+```python
+electric_charging_stations = client.ElectricChargingStation().list({})
 ```
 
 
 ### ListAutobahnen
 
-Create an instance: `const list_autobahnen = client.list_autobahnen`
+Create an instance: `list_autobahnen = client.ListAutobahnen()`
 
 #### Operations
 
@@ -483,14 +488,14 @@ Create an instance: `const list_autobahnen = client.list_autobahnen`
 
 #### Example: List
 
-```ts
-const list_autobahnens = await client.list_autobahnen.list()
+```python
+list_autobahnens = client.ListAutobahnen().list({})
 ```
 
 
 ### ParkingLorry
 
-Create an instance: `const parking_lorry = client.parking_lorry`
+Create an instance: `parking_lorry = client.ParkingLorry()`
 
 #### Operations
 
@@ -520,20 +525,20 @@ Create an instance: `const parking_lorry = client.parking_lorry`
 
 #### Example: Load
 
-```ts
-const parking_lorry = await client.parking_lorry.load({ id: 'parking_lorry_id' })
+```python
+parking_lorry = client.ParkingLorry().load({"id": "parking_lorry_id"})
 ```
 
 #### Example: List
 
-```ts
-const parking_lorrys = await client.parking_lorry.list()
+```python
+parking_lorrys = client.ParkingLorry().list({})
 ```
 
 
 ### Roadwork
 
-Create an instance: `const roadwork = client.roadwork`
+Create an instance: `roadwork = client.Roadwork()`
 
 #### Operations
 
@@ -564,20 +569,20 @@ Create an instance: `const roadwork = client.roadwork`
 
 #### Example: Load
 
-```ts
-const roadwork = await client.roadwork.load({ id: 'roadwork_id' })
+```python
+roadwork = client.Roadwork().load({"id": "roadwork_id"})
 ```
 
 #### Example: List
 
-```ts
-const roadworks = await client.roadwork.list()
+```python
+roadworks = client.Roadwork().list({})
 ```
 
 
 ### Warning
 
-Create an instance: `const warning = client.warning`
+Create an instance: `warning = client.Warning()`
 
 #### Operations
 
@@ -608,20 +613,20 @@ Create an instance: `const warning = client.warning`
 
 #### Example: Load
 
-```ts
-const warning = await client.warning.load({ id: 'warning_id' })
+```python
+warning = client.Warning().load({"id": "warning_id"})
 ```
 
 #### Example: List
 
-```ts
-const warnings = await client.warning.list()
+```python
+warnings = client.Warning().list({})
 ```
 
 
 ### Webcam
 
-Create an instance: `const webcam = client.webcam`
+Create an instance: `webcam = client.Webcam()`
 
 #### Operations
 
@@ -654,14 +659,14 @@ Create an instance: `const webcam = client.webcam`
 
 #### Example: Load
 
-```ts
-const webcam = await client.webcam.load({ id: 'webcam_id' })
+```python
+webcam = client.Webcam().load({"id": "webcam_id"})
 ```
 
 #### Example: List
 
-```ts
-const webcams = await client.webcam.list()
+```python
+webcams = client.Webcam().list({})
 ```
 
 
@@ -735,7 +740,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-closure = client.closure
+closure = client.Closure()
 closure.load({"id": "example_id"})
 
 # closure.data_get() now returns the loaded closure data

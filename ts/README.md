@@ -28,25 +28,28 @@ import { AutobahnApiDeSDK } from '@voxgig-sdk/autobahn-api-de'
 const client = new AutobahnApiDeSDK()
 ```
 
-### 2. List closures
+### 2. List closure records
+
+`list()` resolves to an array of Closure objects — iterate it directly:
 
 ```ts
-const result = await client.closure.list()
+const closures = await client.Closure().list()
 
-if (result.ok) {
-  for (const item of result.data) {
-    console.log(item.id, item.name)
-  }
+for (const closure of closures) {
+  console.log(closure)
 }
 ```
 
 ### 3. Load a closure
 
-```ts
-const result = await client.closure.load({ id: 'example_id' })
+`load()` returns the entity directly and throws on failure:
 
-if (result.ok) {
-  console.log(result.data)
+```ts
+try {
+  const closure = await client.Closure().load({ id: 'example_id' })
+  console.log(closure)
+} catch (err) {
+  console.error('load failed:', err)
 }
 ```
 
@@ -64,6 +67,9 @@ const result = await client.direct({
   params: { id: 'example' },
 })
 
+if (result instanceof Error) {
+  throw result
+}
 if (result.ok) {
   console.log(result.status)  // 200
   console.log(result.data)    // response body
@@ -92,9 +98,9 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = AutobahnApiDeSDK.test()
 
-const result = await client.closure.load({ id: 'test01' })
-// result.ok === true
-// result.data contains mock response data
+const closure = await client.Closure().load({ id: 'test01' })
+// closure is a bare entity populated with mock response data
+console.log(closure)
 ```
 
 You can also use the instance method:
@@ -109,7 +115,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.closure
+const entity = client.Closure()
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -188,7 +194,7 @@ new AutobahnApiDeSDK(options?: {
 | `prepare(fetchargs?)` | `Promise<FetchDef>` | Build an HTTP request definition without sending it. |
 | `direct(fetchargs?)` | `Promise<DirectResult>` | Build and send an HTTP request. |
 | `Closure(data?)` | `ClosureEntity` | Create a Closure entity instance. |
-| `ElectricChargingStation(data?)` | `ElectricChargingStationEntity` | Create a ElectricChargingStation entity instance. |
+| `ElectricChargingStation(data?)` | `ElectricChargingStationEntity` | Create an ElectricChargingStation entity instance. |
 | `ListAutobahnen(data?)` | `ListAutobahnenEntity` | Create a ListAutobahnen entity instance. |
 | `ParkingLorry(data?)` | `ParkingLorryEntity` | Create a ParkingLorry entity instance. |
 | `Roadwork(data?)` | `RoadworkEntity` | Create a Roadwork entity instance. |
@@ -210,29 +216,30 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `load(reqmatch?, ctrl?): Promise<Result>` | Load a single entity by match criteria. |
-| `list` | `list(reqmatch?, ctrl?): Promise<Result>` | List entities matching the criteria. |
-| `create` | `create(reqdata?, ctrl?): Promise<Result>` | Create a new entity. |
-| `update` | `update(reqdata?, ctrl?): Promise<Result>` | Update an existing entity. |
-| `remove` | `remove(reqmatch?, ctrl?): Promise<Result>` | Remove an entity. |
+| `load` | `load(reqmatch?, ctrl?): Promise<Entity>` | Load a single entity by match criteria. |
+| `list` | `list(reqmatch?, ctrl?): Promise<Entity[]>` | List entities matching the criteria. |
+| `create` | `create(reqdata?, ctrl?): Promise<Entity>` | Create a new entity. |
+| `update` | `update(reqdata?, ctrl?): Promise<Entity>` | Update an existing entity. |
+| `remove` | `remove(reqmatch?, ctrl?): Promise<void>` | Remove an entity. |
 | `data` | `data(data?): any` | Get or set entity data. |
 | `match` | `match(match?): any` | Get or set entity match criteria. |
 | `make` | `make(): Entity` | Create a new instance with the same options. |
 | `client` | `client(): AutobahnApiDeSDK` | Return the parent SDK client. |
 | `entopts` | `entopts(): object` | Return a copy of the entity options. |
 
-#### Result shape
+#### Return values
 
-All entity operations return a Result object:
+Entity operations resolve to the entity data directly — there is no
+result envelope:
 
-```ts
-{
-  ok: boolean      // true if the HTTP status is 2xx
-  status: number   // HTTP status code
-  headers: object  // response headers
-  data: any        // parsed JSON response body
-}
-```
+- `load`, `create` and `update` resolve to a single entity object.
+- `list` resolves to an **array** of entity objects (iterate it directly;
+  there is no `.data` and no `.ok`).
+- `remove` resolves to `void`.
+
+On a failed request these methods **throw**, so wrap calls in
+`try`/`catch` to handle errors. Only `direct()` returns the result
+envelope described below.
 
 ### DirectResult shape
 
@@ -425,7 +432,7 @@ API path: `/{roadId}/services/webcam`
 
 ### Closure
 
-Create an instance: `const closure = client.closure`
+Create an instance: `const closure = client.Closure()`
 
 #### Operations
 
@@ -457,19 +464,19 @@ Create an instance: `const closure = client.closure`
 #### Example: Load
 
 ```ts
-const closure = await client.closure.load({ id: 'closure_id' })
+const closure = await client.Closure().load({ id: 'closure_id' })
 ```
 
 #### Example: List
 
 ```ts
-const closures = await client.closure.list()
+const closures = await client.Closure().list()
 ```
 
 
 ### ElectricChargingStation
 
-Create an instance: `const electric_charging_station = client.electric_charging_station`
+Create an instance: `const electric_charging_station = client.ElectricChargingStation()`
 
 #### Operations
 
@@ -500,19 +507,19 @@ Create an instance: `const electric_charging_station = client.electric_charging_
 #### Example: Load
 
 ```ts
-const electric_charging_station = await client.electric_charging_station.load({ id: 'electric_charging_station_id' })
+const electric_charging_station = await client.ElectricChargingStation().load({ id: 'electric_charging_station_id' })
 ```
 
 #### Example: List
 
 ```ts
-const electric_charging_stations = await client.electric_charging_station.list()
+const electric_charging_stations = await client.ElectricChargingStation().list()
 ```
 
 
 ### ListAutobahnen
 
-Create an instance: `const list_autobahnen = client.list_autobahnen`
+Create an instance: `const list_autobahnen = client.ListAutobahnen()`
 
 #### Operations
 
@@ -529,13 +536,13 @@ Create an instance: `const list_autobahnen = client.list_autobahnen`
 #### Example: List
 
 ```ts
-const list_autobahnens = await client.list_autobahnen.list()
+const list_autobahnens = await client.ListAutobahnen().list()
 ```
 
 
 ### ParkingLorry
 
-Create an instance: `const parking_lorry = client.parking_lorry`
+Create an instance: `const parking_lorry = client.ParkingLorry()`
 
 #### Operations
 
@@ -566,19 +573,19 @@ Create an instance: `const parking_lorry = client.parking_lorry`
 #### Example: Load
 
 ```ts
-const parking_lorry = await client.parking_lorry.load({ id: 'parking_lorry_id' })
+const parking_lorry = await client.ParkingLorry().load({ id: 'parking_lorry_id' })
 ```
 
 #### Example: List
 
 ```ts
-const parking_lorrys = await client.parking_lorry.list()
+const parking_lorrys = await client.ParkingLorry().list()
 ```
 
 
 ### Roadwork
 
-Create an instance: `const roadwork = client.roadwork`
+Create an instance: `const roadwork = client.Roadwork()`
 
 #### Operations
 
@@ -610,19 +617,19 @@ Create an instance: `const roadwork = client.roadwork`
 #### Example: Load
 
 ```ts
-const roadwork = await client.roadwork.load({ id: 'roadwork_id' })
+const roadwork = await client.Roadwork().load({ id: 'roadwork_id' })
 ```
 
 #### Example: List
 
 ```ts
-const roadworks = await client.roadwork.list()
+const roadworks = await client.Roadwork().list()
 ```
 
 
 ### Warning
 
-Create an instance: `const warning = client.warning`
+Create an instance: `const warning = client.Warning()`
 
 #### Operations
 
@@ -654,19 +661,19 @@ Create an instance: `const warning = client.warning`
 #### Example: Load
 
 ```ts
-const warning = await client.warning.load({ id: 'warning_id' })
+const warning = await client.Warning().load({ id: 'warning_id' })
 ```
 
 #### Example: List
 
 ```ts
-const warnings = await client.warning.list()
+const warnings = await client.Warning().list()
 ```
 
 
 ### Webcam
 
-Create an instance: `const webcam = client.webcam`
+Create an instance: `const webcam = client.Webcam()`
 
 #### Operations
 
@@ -700,13 +707,13 @@ Create an instance: `const webcam = client.webcam`
 #### Example: Load
 
 ```ts
-const webcam = await client.webcam.load({ id: 'webcam_id' })
+const webcam = await client.Webcam().load({ id: 'webcam_id' })
 ```
 
 #### Example: List
 
 ```ts
-const webcams = await client.webcam.list()
+const webcams = await client.Webcam().list()
 ```
 
 
@@ -777,7 +784,7 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const closure = client.closure
+const closure = client.Closure()
 await closure.load({ id: "example_id" })
 
 // closure.data() now returns the loaded closure data

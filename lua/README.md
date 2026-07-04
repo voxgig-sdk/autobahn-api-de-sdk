@@ -31,26 +31,26 @@ local sdk = require("autobahn-api-de_sdk")
 local client = sdk.new()
 ```
 
-### 2. List closures
+### 2. List closure records
+
+Entity operations return `(value, err)`. For `list`, `value` is the
+array of records itself — iterate it directly (there is no wrapper).
 
 ```lua
-local result, err = client:closure():list()
+local closures, err = client:Closure():list()
 if err then error(err) end
 
-if type(result) == "table" then
-  for _, item in ipairs(result) do
-    local d = item:data_get()
-    print(d["id"], d["name"])
-  end
+for _, item in ipairs(closures) do
+  print(item["id"], item["name"])
 end
 ```
 
 ### 3. Load a closure
 
 ```lua
-local result, err = client:closure():load({ id = "example_id" })
+local closure, err = client:Closure():load({ id = "example_id" })
 if err then error(err) end
-print(result)
+print(closure)
 ```
 
 
@@ -96,8 +96,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:closure():load({ id = "test01" })
--- result contains mock response data
+local result, err = client:Closure():load({ id = "test01" })
+-- result is the loaded data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -176,7 +176,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `prepare` | `(fetchargs) -> table, err` | Build an HTTP request definition without sending. |
 | `direct` | `(fetchargs) -> table, err` | Build and send an HTTP request. |
 | `Closure` | `(data) -> ClosureEntity` | Create a Closure entity instance. |
-| `ElectricChargingStation` | `(data) -> ElectricChargingStationEntity` | Create a ElectricChargingStation entity instance. |
+| `ElectricChargingStation` | `(data) -> ElectricChargingStationEntity` | Create an ElectricChargingStation entity instance. |
 | `ListAutobahnen` | `(data) -> ListAutobahnenEntity` | Create a ListAutobahnen entity instance. |
 | `ParkingLorry` | `(data) -> ParkingLorryEntity` | Create a ParkingLorry entity instance. |
 | `Roadwork` | `(data) -> RoadworkEntity` | Create a Roadwork entity instance. |
@@ -203,17 +203,22 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`table` with these keys:
+Entity operations return `(value, err)`. The `value` is the operation's
+data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `ok` | `boolean` | `true` if the HTTP status is 2xx. |
-| `status` | `number` | HTTP status code. |
-| `headers` | `table` | Response headers. |
-| `data` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `list` | an array (`table`) of entity records |
 
-On error, `ok` is `false` and `err` contains the error value.
+Check `err` first (it is non-`nil` on failure), then use `value`:
+
+    local closure, err = client:Closure():load({ id = "example_id" })
+    if err then error(err) end
+    -- closure is the loaded record
+
+Only `direct()` returns a response envelope — a `table` with `ok`,
+`status`, `headers`, and `data` keys.
 
 ### Entities
 
@@ -378,7 +383,7 @@ API path: `/{roadId}/services/webcam`
 
 ### Closure
 
-Create an instance: `const closure = client.closure`
+Create an instance: `local closure = client:Closure(nil)`
 
 #### Operations
 
@@ -409,20 +414,20 @@ Create an instance: `const closure = client.closure`
 
 #### Example: Load
 
-```ts
-const closure = await client.closure.load({ id: 'closure_id' })
+```lua
+local closure, err = client:Closure():load({ id = "closure_id" })
 ```
 
 #### Example: List
 
-```ts
-const closures = await client.closure.list()
+```lua
+local closures, err = client:Closure():list()
 ```
 
 
 ### ElectricChargingStation
 
-Create an instance: `const electric_charging_station = client.electric_charging_station`
+Create an instance: `local electric_charging_station = client:ElectricChargingStation(nil)`
 
 #### Operations
 
@@ -452,20 +457,20 @@ Create an instance: `const electric_charging_station = client.electric_charging_
 
 #### Example: Load
 
-```ts
-const electric_charging_station = await client.electric_charging_station.load({ id: 'electric_charging_station_id' })
+```lua
+local electric_charging_station, err = client:ElectricChargingStation():load({ id = "electric_charging_station_id" })
 ```
 
 #### Example: List
 
-```ts
-const electric_charging_stations = await client.electric_charging_station.list()
+```lua
+local electric_charging_stations, err = client:ElectricChargingStation():list()
 ```
 
 
 ### ListAutobahnen
 
-Create an instance: `const list_autobahnen = client.list_autobahnen`
+Create an instance: `local list_autobahnen = client:ListAutobahnen(nil)`
 
 #### Operations
 
@@ -481,14 +486,14 @@ Create an instance: `const list_autobahnen = client.list_autobahnen`
 
 #### Example: List
 
-```ts
-const list_autobahnens = await client.list_autobahnen.list()
+```lua
+local list_autobahnens, err = client:ListAutobahnen():list()
 ```
 
 
 ### ParkingLorry
 
-Create an instance: `const parking_lorry = client.parking_lorry`
+Create an instance: `local parking_lorry = client:ParkingLorry(nil)`
 
 #### Operations
 
@@ -518,20 +523,20 @@ Create an instance: `const parking_lorry = client.parking_lorry`
 
 #### Example: Load
 
-```ts
-const parking_lorry = await client.parking_lorry.load({ id: 'parking_lorry_id' })
+```lua
+local parking_lorry, err = client:ParkingLorry():load({ id = "parking_lorry_id" })
 ```
 
 #### Example: List
 
-```ts
-const parking_lorrys = await client.parking_lorry.list()
+```lua
+local parking_lorrys, err = client:ParkingLorry():list()
 ```
 
 
 ### Roadwork
 
-Create an instance: `const roadwork = client.roadwork`
+Create an instance: `local roadwork = client:Roadwork(nil)`
 
 #### Operations
 
@@ -562,20 +567,20 @@ Create an instance: `const roadwork = client.roadwork`
 
 #### Example: Load
 
-```ts
-const roadwork = await client.roadwork.load({ id: 'roadwork_id' })
+```lua
+local roadwork, err = client:Roadwork():load({ id = "roadwork_id" })
 ```
 
 #### Example: List
 
-```ts
-const roadworks = await client.roadwork.list()
+```lua
+local roadworks, err = client:Roadwork():list()
 ```
 
 
 ### Warning
 
-Create an instance: `const warning = client.warning`
+Create an instance: `local warning = client:Warning(nil)`
 
 #### Operations
 
@@ -606,20 +611,20 @@ Create an instance: `const warning = client.warning`
 
 #### Example: Load
 
-```ts
-const warning = await client.warning.load({ id: 'warning_id' })
+```lua
+local warning, err = client:Warning():load({ id = "warning_id" })
 ```
 
 #### Example: List
 
-```ts
-const warnings = await client.warning.list()
+```lua
+local warnings, err = client:Warning():list()
 ```
 
 
 ### Webcam
 
-Create an instance: `const webcam = client.webcam`
+Create an instance: `local webcam = client:Webcam(nil)`
 
 #### Operations
 
@@ -652,14 +657,14 @@ Create an instance: `const webcam = client.webcam`
 
 #### Example: Load
 
-```ts
-const webcam = await client.webcam.load({ id: 'webcam_id' })
+```lua
+local webcam, err = client:Webcam():load({ id = "webcam_id" })
 ```
 
 #### Example: List
 
-```ts
-const webcams = await client.webcam.list()
+```lua
+local webcams, err = client:Webcam():list()
 ```
 
 
@@ -734,7 +739,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local closure = client:closure()
+local closure = client:Closure()
 closure:load({ id = "example_id" })
 
 -- closure:data_get() now returns the loaded closure data

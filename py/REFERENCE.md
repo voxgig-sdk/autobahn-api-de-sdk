@@ -104,7 +104,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## ClosureEntity
 
 ```python
-closure = client.closure
+closure = client.Closure()
 ```
 
 ### Fields
@@ -134,7 +134,9 @@ closure = client.closure
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.closure.list({})
+results = client.Closure().list({})
+for closure in results:
+    print(closure)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -142,7 +144,7 @@ results = client.closure.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.closure.load({"id": "closure_id"})
+result = client.Closure().load({"id": "closure_id"})
 ```
 
 ### Common Methods
@@ -177,7 +179,7 @@ Return the entity name.
 ## ElectricChargingStationEntity
 
 ```python
-electric_charging_station = client.electric_charging_station
+electric_charging_station = client.ElectricChargingStation()
 ```
 
 ### Fields
@@ -206,7 +208,9 @@ electric_charging_station = client.electric_charging_station
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.electric_charging_station.list({})
+results = client.ElectricChargingStation().list({})
+for electric_charging_station in results:
+    print(electric_charging_station)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -214,7 +218,7 @@ results = client.electric_charging_station.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.electric_charging_station.load({"id": "electric_charging_station_id"})
+result = client.ElectricChargingStation().load({"id": "electric_charging_station_id"})
 ```
 
 ### Common Methods
@@ -249,7 +253,7 @@ Return the entity name.
 ## ListAutobahnenEntity
 
 ```python
-list_autobahnen = client.list_autobahnen
+list_autobahnen = client.ListAutobahnen()
 ```
 
 ### Fields
@@ -265,7 +269,9 @@ list_autobahnen = client.list_autobahnen
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.list_autobahnen.list({})
+results = client.ListAutobahnen().list({})
+for list_autobahnen in results:
+    print(list_autobahnen)
 ```
 
 ### Common Methods
@@ -300,7 +306,7 @@ Return the entity name.
 ## ParkingLorryEntity
 
 ```python
-parking_lorry = client.parking_lorry
+parking_lorry = client.ParkingLorry()
 ```
 
 ### Fields
@@ -329,7 +335,9 @@ parking_lorry = client.parking_lorry
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.parking_lorry.list({})
+results = client.ParkingLorry().list({})
+for parking_lorry in results:
+    print(parking_lorry)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -337,7 +345,7 @@ results = client.parking_lorry.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.parking_lorry.load({"id": "parking_lorry_id"})
+result = client.ParkingLorry().load({"id": "parking_lorry_id"})
 ```
 
 ### Common Methods
@@ -372,7 +380,7 @@ Return the entity name.
 ## RoadworkEntity
 
 ```python
-roadwork = client.roadwork
+roadwork = client.Roadwork()
 ```
 
 ### Fields
@@ -402,7 +410,9 @@ roadwork = client.roadwork
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.roadwork.list({})
+results = client.Roadwork().list({})
+for roadwork in results:
+    print(roadwork)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -410,7 +420,7 @@ results = client.roadwork.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.roadwork.load({"id": "roadwork_id"})
+result = client.Roadwork().load({"id": "roadwork_id"})
 ```
 
 ### Common Methods
@@ -445,7 +455,7 @@ Return the entity name.
 ## WarningEntity
 
 ```python
-warning = client.warning
+warning = client.Warning()
 ```
 
 ### Fields
@@ -475,7 +485,9 @@ warning = client.warning
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.warning.list({})
+results = client.Warning().list({})
+for warning in results:
+    print(warning)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -483,7 +495,7 @@ results = client.warning.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.warning.load({"id": "warning_id"})
+result = client.Warning().load({"id": "warning_id"})
 ```
 
 ### Common Methods
@@ -518,7 +530,7 @@ Return the entity name.
 ## WebcamEntity
 
 ```python
-webcam = client.webcam
+webcam = client.Webcam()
 ```
 
 ### Fields
@@ -550,7 +562,9 @@ webcam = client.webcam
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.webcam.list({})
+results = client.Webcam().list({})
+for webcam in results:
+    print(webcam)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -558,7 +572,7 @@ results = client.webcam.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.webcam.load({"id": "webcam_id"})
+result = client.Webcam().load({"id": "webcam_id"})
 ```
 
 ### Common Methods

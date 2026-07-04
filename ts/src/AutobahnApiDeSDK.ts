@@ -210,98 +210,49 @@ class AutobahnApiDeSDK {
 
 
 
-  _closure?: ClosureEntity
-
-  // Idiomatic facade: `client.closure.list()` / `client.closure.load({ id })`.
-  get closure(): ClosureEntity {
-    return (this._closure ??= new ClosureEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.closure` instead. */
+  // Entity access: `client.Closure().list()` / `client.Closure().load({ id })`.
   Closure(data?: any) {
     const self = this
     return new ClosureEntity(self,data)
   }
 
 
-  _electric_charging_station?: ElectricChargingStationEntity
-
-  // Idiomatic facade: `client.electric_charging_station.list()` / `client.electric_charging_station.load({ id })`.
-  get electric_charging_station(): ElectricChargingStationEntity {
-    return (this._electric_charging_station ??= new ElectricChargingStationEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.electric_charging_station` instead. */
+  // Entity access: `client.ElectricChargingStation().list()` / `client.ElectricChargingStation().load({ id })`.
   ElectricChargingStation(data?: any) {
     const self = this
     return new ElectricChargingStationEntity(self,data)
   }
 
 
-  _list_autobahnen?: ListAutobahnenEntity
-
-  // Idiomatic facade: `client.list_autobahnen.list()` / `client.list_autobahnen.load({ id })`.
-  get list_autobahnen(): ListAutobahnenEntity {
-    return (this._list_autobahnen ??= new ListAutobahnenEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.list_autobahnen` instead. */
+  // Entity access: `client.ListAutobahnen().list()` / `client.ListAutobahnen().load({ id })`.
   ListAutobahnen(data?: any) {
     const self = this
     return new ListAutobahnenEntity(self,data)
   }
 
 
-  _parking_lorry?: ParkingLorryEntity
-
-  // Idiomatic facade: `client.parking_lorry.list()` / `client.parking_lorry.load({ id })`.
-  get parking_lorry(): ParkingLorryEntity {
-    return (this._parking_lorry ??= new ParkingLorryEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.parking_lorry` instead. */
+  // Entity access: `client.ParkingLorry().list()` / `client.ParkingLorry().load({ id })`.
   ParkingLorry(data?: any) {
     const self = this
     return new ParkingLorryEntity(self,data)
   }
 
 
-  _roadwork?: RoadworkEntity
-
-  // Idiomatic facade: `client.roadwork.list()` / `client.roadwork.load({ id })`.
-  get roadwork(): RoadworkEntity {
-    return (this._roadwork ??= new RoadworkEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.roadwork` instead. */
+  // Entity access: `client.Roadwork().list()` / `client.Roadwork().load({ id })`.
   Roadwork(data?: any) {
     const self = this
     return new RoadworkEntity(self,data)
   }
 
 
-  _warning?: WarningEntity
-
-  // Idiomatic facade: `client.warning.list()` / `client.warning.load({ id })`.
-  get warning(): WarningEntity {
-    return (this._warning ??= new WarningEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.warning` instead. */
+  // Entity access: `client.Warning().list()` / `client.Warning().load({ id })`.
   Warning(data?: any) {
     const self = this
     return new WarningEntity(self,data)
   }
 
 
-  _webcam?: WebcamEntity
-
-  // Idiomatic facade: `client.webcam.list()` / `client.webcam.load({ id })`.
-  get webcam(): WebcamEntity {
-    return (this._webcam ??= new WebcamEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.webcam` instead. */
+  // Entity access: `client.Webcam().list()` / `client.Webcam().load({ id })`.
   Webcam(data?: any) {
     const self = this
     return new WebcamEntity(self,data)

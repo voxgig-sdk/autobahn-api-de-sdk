@@ -26,9 +26,11 @@ import { AutobahnApiDeSDK } from '@voxgig-sdk/autobahn-api-de'
 
 const client = new AutobahnApiDeSDK()
 
-// List all closures
-const closures = await client.closure.list()
-console.log(closures.data)
+// List all closures (returns Closure[])
+const closures = await client.Closure().list()
+for (const closure of closures) {
+  console.log(closure)
+}
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -89,12 +91,13 @@ from autobahnapide_sdk import AutobahnApiDeSDK
 
 client = AutobahnApiDeSDK()
 
-# List all closures
-closures = client.closure.list()
-print(closures)
+# List all closures (returns a list, raises on error)
+closures = client.Closure().list({})
+for closure in closures:
+    print(closure)
 
-# Load a specific closure
-closure = client.closure.load({"id": "example_id"})
+# Load a specific closure (returns the record, raises on error)
+closure = client.Closure().load({"id": "example_id"})
 print(closure)
 ```
 
@@ -106,12 +109,12 @@ require_once 'autobahnapide_sdk.php';
 
 $client = new AutobahnApiDeSDK();
 
-// List all closures (throws on error)
-$closures = $client->closure()->list();
+// List all closures (returns an array; throws on error)
+$closures = $client->Closure()->list();
 print_r($closures);
 
-// Load a specific closure
-$closure = $client->closure()->load(["id" => "example_id"]);
+// Load a specific closure (returns the bare record; throws on error)
+$closure = $client->Closure()->load(["id" => "example_id"]);
 print_r($closure);
 ```
 
@@ -134,12 +137,12 @@ require_relative "AutobahnApiDe_sdk"
 
 client = AutobahnApiDeSDK.new
 
-# List all closures
-closures = client.closure.list
+# List all closures (returns an Array; raises on error)
+closures = client.Closure.list
 puts closures
 
-# Load a specific closure
-closure = client.closure.load({ "id" => "example_id" })
+# Load a specific closure (returns the bare record; raises on error)
+closure = client.Closure.load({ "id" => "example_id" })
 puts closure
 ```
 
@@ -151,11 +154,11 @@ local sdk = require("autobahn-api-de_sdk")
 local client = sdk.new()
 
 -- List all closures
-local closures, err = client:closure():list()
+local closures, err = client:Closure():list()
 print(closures)
 
 -- Load a specific closure
-local closure, err = client:closure():load({ id = "example_id" })
+local closure, err = client:Closure():load({ id = "example_id" })
 print(closure)
 ```
 
@@ -168,22 +171,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = AutobahnApiDeSDK.test()
-const result = await client.closure.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const closure = await client.Closure().load({ id: 'test01' })
+// closure is a bare Closure populated with mock data
+console.log(closure)
 ```
 
 ### Python
 
 ```python
 client = AutobahnApiDeSDK.test()
-result = client.closure.load({"id": "test01"})
+closure = client.Closure().load({"id": "test01"})
+print(closure)
 ```
 
 ### PHP
 
 ```php
-$client = AutobahnApiDeSDK::test();
-$result = $client->closure()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = AutobahnApiDeSDK::test([
+    "entity" => ["closure" => ["test01" => ["id" => "test01"]]],
+]);
+$closure = $client->Closure()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -198,15 +206,18 @@ result, err := client.Closure(nil).Load(
 ### Ruby
 
 ```ruby
-client = AutobahnApiDeSDK.test
-result = client.closure.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = AutobahnApiDeSDK.test({
+  "entity" => { "closure" => { "test01" => { "id" => "test01" } } },
+})
+closure = client.Closure.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:closure():load({ id = "test01" })
+local result, err = client:Closure():load({ id = "test01" })
 ```
 
 ## How it works
@@ -254,6 +265,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

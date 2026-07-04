@@ -4,193 +4,177 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class Closure:
-    coordinate: Optional[dict] = None
-    description: Optional[list] = None
-    display_type: Optional[str] = None
-    extent: Optional[str] = None
-    footer: Optional[list] = None
-    future: Optional[bool] = None
-    icon: Optional[str] = None
-    identifier: Optional[str] = None
-    is_blocked: Optional[bool] = None
-    lorry_parking_feature_icon: Optional[list] = None
-    point: Optional[str] = None
-    route_recommendation: Optional[list] = None
-    start_timestamp: Optional[str] = None
-    subtitle: Optional[str] = None
-    title: Optional[str] = None
+class Closure(TypedDict, total=False):
+    coordinate: dict
+    description: list
+    display_type: str
+    extent: str
+    footer: list
+    future: bool
+    icon: str
+    identifier: str
+    is_blocked: bool
+    lorry_parking_feature_icon: list
+    point: str
+    route_recommendation: list
+    start_timestamp: str
+    subtitle: str
+    title: str
 
 
-@dataclass
-class ClosureLoadMatch:
+class ClosureLoadMatch(TypedDict):
     id: str
 
 
-@dataclass
-class ClosureListMatch:
+class ClosureListMatch(TypedDict):
     road_id: str
 
 
-@dataclass
-class ElectricChargingStation:
-    coordinate: Optional[dict] = None
-    description: Optional[list] = None
-    display_type: Optional[str] = None
-    extent: Optional[str] = None
-    footer: Optional[list] = None
-    future: Optional[bool] = None
-    icon: Optional[str] = None
-    identifier: Optional[str] = None
-    is_blocked: Optional[bool] = None
-    lorry_parking_feature_icon: Optional[list] = None
-    point: Optional[str] = None
-    route_recommendation: Optional[list] = None
-    subtitle: Optional[str] = None
-    title: Optional[str] = None
+class ElectricChargingStation(TypedDict, total=False):
+    coordinate: dict
+    description: list
+    display_type: str
+    extent: str
+    footer: list
+    future: bool
+    icon: str
+    identifier: str
+    is_blocked: bool
+    lorry_parking_feature_icon: list
+    point: str
+    route_recommendation: list
+    subtitle: str
+    title: str
 
 
-@dataclass
-class ElectricChargingStationLoadMatch:
+class ElectricChargingStationLoadMatch(TypedDict):
     id: str
 
 
-@dataclass
-class ElectricChargingStationListMatch:
+class ElectricChargingStationListMatch(TypedDict):
     road_id: str
 
 
-@dataclass
-class ListAutobahnen:
-    road: Optional[list] = None
+class ListAutobahnen(TypedDict, total=False):
+    road: list
 
 
-@dataclass
-class ListAutobahnenListMatch:
-    road: Optional[list] = None
+class ListAutobahnenListMatch(TypedDict, total=False):
+    road: list
 
 
-@dataclass
-class ParkingLorry:
-    coordinate: Optional[dict] = None
-    description: Optional[list] = None
-    display_type: Optional[str] = None
-    extent: Optional[str] = None
-    footer: Optional[list] = None
-    future: Optional[bool] = None
-    icon: Optional[str] = None
-    identifier: Optional[str] = None
-    is_blocked: Optional[bool] = None
-    lorry_parking_feature_icon: Optional[list] = None
-    point: Optional[str] = None
-    route_recommendation: Optional[list] = None
-    subtitle: Optional[str] = None
-    title: Optional[str] = None
+class ParkingLorry(TypedDict, total=False):
+    coordinate: dict
+    description: list
+    display_type: str
+    extent: str
+    footer: list
+    future: bool
+    icon: str
+    identifier: str
+    is_blocked: bool
+    lorry_parking_feature_icon: list
+    point: str
+    route_recommendation: list
+    subtitle: str
+    title: str
 
 
-@dataclass
-class ParkingLorryLoadMatch:
+class ParkingLorryLoadMatch(TypedDict):
     id: str
 
 
-@dataclass
-class ParkingLorryListMatch:
+class ParkingLorryListMatch(TypedDict):
     road_id: str
 
 
-@dataclass
-class Roadwork:
-    coordinate: Optional[dict] = None
-    description: Optional[list] = None
-    display_type: Optional[str] = None
-    extent: Optional[str] = None
-    footer: Optional[list] = None
-    future: Optional[bool] = None
-    icon: Optional[str] = None
-    identifier: Optional[str] = None
-    is_blocked: Optional[bool] = None
-    lorry_parking_feature_icon: Optional[list] = None
-    point: Optional[str] = None
-    route_recommendation: Optional[list] = None
-    start_timestamp: Optional[str] = None
-    subtitle: Optional[str] = None
-    title: Optional[str] = None
+class Roadwork(TypedDict, total=False):
+    coordinate: dict
+    description: list
+    display_type: str
+    extent: str
+    footer: list
+    future: bool
+    icon: str
+    identifier: str
+    is_blocked: bool
+    lorry_parking_feature_icon: list
+    point: str
+    route_recommendation: list
+    start_timestamp: str
+    subtitle: str
+    title: str
 
 
-@dataclass
-class RoadworkLoadMatch:
+class RoadworkLoadMatch(TypedDict):
     id: str
 
 
-@dataclass
-class RoadworkListMatch:
+class RoadworkListMatch(TypedDict):
     road_id: str
 
 
-@dataclass
-class Warning:
-    coordinate: Optional[dict] = None
-    description: Optional[list] = None
-    display_type: Optional[str] = None
-    extent: Optional[str] = None
-    footer: Optional[list] = None
-    future: Optional[bool] = None
-    icon: Optional[str] = None
-    identifier: Optional[str] = None
-    is_blocked: Optional[bool] = None
-    lorry_parking_feature_icon: Optional[list] = None
-    point: Optional[str] = None
-    route_recommendation: Optional[list] = None
-    start_timestamp: Optional[str] = None
-    subtitle: Optional[str] = None
-    title: Optional[str] = None
+class Warning(TypedDict, total=False):
+    coordinate: dict
+    description: list
+    display_type: str
+    extent: str
+    footer: list
+    future: bool
+    icon: str
+    identifier: str
+    is_blocked: bool
+    lorry_parking_feature_icon: list
+    point: str
+    route_recommendation: list
+    start_timestamp: str
+    subtitle: str
+    title: str
 
 
-@dataclass
-class WarningLoadMatch:
+class WarningLoadMatch(TypedDict):
     id: str
 
 
-@dataclass
-class WarningListMatch:
+class WarningListMatch(TypedDict):
     road_id: str
 
 
-@dataclass
-class Webcam:
-    coordinate: Optional[dict] = None
-    description: Optional[list] = None
-    display_type: Optional[str] = None
-    extent: Optional[str] = None
-    footer: Optional[list] = None
-    future: Optional[bool] = None
-    icon: Optional[str] = None
-    identifier: Optional[str] = None
-    imageurl: Optional[str] = None
-    is_blocked: Optional[bool] = None
-    linkurl: Optional[str] = None
-    lorry_parking_feature_icon: Optional[list] = None
-    operator: Optional[str] = None
-    point: Optional[str] = None
-    route_recommendation: Optional[list] = None
-    subtitle: Optional[str] = None
-    title: Optional[str] = None
+class Webcam(TypedDict, total=False):
+    coordinate: dict
+    description: list
+    display_type: str
+    extent: str
+    footer: list
+    future: bool
+    icon: str
+    identifier: str
+    imageurl: str
+    is_blocked: bool
+    linkurl: str
+    lorry_parking_feature_icon: list
+    operator: str
+    point: str
+    route_recommendation: list
+    subtitle: str
+    title: str
 
 
-@dataclass
-class WebcamLoadMatch:
+class WebcamLoadMatch(TypedDict):
     id: str
 
 
-@dataclass
-class WebcamListMatch:
+class WebcamListMatch(TypedDict):
     road_id: str
-

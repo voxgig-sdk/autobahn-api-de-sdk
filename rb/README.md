@@ -28,16 +28,14 @@ require_relative "AutobahnApiDe_sdk"
 client = AutobahnApiDeSDK.new
 ```
 
-### 2. List closures
+### 2. List closure records
 
 ```ruby
 begin
-  result = client.closure.list
-  if result.is_a?(Array)
-    result.each do |item|
-      d = item.data_get
-      puts "#{d["id"]} #{d["name"]}"
-    end
+  # list returns an Array of Closure records — iterate directly.
+  closures = client.Closure.list
+  closures.each do |item|
+    puts "#{item["id"]} #{item["name"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -48,8 +46,9 @@ end
 
 ```ruby
 begin
-  result = client.closure.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare Closure record (raises on error).
+  closure = client.Closure.load({ "id" => "example_id" })
+  puts closure
 rescue => err
   warn "load failed: #{err}"
 end
@@ -96,13 +95,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = AutobahnApiDeSDK.test
+client = AutobahnApiDeSDK.test({
+  "entity" => { "closure" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.closure.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+closure = client.Closure.load({ "id" => "test01" })
+puts closure
 ```
 
 ### Use a custom fetch function
@@ -179,7 +182,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `prepare` | `(fetchargs) -> Hash` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> Hash` | Build and send an HTTP request. Returns a result hash (`result["ok"]`); does not raise. |
 | `Closure` | `(data) -> ClosureEntity` | Create a Closure entity instance. |
-| `ElectricChargingStation` | `(data) -> ElectricChargingStationEntity` | Create a ElectricChargingStation entity instance. |
+| `ElectricChargingStation` | `(data) -> ElectricChargingStationEntity` | Create an ElectricChargingStation entity instance. |
 | `ListAutobahnen` | `(data) -> ListAutobahnenEntity` | Create a ListAutobahnen entity instance. |
 | `ParkingLorry` | `(data) -> ParkingLorryEntity` | Create a ParkingLorry entity instance. |
 | `Roadwork` | `(data) -> RoadworkEntity` | Create a Roadwork entity instance. |
@@ -384,7 +387,7 @@ API path: `/{roadId}/services/webcam`
 
 ### Closure
 
-Create an instance: `const closure = client.closure`
+Create an instance: `closure = client.Closure`
 
 #### Operations
 
@@ -415,20 +418,22 @@ Create an instance: `const closure = client.closure`
 
 #### Example: Load
 
-```ts
-const closure = await client.closure.load({ id: 'closure_id' })
+```ruby
+# load returns the bare Closure record (raises on error).
+closure = client.Closure.load({ "id" => "closure_id" })
 ```
 
 #### Example: List
 
-```ts
-const closures = await client.closure.list()
+```ruby
+# list returns an Array of Closure records (raises on error).
+closures = client.Closure.list
 ```
 
 
 ### ElectricChargingStation
 
-Create an instance: `const electric_charging_station = client.electric_charging_station`
+Create an instance: `electric_charging_station = client.ElectricChargingStation`
 
 #### Operations
 
@@ -458,20 +463,22 @@ Create an instance: `const electric_charging_station = client.electric_charging_
 
 #### Example: Load
 
-```ts
-const electric_charging_station = await client.electric_charging_station.load({ id: 'electric_charging_station_id' })
+```ruby
+# load returns the bare ElectricChargingStation record (raises on error).
+electric_charging_station = client.ElectricChargingStation.load({ "id" => "electric_charging_station_id" })
 ```
 
 #### Example: List
 
-```ts
-const electric_charging_stations = await client.electric_charging_station.list()
+```ruby
+# list returns an Array of ElectricChargingStation records (raises on error).
+electric_charging_stations = client.ElectricChargingStation.list
 ```
 
 
 ### ListAutobahnen
 
-Create an instance: `const list_autobahnen = client.list_autobahnen`
+Create an instance: `list_autobahnen = client.ListAutobahnen`
 
 #### Operations
 
@@ -487,14 +494,15 @@ Create an instance: `const list_autobahnen = client.list_autobahnen`
 
 #### Example: List
 
-```ts
-const list_autobahnens = await client.list_autobahnen.list()
+```ruby
+# list returns an Array of ListAutobahnen records (raises on error).
+list_autobahnens = client.ListAutobahnen.list
 ```
 
 
 ### ParkingLorry
 
-Create an instance: `const parking_lorry = client.parking_lorry`
+Create an instance: `parking_lorry = client.ParkingLorry`
 
 #### Operations
 
@@ -524,20 +532,22 @@ Create an instance: `const parking_lorry = client.parking_lorry`
 
 #### Example: Load
 
-```ts
-const parking_lorry = await client.parking_lorry.load({ id: 'parking_lorry_id' })
+```ruby
+# load returns the bare ParkingLorry record (raises on error).
+parking_lorry = client.ParkingLorry.load({ "id" => "parking_lorry_id" })
 ```
 
 #### Example: List
 
-```ts
-const parking_lorrys = await client.parking_lorry.list()
+```ruby
+# list returns an Array of ParkingLorry records (raises on error).
+parking_lorrys = client.ParkingLorry.list
 ```
 
 
 ### Roadwork
 
-Create an instance: `const roadwork = client.roadwork`
+Create an instance: `roadwork = client.Roadwork`
 
 #### Operations
 
@@ -568,20 +578,22 @@ Create an instance: `const roadwork = client.roadwork`
 
 #### Example: Load
 
-```ts
-const roadwork = await client.roadwork.load({ id: 'roadwork_id' })
+```ruby
+# load returns the bare Roadwork record (raises on error).
+roadwork = client.Roadwork.load({ "id" => "roadwork_id" })
 ```
 
 #### Example: List
 
-```ts
-const roadworks = await client.roadwork.list()
+```ruby
+# list returns an Array of Roadwork records (raises on error).
+roadworks = client.Roadwork.list
 ```
 
 
 ### Warning
 
-Create an instance: `const warning = client.warning`
+Create an instance: `warning = client.Warning`
 
 #### Operations
 
@@ -612,20 +624,22 @@ Create an instance: `const warning = client.warning`
 
 #### Example: Load
 
-```ts
-const warning = await client.warning.load({ id: 'warning_id' })
+```ruby
+# load returns the bare Warning record (raises on error).
+warning = client.Warning.load({ "id" => "warning_id" })
 ```
 
 #### Example: List
 
-```ts
-const warnings = await client.warning.list()
+```ruby
+# list returns an Array of Warning records (raises on error).
+warnings = client.Warning.list
 ```
 
 
 ### Webcam
 
-Create an instance: `const webcam = client.webcam`
+Create an instance: `webcam = client.Webcam`
 
 #### Operations
 
@@ -658,14 +672,16 @@ Create an instance: `const webcam = client.webcam`
 
 #### Example: Load
 
-```ts
-const webcam = await client.webcam.load({ id: 'webcam_id' })
+```ruby
+# load returns the bare Webcam record (raises on error).
+webcam = client.Webcam.load({ "id" => "webcam_id" })
 ```
 
 #### Example: List
 
-```ts
-const webcams = await client.webcam.list()
+```ruby
+# list returns an Array of Webcam records (raises on error).
+webcams = client.Webcam.list
 ```
 
 
@@ -740,7 +756,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-closure = client.closure
+closure = client.Closure
 closure.load({ "id" => "example_id" })
 
 # closure.data_get now returns the loaded closure data

@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:closure():list() / client:closure():load({ id = ... })
-function AutobahnApiDeSDK:closure(data)
+-- Idiomatic facade: client:Closure():list() / client:Closure():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function AutobahnApiDeSDK:Closure(data)
   local EntityMod = require("entity.closure_entity")
   if data == nil then
     if self._closure == nil then
@@ -256,15 +257,10 @@ function AutobahnApiDeSDK:closure(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:closure() instead.
-function AutobahnApiDeSDK:Closure(data)
-  local EntityMod = require("entity.closure_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:electric_charging_station():list() / client:electric_charging_station():load({ id = ... })
-function AutobahnApiDeSDK:electric_charging_station(data)
+-- Idiomatic facade: client:ElectricChargingStation():list() / client:ElectricChargingStation():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function AutobahnApiDeSDK:ElectricChargingStation(data)
   local EntityMod = require("entity.electric_charging_station_entity")
   if data == nil then
     if self._electric_charging_station == nil then
@@ -275,15 +271,10 @@ function AutobahnApiDeSDK:electric_charging_station(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:electric_charging_station() instead.
-function AutobahnApiDeSDK:ElectricChargingStation(data)
-  local EntityMod = require("entity.electric_charging_station_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:list_autobahnen():list() / client:list_autobahnen():load({ id = ... })
-function AutobahnApiDeSDK:list_autobahnen(data)
+-- Idiomatic facade: client:ListAutobahnen():list() / client:ListAutobahnen():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function AutobahnApiDeSDK:ListAutobahnen(data)
   local EntityMod = require("entity.list_autobahnen_entity")
   if data == nil then
     if self._list_autobahnen == nil then
@@ -294,15 +285,10 @@ function AutobahnApiDeSDK:list_autobahnen(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:list_autobahnen() instead.
-function AutobahnApiDeSDK:ListAutobahnen(data)
-  local EntityMod = require("entity.list_autobahnen_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:parking_lorry():list() / client:parking_lorry():load({ id = ... })
-function AutobahnApiDeSDK:parking_lorry(data)
+-- Idiomatic facade: client:ParkingLorry():list() / client:ParkingLorry():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function AutobahnApiDeSDK:ParkingLorry(data)
   local EntityMod = require("entity.parking_lorry_entity")
   if data == nil then
     if self._parking_lorry == nil then
@@ -313,15 +299,10 @@ function AutobahnApiDeSDK:parking_lorry(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:parking_lorry() instead.
-function AutobahnApiDeSDK:ParkingLorry(data)
-  local EntityMod = require("entity.parking_lorry_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:roadwork():list() / client:roadwork():load({ id = ... })
-function AutobahnApiDeSDK:roadwork(data)
+-- Idiomatic facade: client:Roadwork():list() / client:Roadwork():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function AutobahnApiDeSDK:Roadwork(data)
   local EntityMod = require("entity.roadwork_entity")
   if data == nil then
     if self._roadwork == nil then
@@ -332,15 +313,10 @@ function AutobahnApiDeSDK:roadwork(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:roadwork() instead.
-function AutobahnApiDeSDK:Roadwork(data)
-  local EntityMod = require("entity.roadwork_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:warning():list() / client:warning():load({ id = ... })
-function AutobahnApiDeSDK:warning(data)
+-- Idiomatic facade: client:Warning():list() / client:Warning():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function AutobahnApiDeSDK:Warning(data)
   local EntityMod = require("entity.warning_entity")
   if data == nil then
     if self._warning == nil then
@@ -351,15 +327,10 @@ function AutobahnApiDeSDK:warning(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:warning() instead.
-function AutobahnApiDeSDK:Warning(data)
-  local EntityMod = require("entity.warning_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:webcam():list() / client:webcam():load({ id = ... })
-function AutobahnApiDeSDK:webcam(data)
+-- Idiomatic facade: client:Webcam():list() / client:Webcam():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function AutobahnApiDeSDK:Webcam(data)
   local EntityMod = require("entity.webcam_entity")
   if data == nil then
     if self._webcam == nil then
@@ -367,12 +338,6 @@ function AutobahnApiDeSDK:webcam(data)
     end
     return self._webcam
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:webcam() instead.
-function AutobahnApiDeSDK:Webcam(data)
-  local EntityMod = require("entity.webcam_entity")
   return EntityMod.new(self, data)
 end
 

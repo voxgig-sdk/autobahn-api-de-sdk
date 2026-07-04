@@ -30,53 +30,39 @@ go mod edit -replace github.com/voxgig-sdk/autobahn-api-de-sdk/go=../autobahn-ap
 This tutorial walks through creating a client, listing entities, and
 loading a specific record.
 
-### 1. Create a client
+### Quickstart
+
+A complete program: create a client, then call the entity operations.
+Each operation returns `(value, error)` — the value is the data itself
+(there is no `{ok, data}` wrapper), so check `err` and use the value
+directly.
 
 ```go
 package main
 
 import (
     "fmt"
-
     sdk "github.com/voxgig-sdk/autobahn-api-de-sdk/go"
-    "github.com/voxgig-sdk/autobahn-api-de-sdk/go/core"
 )
 
 func main() {
     client := sdk.New()
-```
 
-### 2. List closures
-
-```go
-    result, err := client.Closure(nil).List(nil, nil)
+    // List closure records — the value is the array of records itself.
+    closures, err := client.Closure(nil).List(nil, nil)
     if err != nil {
         panic(err)
     }
-
-    rm := core.ToMapAny(result)
-    if rm["ok"] == true {
-        for _, item := range rm["data"].([]any) {
-            p := core.ToMapAny(item)
-            fmt.Println(p["id"], p["name"])
-        }
+    for _, item := range closures.([]any) {
+        fmt.Println(item)
     }
-```
 
-### 3. Load a closure
-
-```go
-    result, err = client.Closure(nil).Load(
-        map[string]any{"id": "example_id"}, nil,
-    )
+    // Load a single closure — the value is the loaded record.
+    closure, err := client.Closure(nil).Load(map[string]any{"id": "example_id"}, nil)
     if err != nil {
         panic(err)
     }
-
-    rm = core.ToMapAny(result)
-    if rm["ok"] == true {
-        fmt.Println(rm["data"])
-    }
+    fmt.Println(closure)
 }
 ```
 
@@ -127,10 +113,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-result, err := client.Closure(nil).Load(
+closure, err := client.Closure(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
-// result contains mock response data
+if err != nil {
+    panic(err)
+}
+fmt.Println(closure) // the loaded mock data
 ```
 
 ### Use a custom fetch function
@@ -208,7 +197,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `Prepare` | `(fetchargs map[string]any) (map[string]any, error)` | Build an HTTP request definition without sending. |
 | `Direct` | `(fetchargs map[string]any) (map[string]any, error)` | Build and send an HTTP request. |
 | `Closure` | `(data map[string]any) AutobahnApiDeEntity` | Create a Closure entity instance. |
-| `ElectricChargingStation` | `(data map[string]any) AutobahnApiDeEntity` | Create a ElectricChargingStation entity instance. |
+| `ElectricChargingStation` | `(data map[string]any) AutobahnApiDeEntity` | Create an ElectricChargingStation entity instance. |
 | `ListAutobahnen` | `(data map[string]any) AutobahnApiDeEntity` | Create a ListAutobahnen entity instance. |
 | `ParkingLorry` | `(data map[string]any) AutobahnApiDeEntity` | Create a ParkingLorry entity instance. |
 | `Roadwork` | `(data map[string]any) AutobahnApiDeEntity` | Create a Roadwork entity instance. |
@@ -233,17 +222,24 @@ All entities implement the `AutobahnApiDeEntity` interface.
 
 ### Result shape
 
-Entity operations return `(any, error)`. The `any` value is a
-`map[string]any` with these keys:
+Entity operations return `(value, error)`. The `value` is the
+operation's data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `"ok"` | `bool` | `true` if the HTTP status is 2xx. |
-| `"status"` | `int` | HTTP status code. |
-| `"headers"` | `map[string]any` | Response headers. |
-| `"data"` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `Load` / `Create` / `Update` / `Remove` | the entity record (`map[string]any`) |
+| `List` | a `[]any` of entity records |
 
-On error, `"ok"` is `false` and `"err"` contains the error value.
+Check `err` first, then use the value directly (or the typed
+`...Typed` variants, which return the entity's model struct and a typed
+slice):
+
+    closure, err := client.Closure(nil).Load(map[string]any{"id": "example_id"}, nil)
+    if err != nil { /* handle */ }
+    // closure is the loaded record
+
+Only `Direct()` returns a response envelope — a `map[string]any` with
+`"ok"`, `"status"`, `"headers"`, and `"data"` keys.
 
 ### Entities
 
@@ -440,13 +436,21 @@ Create an instance: `closure := client.Closure(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Closure(nil).Load(map[string]any{"id": "closure_id"}, nil)
+closure, err := client.Closure(nil).Load(map[string]any{"id": "closure_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(closure) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.Closure(nil).List(nil, nil)
+closures, err := client.Closure(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(closures) // the array of records
 ```
 
 
@@ -483,13 +487,21 @@ Create an instance: `electric_charging_station := client.ElectricChargingStation
 #### Example: Load
 
 ```go
-result, err := client.ElectricChargingStation(nil).Load(map[string]any{"id": "electric_charging_station_id"}, nil)
+electric_charging_station, err := client.ElectricChargingStation(nil).Load(map[string]any{"id": "electric_charging_station_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(electric_charging_station) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.ElectricChargingStation(nil).List(nil, nil)
+electric_charging_stations, err := client.ElectricChargingStation(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(electric_charging_stations) // the array of records
 ```
 
 
@@ -512,7 +524,11 @@ Create an instance: `list_autobahnen := client.ListAutobahnen(nil)`
 #### Example: List
 
 ```go
-results, err := client.ListAutobahnen(nil).List(nil, nil)
+list_autobahnens, err := client.ListAutobahnen(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(list_autobahnens) // the array of records
 ```
 
 
@@ -549,13 +565,21 @@ Create an instance: `parking_lorry := client.ParkingLorry(nil)`
 #### Example: Load
 
 ```go
-result, err := client.ParkingLorry(nil).Load(map[string]any{"id": "parking_lorry_id"}, nil)
+parking_lorry, err := client.ParkingLorry(nil).Load(map[string]any{"id": "parking_lorry_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(parking_lorry) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.ParkingLorry(nil).List(nil, nil)
+parking_lorrys, err := client.ParkingLorry(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(parking_lorrys) // the array of records
 ```
 
 
@@ -593,13 +617,21 @@ Create an instance: `roadwork := client.Roadwork(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Roadwork(nil).Load(map[string]any{"id": "roadwork_id"}, nil)
+roadwork, err := client.Roadwork(nil).Load(map[string]any{"id": "roadwork_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(roadwork) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.Roadwork(nil).List(nil, nil)
+roadworks, err := client.Roadwork(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(roadworks) // the array of records
 ```
 
 
@@ -637,13 +669,21 @@ Create an instance: `warning := client.Warning(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Warning(nil).Load(map[string]any{"id": "warning_id"}, nil)
+warning, err := client.Warning(nil).Load(map[string]any{"id": "warning_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(warning) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.Warning(nil).List(nil, nil)
+warnings, err := client.Warning(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(warnings) // the array of records
 ```
 
 
@@ -683,13 +723,21 @@ Create an instance: `webcam := client.Webcam(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Webcam(nil).Load(map[string]any{"id": "webcam_id"}, nil)
+webcam, err := client.Webcam(nil).Load(map[string]any{"id": "webcam_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(webcam) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-results, err := client.Webcam(nil).List(nil, nil)
+webcams, err := client.Webcam(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(webcams) // the array of records
 ```
 
 

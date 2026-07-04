@@ -233,10 +233,10 @@ class AutobahnApiDeSDK
 
     private $_closure = null;
 
-    // Idiomatic facade: $client->closure()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Closure() (PHP method
-    // names are case-insensitive).
-    public function closure($data = null)
+    // Canonical facade: $client->Closure()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->closure()
+    // resolves here too.
+    public function Closure($data = null)
     {
         require_once __DIR__ . '/entity/closure_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class AutobahnApiDeSDK
 
     private $_electric_charging_station = null;
 
-    // Idiomatic facade: $client->electric_charging_station()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias ElectricChargingStation() (PHP method
-    // names are case-insensitive).
-    public function electric_charging_station($data = null)
+    // Canonical facade: $client->ElectricChargingStation()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->electric_charging_station()
+    // resolves here too.
+    public function ElectricChargingStation($data = null)
     {
         require_once __DIR__ . '/entity/electric_charging_station_entity.php';
         if ($data === null) {
@@ -269,10 +269,10 @@ class AutobahnApiDeSDK
 
     private $_list_autobahnen = null;
 
-    // Idiomatic facade: $client->list_autobahnen()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias ListAutobahnen() (PHP method
-    // names are case-insensitive).
-    public function list_autobahnen($data = null)
+    // Canonical facade: $client->ListAutobahnen()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->list_autobahnen()
+    // resolves here too.
+    public function ListAutobahnen($data = null)
     {
         require_once __DIR__ . '/entity/list_autobahnen_entity.php';
         if ($data === null) {
@@ -287,10 +287,10 @@ class AutobahnApiDeSDK
 
     private $_parking_lorry = null;
 
-    // Idiomatic facade: $client->parking_lorry()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias ParkingLorry() (PHP method
-    // names are case-insensitive).
-    public function parking_lorry($data = null)
+    // Canonical facade: $client->ParkingLorry()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->parking_lorry()
+    // resolves here too.
+    public function ParkingLorry($data = null)
     {
         require_once __DIR__ . '/entity/parking_lorry_entity.php';
         if ($data === null) {
@@ -305,10 +305,10 @@ class AutobahnApiDeSDK
 
     private $_roadwork = null;
 
-    // Idiomatic facade: $client->roadwork()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Roadwork() (PHP method
-    // names are case-insensitive).
-    public function roadwork($data = null)
+    // Canonical facade: $client->Roadwork()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->roadwork()
+    // resolves here too.
+    public function Roadwork($data = null)
     {
         require_once __DIR__ . '/entity/roadwork_entity.php';
         if ($data === null) {
@@ -323,10 +323,10 @@ class AutobahnApiDeSDK
 
     private $_warning = null;
 
-    // Idiomatic facade: $client->warning()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Warning() (PHP method
-    // names are case-insensitive).
-    public function warning($data = null)
+    // Canonical facade: $client->Warning()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->warning()
+    // resolves here too.
+    public function Warning($data = null)
     {
         require_once __DIR__ . '/entity/warning_entity.php';
         if ($data === null) {
@@ -341,10 +341,10 @@ class AutobahnApiDeSDK
 
     private $_webcam = null;
 
-    // Idiomatic facade: $client->webcam()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Webcam() (PHP method
-    // names are case-insensitive).
-    public function webcam($data = null)
+    // Canonical facade: $client->Webcam()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->webcam()
+    // resolves here too.
+    public function Webcam($data = null)
     {
         require_once __DIR__ . '/entity/webcam_entity.php';
         if ($data === null) {

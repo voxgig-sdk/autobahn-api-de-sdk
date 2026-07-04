@@ -110,7 +110,7 @@ same parameters as `direct()`. Raises on error.
 ## ClosureEntity
 
 ```ruby
-closure = client.closure
+closure = client.Closure
 ```
 
 ### Fields
@@ -140,7 +140,7 @@ closure = client.closure
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.closure.list(nil)
+results = client.Closure.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -148,7 +148,7 @@ results = client.closure.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.closure.load({ "id" => "closure_id" })
+result = client.Closure.load({ "id" => "closure_id" })
 ```
 
 ### Common Methods
@@ -184,7 +184,7 @@ Return the entity name.
 ## ElectricChargingStationEntity
 
 ```ruby
-electric_charging_station = client.electric_charging_station
+electric_charging_station = client.ElectricChargingStation
 ```
 
 ### Fields
@@ -213,7 +213,7 @@ electric_charging_station = client.electric_charging_station
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.electric_charging_station.list(nil)
+results = client.ElectricChargingStation.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -221,7 +221,7 @@ results = client.electric_charging_station.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.electric_charging_station.load({ "id" => "electric_charging_station_id" })
+result = client.ElectricChargingStation.load({ "id" => "electric_charging_station_id" })
 ```
 
 ### Common Methods
@@ -257,7 +257,7 @@ Return the entity name.
 ## ListAutobahnenEntity
 
 ```ruby
-list_autobahnen = client.list_autobahnen
+list_autobahnen = client.ListAutobahnen
 ```
 
 ### Fields
@@ -273,7 +273,7 @@ list_autobahnen = client.list_autobahnen
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.list_autobahnen.list(nil)
+results = client.ListAutobahnen.list(nil)
 ```
 
 ### Common Methods
@@ -309,7 +309,7 @@ Return the entity name.
 ## ParkingLorryEntity
 
 ```ruby
-parking_lorry = client.parking_lorry
+parking_lorry = client.ParkingLorry
 ```
 
 ### Fields
@@ -338,7 +338,7 @@ parking_lorry = client.parking_lorry
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.parking_lorry.list(nil)
+results = client.ParkingLorry.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -346,7 +346,7 @@ results = client.parking_lorry.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.parking_lorry.load({ "id" => "parking_lorry_id" })
+result = client.ParkingLorry.load({ "id" => "parking_lorry_id" })
 ```
 
 ### Common Methods
@@ -382,7 +382,7 @@ Return the entity name.
 ## RoadworkEntity
 
 ```ruby
-roadwork = client.roadwork
+roadwork = client.Roadwork
 ```
 
 ### Fields
@@ -412,7 +412,7 @@ roadwork = client.roadwork
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.roadwork.list(nil)
+results = client.Roadwork.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -420,7 +420,7 @@ results = client.roadwork.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.roadwork.load({ "id" => "roadwork_id" })
+result = client.Roadwork.load({ "id" => "roadwork_id" })
 ```
 
 ### Common Methods
@@ -456,7 +456,7 @@ Return the entity name.
 ## WarningEntity
 
 ```ruby
-warning = client.warning
+warning = client.Warning
 ```
 
 ### Fields
@@ -486,7 +486,7 @@ warning = client.warning
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.warning.list(nil)
+results = client.Warning.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -494,7 +494,7 @@ results = client.warning.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.warning.load({ "id" => "warning_id" })
+result = client.Warning.load({ "id" => "warning_id" })
 ```
 
 ### Common Methods
@@ -530,7 +530,7 @@ Return the entity name.
 ## WebcamEntity
 
 ```ruby
-webcam = client.webcam
+webcam = client.Webcam
 ```
 
 ### Fields
@@ -562,7 +562,7 @@ webcam = client.webcam
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.webcam.list(nil)
+results = client.Webcam.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -570,7 +570,7 @@ results = client.webcam.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.webcam.load({ "id" => "webcam_id" })
+result = client.Webcam.load({ "id" => "webcam_id" })
 ```
 
 ### Common Methods

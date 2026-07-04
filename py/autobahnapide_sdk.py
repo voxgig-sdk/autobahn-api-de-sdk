@@ -220,121 +220,51 @@ class AutobahnApiDeSDK:
         }
 
 
-    @property
-    def closure(self):
-        """Idiomatic facade: client.closure.list() / client.closure.load({"id": ...})."""
-        from entity.closure_entity import ClosureEntity
-        cached = getattr(self, "_closure", None)
-        if cached is None:
-            cached = ClosureEntity(self, None)
-            self._closure = cached
-        return cached
-
-    def Closure(self, data=None):
-        # Deprecated: use client.closure instead.
+    def Closure(self, data=None) -> "ClosureEntity":
+        """Entity factory: client.Closure().list({}) / client.Closure().load({"id": ...})."""
         from entity.closure_entity import ClosureEntity
         return ClosureEntity(self, data)
 
 
-    @property
-    def electric_charging_station(self):
-        """Idiomatic facade: client.electric_charging_station.list() / client.electric_charging_station.load({"id": ...})."""
-        from entity.electric_charging_station_entity import ElectricChargingStationEntity
-        cached = getattr(self, "_electric_charging_station", None)
-        if cached is None:
-            cached = ElectricChargingStationEntity(self, None)
-            self._electric_charging_station = cached
-        return cached
-
-    def ElectricChargingStation(self, data=None):
-        # Deprecated: use client.electric_charging_station instead.
+    def ElectricChargingStation(self, data=None) -> "ElectricChargingStationEntity":
+        """Entity factory: client.ElectricChargingStation().list({}) / client.ElectricChargingStation().load({"id": ...})."""
         from entity.electric_charging_station_entity import ElectricChargingStationEntity
         return ElectricChargingStationEntity(self, data)
 
 
-    @property
-    def list_autobahnen(self):
-        """Idiomatic facade: client.list_autobahnen.list() / client.list_autobahnen.load({"id": ...})."""
-        from entity.list_autobahnen_entity import ListAutobahnenEntity
-        cached = getattr(self, "_list_autobahnen", None)
-        if cached is None:
-            cached = ListAutobahnenEntity(self, None)
-            self._list_autobahnen = cached
-        return cached
-
-    def ListAutobahnen(self, data=None):
-        # Deprecated: use client.list_autobahnen instead.
+    def ListAutobahnen(self, data=None) -> "ListAutobahnenEntity":
+        """Entity factory: client.ListAutobahnen().list({}) / client.ListAutobahnen().load({"id": ...})."""
         from entity.list_autobahnen_entity import ListAutobahnenEntity
         return ListAutobahnenEntity(self, data)
 
 
-    @property
-    def parking_lorry(self):
-        """Idiomatic facade: client.parking_lorry.list() / client.parking_lorry.load({"id": ...})."""
-        from entity.parking_lorry_entity import ParkingLorryEntity
-        cached = getattr(self, "_parking_lorry", None)
-        if cached is None:
-            cached = ParkingLorryEntity(self, None)
-            self._parking_lorry = cached
-        return cached
-
-    def ParkingLorry(self, data=None):
-        # Deprecated: use client.parking_lorry instead.
+    def ParkingLorry(self, data=None) -> "ParkingLorryEntity":
+        """Entity factory: client.ParkingLorry().list({}) / client.ParkingLorry().load({"id": ...})."""
         from entity.parking_lorry_entity import ParkingLorryEntity
         return ParkingLorryEntity(self, data)
 
 
-    @property
-    def roadwork(self):
-        """Idiomatic facade: client.roadwork.list() / client.roadwork.load({"id": ...})."""
-        from entity.roadwork_entity import RoadworkEntity
-        cached = getattr(self, "_roadwork", None)
-        if cached is None:
-            cached = RoadworkEntity(self, None)
-            self._roadwork = cached
-        return cached
-
-    def Roadwork(self, data=None):
-        # Deprecated: use client.roadwork instead.
+    def Roadwork(self, data=None) -> "RoadworkEntity":
+        """Entity factory: client.Roadwork().list({}) / client.Roadwork().load({"id": ...})."""
         from entity.roadwork_entity import RoadworkEntity
         return RoadworkEntity(self, data)
 
 
-    @property
-    def warning(self):
-        """Idiomatic facade: client.warning.list() / client.warning.load({"id": ...})."""
-        from entity.warning_entity import WarningEntity
-        cached = getattr(self, "_warning", None)
-        if cached is None:
-            cached = WarningEntity(self, None)
-            self._warning = cached
-        return cached
-
-    def Warning(self, data=None):
-        # Deprecated: use client.warning instead.
+    def Warning(self, data=None) -> "WarningEntity":
+        """Entity factory: client.Warning().list({}) / client.Warning().load({"id": ...})."""
         from entity.warning_entity import WarningEntity
         return WarningEntity(self, data)
 
 
-    @property
-    def webcam(self):
-        """Idiomatic facade: client.webcam.list() / client.webcam.load({"id": ...})."""
-        from entity.webcam_entity import WebcamEntity
-        cached = getattr(self, "_webcam", None)
-        if cached is None:
-            cached = WebcamEntity(self, None)
-            self._webcam = cached
-        return cached
-
-    def Webcam(self, data=None):
-        # Deprecated: use client.webcam instead.
+    def Webcam(self, data=None) -> "WebcamEntity":
+        """Entity factory: client.Webcam().list({}) / client.Webcam().load({"id": ...})."""
         from entity.webcam_entity import WebcamEntity
         return WebcamEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "AutobahnApiDeSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -354,3 +284,15 @@ class AutobahnApiDeSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.closure_entity import ClosureEntity
+    from entity.electric_charging_station_entity import ElectricChargingStationEntity
+    from entity.list_autobahnen_entity import ListAutobahnenEntity
+    from entity.parking_lorry_entity import ParkingLorryEntity
+    from entity.roadwork_entity import RoadworkEntity
+    from entity.warning_entity import WarningEntity
+    from entity.webcam_entity import WebcamEntity

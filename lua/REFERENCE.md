@@ -107,7 +107,7 @@ same parameters as `direct()`.
 ## ClosureEntity
 
 ```lua
-local closure = client:closure(nil)
+local closure = client:Closure(nil)
 ```
 
 ### Fields
@@ -137,7 +137,7 @@ local closure = client:closure(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:closure():list()
+local results, err = client:Closure():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -145,7 +145,7 @@ local results, err = client:closure():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:closure():load({ id = "closure_id" })
+local result, err = client:Closure():load({ id = "closure_id" })
 ```
 
 ### Common Methods
@@ -181,7 +181,7 @@ Return the entity name.
 ## ElectricChargingStationEntity
 
 ```lua
-local electric_charging_station = client:electric_charging_station(nil)
+local electric_charging_station = client:ElectricChargingStation(nil)
 ```
 
 ### Fields
@@ -210,7 +210,7 @@ local electric_charging_station = client:electric_charging_station(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:electric_charging_station():list()
+local results, err = client:ElectricChargingStation():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -218,7 +218,7 @@ local results, err = client:electric_charging_station():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:electric_charging_station():load({ id = "electric_charging_station_id" })
+local result, err = client:ElectricChargingStation():load({ id = "electric_charging_station_id" })
 ```
 
 ### Common Methods
@@ -254,7 +254,7 @@ Return the entity name.
 ## ListAutobahnenEntity
 
 ```lua
-local list_autobahnen = client:list_autobahnen(nil)
+local list_autobahnen = client:ListAutobahnen(nil)
 ```
 
 ### Fields
@@ -270,7 +270,7 @@ local list_autobahnen = client:list_autobahnen(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:list_autobahnen():list()
+local results, err = client:ListAutobahnen():list()
 ```
 
 ### Common Methods
@@ -306,7 +306,7 @@ Return the entity name.
 ## ParkingLorryEntity
 
 ```lua
-local parking_lorry = client:parking_lorry(nil)
+local parking_lorry = client:ParkingLorry(nil)
 ```
 
 ### Fields
@@ -335,7 +335,7 @@ local parking_lorry = client:parking_lorry(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:parking_lorry():list()
+local results, err = client:ParkingLorry():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -343,7 +343,7 @@ local results, err = client:parking_lorry():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:parking_lorry():load({ id = "parking_lorry_id" })
+local result, err = client:ParkingLorry():load({ id = "parking_lorry_id" })
 ```
 
 ### Common Methods
@@ -379,7 +379,7 @@ Return the entity name.
 ## RoadworkEntity
 
 ```lua
-local roadwork = client:roadwork(nil)
+local roadwork = client:Roadwork(nil)
 ```
 
 ### Fields
@@ -409,7 +409,7 @@ local roadwork = client:roadwork(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:roadwork():list()
+local results, err = client:Roadwork():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -417,7 +417,7 @@ local results, err = client:roadwork():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:roadwork():load({ id = "roadwork_id" })
+local result, err = client:Roadwork():load({ id = "roadwork_id" })
 ```
 
 ### Common Methods
@@ -453,7 +453,7 @@ Return the entity name.
 ## WarningEntity
 
 ```lua
-local warning = client:warning(nil)
+local warning = client:Warning(nil)
 ```
 
 ### Fields
@@ -483,7 +483,7 @@ local warning = client:warning(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:warning():list()
+local results, err = client:Warning():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -491,7 +491,7 @@ local results, err = client:warning():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:warning():load({ id = "warning_id" })
+local result, err = client:Warning():load({ id = "warning_id" })
 ```
 
 ### Common Methods
@@ -527,7 +527,7 @@ Return the entity name.
 ## WebcamEntity
 
 ```lua
-local webcam = client:webcam(nil)
+local webcam = client:Webcam(nil)
 ```
 
 ### Fields
@@ -559,7 +559,7 @@ local webcam = client:webcam(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:webcam():list()
+local results, err = client:Webcam():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -567,7 +567,7 @@ local results, err = client:webcam():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:webcam():load({ id = "webcam_id" })
+local result, err = client:Webcam():load({ id = "webcam_id" })
 ```
 
 ### Common Methods
