@@ -70,8 +70,7 @@ type ListAutobahnen struct {
 	Road *[]any `json:"road,omitempty"`
 }
 
-// ListAutobahnenListMatch mirrors the list_autobahnen fields as an all-optional match
-// filter (Go analog of Partial<ListAutobahnen>).
+// ListAutobahnenListMatch is the typed request payload for ListAutobahnen.ListTyped.
 type ListAutobahnenListMatch struct {
 	Road *[]any `json:"road,omitempty"`
 }

@@ -8,7 +8,7 @@ Complete API reference for the AutobahnApiDe Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'autobahn-api-de_sdk'
+require_relative 'AutobahnApiDe_sdk'
 
 client = AutobahnApiDeSDK.new(options)
 ```
@@ -117,30 +117,30 @@ closure = client.Closure
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `coordinate` | ``$OBJECT`` | No |  |
-| `description` | ``$ARRAY`` | No |  |
-| `display_type` | ``$STRING`` | No |  |
-| `extent` | ``$STRING`` | No |  |
-| `footer` | ``$ARRAY`` | No |  |
-| `future` | ``$BOOLEAN`` | No |  |
-| `icon` | ``$STRING`` | No |  |
-| `identifier` | ``$STRING`` | No |  |
-| `is_blocked` | ``$BOOLEAN`` | No |  |
-| `lorry_parking_feature_icon` | ``$ARRAY`` | No |  |
-| `point` | ``$STRING`` | No |  |
-| `route_recommendation` | ``$ARRAY`` | No |  |
-| `start_timestamp` | ``$STRING`` | No |  |
-| `subtitle` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
+| `coordinate` | `Hash` | No |  |
+| `description` | `Array` | No |  |
+| `display_type` | `String` | No |  |
+| `extent` | `String` | No |  |
+| `footer` | `Array` | No |  |
+| `future` | `Boolean` | No |  |
+| `icon` | `String` | No |  |
+| `identifier` | `String` | No |  |
+| `is_blocked` | `Boolean` | No |  |
+| `lorry_parking_feature_icon` | `Array` | No |  |
+| `point` | `String` | No |  |
+| `route_recommendation` | `Array` | No |  |
+| `start_timestamp` | `String` | No |  |
+| `subtitle` | `String` | No |  |
+| `title` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Closure.list(nil)
+results = client.Closure.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -191,29 +191,29 @@ electric_charging_station = client.ElectricChargingStation
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `coordinate` | ``$OBJECT`` | No |  |
-| `description` | ``$ARRAY`` | No |  |
-| `display_type` | ``$STRING`` | No |  |
-| `extent` | ``$STRING`` | No |  |
-| `footer` | ``$ARRAY`` | No |  |
-| `future` | ``$BOOLEAN`` | No |  |
-| `icon` | ``$STRING`` | No |  |
-| `identifier` | ``$STRING`` | No |  |
-| `is_blocked` | ``$BOOLEAN`` | No |  |
-| `lorry_parking_feature_icon` | ``$ARRAY`` | No |  |
-| `point` | ``$STRING`` | No |  |
-| `route_recommendation` | ``$ARRAY`` | No |  |
-| `subtitle` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
+| `coordinate` | `Hash` | No |  |
+| `description` | `Array` | No |  |
+| `display_type` | `String` | No |  |
+| `extent` | `String` | No |  |
+| `footer` | `Array` | No |  |
+| `future` | `Boolean` | No |  |
+| `icon` | `String` | No |  |
+| `identifier` | `String` | No |  |
+| `is_blocked` | `Boolean` | No |  |
+| `lorry_parking_feature_icon` | `Array` | No |  |
+| `point` | `String` | No |  |
+| `route_recommendation` | `Array` | No |  |
+| `subtitle` | `String` | No |  |
+| `title` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.ElectricChargingStation.list(nil)
+results = client.ElectricChargingStation.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -264,16 +264,16 @@ list_autobahnen = client.ListAutobahnen
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `road` | ``$ARRAY`` | No |  |
+| `road` | `Array` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.ListAutobahnen.list(nil)
+results = client.ListAutobahnen.list
 ```
 
 ### Common Methods
@@ -316,29 +316,29 @@ parking_lorry = client.ParkingLorry
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `coordinate` | ``$OBJECT`` | No |  |
-| `description` | ``$ARRAY`` | No |  |
-| `display_type` | ``$STRING`` | No |  |
-| `extent` | ``$STRING`` | No |  |
-| `footer` | ``$ARRAY`` | No |  |
-| `future` | ``$BOOLEAN`` | No |  |
-| `icon` | ``$STRING`` | No |  |
-| `identifier` | ``$STRING`` | No |  |
-| `is_blocked` | ``$BOOLEAN`` | No |  |
-| `lorry_parking_feature_icon` | ``$ARRAY`` | No |  |
-| `point` | ``$STRING`` | No |  |
-| `route_recommendation` | ``$ARRAY`` | No |  |
-| `subtitle` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
+| `coordinate` | `Hash` | No |  |
+| `description` | `Array` | No |  |
+| `display_type` | `String` | No |  |
+| `extent` | `String` | No |  |
+| `footer` | `Array` | No |  |
+| `future` | `Boolean` | No |  |
+| `icon` | `String` | No |  |
+| `identifier` | `String` | No |  |
+| `is_blocked` | `Boolean` | No |  |
+| `lorry_parking_feature_icon` | `Array` | No |  |
+| `point` | `String` | No |  |
+| `route_recommendation` | `Array` | No |  |
+| `subtitle` | `String` | No |  |
+| `title` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.ParkingLorry.list(nil)
+results = client.ParkingLorry.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -389,30 +389,30 @@ roadwork = client.Roadwork
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `coordinate` | ``$OBJECT`` | No |  |
-| `description` | ``$ARRAY`` | No |  |
-| `display_type` | ``$STRING`` | No |  |
-| `extent` | ``$STRING`` | No |  |
-| `footer` | ``$ARRAY`` | No |  |
-| `future` | ``$BOOLEAN`` | No |  |
-| `icon` | ``$STRING`` | No |  |
-| `identifier` | ``$STRING`` | No |  |
-| `is_blocked` | ``$BOOLEAN`` | No |  |
-| `lorry_parking_feature_icon` | ``$ARRAY`` | No |  |
-| `point` | ``$STRING`` | No |  |
-| `route_recommendation` | ``$ARRAY`` | No |  |
-| `start_timestamp` | ``$STRING`` | No |  |
-| `subtitle` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
+| `coordinate` | `Hash` | No |  |
+| `description` | `Array` | No |  |
+| `display_type` | `String` | No |  |
+| `extent` | `String` | No |  |
+| `footer` | `Array` | No |  |
+| `future` | `Boolean` | No |  |
+| `icon` | `String` | No |  |
+| `identifier` | `String` | No |  |
+| `is_blocked` | `Boolean` | No |  |
+| `lorry_parking_feature_icon` | `Array` | No |  |
+| `point` | `String` | No |  |
+| `route_recommendation` | `Array` | No |  |
+| `start_timestamp` | `String` | No |  |
+| `subtitle` | `String` | No |  |
+| `title` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Roadwork.list(nil)
+results = client.Roadwork.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -463,30 +463,30 @@ warning = client.Warning
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `coordinate` | ``$OBJECT`` | No |  |
-| `description` | ``$ARRAY`` | No |  |
-| `display_type` | ``$STRING`` | No |  |
-| `extent` | ``$STRING`` | No |  |
-| `footer` | ``$ARRAY`` | No |  |
-| `future` | ``$BOOLEAN`` | No |  |
-| `icon` | ``$STRING`` | No |  |
-| `identifier` | ``$STRING`` | No |  |
-| `is_blocked` | ``$BOOLEAN`` | No |  |
-| `lorry_parking_feature_icon` | ``$ARRAY`` | No |  |
-| `point` | ``$STRING`` | No |  |
-| `route_recommendation` | ``$ARRAY`` | No |  |
-| `start_timestamp` | ``$STRING`` | No |  |
-| `subtitle` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
+| `coordinate` | `Hash` | No |  |
+| `description` | `Array` | No |  |
+| `display_type` | `String` | No |  |
+| `extent` | `String` | No |  |
+| `footer` | `Array` | No |  |
+| `future` | `Boolean` | No |  |
+| `icon` | `String` | No |  |
+| `identifier` | `String` | No |  |
+| `is_blocked` | `Boolean` | No |  |
+| `lorry_parking_feature_icon` | `Array` | No |  |
+| `point` | `String` | No |  |
+| `route_recommendation` | `Array` | No |  |
+| `start_timestamp` | `String` | No |  |
+| `subtitle` | `String` | No |  |
+| `title` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Warning.list(nil)
+results = client.Warning.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -537,32 +537,32 @@ webcam = client.Webcam
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `coordinate` | ``$OBJECT`` | No |  |
-| `description` | ``$ARRAY`` | No |  |
-| `display_type` | ``$STRING`` | No |  |
-| `extent` | ``$STRING`` | No |  |
-| `footer` | ``$ARRAY`` | No |  |
-| `future` | ``$BOOLEAN`` | No |  |
-| `icon` | ``$STRING`` | No |  |
-| `identifier` | ``$STRING`` | No |  |
-| `imageurl` | ``$STRING`` | No |  |
-| `is_blocked` | ``$BOOLEAN`` | No |  |
-| `linkurl` | ``$STRING`` | No |  |
-| `lorry_parking_feature_icon` | ``$ARRAY`` | No |  |
-| `operator` | ``$STRING`` | No |  |
-| `point` | ``$STRING`` | No |  |
-| `route_recommendation` | ``$ARRAY`` | No |  |
-| `subtitle` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
+| `coordinate` | `Hash` | No |  |
+| `description` | `Array` | No |  |
+| `display_type` | `String` | No |  |
+| `extent` | `String` | No |  |
+| `footer` | `Array` | No |  |
+| `future` | `Boolean` | No |  |
+| `icon` | `String` | No |  |
+| `identifier` | `String` | No |  |
+| `imageurl` | `String` | No |  |
+| `is_blocked` | `Boolean` | No |  |
+| `linkurl` | `String` | No |  |
+| `lorry_parking_feature_icon` | `Array` | No |  |
+| `operator` | `String` | No |  |
+| `point` | `String` | No |  |
+| `route_recommendation` | `Array` | No |  |
+| `subtitle` | `String` | No |  |
+| `title` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Webcam.list(nil)
+results = client.Webcam.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`

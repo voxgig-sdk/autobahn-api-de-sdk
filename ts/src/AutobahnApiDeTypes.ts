@@ -60,7 +60,9 @@ export interface ListAutobahnen {
   road?: any[]
 }
 
-export type ListAutobahnenListMatch = Partial<ListAutobahnen>
+export interface ListAutobahnenListMatch {
+  road?: any[]
+}
 
 export interface ParkingLorry {
   coordinate?: Record<string, any>

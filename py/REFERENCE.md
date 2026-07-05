@@ -8,7 +8,7 @@ Complete API reference for the AutobahnApiDe Python SDK.
 ### Constructor
 
 ```python
-from autobahn-api-de_sdk import AutobahnApiDeSDK
+from autobahnapide_sdk import AutobahnApiDeSDK
 
 client = AutobahnApiDeSDK(options)
 ```
@@ -111,30 +111,30 @@ closure = client.Closure()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `coordinate` | ``$OBJECT`` | No |  |
-| `description` | ``$ARRAY`` | No |  |
-| `display_type` | ``$STRING`` | No |  |
-| `extent` | ``$STRING`` | No |  |
-| `footer` | ``$ARRAY`` | No |  |
-| `future` | ``$BOOLEAN`` | No |  |
-| `icon` | ``$STRING`` | No |  |
-| `identifier` | ``$STRING`` | No |  |
-| `is_blocked` | ``$BOOLEAN`` | No |  |
-| `lorry_parking_feature_icon` | ``$ARRAY`` | No |  |
-| `point` | ``$STRING`` | No |  |
-| `route_recommendation` | ``$ARRAY`` | No |  |
-| `start_timestamp` | ``$STRING`` | No |  |
-| `subtitle` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
+| `coordinate` | `dict` | No |  |
+| `description` | `list` | No |  |
+| `display_type` | `str` | No |  |
+| `extent` | `str` | No |  |
+| `footer` | `list` | No |  |
+| `future` | `bool` | No |  |
+| `icon` | `str` | No |  |
+| `identifier` | `str` | No |  |
+| `is_blocked` | `bool` | No |  |
+| `lorry_parking_feature_icon` | `list` | No |  |
+| `point` | `str` | No |  |
+| `route_recommendation` | `list` | No |  |
+| `start_timestamp` | `str` | No |  |
+| `subtitle` | `str` | No |  |
+| `title` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Closure().list({})
+results = client.Closure().list()
 for closure in results:
     print(closure)
 ```
@@ -186,29 +186,29 @@ electric_charging_station = client.ElectricChargingStation()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `coordinate` | ``$OBJECT`` | No |  |
-| `description` | ``$ARRAY`` | No |  |
-| `display_type` | ``$STRING`` | No |  |
-| `extent` | ``$STRING`` | No |  |
-| `footer` | ``$ARRAY`` | No |  |
-| `future` | ``$BOOLEAN`` | No |  |
-| `icon` | ``$STRING`` | No |  |
-| `identifier` | ``$STRING`` | No |  |
-| `is_blocked` | ``$BOOLEAN`` | No |  |
-| `lorry_parking_feature_icon` | ``$ARRAY`` | No |  |
-| `point` | ``$STRING`` | No |  |
-| `route_recommendation` | ``$ARRAY`` | No |  |
-| `subtitle` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
+| `coordinate` | `dict` | No |  |
+| `description` | `list` | No |  |
+| `display_type` | `str` | No |  |
+| `extent` | `str` | No |  |
+| `footer` | `list` | No |  |
+| `future` | `bool` | No |  |
+| `icon` | `str` | No |  |
+| `identifier` | `str` | No |  |
+| `is_blocked` | `bool` | No |  |
+| `lorry_parking_feature_icon` | `list` | No |  |
+| `point` | `str` | No |  |
+| `route_recommendation` | `list` | No |  |
+| `subtitle` | `str` | No |  |
+| `title` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ElectricChargingStation().list({})
+results = client.ElectricChargingStation().list()
 for electric_charging_station in results:
     print(electric_charging_station)
 ```
@@ -260,16 +260,16 @@ list_autobahnen = client.ListAutobahnen()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `road` | ``$ARRAY`` | No |  |
+| `road` | `list` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ListAutobahnen().list({})
+results = client.ListAutobahnen().list()
 for list_autobahnen in results:
     print(list_autobahnen)
 ```
@@ -313,29 +313,29 @@ parking_lorry = client.ParkingLorry()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `coordinate` | ``$OBJECT`` | No |  |
-| `description` | ``$ARRAY`` | No |  |
-| `display_type` | ``$STRING`` | No |  |
-| `extent` | ``$STRING`` | No |  |
-| `footer` | ``$ARRAY`` | No |  |
-| `future` | ``$BOOLEAN`` | No |  |
-| `icon` | ``$STRING`` | No |  |
-| `identifier` | ``$STRING`` | No |  |
-| `is_blocked` | ``$BOOLEAN`` | No |  |
-| `lorry_parking_feature_icon` | ``$ARRAY`` | No |  |
-| `point` | ``$STRING`` | No |  |
-| `route_recommendation` | ``$ARRAY`` | No |  |
-| `subtitle` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
+| `coordinate` | `dict` | No |  |
+| `description` | `list` | No |  |
+| `display_type` | `str` | No |  |
+| `extent` | `str` | No |  |
+| `footer` | `list` | No |  |
+| `future` | `bool` | No |  |
+| `icon` | `str` | No |  |
+| `identifier` | `str` | No |  |
+| `is_blocked` | `bool` | No |  |
+| `lorry_parking_feature_icon` | `list` | No |  |
+| `point` | `str` | No |  |
+| `route_recommendation` | `list` | No |  |
+| `subtitle` | `str` | No |  |
+| `title` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ParkingLorry().list({})
+results = client.ParkingLorry().list()
 for parking_lorry in results:
     print(parking_lorry)
 ```
@@ -387,30 +387,30 @@ roadwork = client.Roadwork()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `coordinate` | ``$OBJECT`` | No |  |
-| `description` | ``$ARRAY`` | No |  |
-| `display_type` | ``$STRING`` | No |  |
-| `extent` | ``$STRING`` | No |  |
-| `footer` | ``$ARRAY`` | No |  |
-| `future` | ``$BOOLEAN`` | No |  |
-| `icon` | ``$STRING`` | No |  |
-| `identifier` | ``$STRING`` | No |  |
-| `is_blocked` | ``$BOOLEAN`` | No |  |
-| `lorry_parking_feature_icon` | ``$ARRAY`` | No |  |
-| `point` | ``$STRING`` | No |  |
-| `route_recommendation` | ``$ARRAY`` | No |  |
-| `start_timestamp` | ``$STRING`` | No |  |
-| `subtitle` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
+| `coordinate` | `dict` | No |  |
+| `description` | `list` | No |  |
+| `display_type` | `str` | No |  |
+| `extent` | `str` | No |  |
+| `footer` | `list` | No |  |
+| `future` | `bool` | No |  |
+| `icon` | `str` | No |  |
+| `identifier` | `str` | No |  |
+| `is_blocked` | `bool` | No |  |
+| `lorry_parking_feature_icon` | `list` | No |  |
+| `point` | `str` | No |  |
+| `route_recommendation` | `list` | No |  |
+| `start_timestamp` | `str` | No |  |
+| `subtitle` | `str` | No |  |
+| `title` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Roadwork().list({})
+results = client.Roadwork().list()
 for roadwork in results:
     print(roadwork)
 ```
@@ -462,30 +462,30 @@ warning = client.Warning()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `coordinate` | ``$OBJECT`` | No |  |
-| `description` | ``$ARRAY`` | No |  |
-| `display_type` | ``$STRING`` | No |  |
-| `extent` | ``$STRING`` | No |  |
-| `footer` | ``$ARRAY`` | No |  |
-| `future` | ``$BOOLEAN`` | No |  |
-| `icon` | ``$STRING`` | No |  |
-| `identifier` | ``$STRING`` | No |  |
-| `is_blocked` | ``$BOOLEAN`` | No |  |
-| `lorry_parking_feature_icon` | ``$ARRAY`` | No |  |
-| `point` | ``$STRING`` | No |  |
-| `route_recommendation` | ``$ARRAY`` | No |  |
-| `start_timestamp` | ``$STRING`` | No |  |
-| `subtitle` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
+| `coordinate` | `dict` | No |  |
+| `description` | `list` | No |  |
+| `display_type` | `str` | No |  |
+| `extent` | `str` | No |  |
+| `footer` | `list` | No |  |
+| `future` | `bool` | No |  |
+| `icon` | `str` | No |  |
+| `identifier` | `str` | No |  |
+| `is_blocked` | `bool` | No |  |
+| `lorry_parking_feature_icon` | `list` | No |  |
+| `point` | `str` | No |  |
+| `route_recommendation` | `list` | No |  |
+| `start_timestamp` | `str` | No |  |
+| `subtitle` | `str` | No |  |
+| `title` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Warning().list({})
+results = client.Warning().list()
 for warning in results:
     print(warning)
 ```
@@ -537,32 +537,32 @@ webcam = client.Webcam()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `coordinate` | ``$OBJECT`` | No |  |
-| `description` | ``$ARRAY`` | No |  |
-| `display_type` | ``$STRING`` | No |  |
-| `extent` | ``$STRING`` | No |  |
-| `footer` | ``$ARRAY`` | No |  |
-| `future` | ``$BOOLEAN`` | No |  |
-| `icon` | ``$STRING`` | No |  |
-| `identifier` | ``$STRING`` | No |  |
-| `imageurl` | ``$STRING`` | No |  |
-| `is_blocked` | ``$BOOLEAN`` | No |  |
-| `linkurl` | ``$STRING`` | No |  |
-| `lorry_parking_feature_icon` | ``$ARRAY`` | No |  |
-| `operator` | ``$STRING`` | No |  |
-| `point` | ``$STRING`` | No |  |
-| `route_recommendation` | ``$ARRAY`` | No |  |
-| `subtitle` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
+| `coordinate` | `dict` | No |  |
+| `description` | `list` | No |  |
+| `display_type` | `str` | No |  |
+| `extent` | `str` | No |  |
+| `footer` | `list` | No |  |
+| `future` | `bool` | No |  |
+| `icon` | `str` | No |  |
+| `identifier` | `str` | No |  |
+| `imageurl` | `str` | No |  |
+| `is_blocked` | `bool` | No |  |
+| `linkurl` | `str` | No |  |
+| `lorry_parking_feature_icon` | `list` | No |  |
+| `operator` | `str` | No |  |
+| `point` | `str` | No |  |
+| `route_recommendation` | `list` | No |  |
+| `subtitle` | `str` | No |  |
+| `title` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Webcam().list({})
+results = client.Webcam().list()
 for webcam in results:
     print(webcam)
 ```

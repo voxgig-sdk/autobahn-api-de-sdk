@@ -114,21 +114,21 @@ local closure = client:Closure(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `coordinate` | ``$OBJECT`` | No |  |
-| `description` | ``$ARRAY`` | No |  |
-| `display_type` | ``$STRING`` | No |  |
-| `extent` | ``$STRING`` | No |  |
-| `footer` | ``$ARRAY`` | No |  |
-| `future` | ``$BOOLEAN`` | No |  |
-| `icon` | ``$STRING`` | No |  |
-| `identifier` | ``$STRING`` | No |  |
-| `is_blocked` | ``$BOOLEAN`` | No |  |
-| `lorry_parking_feature_icon` | ``$ARRAY`` | No |  |
-| `point` | ``$STRING`` | No |  |
-| `route_recommendation` | ``$ARRAY`` | No |  |
-| `start_timestamp` | ``$STRING`` | No |  |
-| `subtitle` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
+| `coordinate` | `table` | No |  |
+| `description` | `table` | No |  |
+| `display_type` | `string` | No |  |
+| `extent` | `string` | No |  |
+| `footer` | `table` | No |  |
+| `future` | `boolean` | No |  |
+| `icon` | `string` | No |  |
+| `identifier` | `string` | No |  |
+| `is_blocked` | `boolean` | No |  |
+| `lorry_parking_feature_icon` | `table` | No |  |
+| `point` | `string` | No |  |
+| `route_recommendation` | `table` | No |  |
+| `start_timestamp` | `string` | No |  |
+| `subtitle` | `string` | No |  |
+| `title` | `string` | No |  |
 
 ### Operations
 
@@ -188,20 +188,20 @@ local electric_charging_station = client:ElectricChargingStation(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `coordinate` | ``$OBJECT`` | No |  |
-| `description` | ``$ARRAY`` | No |  |
-| `display_type` | ``$STRING`` | No |  |
-| `extent` | ``$STRING`` | No |  |
-| `footer` | ``$ARRAY`` | No |  |
-| `future` | ``$BOOLEAN`` | No |  |
-| `icon` | ``$STRING`` | No |  |
-| `identifier` | ``$STRING`` | No |  |
-| `is_blocked` | ``$BOOLEAN`` | No |  |
-| `lorry_parking_feature_icon` | ``$ARRAY`` | No |  |
-| `point` | ``$STRING`` | No |  |
-| `route_recommendation` | ``$ARRAY`` | No |  |
-| `subtitle` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
+| `coordinate` | `table` | No |  |
+| `description` | `table` | No |  |
+| `display_type` | `string` | No |  |
+| `extent` | `string` | No |  |
+| `footer` | `table` | No |  |
+| `future` | `boolean` | No |  |
+| `icon` | `string` | No |  |
+| `identifier` | `string` | No |  |
+| `is_blocked` | `boolean` | No |  |
+| `lorry_parking_feature_icon` | `table` | No |  |
+| `point` | `string` | No |  |
+| `route_recommendation` | `table` | No |  |
+| `subtitle` | `string` | No |  |
+| `title` | `string` | No |  |
 
 ### Operations
 
@@ -261,7 +261,7 @@ local list_autobahnen = client:ListAutobahnen(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `road` | ``$ARRAY`` | No |  |
+| `road` | `table` | No |  |
 
 ### Operations
 
@@ -313,20 +313,20 @@ local parking_lorry = client:ParkingLorry(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `coordinate` | ``$OBJECT`` | No |  |
-| `description` | ``$ARRAY`` | No |  |
-| `display_type` | ``$STRING`` | No |  |
-| `extent` | ``$STRING`` | No |  |
-| `footer` | ``$ARRAY`` | No |  |
-| `future` | ``$BOOLEAN`` | No |  |
-| `icon` | ``$STRING`` | No |  |
-| `identifier` | ``$STRING`` | No |  |
-| `is_blocked` | ``$BOOLEAN`` | No |  |
-| `lorry_parking_feature_icon` | ``$ARRAY`` | No |  |
-| `point` | ``$STRING`` | No |  |
-| `route_recommendation` | ``$ARRAY`` | No |  |
-| `subtitle` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
+| `coordinate` | `table` | No |  |
+| `description` | `table` | No |  |
+| `display_type` | `string` | No |  |
+| `extent` | `string` | No |  |
+| `footer` | `table` | No |  |
+| `future` | `boolean` | No |  |
+| `icon` | `string` | No |  |
+| `identifier` | `string` | No |  |
+| `is_blocked` | `boolean` | No |  |
+| `lorry_parking_feature_icon` | `table` | No |  |
+| `point` | `string` | No |  |
+| `route_recommendation` | `table` | No |  |
+| `subtitle` | `string` | No |  |
+| `title` | `string` | No |  |
 
 ### Operations
 
@@ -386,21 +386,21 @@ local roadwork = client:Roadwork(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `coordinate` | ``$OBJECT`` | No |  |
-| `description` | ``$ARRAY`` | No |  |
-| `display_type` | ``$STRING`` | No |  |
-| `extent` | ``$STRING`` | No |  |
-| `footer` | ``$ARRAY`` | No |  |
-| `future` | ``$BOOLEAN`` | No |  |
-| `icon` | ``$STRING`` | No |  |
-| `identifier` | ``$STRING`` | No |  |
-| `is_blocked` | ``$BOOLEAN`` | No |  |
-| `lorry_parking_feature_icon` | ``$ARRAY`` | No |  |
-| `point` | ``$STRING`` | No |  |
-| `route_recommendation` | ``$ARRAY`` | No |  |
-| `start_timestamp` | ``$STRING`` | No |  |
-| `subtitle` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
+| `coordinate` | `table` | No |  |
+| `description` | `table` | No |  |
+| `display_type` | `string` | No |  |
+| `extent` | `string` | No |  |
+| `footer` | `table` | No |  |
+| `future` | `boolean` | No |  |
+| `icon` | `string` | No |  |
+| `identifier` | `string` | No |  |
+| `is_blocked` | `boolean` | No |  |
+| `lorry_parking_feature_icon` | `table` | No |  |
+| `point` | `string` | No |  |
+| `route_recommendation` | `table` | No |  |
+| `start_timestamp` | `string` | No |  |
+| `subtitle` | `string` | No |  |
+| `title` | `string` | No |  |
 
 ### Operations
 
@@ -460,21 +460,21 @@ local warning = client:Warning(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `coordinate` | ``$OBJECT`` | No |  |
-| `description` | ``$ARRAY`` | No |  |
-| `display_type` | ``$STRING`` | No |  |
-| `extent` | ``$STRING`` | No |  |
-| `footer` | ``$ARRAY`` | No |  |
-| `future` | ``$BOOLEAN`` | No |  |
-| `icon` | ``$STRING`` | No |  |
-| `identifier` | ``$STRING`` | No |  |
-| `is_blocked` | ``$BOOLEAN`` | No |  |
-| `lorry_parking_feature_icon` | ``$ARRAY`` | No |  |
-| `point` | ``$STRING`` | No |  |
-| `route_recommendation` | ``$ARRAY`` | No |  |
-| `start_timestamp` | ``$STRING`` | No |  |
-| `subtitle` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
+| `coordinate` | `table` | No |  |
+| `description` | `table` | No |  |
+| `display_type` | `string` | No |  |
+| `extent` | `string` | No |  |
+| `footer` | `table` | No |  |
+| `future` | `boolean` | No |  |
+| `icon` | `string` | No |  |
+| `identifier` | `string` | No |  |
+| `is_blocked` | `boolean` | No |  |
+| `lorry_parking_feature_icon` | `table` | No |  |
+| `point` | `string` | No |  |
+| `route_recommendation` | `table` | No |  |
+| `start_timestamp` | `string` | No |  |
+| `subtitle` | `string` | No |  |
+| `title` | `string` | No |  |
 
 ### Operations
 
@@ -534,23 +534,23 @@ local webcam = client:Webcam(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `coordinate` | ``$OBJECT`` | No |  |
-| `description` | ``$ARRAY`` | No |  |
-| `display_type` | ``$STRING`` | No |  |
-| `extent` | ``$STRING`` | No |  |
-| `footer` | ``$ARRAY`` | No |  |
-| `future` | ``$BOOLEAN`` | No |  |
-| `icon` | ``$STRING`` | No |  |
-| `identifier` | ``$STRING`` | No |  |
-| `imageurl` | ``$STRING`` | No |  |
-| `is_blocked` | ``$BOOLEAN`` | No |  |
-| `linkurl` | ``$STRING`` | No |  |
-| `lorry_parking_feature_icon` | ``$ARRAY`` | No |  |
-| `operator` | ``$STRING`` | No |  |
-| `point` | ``$STRING`` | No |  |
-| `route_recommendation` | ``$ARRAY`` | No |  |
-| `subtitle` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
+| `coordinate` | `table` | No |  |
+| `description` | `table` | No |  |
+| `display_type` | `string` | No |  |
+| `extent` | `string` | No |  |
+| `footer` | `table` | No |  |
+| `future` | `boolean` | No |  |
+| `icon` | `string` | No |  |
+| `identifier` | `string` | No |  |
+| `imageurl` | `string` | No |  |
+| `is_blocked` | `boolean` | No |  |
+| `linkurl` | `string` | No |  |
+| `lorry_parking_feature_icon` | `table` | No |  |
+| `operator` | `string` | No |  |
+| `point` | `string` | No |  |
+| `route_recommendation` | `table` | No |  |
+| `subtitle` | `string` | No |  |
+| `title` | `string` | No |  |
 
 ### Operations
 

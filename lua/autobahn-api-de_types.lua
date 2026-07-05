@@ -55,6 +55,7 @@
 ---@field road? table
 
 ---@class ListAutobahnenListMatch
+---@field road? table
 
 ---@class ParkingLorry
 ---@field coordinate? table

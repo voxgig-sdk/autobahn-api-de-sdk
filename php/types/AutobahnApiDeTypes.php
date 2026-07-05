@@ -81,7 +81,7 @@ class ListAutobahnen
     public ?array $road = null;
 }
 
-/** Match filter for ListAutobahnen#list (any subset of ListAutobahnen fields). */
+/** Request payload for ListAutobahnen#list. */
 class ListAutobahnenListMatch
 {
     public ?array $road = null;

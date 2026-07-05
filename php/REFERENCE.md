@@ -8,7 +8,7 @@ Complete API reference for the AutobahnApiDe PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/autobahn-api-de_sdk.php';
+require_once __DIR__ . '/autobahnapide_sdk.php';
 
 $client = new AutobahnApiDeSDK($options);
 ```
@@ -69,11 +69,11 @@ Create a new `WarningEntity` instance. Pass `null` for no initial data.
 
 Create a new `WebcamEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): AutobahnApiDeUtility`
 
 Return a copy of the SDK utility object.
 
@@ -116,30 +116,30 @@ $closure = $client->Closure();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `coordinate` | ``$OBJECT`` | No |  |
-| `description` | ``$ARRAY`` | No |  |
-| `display_type` | ``$STRING`` | No |  |
-| `extent` | ``$STRING`` | No |  |
-| `footer` | ``$ARRAY`` | No |  |
-| `future` | ``$BOOLEAN`` | No |  |
-| `icon` | ``$STRING`` | No |  |
-| `identifier` | ``$STRING`` | No |  |
-| `is_blocked` | ``$BOOLEAN`` | No |  |
-| `lorry_parking_feature_icon` | ``$ARRAY`` | No |  |
-| `point` | ``$STRING`` | No |  |
-| `route_recommendation` | ``$ARRAY`` | No |  |
-| `start_timestamp` | ``$STRING`` | No |  |
-| `subtitle` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
+| `coordinate` | `array` | No |  |
+| `description` | `array` | No |  |
+| `display_type` | `string` | No |  |
+| `extent` | `string` | No |  |
+| `footer` | `array` | No |  |
+| `future` | `bool` | No |  |
+| `icon` | `string` | No |  |
+| `identifier` | `string` | No |  |
+| `is_blocked` | `bool` | No |  |
+| `lorry_parking_feature_icon` | `array` | No |  |
+| `point` | `string` | No |  |
+| `route_recommendation` | `array` | No |  |
+| `start_timestamp` | `string` | No |  |
+| `subtitle` | `string` | No |  |
+| `title` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Closure()->list([]);
+$results = $client->Closure()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -152,19 +152,19 @@ $result = $client->Closure()->load(["id" => "closure_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -173,7 +173,7 @@ Set the entity match criteria.
 Create a new `ClosureEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -190,29 +190,29 @@ $electric_charging_station = $client->ElectricChargingStation();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `coordinate` | ``$OBJECT`` | No |  |
-| `description` | ``$ARRAY`` | No |  |
-| `display_type` | ``$STRING`` | No |  |
-| `extent` | ``$STRING`` | No |  |
-| `footer` | ``$ARRAY`` | No |  |
-| `future` | ``$BOOLEAN`` | No |  |
-| `icon` | ``$STRING`` | No |  |
-| `identifier` | ``$STRING`` | No |  |
-| `is_blocked` | ``$BOOLEAN`` | No |  |
-| `lorry_parking_feature_icon` | ``$ARRAY`` | No |  |
-| `point` | ``$STRING`` | No |  |
-| `route_recommendation` | ``$ARRAY`` | No |  |
-| `subtitle` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
+| `coordinate` | `array` | No |  |
+| `description` | `array` | No |  |
+| `display_type` | `string` | No |  |
+| `extent` | `string` | No |  |
+| `footer` | `array` | No |  |
+| `future` | `bool` | No |  |
+| `icon` | `string` | No |  |
+| `identifier` | `string` | No |  |
+| `is_blocked` | `bool` | No |  |
+| `lorry_parking_feature_icon` | `array` | No |  |
+| `point` | `string` | No |  |
+| `route_recommendation` | `array` | No |  |
+| `subtitle` | `string` | No |  |
+| `title` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->ElectricChargingStation()->list([]);
+$results = $client->ElectricChargingStation()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -225,19 +225,19 @@ $result = $client->ElectricChargingStation()->load(["id" => "electric_charging_s
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -246,7 +246,7 @@ Set the entity match criteria.
 Create a new `ElectricChargingStationEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -263,33 +263,33 @@ $list_autobahnen = $client->ListAutobahnen();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `road` | ``$ARRAY`` | No |  |
+| `road` | `array` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->ListAutobahnen()->list([]);
+$results = $client->ListAutobahnen()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -298,7 +298,7 @@ Set the entity match criteria.
 Create a new `ListAutobahnenEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -315,29 +315,29 @@ $parking_lorry = $client->ParkingLorry();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `coordinate` | ``$OBJECT`` | No |  |
-| `description` | ``$ARRAY`` | No |  |
-| `display_type` | ``$STRING`` | No |  |
-| `extent` | ``$STRING`` | No |  |
-| `footer` | ``$ARRAY`` | No |  |
-| `future` | ``$BOOLEAN`` | No |  |
-| `icon` | ``$STRING`` | No |  |
-| `identifier` | ``$STRING`` | No |  |
-| `is_blocked` | ``$BOOLEAN`` | No |  |
-| `lorry_parking_feature_icon` | ``$ARRAY`` | No |  |
-| `point` | ``$STRING`` | No |  |
-| `route_recommendation` | ``$ARRAY`` | No |  |
-| `subtitle` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
+| `coordinate` | `array` | No |  |
+| `description` | `array` | No |  |
+| `display_type` | `string` | No |  |
+| `extent` | `string` | No |  |
+| `footer` | `array` | No |  |
+| `future` | `bool` | No |  |
+| `icon` | `string` | No |  |
+| `identifier` | `string` | No |  |
+| `is_blocked` | `bool` | No |  |
+| `lorry_parking_feature_icon` | `array` | No |  |
+| `point` | `string` | No |  |
+| `route_recommendation` | `array` | No |  |
+| `subtitle` | `string` | No |  |
+| `title` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->ParkingLorry()->list([]);
+$results = $client->ParkingLorry()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -350,19 +350,19 @@ $result = $client->ParkingLorry()->load(["id" => "parking_lorry_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -371,7 +371,7 @@ Set the entity match criteria.
 Create a new `ParkingLorryEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -388,30 +388,30 @@ $roadwork = $client->Roadwork();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `coordinate` | ``$OBJECT`` | No |  |
-| `description` | ``$ARRAY`` | No |  |
-| `display_type` | ``$STRING`` | No |  |
-| `extent` | ``$STRING`` | No |  |
-| `footer` | ``$ARRAY`` | No |  |
-| `future` | ``$BOOLEAN`` | No |  |
-| `icon` | ``$STRING`` | No |  |
-| `identifier` | ``$STRING`` | No |  |
-| `is_blocked` | ``$BOOLEAN`` | No |  |
-| `lorry_parking_feature_icon` | ``$ARRAY`` | No |  |
-| `point` | ``$STRING`` | No |  |
-| `route_recommendation` | ``$ARRAY`` | No |  |
-| `start_timestamp` | ``$STRING`` | No |  |
-| `subtitle` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
+| `coordinate` | `array` | No |  |
+| `description` | `array` | No |  |
+| `display_type` | `string` | No |  |
+| `extent` | `string` | No |  |
+| `footer` | `array` | No |  |
+| `future` | `bool` | No |  |
+| `icon` | `string` | No |  |
+| `identifier` | `string` | No |  |
+| `is_blocked` | `bool` | No |  |
+| `lorry_parking_feature_icon` | `array` | No |  |
+| `point` | `string` | No |  |
+| `route_recommendation` | `array` | No |  |
+| `start_timestamp` | `string` | No |  |
+| `subtitle` | `string` | No |  |
+| `title` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Roadwork()->list([]);
+$results = $client->Roadwork()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -424,19 +424,19 @@ $result = $client->Roadwork()->load(["id" => "roadwork_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -445,7 +445,7 @@ Set the entity match criteria.
 Create a new `RoadworkEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -462,30 +462,30 @@ $warning = $client->Warning();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `coordinate` | ``$OBJECT`` | No |  |
-| `description` | ``$ARRAY`` | No |  |
-| `display_type` | ``$STRING`` | No |  |
-| `extent` | ``$STRING`` | No |  |
-| `footer` | ``$ARRAY`` | No |  |
-| `future` | ``$BOOLEAN`` | No |  |
-| `icon` | ``$STRING`` | No |  |
-| `identifier` | ``$STRING`` | No |  |
-| `is_blocked` | ``$BOOLEAN`` | No |  |
-| `lorry_parking_feature_icon` | ``$ARRAY`` | No |  |
-| `point` | ``$STRING`` | No |  |
-| `route_recommendation` | ``$ARRAY`` | No |  |
-| `start_timestamp` | ``$STRING`` | No |  |
-| `subtitle` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
+| `coordinate` | `array` | No |  |
+| `description` | `array` | No |  |
+| `display_type` | `string` | No |  |
+| `extent` | `string` | No |  |
+| `footer` | `array` | No |  |
+| `future` | `bool` | No |  |
+| `icon` | `string` | No |  |
+| `identifier` | `string` | No |  |
+| `is_blocked` | `bool` | No |  |
+| `lorry_parking_feature_icon` | `array` | No |  |
+| `point` | `string` | No |  |
+| `route_recommendation` | `array` | No |  |
+| `start_timestamp` | `string` | No |  |
+| `subtitle` | `string` | No |  |
+| `title` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Warning()->list([]);
+$results = $client->Warning()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -498,19 +498,19 @@ $result = $client->Warning()->load(["id" => "warning_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -519,7 +519,7 @@ Set the entity match criteria.
 Create a new `WarningEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -536,32 +536,32 @@ $webcam = $client->Webcam();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `coordinate` | ``$OBJECT`` | No |  |
-| `description` | ``$ARRAY`` | No |  |
-| `display_type` | ``$STRING`` | No |  |
-| `extent` | ``$STRING`` | No |  |
-| `footer` | ``$ARRAY`` | No |  |
-| `future` | ``$BOOLEAN`` | No |  |
-| `icon` | ``$STRING`` | No |  |
-| `identifier` | ``$STRING`` | No |  |
-| `imageurl` | ``$STRING`` | No |  |
-| `is_blocked` | ``$BOOLEAN`` | No |  |
-| `linkurl` | ``$STRING`` | No |  |
-| `lorry_parking_feature_icon` | ``$ARRAY`` | No |  |
-| `operator` | ``$STRING`` | No |  |
-| `point` | ``$STRING`` | No |  |
-| `route_recommendation` | ``$ARRAY`` | No |  |
-| `subtitle` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
+| `coordinate` | `array` | No |  |
+| `description` | `array` | No |  |
+| `display_type` | `string` | No |  |
+| `extent` | `string` | No |  |
+| `footer` | `array` | No |  |
+| `future` | `bool` | No |  |
+| `icon` | `string` | No |  |
+| `identifier` | `string` | No |  |
+| `imageurl` | `string` | No |  |
+| `is_blocked` | `bool` | No |  |
+| `linkurl` | `string` | No |  |
+| `lorry_parking_feature_icon` | `array` | No |  |
+| `operator` | `string` | No |  |
+| `point` | `string` | No |  |
+| `route_recommendation` | `array` | No |  |
+| `subtitle` | `string` | No |  |
+| `title` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Webcam()->list([]);
+$results = $client->Webcam()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -574,19 +574,19 @@ $result = $client->Webcam()->load(["id" => "webcam_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -595,7 +595,7 @@ Set the entity match criteria.
 Create a new `WebcamEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

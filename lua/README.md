@@ -4,6 +4,8 @@
 
 The Lua SDK for the AutobahnApiDe API — an entity-oriented client using Lua conventions.
 
+It exposes the API as capitalised, semantic **Entities** — e.g. `client:Closure()` — each with the same small set of operations (`list`, `load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -41,7 +43,7 @@ local closures, err = client:Closure():list()
 if err then error(err) end
 
 for _, item in ipairs(closures) do
-  print(item["id"], item["name"])
+  print(item["display_type"])
 end
 ```
 
@@ -51,6 +53,28 @@ end
 local closure, err = client:Closure():load({ id = "example_id" })
 if err then error(err) end
 print(closure)
+```
+
+
+## Error handling
+
+Entity operations return `(value, err)`. Check `err` before using
+the value:
+
+```lua
+local closures, err = client:Closure():list()
+if err then error(err) end
+```
+
+`direct` follows the same `(value, err)` convention:
+
+```lua
+local result, err = client:direct({
+  path = "/api/resource/{id}",
+  method = "GET",
+  params = { id = "example_id" },
+})
+if err then error(err) end
 ```
 
 
@@ -96,8 +120,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Closure():load({ id = "test01" })
--- result is the loaded data; err is set on failure
+local result, err = client:Closure():list()
+-- result is the returned data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -191,9 +215,6 @@ All entities share the same interface.
 | --- | --- | --- |
 | `load` | `(reqmatch, ctrl) -> any, err` | Load a single entity by match criteria. |
 | `list` | `(reqmatch, ctrl) -> any, err` | List entities matching the criteria. |
-| `create` | `(reqdata, ctrl) -> any, err` | Create a new entity. |
-| `update` | `(reqdata, ctrl) -> any, err` | Update an existing entity. |
-| `remove` | `(reqmatch, ctrl) -> any, err` | Remove an entity. |
 | `data_get` | `() -> table` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> table` | Get entity match criteria. |
@@ -208,7 +229,7 @@ data **directly** — there is no wrapper:
 
 | Operation | `value` |
 | --- | --- |
-| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `load` | the entity record (a `table`) |
 | `list` | an array (`table`) of entity records |
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
@@ -396,21 +417,21 @@ Create an instance: `local closure = client:Closure(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `coordinate` | ``$OBJECT`` |  |
-| `description` | ``$ARRAY`` |  |
-| `display_type` | ``$STRING`` |  |
-| `extent` | ``$STRING`` |  |
-| `footer` | ``$ARRAY`` |  |
-| `future` | ``$BOOLEAN`` |  |
-| `icon` | ``$STRING`` |  |
-| `identifier` | ``$STRING`` |  |
-| `is_blocked` | ``$BOOLEAN`` |  |
-| `lorry_parking_feature_icon` | ``$ARRAY`` |  |
-| `point` | ``$STRING`` |  |
-| `route_recommendation` | ``$ARRAY`` |  |
-| `start_timestamp` | ``$STRING`` |  |
-| `subtitle` | ``$STRING`` |  |
-| `title` | ``$STRING`` |  |
+| `coordinate` | `table` |  |
+| `description` | `table` |  |
+| `display_type` | `string` |  |
+| `extent` | `string` |  |
+| `footer` | `table` |  |
+| `future` | `boolean` |  |
+| `icon` | `string` |  |
+| `identifier` | `string` |  |
+| `is_blocked` | `boolean` |  |
+| `lorry_parking_feature_icon` | `table` |  |
+| `point` | `string` |  |
+| `route_recommendation` | `table` |  |
+| `start_timestamp` | `string` |  |
+| `subtitle` | `string` |  |
+| `title` | `string` |  |
 
 #### Example: Load
 
@@ -440,20 +461,20 @@ Create an instance: `local electric_charging_station = client:ElectricChargingSt
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `coordinate` | ``$OBJECT`` |  |
-| `description` | ``$ARRAY`` |  |
-| `display_type` | ``$STRING`` |  |
-| `extent` | ``$STRING`` |  |
-| `footer` | ``$ARRAY`` |  |
-| `future` | ``$BOOLEAN`` |  |
-| `icon` | ``$STRING`` |  |
-| `identifier` | ``$STRING`` |  |
-| `is_blocked` | ``$BOOLEAN`` |  |
-| `lorry_parking_feature_icon` | ``$ARRAY`` |  |
-| `point` | ``$STRING`` |  |
-| `route_recommendation` | ``$ARRAY`` |  |
-| `subtitle` | ``$STRING`` |  |
-| `title` | ``$STRING`` |  |
+| `coordinate` | `table` |  |
+| `description` | `table` |  |
+| `display_type` | `string` |  |
+| `extent` | `string` |  |
+| `footer` | `table` |  |
+| `future` | `boolean` |  |
+| `icon` | `string` |  |
+| `identifier` | `string` |  |
+| `is_blocked` | `boolean` |  |
+| `lorry_parking_feature_icon` | `table` |  |
+| `point` | `string` |  |
+| `route_recommendation` | `table` |  |
+| `subtitle` | `string` |  |
+| `title` | `string` |  |
 
 #### Example: Load
 
@@ -482,7 +503,7 @@ Create an instance: `local list_autobahnen = client:ListAutobahnen(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `road` | ``$ARRAY`` |  |
+| `road` | `table` |  |
 
 #### Example: List
 
@@ -506,20 +527,20 @@ Create an instance: `local parking_lorry = client:ParkingLorry(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `coordinate` | ``$OBJECT`` |  |
-| `description` | ``$ARRAY`` |  |
-| `display_type` | ``$STRING`` |  |
-| `extent` | ``$STRING`` |  |
-| `footer` | ``$ARRAY`` |  |
-| `future` | ``$BOOLEAN`` |  |
-| `icon` | ``$STRING`` |  |
-| `identifier` | ``$STRING`` |  |
-| `is_blocked` | ``$BOOLEAN`` |  |
-| `lorry_parking_feature_icon` | ``$ARRAY`` |  |
-| `point` | ``$STRING`` |  |
-| `route_recommendation` | ``$ARRAY`` |  |
-| `subtitle` | ``$STRING`` |  |
-| `title` | ``$STRING`` |  |
+| `coordinate` | `table` |  |
+| `description` | `table` |  |
+| `display_type` | `string` |  |
+| `extent` | `string` |  |
+| `footer` | `table` |  |
+| `future` | `boolean` |  |
+| `icon` | `string` |  |
+| `identifier` | `string` |  |
+| `is_blocked` | `boolean` |  |
+| `lorry_parking_feature_icon` | `table` |  |
+| `point` | `string` |  |
+| `route_recommendation` | `table` |  |
+| `subtitle` | `string` |  |
+| `title` | `string` |  |
 
 #### Example: Load
 
@@ -549,21 +570,21 @@ Create an instance: `local roadwork = client:Roadwork(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `coordinate` | ``$OBJECT`` |  |
-| `description` | ``$ARRAY`` |  |
-| `display_type` | ``$STRING`` |  |
-| `extent` | ``$STRING`` |  |
-| `footer` | ``$ARRAY`` |  |
-| `future` | ``$BOOLEAN`` |  |
-| `icon` | ``$STRING`` |  |
-| `identifier` | ``$STRING`` |  |
-| `is_blocked` | ``$BOOLEAN`` |  |
-| `lorry_parking_feature_icon` | ``$ARRAY`` |  |
-| `point` | ``$STRING`` |  |
-| `route_recommendation` | ``$ARRAY`` |  |
-| `start_timestamp` | ``$STRING`` |  |
-| `subtitle` | ``$STRING`` |  |
-| `title` | ``$STRING`` |  |
+| `coordinate` | `table` |  |
+| `description` | `table` |  |
+| `display_type` | `string` |  |
+| `extent` | `string` |  |
+| `footer` | `table` |  |
+| `future` | `boolean` |  |
+| `icon` | `string` |  |
+| `identifier` | `string` |  |
+| `is_blocked` | `boolean` |  |
+| `lorry_parking_feature_icon` | `table` |  |
+| `point` | `string` |  |
+| `route_recommendation` | `table` |  |
+| `start_timestamp` | `string` |  |
+| `subtitle` | `string` |  |
+| `title` | `string` |  |
 
 #### Example: Load
 
@@ -593,21 +614,21 @@ Create an instance: `local warning = client:Warning(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `coordinate` | ``$OBJECT`` |  |
-| `description` | ``$ARRAY`` |  |
-| `display_type` | ``$STRING`` |  |
-| `extent` | ``$STRING`` |  |
-| `footer` | ``$ARRAY`` |  |
-| `future` | ``$BOOLEAN`` |  |
-| `icon` | ``$STRING`` |  |
-| `identifier` | ``$STRING`` |  |
-| `is_blocked` | ``$BOOLEAN`` |  |
-| `lorry_parking_feature_icon` | ``$ARRAY`` |  |
-| `point` | ``$STRING`` |  |
-| `route_recommendation` | ``$ARRAY`` |  |
-| `start_timestamp` | ``$STRING`` |  |
-| `subtitle` | ``$STRING`` |  |
-| `title` | ``$STRING`` |  |
+| `coordinate` | `table` |  |
+| `description` | `table` |  |
+| `display_type` | `string` |  |
+| `extent` | `string` |  |
+| `footer` | `table` |  |
+| `future` | `boolean` |  |
+| `icon` | `string` |  |
+| `identifier` | `string` |  |
+| `is_blocked` | `boolean` |  |
+| `lorry_parking_feature_icon` | `table` |  |
+| `point` | `string` |  |
+| `route_recommendation` | `table` |  |
+| `start_timestamp` | `string` |  |
+| `subtitle` | `string` |  |
+| `title` | `string` |  |
 
 #### Example: Load
 
@@ -637,23 +658,23 @@ Create an instance: `local webcam = client:Webcam(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `coordinate` | ``$OBJECT`` |  |
-| `description` | ``$ARRAY`` |  |
-| `display_type` | ``$STRING`` |  |
-| `extent` | ``$STRING`` |  |
-| `footer` | ``$ARRAY`` |  |
-| `future` | ``$BOOLEAN`` |  |
-| `icon` | ``$STRING`` |  |
-| `identifier` | ``$STRING`` |  |
-| `imageurl` | ``$STRING`` |  |
-| `is_blocked` | ``$BOOLEAN`` |  |
-| `linkurl` | ``$STRING`` |  |
-| `lorry_parking_feature_icon` | ``$ARRAY`` |  |
-| `operator` | ``$STRING`` |  |
-| `point` | ``$STRING`` |  |
-| `route_recommendation` | ``$ARRAY`` |  |
-| `subtitle` | ``$STRING`` |  |
-| `title` | ``$STRING`` |  |
+| `coordinate` | `table` |  |
+| `description` | `table` |  |
+| `display_type` | `string` |  |
+| `extent` | `string` |  |
+| `footer` | `table` |  |
+| `future` | `boolean` |  |
+| `icon` | `string` |  |
+| `identifier` | `string` |  |
+| `imageurl` | `string` |  |
+| `is_blocked` | `boolean` |  |
+| `linkurl` | `string` |  |
+| `lorry_parking_feature_icon` | `table` |  |
+| `operator` | `string` |  |
+| `point` | `string` |  |
+| `route_recommendation` | `table` |  |
+| `subtitle` | `string` |  |
+| `title` | `string` |  |
 
 #### Example: Load
 
@@ -668,12 +689,16 @@ local webcams, err = client:Webcam():list()
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -690,8 +715,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as a second return value.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -735,14 +761,14 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
 local closure = client:Closure()
-closure:load({ id = "example_id" })
+closure:list()
 
--- closure:data_get() now returns the loaded closure data
+-- closure:data_get() now returns the closure data from the last list
 -- closure:match_get() returns the last match criteria
 ```
 

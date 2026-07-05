@@ -221,43 +221,43 @@ class AutobahnApiDeSDK:
 
 
     def Closure(self, data=None) -> "ClosureEntity":
-        """Entity factory: client.Closure().list({}) / client.Closure().load({"id": ...})."""
+        """Entity factory: client.Closure().list() / client.Closure().load({"id": ...})."""
         from entity.closure_entity import ClosureEntity
         return ClosureEntity(self, data)
 
 
     def ElectricChargingStation(self, data=None) -> "ElectricChargingStationEntity":
-        """Entity factory: client.ElectricChargingStation().list({}) / client.ElectricChargingStation().load({"id": ...})."""
+        """Entity factory: client.ElectricChargingStation().list() / client.ElectricChargingStation().load({"id": ...})."""
         from entity.electric_charging_station_entity import ElectricChargingStationEntity
         return ElectricChargingStationEntity(self, data)
 
 
     def ListAutobahnen(self, data=None) -> "ListAutobahnenEntity":
-        """Entity factory: client.ListAutobahnen().list({}) / client.ListAutobahnen().load({"id": ...})."""
+        """Entity factory: client.ListAutobahnen().list() / client.ListAutobahnen().load({"id": ...})."""
         from entity.list_autobahnen_entity import ListAutobahnenEntity
         return ListAutobahnenEntity(self, data)
 
 
     def ParkingLorry(self, data=None) -> "ParkingLorryEntity":
-        """Entity factory: client.ParkingLorry().list({}) / client.ParkingLorry().load({"id": ...})."""
+        """Entity factory: client.ParkingLorry().list() / client.ParkingLorry().load({"id": ...})."""
         from entity.parking_lorry_entity import ParkingLorryEntity
         return ParkingLorryEntity(self, data)
 
 
     def Roadwork(self, data=None) -> "RoadworkEntity":
-        """Entity factory: client.Roadwork().list({}) / client.Roadwork().load({"id": ...})."""
+        """Entity factory: client.Roadwork().list() / client.Roadwork().load({"id": ...})."""
         from entity.roadwork_entity import RoadworkEntity
         return RoadworkEntity(self, data)
 
 
     def Warning(self, data=None) -> "WarningEntity":
-        """Entity factory: client.Warning().list({}) / client.Warning().load({"id": ...})."""
+        """Entity factory: client.Warning().list() / client.Warning().load({"id": ...})."""
         from entity.warning_entity import WarningEntity
         return WarningEntity(self, data)
 
 
     def Webcam(self, data=None) -> "WebcamEntity":
-        """Entity factory: client.Webcam().list({}) / client.Webcam().load({"id": ...})."""
+        """Entity factory: client.Webcam().list() / client.Webcam().load({"id": ...})."""
         from entity.webcam_entity import WebcamEntity
         return WebcamEntity(self, data)
 

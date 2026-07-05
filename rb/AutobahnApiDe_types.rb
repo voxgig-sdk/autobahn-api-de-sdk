@@ -179,7 +179,7 @@ ListAutobahnen = Struct.new(
   keyword_init: true
 )
 
-# Match filter for ListAutobahnen#list (any subset of ListAutobahnen fields).
+# Request payload for ListAutobahnen#list.
 #
 # @!attribute [rw] road
 #   @return [Array, nil]

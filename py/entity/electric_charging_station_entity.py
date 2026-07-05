@@ -65,8 +65,13 @@ class ElectricChargingStationEntity:
         return vs.clone(self._match)
 
     
-    def load(self, reqmatch: ElectricChargingStationLoadMatch, ctrl=None) -> ElectricChargingStation:
+    def load(self, reqmatch=None, ctrl=None) -> ElectricChargingStation:
         utility = self._utility
+        # reqmatch is optional: an entity with no id-like key loads with no
+        # match. Treat None as an empty match so client.ElectricChargingStation().load()
+        # works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "load",
             "ctrl": ctrl,
@@ -87,8 +92,12 @@ class ElectricChargingStationEntity:
 
 
     
-    def list(self, reqmatch: ElectricChargingStationListMatch, ctrl=None) -> list[ElectricChargingStation]:
+    def list(self, reqmatch=None, ctrl=None) -> list[ElectricChargingStation]:
         utility = self._utility
+        # reqmatch is optional: an omitted match lists all records. Treat None
+        # as an empty match so client.ElectricChargingStation().list() works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "list",
             "ctrl": ctrl,

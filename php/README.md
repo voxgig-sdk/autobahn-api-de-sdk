@@ -4,6 +4,8 @@
 
 The PHP SDK for the AutobahnApiDe API — an entity-oriented client using PHP conventions.
 
+The SDK exposes the API as capitalised, semantic **Entities** — for example `$client->Closure()` — with named operations (`list`/`load`) instead of raw URL paths and query strings. Working with resources and verbs keeps call sites self-describing and reduces cognitive load.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -36,7 +38,7 @@ try {
     // list() returns an array of Closure records — iterate directly.
     $closures = $client->Closure()->list();
     foreach ($closures as $item) {
-        echo $item["id"] . " " . $item["name"] . "\n";
+        echo $item["coordinate"] . "\n";
     }
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -52,6 +54,37 @@ try {
     print_r($closure);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
+}
+```
+
+
+## Error handling
+
+Entity operations throw a `\Throwable` on failure, so wrap them in
+`try` / `catch`:
+
+```php
+try {
+    $closures = $client->Closure()->list();
+} catch (\Throwable $err) {
+    echo "Error: " . $err->getMessage();
+}
+```
+
+`direct()` does **not** throw — it returns the result array. Branch on
+`ok`; on failure `status` holds the HTTP status (for error responses) and
+`err` holds a transport error, so read both defensively:
+
+```php
+$result = $client->direct([
+    "path" => "/api/resource/{id}",
+    "method" => "GET",
+    "params" => ["id" => "example_id"],
+]);
+
+if (! $result["ok"]) {
+    $err = $result["err"] ?? null;
+    echo "request failed: " . ($err ? $err->getMessage() : "HTTP " . $result["status"]);
 }
 ```
 
@@ -75,7 +108,10 @@ if ($result["ok"]) {
     echo $result["status"];  // 200
     print_r($result["data"]);  // response body
 } else {
-    echo "Error: " . $result["err"]->getMessage();
+    // On an HTTP error status there is no err (only a transport failure sets
+    // it), so fall back to the status code.
+    $err = $result["err"] ?? null;
+    echo "Error: " . ($err ? $err->getMessage() : "HTTP " . $result["status"]);
 }
 ```
 
@@ -104,8 +140,8 @@ $client = AutobahnApiDeSDK::test([
     "entity" => ["closure" => ["test01" => ["id" => "test01"]]],
 ]);
 
-// load() returns the bare mock record (throws on error).
-$closure = $client->Closure()->load(["id" => "test01"]);
+// Entity ops return the bare mock record (throws on error).
+$closure = $client->Closure()->list();
 print_r($closure);
 ```
 
@@ -200,10 +236,7 @@ All entities share the same interface.
 | Method | Signature | Description |
 | --- | --- | --- |
 | `load` | `($reqmatch, $ctrl): array` | Load a single entity by match criteria. |
-| `list` | `($reqmatch, $ctrl): array` | List entities matching the criteria. |
-| `create` | `($reqdata, $ctrl): array` | Create a new entity. |
-| `update` | `($reqdata, $ctrl): array` | Update an existing entity. |
-| `remove` | `($reqmatch, $ctrl): array` | Remove an entity. |
+| `list` | `(?array $reqmatch = null, $ctrl): array` | List entities matching the criteria (call with no argument to list all). |
 | `data_get` | `(): array` | Get entity data. |
 | `data_set` | `($data): void` | Set entity data. |
 | `match_get` | `(): array` | Get entity match criteria. |
@@ -405,21 +438,21 @@ Create an instance: `$closure = $client->Closure();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `coordinate` | ``$OBJECT`` |  |
-| `description` | ``$ARRAY`` |  |
-| `display_type` | ``$STRING`` |  |
-| `extent` | ``$STRING`` |  |
-| `footer` | ``$ARRAY`` |  |
-| `future` | ``$BOOLEAN`` |  |
-| `icon` | ``$STRING`` |  |
-| `identifier` | ``$STRING`` |  |
-| `is_blocked` | ``$BOOLEAN`` |  |
-| `lorry_parking_feature_icon` | ``$ARRAY`` |  |
-| `point` | ``$STRING`` |  |
-| `route_recommendation` | ``$ARRAY`` |  |
-| `start_timestamp` | ``$STRING`` |  |
-| `subtitle` | ``$STRING`` |  |
-| `title` | ``$STRING`` |  |
+| `coordinate` | `array` |  |
+| `description` | `array` |  |
+| `display_type` | `string` |  |
+| `extent` | `string` |  |
+| `footer` | `array` |  |
+| `future` | `bool` |  |
+| `icon` | `string` |  |
+| `identifier` | `string` |  |
+| `is_blocked` | `bool` |  |
+| `lorry_parking_feature_icon` | `array` |  |
+| `point` | `string` |  |
+| `route_recommendation` | `array` |  |
+| `start_timestamp` | `string` |  |
+| `subtitle` | `string` |  |
+| `title` | `string` |  |
 
 #### Example: Load
 
@@ -451,20 +484,20 @@ Create an instance: `$electric_charging_station = $client->ElectricChargingStati
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `coordinate` | ``$OBJECT`` |  |
-| `description` | ``$ARRAY`` |  |
-| `display_type` | ``$STRING`` |  |
-| `extent` | ``$STRING`` |  |
-| `footer` | ``$ARRAY`` |  |
-| `future` | ``$BOOLEAN`` |  |
-| `icon` | ``$STRING`` |  |
-| `identifier` | ``$STRING`` |  |
-| `is_blocked` | ``$BOOLEAN`` |  |
-| `lorry_parking_feature_icon` | ``$ARRAY`` |  |
-| `point` | ``$STRING`` |  |
-| `route_recommendation` | ``$ARRAY`` |  |
-| `subtitle` | ``$STRING`` |  |
-| `title` | ``$STRING`` |  |
+| `coordinate` | `array` |  |
+| `description` | `array` |  |
+| `display_type` | `string` |  |
+| `extent` | `string` |  |
+| `footer` | `array` |  |
+| `future` | `bool` |  |
+| `icon` | `string` |  |
+| `identifier` | `string` |  |
+| `is_blocked` | `bool` |  |
+| `lorry_parking_feature_icon` | `array` |  |
+| `point` | `string` |  |
+| `route_recommendation` | `array` |  |
+| `subtitle` | `string` |  |
+| `title` | `string` |  |
 
 #### Example: Load
 
@@ -495,7 +528,7 @@ Create an instance: `$list_autobahnen = $client->ListAutobahnen();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `road` | ``$ARRAY`` |  |
+| `road` | `array` |  |
 
 #### Example: List
 
@@ -520,20 +553,20 @@ Create an instance: `$parking_lorry = $client->ParkingLorry();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `coordinate` | ``$OBJECT`` |  |
-| `description` | ``$ARRAY`` |  |
-| `display_type` | ``$STRING`` |  |
-| `extent` | ``$STRING`` |  |
-| `footer` | ``$ARRAY`` |  |
-| `future` | ``$BOOLEAN`` |  |
-| `icon` | ``$STRING`` |  |
-| `identifier` | ``$STRING`` |  |
-| `is_blocked` | ``$BOOLEAN`` |  |
-| `lorry_parking_feature_icon` | ``$ARRAY`` |  |
-| `point` | ``$STRING`` |  |
-| `route_recommendation` | ``$ARRAY`` |  |
-| `subtitle` | ``$STRING`` |  |
-| `title` | ``$STRING`` |  |
+| `coordinate` | `array` |  |
+| `description` | `array` |  |
+| `display_type` | `string` |  |
+| `extent` | `string` |  |
+| `footer` | `array` |  |
+| `future` | `bool` |  |
+| `icon` | `string` |  |
+| `identifier` | `string` |  |
+| `is_blocked` | `bool` |  |
+| `lorry_parking_feature_icon` | `array` |  |
+| `point` | `string` |  |
+| `route_recommendation` | `array` |  |
+| `subtitle` | `string` |  |
+| `title` | `string` |  |
 
 #### Example: Load
 
@@ -565,21 +598,21 @@ Create an instance: `$roadwork = $client->Roadwork();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `coordinate` | ``$OBJECT`` |  |
-| `description` | ``$ARRAY`` |  |
-| `display_type` | ``$STRING`` |  |
-| `extent` | ``$STRING`` |  |
-| `footer` | ``$ARRAY`` |  |
-| `future` | ``$BOOLEAN`` |  |
-| `icon` | ``$STRING`` |  |
-| `identifier` | ``$STRING`` |  |
-| `is_blocked` | ``$BOOLEAN`` |  |
-| `lorry_parking_feature_icon` | ``$ARRAY`` |  |
-| `point` | ``$STRING`` |  |
-| `route_recommendation` | ``$ARRAY`` |  |
-| `start_timestamp` | ``$STRING`` |  |
-| `subtitle` | ``$STRING`` |  |
-| `title` | ``$STRING`` |  |
+| `coordinate` | `array` |  |
+| `description` | `array` |  |
+| `display_type` | `string` |  |
+| `extent` | `string` |  |
+| `footer` | `array` |  |
+| `future` | `bool` |  |
+| `icon` | `string` |  |
+| `identifier` | `string` |  |
+| `is_blocked` | `bool` |  |
+| `lorry_parking_feature_icon` | `array` |  |
+| `point` | `string` |  |
+| `route_recommendation` | `array` |  |
+| `start_timestamp` | `string` |  |
+| `subtitle` | `string` |  |
+| `title` | `string` |  |
 
 #### Example: Load
 
@@ -611,21 +644,21 @@ Create an instance: `$warning = $client->Warning();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `coordinate` | ``$OBJECT`` |  |
-| `description` | ``$ARRAY`` |  |
-| `display_type` | ``$STRING`` |  |
-| `extent` | ``$STRING`` |  |
-| `footer` | ``$ARRAY`` |  |
-| `future` | ``$BOOLEAN`` |  |
-| `icon` | ``$STRING`` |  |
-| `identifier` | ``$STRING`` |  |
-| `is_blocked` | ``$BOOLEAN`` |  |
-| `lorry_parking_feature_icon` | ``$ARRAY`` |  |
-| `point` | ``$STRING`` |  |
-| `route_recommendation` | ``$ARRAY`` |  |
-| `start_timestamp` | ``$STRING`` |  |
-| `subtitle` | ``$STRING`` |  |
-| `title` | ``$STRING`` |  |
+| `coordinate` | `array` |  |
+| `description` | `array` |  |
+| `display_type` | `string` |  |
+| `extent` | `string` |  |
+| `footer` | `array` |  |
+| `future` | `bool` |  |
+| `icon` | `string` |  |
+| `identifier` | `string` |  |
+| `is_blocked` | `bool` |  |
+| `lorry_parking_feature_icon` | `array` |  |
+| `point` | `string` |  |
+| `route_recommendation` | `array` |  |
+| `start_timestamp` | `string` |  |
+| `subtitle` | `string` |  |
+| `title` | `string` |  |
 
 #### Example: Load
 
@@ -657,23 +690,23 @@ Create an instance: `$webcam = $client->Webcam();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `coordinate` | ``$OBJECT`` |  |
-| `description` | ``$ARRAY`` |  |
-| `display_type` | ``$STRING`` |  |
-| `extent` | ``$STRING`` |  |
-| `footer` | ``$ARRAY`` |  |
-| `future` | ``$BOOLEAN`` |  |
-| `icon` | ``$STRING`` |  |
-| `identifier` | ``$STRING`` |  |
-| `imageurl` | ``$STRING`` |  |
-| `is_blocked` | ``$BOOLEAN`` |  |
-| `linkurl` | ``$STRING`` |  |
-| `lorry_parking_feature_icon` | ``$ARRAY`` |  |
-| `operator` | ``$STRING`` |  |
-| `point` | ``$STRING`` |  |
-| `route_recommendation` | ``$ARRAY`` |  |
-| `subtitle` | ``$STRING`` |  |
-| `title` | ``$STRING`` |  |
+| `coordinate` | `array` |  |
+| `description` | `array` |  |
+| `display_type` | `string` |  |
+| `extent` | `string` |  |
+| `footer` | `array` |  |
+| `future` | `bool` |  |
+| `icon` | `string` |  |
+| `identifier` | `string` |  |
+| `imageurl` | `string` |  |
+| `is_blocked` | `bool` |  |
+| `linkurl` | `string` |  |
+| `lorry_parking_feature_icon` | `array` |  |
+| `operator` | `string` |  |
+| `point` | `string` |  |
+| `route_recommendation` | `array` |  |
+| `subtitle` | `string` |  |
+| `title` | `string` |  |
 
 #### Example: Load
 
@@ -690,12 +723,16 @@ $webcams = $client->Webcam()->list();
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -712,8 +749,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as the second element in the return array.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -757,15 +795,15 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```php
 $closure = $client->Closure();
-$closure->load(["id" => "example_id"]);
+$closure->list();
 
-// $closure->dataGet() now returns the loaded closure data
-// $closure->matchGet() returns the last match criteria
+// $closure->data_get() now returns the closure data from the last list
+// $closure->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration
