@@ -1,9 +1,0 @@
-# Entity Models
-
-@"closure.jsonic"
-@"electric_charging_station.jsonic"
-@"list_autobahnen.jsonic"
-@"parking_lorry.jsonic"
-@"roadwork.jsonic"
-@"warning.jsonic"
-@"webcam.jsonic"

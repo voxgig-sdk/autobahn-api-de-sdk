@@ -17,10 +17,10 @@ main: {
           url: "https://verkehr.autobahn.de/o/autobahn"
         }
       ]
+      summary: "Was passiert auf Deutschlands Bundesstraßen?"
       title: "Autobahn App API"
       version: "1.0.1"
+      website: "https://github.com/bundesAPI/autobahn-api/blob/main/README.md"
       "x-office": "Bundesministerium für Digitales und Verkehr"
     }
   }
-}
-

@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -1630,13 +1627,16 @@
           "url": "https://www.autobahn.de/datenschutz/"
         },
         "description": "Was passiert auf Deutschlands Bundesstraßen? API für aktuelle Verwaltungsdaten zu Baustellen, Staus und Ladestationen. Außerdem Zugang zu Verkehrsüberwachungskameras und vielen weiteren Datensätzen.\n",
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "url": "https://verkehr.autobahn.de/o/autobahn"
           }
         ],
+        "summary": "Was passiert auf Deutschlands Bundesstraßen?",
         "title": "Autobahn App API",
         "version": "1.0.1",
+        "website": "https://github.com/bundesAPI/autobahn-api/blob/main/README.md",
         "x-office": "Bundesministerium für Digitales und Verkehr"
       },
       "option": {},
@@ -1690,6 +1690,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -1740,6 +1743,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

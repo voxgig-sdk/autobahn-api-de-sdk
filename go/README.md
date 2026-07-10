@@ -60,7 +60,7 @@ func main() {
     }
 
     // Load a single closure — the value is the loaded record.
-    closure, err := client.Closure(nil).Load(map[string]any{"id": "example"}, nil)
+    closure, err := client.Closure(nil).Load(map[string]any{"id": "example_id"}, nil)
     if err != nil {
         panic(err)
     }
@@ -484,7 +484,7 @@ fmt.Println(closures) // the array of records
 
 ### ElectricChargingStation
 
-Create an instance: `electric_charging_station := client.ElectricChargingStation(nil)`
+Create an instance: `electricChargingStation := client.ElectricChargingStation(nil)`
 
 #### Operations
 
@@ -515,27 +515,27 @@ Create an instance: `electric_charging_station := client.ElectricChargingStation
 #### Example: Load
 
 ```go
-electric_charging_station, err := client.ElectricChargingStation(nil).Load(map[string]any{"id": "electric_charging_station_id"}, nil)
+electricChargingStation, err := client.ElectricChargingStation(nil).Load(map[string]any{"id": "electric_charging_station_id"}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(electric_charging_station) // the loaded record
+fmt.Println(electricChargingStation) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-electric_charging_stations, err := client.ElectricChargingStation(nil).List(nil, nil)
+electricChargingStations, err := client.ElectricChargingStation(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(electric_charging_stations) // the array of records
+fmt.Println(electricChargingStations) // the array of records
 ```
 
 
 ### ListAutobahnen
 
-Create an instance: `list_autobahnen := client.ListAutobahnen(nil)`
+Create an instance: `listAutobahnen := client.ListAutobahnen(nil)`
 
 #### Operations
 
@@ -552,17 +552,17 @@ Create an instance: `list_autobahnen := client.ListAutobahnen(nil)`
 #### Example: List
 
 ```go
-list_autobahnens, err := client.ListAutobahnen(nil).List(nil, nil)
+listAutobahnens, err := client.ListAutobahnen(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(list_autobahnens) // the array of records
+fmt.Println(listAutobahnens) // the array of records
 ```
 
 
 ### ParkingLorry
 
-Create an instance: `parking_lorry := client.ParkingLorry(nil)`
+Create an instance: `parkingLorry := client.ParkingLorry(nil)`
 
 #### Operations
 
@@ -593,21 +593,21 @@ Create an instance: `parking_lorry := client.ParkingLorry(nil)`
 #### Example: Load
 
 ```go
-parking_lorry, err := client.ParkingLorry(nil).Load(map[string]any{"id": "parking_lorry_id"}, nil)
+parkingLorry, err := client.ParkingLorry(nil).Load(map[string]any{"id": "parking_lorry_id"}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(parking_lorry) // the loaded record
+fmt.Println(parkingLorry) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-parking_lorrys, err := client.ParkingLorry(nil).List(nil, nil)
+parkingLorrys, err := client.ParkingLorry(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(parking_lorrys) // the array of records
+fmt.Println(parkingLorrys) // the array of records
 ```
 
 
