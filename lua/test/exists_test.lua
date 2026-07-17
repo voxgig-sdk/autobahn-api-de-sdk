@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- AutobahnApiDe SDK exists test
 
 local sdk = require("autobahn-api-de_sdk")
 
