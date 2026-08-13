@@ -5,6 +5,10 @@
       "desc": ""
     },
     "kit": {
+      "author": {
+        "name": "",
+        "url": ""
+      },
       "config": {
         "docs_order": [
           "ts",
@@ -18,6 +22,7 @@
           "content-type": "application/json"
         }
       },
+      "contributor": {},
       "entity": {
         "closure": {
           "active": true,
@@ -75,13 +80,13 @@
             },
             {
               "active": true,
-              "name": "is_blocked",
+              "name": "isBlocked",
               "req": false,
-              "type": "`$BOOLEAN`"
+              "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "lorry_parking_feature_icon",
+              "name": "lorryParkingFeatureIcons",
               "req": false,
               "type": "`$ARRAY`"
             },
@@ -93,13 +98,13 @@
             },
             {
               "active": true,
-              "name": "route_recommendation",
+              "name": "routeRecommendation",
               "req": false,
               "type": "`$ARRAY`"
             },
             {
               "active": true,
-              "name": "start_timestamp",
+              "name": "startTimestamp",
               "req": false,
               "type": "`$STRING`"
             },
@@ -137,6 +142,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/{roadId}/services/closure",
                   "parts": [
@@ -180,6 +186,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/details/closure/{closureId}",
                   "parts": [
@@ -265,13 +272,13 @@
             },
             {
               "active": true,
-              "name": "is_blocked",
+              "name": "isBlocked",
               "req": false,
-              "type": "`$BOOLEAN`"
+              "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "lorry_parking_feature_icon",
+              "name": "lorryParkingFeatureIcons",
               "req": false,
               "type": "`$ARRAY`"
             },
@@ -283,7 +290,7 @@
             },
             {
               "active": true,
-              "name": "route_recommendation",
+              "name": "routeRecommendation",
               "req": false,
               "type": "`$ARRAY`"
             },
@@ -321,6 +328,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/{roadId}/services/electric_charging_station",
                   "parts": [
@@ -364,6 +372,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/details/electric_charging_station/{stationId}",
                   "parts": [
@@ -401,7 +410,7 @@
           "fields": [
             {
               "active": true,
-              "name": "road",
+              "name": "roads",
               "req": false,
               "type": "`$ARRAY`"
             }
@@ -415,13 +424,14 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/",
                   "parts": [],
                   "select": {},
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.roads`"
                   }
                 }
               ]
@@ -487,13 +497,13 @@
             },
             {
               "active": true,
-              "name": "is_blocked",
+              "name": "isBlocked",
               "req": false,
-              "type": "`$BOOLEAN`"
+              "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "lorry_parking_feature_icon",
+              "name": "lorryParkingFeatureIcons",
               "req": false,
               "type": "`$ARRAY`"
             },
@@ -505,7 +515,7 @@
             },
             {
               "active": true,
-              "name": "route_recommendation",
+              "name": "routeRecommendation",
               "req": false,
               "type": "`$ARRAY`"
             },
@@ -543,6 +553,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/{roadId}/services/parking_lorry",
                   "parts": [
@@ -586,6 +597,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/details/parking_lorry/{lorryId}",
                   "parts": [
@@ -671,13 +683,13 @@
             },
             {
               "active": true,
-              "name": "is_blocked",
+              "name": "isBlocked",
               "req": false,
-              "type": "`$BOOLEAN`"
+              "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "lorry_parking_feature_icon",
+              "name": "lorryParkingFeatureIcons",
               "req": false,
               "type": "`$ARRAY`"
             },
@@ -689,13 +701,13 @@
             },
             {
               "active": true,
-              "name": "route_recommendation",
+              "name": "routeRecommendation",
               "req": false,
               "type": "`$ARRAY`"
             },
             {
               "active": true,
-              "name": "start_timestamp",
+              "name": "startTimestamp",
               "req": false,
               "type": "`$STRING`"
             },
@@ -733,6 +745,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/{roadId}/services/roadworks",
                   "parts": [
@@ -752,7 +765,7 @@
                   },
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.roadworks`"
                   }
                 }
               ]
@@ -776,6 +789,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/details/roadworks/{roadworkId}",
                   "parts": [
@@ -861,13 +875,13 @@
             },
             {
               "active": true,
-              "name": "is_blocked",
+              "name": "isBlocked",
               "req": false,
-              "type": "`$BOOLEAN`"
+              "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "lorry_parking_feature_icon",
+              "name": "lorryParkingFeatureIcons",
               "req": false,
               "type": "`$ARRAY`"
             },
@@ -879,13 +893,13 @@
             },
             {
               "active": true,
-              "name": "route_recommendation",
+              "name": "routeRecommendation",
               "req": false,
               "type": "`$ARRAY`"
             },
             {
               "active": true,
-              "name": "start_timestamp",
+              "name": "startTimestamp",
               "req": false,
               "type": "`$STRING`"
             },
@@ -923,6 +937,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/{roadId}/services/warning",
                   "parts": [
@@ -966,6 +981,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/details/warning/{warningId}",
                   "parts": [
@@ -1057,9 +1073,9 @@
             },
             {
               "active": true,
-              "name": "is_blocked",
+              "name": "isBlocked",
               "req": false,
-              "type": "`$BOOLEAN`"
+              "type": "`$STRING`"
             },
             {
               "active": true,
@@ -1069,7 +1085,7 @@
             },
             {
               "active": true,
-              "name": "lorry_parking_feature_icon",
+              "name": "lorryParkingFeatureIcons",
               "req": false,
               "type": "`$ARRAY`"
             },
@@ -1087,7 +1103,7 @@
             },
             {
               "active": true,
-              "name": "route_recommendation",
+              "name": "routeRecommendation",
               "req": false,
               "type": "`$ARRAY`"
             },
@@ -1125,6 +1141,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/{roadId}/services/webcam",
                   "parts": [
@@ -1168,6 +1185,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/details/webcam/{webcamId}",
                   "parts": [
@@ -1640,18 +1658,41 @@
         "x-office": "Bundesministerium für Digitales und Verkehr"
       },
       "option": {},
+      "repo": {
+        "host": "github.com",
+        "path": ""
+      },
       "target": {
         "go": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "go",
+          "feature": {
+            "fullset": [
+              "test/feature_test.go"
+            ],
+            "trim": true
+          },
           "module": {
-            "name": "autobahn-api-de"
+            "goversion": "",
+            "name": "autobahn-api-de",
+            "package": "",
+            "path": ""
           },
           "name": "go",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1673,22 +1714,40 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Golang"
         },
         "go-cli": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "go",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "autobahn-api-de"
+            "goversion": "",
+            "name": "autobahn-api-de",
+            "package": "",
+            "path": ""
           },
           "name": "go-cli",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "phase": {
             "agentguide": {
               "active": false
@@ -1727,21 +1786,39 @@
                 "recipe": "github"
               },
               "via": "root"
-            }
+            },
+            "version": "0.0.1"
           },
           "title": "Go CLI"
         },
         "go-mcp": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "go",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "autobahn-api-de"
+            "goversion": "",
+            "name": "autobahn-api-de",
+            "package": "",
+            "path": ""
           },
           "name": "go-mcp",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "phase": {
             "agentguide": {
               "active": false
@@ -1780,12 +1857,17 @@
                 "recipe": "github"
               },
               "via": "root"
-            }
+            },
+            "version": "0.0.1"
           },
           "title": "Go MCP server"
         },
         "lua": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "--"
           },
@@ -1797,10 +1879,23 @@
             }
           },
           "ext": "lua",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "autobahn-api-de"
+            "goversion": "",
+            "name": "autobahn-api-de",
+            "package": "",
+            "path": ""
           },
           "name": "lua",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1822,22 +1917,40 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Lua"
         },
         "php": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "php",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "autobahn-api-de"
+            "goversion": "",
+            "name": "autobahn-api-de",
+            "package": "",
+            "path": ""
           },
           "name": "php",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1859,13 +1972,18 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "PHP"
         },
         "py": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "#"
           },
@@ -1877,10 +1995,23 @@
             }
           },
           "ext": "py",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "autobahn-api-de"
+            "goversion": "",
+            "name": "autobahn-api-de",
+            "package": "",
+            "path": ""
           },
           "name": "py",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1902,13 +2033,18 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Python"
         },
         "rb": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "#"
           },
@@ -1925,10 +2061,23 @@
             }
           },
           "ext": "rb",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "autobahn-api-de"
+            "goversion": "",
+            "name": "autobahn-api-de",
+            "package": "",
+            "path": ""
           },
           "name": "rb",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1950,13 +2099,18 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Ruby"
         },
         "ts": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "//"
@@ -1979,10 +2133,23 @@
             }
           },
           "ext": "ts",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "autobahn-api-de"
+            "goversion": "",
+            "name": "autobahn-api-de",
+            "package": "",
+            "path": ""
           },
           "name": "ts",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2004,9 +2171,17 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "title": "TypeScript"
+        }
+      },
+      "test": {
+        "live": {
+          "app": false,
+          "base": "",
+          "strict": false
         }
       }
     }

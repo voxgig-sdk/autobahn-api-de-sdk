@@ -26,8 +26,8 @@ import {
 describe('WarningEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when AUTOBAHNAPIDE_TEST_LIVE=TRUE.
-  afterEach(liveDelay('AUTOBAHNAPIDE_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when AUTOBAHN_API_DE_TEST_LIVE=TRUE.
+  afterEach(liveDelay('AUTOBAHN_API_DE_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = AutobahnApiDeSDK.test()
@@ -64,7 +64,7 @@ describe('WarningEntity', async () => {
     const warning_ref01_match: any = {}
     warning_ref01_match['road_id'] = setup.idmap['road01']
 
-    const warning_ref01_list = await warning_ref01_ent.list(warning_ref01_match)
+    const warning_ref01_list = (await warning_ref01_ent.list(warning_ref01_match)).map((e: any) => e.data())
 
 
 

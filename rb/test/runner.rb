@@ -23,8 +23,8 @@ module AutobahnApiDeTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("AUTOBAHNAPIDE_TEST_LIVE")
-    override = getenv("AUTOBAHNAPIDE_TEST_OVERRIDE")
+    live = getenv("AUTOBAHN_API_DE_TEST_LIVE")
+    override = getenv("AUTOBAHN_API_DE_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module AutobahnApiDeTestRunner
       end
     end
 
-    explain = getenv("AUTOBAHNAPIDE_TEST_EXPLAIN")
-    m["AUTOBAHNAPIDE_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("AUTOBAHN_API_DE_TEST_EXPLAIN")
+    m["AUTOBAHN_API_DE_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

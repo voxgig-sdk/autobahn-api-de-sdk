@@ -88,14 +88,14 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "is_blocked",
+						"name": "isBlocked",
 						"req": false,
-						"type": "`$BOOLEAN`",
+						"type": "`$STRING`",
 						"index$": 8,
 					},
 					map[string]any{
 						"active": true,
-						"name": "lorry_parking_feature_icon",
+						"name": "lorryParkingFeatureIcons",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 9,
@@ -109,14 +109,14 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "route_recommendation",
+						"name": "routeRecommendation",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 11,
 					},
 					map[string]any{
 						"active": true,
-						"name": "start_timestamp",
+						"name": "startTimestamp",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 12,
@@ -158,6 +158,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/{roadId}/services/closure",
 								"parts": []any{
@@ -182,7 +183,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 					"load": map[string]any{
 						"input": "data",
@@ -204,6 +204,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/details/closure/{closureId}",
 								"parts": []any{
@@ -228,7 +229,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -295,14 +295,14 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "is_blocked",
+						"name": "isBlocked",
 						"req": false,
-						"type": "`$BOOLEAN`",
+						"type": "`$STRING`",
 						"index$": 8,
 					},
 					map[string]any{
 						"active": true,
-						"name": "lorry_parking_feature_icon",
+						"name": "lorryParkingFeatureIcons",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 9,
@@ -316,7 +316,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "route_recommendation",
+						"name": "routeRecommendation",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 11,
@@ -358,6 +358,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/{roadId}/services/electric_charging_station",
 								"parts": []any{
@@ -382,7 +383,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 					"load": map[string]any{
 						"input": "data",
@@ -404,6 +404,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/details/electric_charging_station/{stationId}",
 								"parts": []any{
@@ -428,7 +429,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -439,7 +439,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "road",
+						"name": "roads",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 0,
@@ -454,18 +454,18 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/",
 								"parts": []any{},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.roads`",
 								},
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -532,14 +532,14 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "is_blocked",
+						"name": "isBlocked",
 						"req": false,
-						"type": "`$BOOLEAN`",
+						"type": "`$STRING`",
 						"index$": 8,
 					},
 					map[string]any{
 						"active": true,
-						"name": "lorry_parking_feature_icon",
+						"name": "lorryParkingFeatureIcons",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 9,
@@ -553,7 +553,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "route_recommendation",
+						"name": "routeRecommendation",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 11,
@@ -595,6 +595,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/{roadId}/services/parking_lorry",
 								"parts": []any{
@@ -619,7 +620,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 					"load": map[string]any{
 						"input": "data",
@@ -641,6 +641,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/details/parking_lorry/{lorryId}",
 								"parts": []any{
@@ -665,7 +666,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -732,14 +732,14 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "is_blocked",
+						"name": "isBlocked",
 						"req": false,
-						"type": "`$BOOLEAN`",
+						"type": "`$STRING`",
 						"index$": 8,
 					},
 					map[string]any{
 						"active": true,
-						"name": "lorry_parking_feature_icon",
+						"name": "lorryParkingFeatureIcons",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 9,
@@ -753,14 +753,14 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "route_recommendation",
+						"name": "routeRecommendation",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 11,
 					},
 					map[string]any{
 						"active": true,
-						"name": "start_timestamp",
+						"name": "startTimestamp",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 12,
@@ -802,6 +802,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/{roadId}/services/roadworks",
 								"parts": []any{
@@ -821,12 +822,11 @@ func MakeConfig() map[string]any {
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.roadworks`",
 								},
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 					"load": map[string]any{
 						"input": "data",
@@ -848,6 +848,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/details/roadworks/{roadworkId}",
 								"parts": []any{
@@ -872,7 +873,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -939,14 +939,14 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "is_blocked",
+						"name": "isBlocked",
 						"req": false,
-						"type": "`$BOOLEAN`",
+						"type": "`$STRING`",
 						"index$": 8,
 					},
 					map[string]any{
 						"active": true,
-						"name": "lorry_parking_feature_icon",
+						"name": "lorryParkingFeatureIcons",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 9,
@@ -960,14 +960,14 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "route_recommendation",
+						"name": "routeRecommendation",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 11,
 					},
 					map[string]any{
 						"active": true,
-						"name": "start_timestamp",
+						"name": "startTimestamp",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 12,
@@ -1009,6 +1009,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/{roadId}/services/warning",
 								"parts": []any{
@@ -1033,7 +1034,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 					"load": map[string]any{
 						"input": "data",
@@ -1055,6 +1055,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/details/warning/{warningId}",
 								"parts": []any{
@@ -1079,7 +1080,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -1153,9 +1153,9 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "is_blocked",
+						"name": "isBlocked",
 						"req": false,
-						"type": "`$BOOLEAN`",
+						"type": "`$STRING`",
 						"index$": 9,
 					},
 					map[string]any{
@@ -1167,7 +1167,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "lorry_parking_feature_icon",
+						"name": "lorryParkingFeatureIcons",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 11,
@@ -1188,7 +1188,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "route_recommendation",
+						"name": "routeRecommendation",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 14,
@@ -1230,6 +1230,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/{roadId}/services/webcam",
 								"parts": []any{
@@ -1254,7 +1255,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 					"load": map[string]any{
 						"input": "data",
@@ -1276,6 +1276,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/details/webcam/{webcamId}",
 								"parts": []any{
@@ -1300,7 +1301,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{

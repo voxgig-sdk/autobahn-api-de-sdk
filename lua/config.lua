@@ -88,14 +88,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "is_blocked",
+            ["name"] = "isBlocked",
             ["req"] = false,
-            ["type"] = "`$BOOLEAN`",
+            ["type"] = "`$STRING`",
             ["index$"] = 8,
           },
           {
             ["active"] = true,
-            ["name"] = "lorry_parking_feature_icon",
+            ["name"] = "lorryParkingFeatureIcons",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 9,
@@ -109,14 +109,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "route_recommendation",
+            ["name"] = "routeRecommendation",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 11,
           },
           {
             ["active"] = true,
-            ["name"] = "start_timestamp",
+            ["name"] = "startTimestamp",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 12,
@@ -158,6 +158,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/{roadId}/services/closure",
                 ["parts"] = {
@@ -204,6 +205,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/details/closure/{closureId}",
                 ["parts"] = {
@@ -295,14 +297,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "is_blocked",
+            ["name"] = "isBlocked",
             ["req"] = false,
-            ["type"] = "`$BOOLEAN`",
+            ["type"] = "`$STRING`",
             ["index$"] = 8,
           },
           {
             ["active"] = true,
-            ["name"] = "lorry_parking_feature_icon",
+            ["name"] = "lorryParkingFeatureIcons",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 9,
@@ -316,7 +318,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "route_recommendation",
+            ["name"] = "routeRecommendation",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 11,
@@ -358,6 +360,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/{roadId}/services/electric_charging_station",
                 ["parts"] = {
@@ -404,6 +407,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/details/electric_charging_station/{stationId}",
                 ["parts"] = {
@@ -439,7 +443,7 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "road",
+            ["name"] = "roads",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 0,
@@ -454,13 +458,14 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/",
                 ["parts"] = {},
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.roads`",
                 },
                 ["index$"] = 0,
               },
@@ -532,14 +537,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "is_blocked",
+            ["name"] = "isBlocked",
             ["req"] = false,
-            ["type"] = "`$BOOLEAN`",
+            ["type"] = "`$STRING`",
             ["index$"] = 8,
           },
           {
             ["active"] = true,
-            ["name"] = "lorry_parking_feature_icon",
+            ["name"] = "lorryParkingFeatureIcons",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 9,
@@ -553,7 +558,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "route_recommendation",
+            ["name"] = "routeRecommendation",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 11,
@@ -595,6 +600,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/{roadId}/services/parking_lorry",
                 ["parts"] = {
@@ -641,6 +647,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/details/parking_lorry/{lorryId}",
                 ["parts"] = {
@@ -732,14 +739,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "is_blocked",
+            ["name"] = "isBlocked",
             ["req"] = false,
-            ["type"] = "`$BOOLEAN`",
+            ["type"] = "`$STRING`",
             ["index$"] = 8,
           },
           {
             ["active"] = true,
-            ["name"] = "lorry_parking_feature_icon",
+            ["name"] = "lorryParkingFeatureIcons",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 9,
@@ -753,14 +760,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "route_recommendation",
+            ["name"] = "routeRecommendation",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 11,
           },
           {
             ["active"] = true,
-            ["name"] = "start_timestamp",
+            ["name"] = "startTimestamp",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 12,
@@ -802,6 +809,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/{roadId}/services/roadworks",
                 ["parts"] = {
@@ -821,7 +829,7 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.roadworks`",
                 },
                 ["index$"] = 0,
               },
@@ -848,6 +856,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/details/roadworks/{roadworkId}",
                 ["parts"] = {
@@ -939,14 +948,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "is_blocked",
+            ["name"] = "isBlocked",
             ["req"] = false,
-            ["type"] = "`$BOOLEAN`",
+            ["type"] = "`$STRING`",
             ["index$"] = 8,
           },
           {
             ["active"] = true,
-            ["name"] = "lorry_parking_feature_icon",
+            ["name"] = "lorryParkingFeatureIcons",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 9,
@@ -960,14 +969,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "route_recommendation",
+            ["name"] = "routeRecommendation",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 11,
           },
           {
             ["active"] = true,
-            ["name"] = "start_timestamp",
+            ["name"] = "startTimestamp",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 12,
@@ -1009,6 +1018,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/{roadId}/services/warning",
                 ["parts"] = {
@@ -1055,6 +1065,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/details/warning/{warningId}",
                 ["parts"] = {
@@ -1153,9 +1164,9 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "is_blocked",
+            ["name"] = "isBlocked",
             ["req"] = false,
-            ["type"] = "`$BOOLEAN`",
+            ["type"] = "`$STRING`",
             ["index$"] = 9,
           },
           {
@@ -1167,7 +1178,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "lorry_parking_feature_icon",
+            ["name"] = "lorryParkingFeatureIcons",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 11,
@@ -1188,7 +1199,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "route_recommendation",
+            ["name"] = "routeRecommendation",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 14,
@@ -1230,6 +1241,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/{roadId}/services/webcam",
                 ["parts"] = {
@@ -1276,6 +1288,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/details/webcam/{webcamId}",
                 ["parts"] = {

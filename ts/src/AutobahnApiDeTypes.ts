@@ -14,11 +14,11 @@ export interface Closure {
   future?: boolean
   icon?: string
   identifier?: string
-  is_blocked?: boolean
-  lorry_parking_feature_icon?: any[]
+  isBlocked?: string
+  lorryParkingFeatureIcons?: any[]
   point?: string
-  route_recommendation?: any[]
-  start_timestamp?: string
+  routeRecommendation?: any[]
+  startTimestamp?: string
   subtitle?: string
   title?: string
 }
@@ -40,10 +40,10 @@ export interface ElectricChargingStation {
   future?: boolean
   icon?: string
   identifier?: string
-  is_blocked?: boolean
-  lorry_parking_feature_icon?: any[]
+  isBlocked?: string
+  lorryParkingFeatureIcons?: any[]
   point?: string
-  route_recommendation?: any[]
+  routeRecommendation?: any[]
   subtitle?: string
   title?: string
 }
@@ -57,11 +57,11 @@ export interface ElectricChargingStationListMatch {
 }
 
 export interface ListAutobahnen {
-  road?: any[]
+  roads?: any[]
 }
 
 export interface ListAutobahnenListMatch {
-  road?: any[]
+  roads?: any[]
 }
 
 export interface ParkingLorry {
@@ -73,10 +73,10 @@ export interface ParkingLorry {
   future?: boolean
   icon?: string
   identifier?: string
-  is_blocked?: boolean
-  lorry_parking_feature_icon?: any[]
+  isBlocked?: string
+  lorryParkingFeatureIcons?: any[]
   point?: string
-  route_recommendation?: any[]
+  routeRecommendation?: any[]
   subtitle?: string
   title?: string
 }
@@ -98,11 +98,11 @@ export interface Roadwork {
   future?: boolean
   icon?: string
   identifier?: string
-  is_blocked?: boolean
-  lorry_parking_feature_icon?: any[]
+  isBlocked?: string
+  lorryParkingFeatureIcons?: any[]
   point?: string
-  route_recommendation?: any[]
-  start_timestamp?: string
+  routeRecommendation?: any[]
+  startTimestamp?: string
   subtitle?: string
   title?: string
 }
@@ -124,11 +124,11 @@ export interface Warning {
   future?: boolean
   icon?: string
   identifier?: string
-  is_blocked?: boolean
-  lorry_parking_feature_icon?: any[]
+  isBlocked?: string
+  lorryParkingFeatureIcons?: any[]
   point?: string
-  route_recommendation?: any[]
-  start_timestamp?: string
+  routeRecommendation?: any[]
+  startTimestamp?: string
   subtitle?: string
   title?: string
 }
@@ -151,12 +151,12 @@ export interface Webcam {
   icon?: string
   identifier?: string
   imageurl?: string
-  is_blocked?: boolean
+  isBlocked?: string
   linkurl?: string
-  lorry_parking_feature_icon?: any[]
+  lorryParkingFeatureIcons?: any[]
   operator?: string
   point?: string
-  route_recommendation?: any[]
+  routeRecommendation?: any[]
   subtitle?: string
   title?: string
 }

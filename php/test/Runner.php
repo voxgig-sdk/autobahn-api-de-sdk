@@ -43,8 +43,8 @@ class AutobahnApiDeTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('AUTOBAHNAPIDE_TEST_LIVE');
-        $override = self::getenv('AUTOBAHNAPIDE_TEST_OVERRIDE');
+        $live = self::getenv('AUTOBAHN_API_DE_TEST_LIVE');
+        $override = self::getenv('AUTOBAHN_API_DE_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class AutobahnApiDeTestRunner
             }
         }
 
-        $explain = self::getenv('AUTOBAHNAPIDE_TEST_EXPLAIN');
+        $explain = self::getenv('AUTOBAHN_API_DE_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['AUTOBAHNAPIDE_TEST_EXPLAIN'] = $explain;
+            $m['AUTOBAHN_API_DE_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

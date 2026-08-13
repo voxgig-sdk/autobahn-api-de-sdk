@@ -196,11 +196,11 @@ const closure = client.Closure()
 | `future` | `boolean` | No |  |
 | `icon` | `string` | No |  |
 | `identifier` | `string` | No |  |
-| `is_blocked` | `boolean` | No |  |
-| `lorry_parking_feature_icon` | `any[]` | No |  |
+| `isBlocked` | `string` | No |  |
+| `lorryParkingFeatureIcons` | `any[]` | No |  |
 | `point` | `string` | No |  |
-| `route_recommendation` | `any[]` | No |  |
-| `start_timestamp` | `string` | No |  |
+| `routeRecommendation` | `any[]` | No |  |
+| `startTimestamp` | `string` | No |  |
 | `subtitle` | `string` | No |  |
 | `title` | `string` | No |  |
 
@@ -211,7 +211,7 @@ const closure = client.Closure()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Closure().list()
+const results = await client.Closure().list({ road_id: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -268,10 +268,10 @@ const electric_charging_station = client.ElectricChargingStation()
 | `future` | `boolean` | No |  |
 | `icon` | `string` | No |  |
 | `identifier` | `string` | No |  |
-| `is_blocked` | `boolean` | No |  |
-| `lorry_parking_feature_icon` | `any[]` | No |  |
+| `isBlocked` | `string` | No |  |
+| `lorryParkingFeatureIcons` | `any[]` | No |  |
 | `point` | `string` | No |  |
-| `route_recommendation` | `any[]` | No |  |
+| `routeRecommendation` | `any[]` | No |  |
 | `subtitle` | `string` | No |  |
 | `title` | `string` | No |  |
 
@@ -282,7 +282,7 @@ const electric_charging_station = client.ElectricChargingStation()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.ElectricChargingStation().list()
+const results = await client.ElectricChargingStation().list({ road_id: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -331,7 +331,7 @@ const list_autobahnen = client.ListAutobahnen()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `road` | `any[]` | No |  |
+| `roads` | `any[]` | No |  |
 
 ### Operations
 
@@ -389,10 +389,10 @@ const parking_lorry = client.ParkingLorry()
 | `future` | `boolean` | No |  |
 | `icon` | `string` | No |  |
 | `identifier` | `string` | No |  |
-| `is_blocked` | `boolean` | No |  |
-| `lorry_parking_feature_icon` | `any[]` | No |  |
+| `isBlocked` | `string` | No |  |
+| `lorryParkingFeatureIcons` | `any[]` | No |  |
 | `point` | `string` | No |  |
-| `route_recommendation` | `any[]` | No |  |
+| `routeRecommendation` | `any[]` | No |  |
 | `subtitle` | `string` | No |  |
 | `title` | `string` | No |  |
 
@@ -403,7 +403,7 @@ const parking_lorry = client.ParkingLorry()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.ParkingLorry().list()
+const results = await client.ParkingLorry().list({ road_id: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -460,11 +460,11 @@ const roadwork = client.Roadwork()
 | `future` | `boolean` | No |  |
 | `icon` | `string` | No |  |
 | `identifier` | `string` | No |  |
-| `is_blocked` | `boolean` | No |  |
-| `lorry_parking_feature_icon` | `any[]` | No |  |
+| `isBlocked` | `string` | No |  |
+| `lorryParkingFeatureIcons` | `any[]` | No |  |
 | `point` | `string` | No |  |
-| `route_recommendation` | `any[]` | No |  |
-| `start_timestamp` | `string` | No |  |
+| `routeRecommendation` | `any[]` | No |  |
+| `startTimestamp` | `string` | No |  |
 | `subtitle` | `string` | No |  |
 | `title` | `string` | No |  |
 
@@ -475,7 +475,7 @@ const roadwork = client.Roadwork()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Roadwork().list()
+const results = await client.Roadwork().list({ road_id: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -532,11 +532,11 @@ const warning = client.Warning()
 | `future` | `boolean` | No |  |
 | `icon` | `string` | No |  |
 | `identifier` | `string` | No |  |
-| `is_blocked` | `boolean` | No |  |
-| `lorry_parking_feature_icon` | `any[]` | No |  |
+| `isBlocked` | `string` | No |  |
+| `lorryParkingFeatureIcons` | `any[]` | No |  |
 | `point` | `string` | No |  |
-| `route_recommendation` | `any[]` | No |  |
-| `start_timestamp` | `string` | No |  |
+| `routeRecommendation` | `any[]` | No |  |
+| `startTimestamp` | `string` | No |  |
 | `subtitle` | `string` | No |  |
 | `title` | `string` | No |  |
 
@@ -547,7 +547,7 @@ const warning = client.Warning()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Warning().list()
+const results = await client.Warning().list({ road_id: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -605,12 +605,12 @@ const webcam = client.Webcam()
 | `icon` | `string` | No |  |
 | `identifier` | `string` | No |  |
 | `imageurl` | `string` | No |  |
-| `is_blocked` | `boolean` | No |  |
+| `isBlocked` | `string` | No |  |
 | `linkurl` | `string` | No |  |
-| `lorry_parking_feature_icon` | `any[]` | No |  |
+| `lorryParkingFeatureIcons` | `any[]` | No |  |
 | `operator` | `string` | No |  |
 | `point` | `string` | No |  |
-| `route_recommendation` | `any[]` | No |  |
+| `routeRecommendation` | `any[]` | No |  |
 | `subtitle` | `string` | No |  |
 | `title` | `string` | No |  |
 
@@ -621,7 +621,7 @@ const webcam = client.Webcam()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Webcam().list()
+const results = await client.Webcam().list({ road_id: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`

@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ AutobahnApiDeUtility::setRegistrar(function (AutobahnApiDeUtility $u): void {
     $u->prepare_params = [AutobahnApiDePrepareParams::class, 'call'];
     $u->prepare_path = [AutobahnApiDePreparePath::class, 'call'];
     $u->prepare_query = [AutobahnApiDePrepareQuery::class, 'call'];
+    $u->graphql_body = [AutobahnApiDeGraphql::class, 'body'];
+    $u->graphql_errors = [AutobahnApiDeGraphql::class, 'errors'];
     $u->result_basic = [AutobahnApiDeResultBasic::class, 'call'];
     $u->result_body = [AutobahnApiDeResultBody::class, 'call'];
     $u->result_headers = [AutobahnApiDeResultHeaders::class, 'call'];

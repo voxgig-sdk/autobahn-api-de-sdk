@@ -89,14 +89,14 @@ module AutobahnApiDeConfig
             },
             {
               "active" => true,
-              "name" => "is_blocked",
+              "name" => "isBlocked",
               "req" => false,
-              "type" => "`$BOOLEAN`",
+              "type" => "`$STRING`",
               "index$" => 8,
             },
             {
               "active" => true,
-              "name" => "lorry_parking_feature_icon",
+              "name" => "lorryParkingFeatureIcons",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 9,
@@ -110,14 +110,14 @@ module AutobahnApiDeConfig
             },
             {
               "active" => true,
-              "name" => "route_recommendation",
+              "name" => "routeRecommendation",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 11,
             },
             {
               "active" => true,
-              "name" => "start_timestamp",
+              "name" => "startTimestamp",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 12,
@@ -159,6 +159,7 @@ module AutobahnApiDeConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/{roadId}/services/closure",
                   "parts" => [
@@ -205,6 +206,7 @@ module AutobahnApiDeConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/details/closure/{closureId}",
                   "parts" => [
@@ -296,14 +298,14 @@ module AutobahnApiDeConfig
             },
             {
               "active" => true,
-              "name" => "is_blocked",
+              "name" => "isBlocked",
               "req" => false,
-              "type" => "`$BOOLEAN`",
+              "type" => "`$STRING`",
               "index$" => 8,
             },
             {
               "active" => true,
-              "name" => "lorry_parking_feature_icon",
+              "name" => "lorryParkingFeatureIcons",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 9,
@@ -317,7 +319,7 @@ module AutobahnApiDeConfig
             },
             {
               "active" => true,
-              "name" => "route_recommendation",
+              "name" => "routeRecommendation",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 11,
@@ -359,6 +361,7 @@ module AutobahnApiDeConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/{roadId}/services/electric_charging_station",
                   "parts" => [
@@ -405,6 +408,7 @@ module AutobahnApiDeConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/details/electric_charging_station/{stationId}",
                   "parts" => [
@@ -440,7 +444,7 @@ module AutobahnApiDeConfig
           "fields" => [
             {
               "active" => true,
-              "name" => "road",
+              "name" => "roads",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 0,
@@ -455,13 +459,14 @@ module AutobahnApiDeConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/",
                   "parts" => [],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.roads`",
                   },
                   "index$" => 0,
                 },
@@ -533,14 +538,14 @@ module AutobahnApiDeConfig
             },
             {
               "active" => true,
-              "name" => "is_blocked",
+              "name" => "isBlocked",
               "req" => false,
-              "type" => "`$BOOLEAN`",
+              "type" => "`$STRING`",
               "index$" => 8,
             },
             {
               "active" => true,
-              "name" => "lorry_parking_feature_icon",
+              "name" => "lorryParkingFeatureIcons",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 9,
@@ -554,7 +559,7 @@ module AutobahnApiDeConfig
             },
             {
               "active" => true,
-              "name" => "route_recommendation",
+              "name" => "routeRecommendation",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 11,
@@ -596,6 +601,7 @@ module AutobahnApiDeConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/{roadId}/services/parking_lorry",
                   "parts" => [
@@ -642,6 +648,7 @@ module AutobahnApiDeConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/details/parking_lorry/{lorryId}",
                   "parts" => [
@@ -733,14 +740,14 @@ module AutobahnApiDeConfig
             },
             {
               "active" => true,
-              "name" => "is_blocked",
+              "name" => "isBlocked",
               "req" => false,
-              "type" => "`$BOOLEAN`",
+              "type" => "`$STRING`",
               "index$" => 8,
             },
             {
               "active" => true,
-              "name" => "lorry_parking_feature_icon",
+              "name" => "lorryParkingFeatureIcons",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 9,
@@ -754,14 +761,14 @@ module AutobahnApiDeConfig
             },
             {
               "active" => true,
-              "name" => "route_recommendation",
+              "name" => "routeRecommendation",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 11,
             },
             {
               "active" => true,
-              "name" => "start_timestamp",
+              "name" => "startTimestamp",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 12,
@@ -803,6 +810,7 @@ module AutobahnApiDeConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/{roadId}/services/roadworks",
                   "parts" => [
@@ -822,7 +830,7 @@ module AutobahnApiDeConfig
                   },
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.roadworks`",
                   },
                   "index$" => 0,
                 },
@@ -849,6 +857,7 @@ module AutobahnApiDeConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/details/roadworks/{roadworkId}",
                   "parts" => [
@@ -940,14 +949,14 @@ module AutobahnApiDeConfig
             },
             {
               "active" => true,
-              "name" => "is_blocked",
+              "name" => "isBlocked",
               "req" => false,
-              "type" => "`$BOOLEAN`",
+              "type" => "`$STRING`",
               "index$" => 8,
             },
             {
               "active" => true,
-              "name" => "lorry_parking_feature_icon",
+              "name" => "lorryParkingFeatureIcons",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 9,
@@ -961,14 +970,14 @@ module AutobahnApiDeConfig
             },
             {
               "active" => true,
-              "name" => "route_recommendation",
+              "name" => "routeRecommendation",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 11,
             },
             {
               "active" => true,
-              "name" => "start_timestamp",
+              "name" => "startTimestamp",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 12,
@@ -1010,6 +1019,7 @@ module AutobahnApiDeConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/{roadId}/services/warning",
                   "parts" => [
@@ -1056,6 +1066,7 @@ module AutobahnApiDeConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/details/warning/{warningId}",
                   "parts" => [
@@ -1154,9 +1165,9 @@ module AutobahnApiDeConfig
             },
             {
               "active" => true,
-              "name" => "is_blocked",
+              "name" => "isBlocked",
               "req" => false,
-              "type" => "`$BOOLEAN`",
+              "type" => "`$STRING`",
               "index$" => 9,
             },
             {
@@ -1168,7 +1179,7 @@ module AutobahnApiDeConfig
             },
             {
               "active" => true,
-              "name" => "lorry_parking_feature_icon",
+              "name" => "lorryParkingFeatureIcons",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 11,
@@ -1189,7 +1200,7 @@ module AutobahnApiDeConfig
             },
             {
               "active" => true,
-              "name" => "route_recommendation",
+              "name" => "routeRecommendation",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 14,
@@ -1231,6 +1242,7 @@ module AutobahnApiDeConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/{roadId}/services/webcam",
                   "parts" => [
@@ -1277,6 +1289,7 @@ module AutobahnApiDeConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/details/webcam/{webcamId}",
                   "parts" => [

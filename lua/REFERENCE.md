@@ -122,11 +122,11 @@ local closure = client:Closure(nil)
 | `future` | `boolean` | No |  |
 | `icon` | `string` | No |  |
 | `identifier` | `string` | No |  |
-| `is_blocked` | `boolean` | No |  |
-| `lorry_parking_feature_icon` | `table` | No |  |
+| `isBlocked` | `string` | No |  |
+| `lorryParkingFeatureIcons` | `table` | No |  |
 | `point` | `string` | No |  |
-| `route_recommendation` | `table` | No |  |
-| `start_timestamp` | `string` | No |  |
+| `routeRecommendation` | `table` | No |  |
+| `startTimestamp` | `string` | No |  |
 | `subtitle` | `string` | No |  |
 | `title` | `string` | No |  |
 
@@ -196,10 +196,10 @@ local electric_charging_station = client:ElectricChargingStation(nil)
 | `future` | `boolean` | No |  |
 | `icon` | `string` | No |  |
 | `identifier` | `string` | No |  |
-| `is_blocked` | `boolean` | No |  |
-| `lorry_parking_feature_icon` | `table` | No |  |
+| `isBlocked` | `string` | No |  |
+| `lorryParkingFeatureIcons` | `table` | No |  |
 | `point` | `string` | No |  |
-| `route_recommendation` | `table` | No |  |
+| `routeRecommendation` | `table` | No |  |
 | `subtitle` | `string` | No |  |
 | `title` | `string` | No |  |
 
@@ -261,7 +261,7 @@ local list_autobahnen = client:ListAutobahnen(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `road` | `table` | No |  |
+| `roads` | `table` | No |  |
 
 ### Operations
 
@@ -321,10 +321,10 @@ local parking_lorry = client:ParkingLorry(nil)
 | `future` | `boolean` | No |  |
 | `icon` | `string` | No |  |
 | `identifier` | `string` | No |  |
-| `is_blocked` | `boolean` | No |  |
-| `lorry_parking_feature_icon` | `table` | No |  |
+| `isBlocked` | `string` | No |  |
+| `lorryParkingFeatureIcons` | `table` | No |  |
 | `point` | `string` | No |  |
-| `route_recommendation` | `table` | No |  |
+| `routeRecommendation` | `table` | No |  |
 | `subtitle` | `string` | No |  |
 | `title` | `string` | No |  |
 
@@ -394,11 +394,11 @@ local roadwork = client:Roadwork(nil)
 | `future` | `boolean` | No |  |
 | `icon` | `string` | No |  |
 | `identifier` | `string` | No |  |
-| `is_blocked` | `boolean` | No |  |
-| `lorry_parking_feature_icon` | `table` | No |  |
+| `isBlocked` | `string` | No |  |
+| `lorryParkingFeatureIcons` | `table` | No |  |
 | `point` | `string` | No |  |
-| `route_recommendation` | `table` | No |  |
-| `start_timestamp` | `string` | No |  |
+| `routeRecommendation` | `table` | No |  |
+| `startTimestamp` | `string` | No |  |
 | `subtitle` | `string` | No |  |
 | `title` | `string` | No |  |
 
@@ -468,11 +468,11 @@ local warning = client:Warning(nil)
 | `future` | `boolean` | No |  |
 | `icon` | `string` | No |  |
 | `identifier` | `string` | No |  |
-| `is_blocked` | `boolean` | No |  |
-| `lorry_parking_feature_icon` | `table` | No |  |
+| `isBlocked` | `string` | No |  |
+| `lorryParkingFeatureIcons` | `table` | No |  |
 | `point` | `string` | No |  |
-| `route_recommendation` | `table` | No |  |
-| `start_timestamp` | `string` | No |  |
+| `routeRecommendation` | `table` | No |  |
+| `startTimestamp` | `string` | No |  |
 | `subtitle` | `string` | No |  |
 | `title` | `string` | No |  |
 
@@ -543,12 +543,12 @@ local webcam = client:Webcam(nil)
 | `icon` | `string` | No |  |
 | `identifier` | `string` | No |  |
 | `imageurl` | `string` | No |  |
-| `is_blocked` | `boolean` | No |  |
+| `isBlocked` | `string` | No |  |
 | `linkurl` | `string` | No |  |
-| `lorry_parking_feature_icon` | `table` | No |  |
+| `lorryParkingFeatureIcons` | `table` | No |  |
 | `operator` | `string` | No |  |
 | `point` | `string` | No |  |
-| `route_recommendation` | `table` | No |  |
+| `routeRecommendation` | `table` | No |  |
 | `subtitle` | `string` | No |  |
 | `title` | `string` | No |  |
 

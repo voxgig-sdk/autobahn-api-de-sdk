@@ -94,14 +94,14 @@ class AutobahnApiDeConfig
             ],
             [
               'active' => true,
-              'name' => 'is_blocked',
+              'name' => 'isBlocked',
               'req' => false,
-              'type' => '`$BOOLEAN`',
+              'type' => '`$STRING`',
               'index$' => 8,
             ],
             [
               'active' => true,
-              'name' => 'lorry_parking_feature_icon',
+              'name' => 'lorryParkingFeatureIcons',
               'req' => false,
               'type' => '`$ARRAY`',
               'index$' => 9,
@@ -115,14 +115,14 @@ class AutobahnApiDeConfig
             ],
             [
               'active' => true,
-              'name' => 'route_recommendation',
+              'name' => 'routeRecommendation',
               'req' => false,
               'type' => '`$ARRAY`',
               'index$' => 11,
             ],
             [
               'active' => true,
-              'name' => 'start_timestamp',
+              'name' => 'startTimestamp',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 12,
@@ -164,6 +164,7 @@ class AutobahnApiDeConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/{roadId}/services/closure',
                   'parts' => [
@@ -210,6 +211,7 @@ class AutobahnApiDeConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/details/closure/{closureId}',
                   'parts' => [
@@ -301,14 +303,14 @@ class AutobahnApiDeConfig
             ],
             [
               'active' => true,
-              'name' => 'is_blocked',
+              'name' => 'isBlocked',
               'req' => false,
-              'type' => '`$BOOLEAN`',
+              'type' => '`$STRING`',
               'index$' => 8,
             ],
             [
               'active' => true,
-              'name' => 'lorry_parking_feature_icon',
+              'name' => 'lorryParkingFeatureIcons',
               'req' => false,
               'type' => '`$ARRAY`',
               'index$' => 9,
@@ -322,7 +324,7 @@ class AutobahnApiDeConfig
             ],
             [
               'active' => true,
-              'name' => 'route_recommendation',
+              'name' => 'routeRecommendation',
               'req' => false,
               'type' => '`$ARRAY`',
               'index$' => 11,
@@ -364,6 +366,7 @@ class AutobahnApiDeConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/{roadId}/services/electric_charging_station',
                   'parts' => [
@@ -410,6 +413,7 @@ class AutobahnApiDeConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/details/electric_charging_station/{stationId}',
                   'parts' => [
@@ -445,7 +449,7 @@ class AutobahnApiDeConfig
           'fields' => [
             [
               'active' => true,
-              'name' => 'road',
+              'name' => 'roads',
               'req' => false,
               'type' => '`$ARRAY`',
               'index$' => 0,
@@ -460,13 +464,14 @@ class AutobahnApiDeConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/',
                   'parts' => [],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.roads`',
                   ],
                   'index$' => 0,
                 ],
@@ -538,14 +543,14 @@ class AutobahnApiDeConfig
             ],
             [
               'active' => true,
-              'name' => 'is_blocked',
+              'name' => 'isBlocked',
               'req' => false,
-              'type' => '`$BOOLEAN`',
+              'type' => '`$STRING`',
               'index$' => 8,
             ],
             [
               'active' => true,
-              'name' => 'lorry_parking_feature_icon',
+              'name' => 'lorryParkingFeatureIcons',
               'req' => false,
               'type' => '`$ARRAY`',
               'index$' => 9,
@@ -559,7 +564,7 @@ class AutobahnApiDeConfig
             ],
             [
               'active' => true,
-              'name' => 'route_recommendation',
+              'name' => 'routeRecommendation',
               'req' => false,
               'type' => '`$ARRAY`',
               'index$' => 11,
@@ -601,6 +606,7 @@ class AutobahnApiDeConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/{roadId}/services/parking_lorry',
                   'parts' => [
@@ -647,6 +653,7 @@ class AutobahnApiDeConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/details/parking_lorry/{lorryId}',
                   'parts' => [
@@ -738,14 +745,14 @@ class AutobahnApiDeConfig
             ],
             [
               'active' => true,
-              'name' => 'is_blocked',
+              'name' => 'isBlocked',
               'req' => false,
-              'type' => '`$BOOLEAN`',
+              'type' => '`$STRING`',
               'index$' => 8,
             ],
             [
               'active' => true,
-              'name' => 'lorry_parking_feature_icon',
+              'name' => 'lorryParkingFeatureIcons',
               'req' => false,
               'type' => '`$ARRAY`',
               'index$' => 9,
@@ -759,14 +766,14 @@ class AutobahnApiDeConfig
             ],
             [
               'active' => true,
-              'name' => 'route_recommendation',
+              'name' => 'routeRecommendation',
               'req' => false,
               'type' => '`$ARRAY`',
               'index$' => 11,
             ],
             [
               'active' => true,
-              'name' => 'start_timestamp',
+              'name' => 'startTimestamp',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 12,
@@ -808,6 +815,7 @@ class AutobahnApiDeConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/{roadId}/services/roadworks',
                   'parts' => [
@@ -827,7 +835,7 @@ class AutobahnApiDeConfig
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.roadworks`',
                   ],
                   'index$' => 0,
                 ],
@@ -854,6 +862,7 @@ class AutobahnApiDeConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/details/roadworks/{roadworkId}',
                   'parts' => [
@@ -945,14 +954,14 @@ class AutobahnApiDeConfig
             ],
             [
               'active' => true,
-              'name' => 'is_blocked',
+              'name' => 'isBlocked',
               'req' => false,
-              'type' => '`$BOOLEAN`',
+              'type' => '`$STRING`',
               'index$' => 8,
             ],
             [
               'active' => true,
-              'name' => 'lorry_parking_feature_icon',
+              'name' => 'lorryParkingFeatureIcons',
               'req' => false,
               'type' => '`$ARRAY`',
               'index$' => 9,
@@ -966,14 +975,14 @@ class AutobahnApiDeConfig
             ],
             [
               'active' => true,
-              'name' => 'route_recommendation',
+              'name' => 'routeRecommendation',
               'req' => false,
               'type' => '`$ARRAY`',
               'index$' => 11,
             ],
             [
               'active' => true,
-              'name' => 'start_timestamp',
+              'name' => 'startTimestamp',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 12,
@@ -1015,6 +1024,7 @@ class AutobahnApiDeConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/{roadId}/services/warning',
                   'parts' => [
@@ -1061,6 +1071,7 @@ class AutobahnApiDeConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/details/warning/{warningId}',
                   'parts' => [
@@ -1159,9 +1170,9 @@ class AutobahnApiDeConfig
             ],
             [
               'active' => true,
-              'name' => 'is_blocked',
+              'name' => 'isBlocked',
               'req' => false,
-              'type' => '`$BOOLEAN`',
+              'type' => '`$STRING`',
               'index$' => 9,
             ],
             [
@@ -1173,7 +1184,7 @@ class AutobahnApiDeConfig
             ],
             [
               'active' => true,
-              'name' => 'lorry_parking_feature_icon',
+              'name' => 'lorryParkingFeatureIcons',
               'req' => false,
               'type' => '`$ARRAY`',
               'index$' => 11,
@@ -1194,7 +1205,7 @@ class AutobahnApiDeConfig
             ],
             [
               'active' => true,
-              'name' => 'route_recommendation',
+              'name' => 'routeRecommendation',
               'req' => false,
               'type' => '`$ARRAY`',
               'index$' => 14,
@@ -1236,6 +1247,7 @@ class AutobahnApiDeConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/{roadId}/services/webcam',
                   'parts' => [
@@ -1282,6 +1294,7 @@ class AutobahnApiDeConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/details/webcam/{webcamId}',
                   'parts' => [

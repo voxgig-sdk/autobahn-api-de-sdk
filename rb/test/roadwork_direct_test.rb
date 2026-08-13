@@ -126,11 +126,11 @@ def roadwork_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "AUTOBAHNAPIDE_TEST_ROADWORK_ENTID" => {},
-    "AUTOBAHNAPIDE_TEST_LIVE" => "FALSE",
+    "AUTOBAHN_API_DE_TEST_ROADWORK_ENTID" => {},
+    "AUTOBAHN_API_DE_TEST_LIVE" => "FALSE",
   })
 
-  live = env["AUTOBAHNAPIDE_TEST_LIVE"] == "TRUE"
+  live = env["AUTOBAHN_API_DE_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {

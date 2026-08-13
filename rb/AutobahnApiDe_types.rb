@@ -34,19 +34,19 @@
 # @!attribute [rw] identifier
 #   @return [String, nil]
 #
-# @!attribute [rw] is_blocked
-#   @return [Boolean, nil]
+# @!attribute [rw] isBlocked
+#   @return [String, nil]
 #
-# @!attribute [rw] lorry_parking_feature_icon
+# @!attribute [rw] lorryParkingFeatureIcons
 #   @return [Array, nil]
 #
 # @!attribute [rw] point
 #   @return [String, nil]
 #
-# @!attribute [rw] route_recommendation
+# @!attribute [rw] routeRecommendation
 #   @return [Array, nil]
 #
-# @!attribute [rw] start_timestamp
+# @!attribute [rw] startTimestamp
 #   @return [String, nil]
 #
 # @!attribute [rw] subtitle
@@ -63,11 +63,11 @@ Closure = Struct.new(
   :future,
   :icon,
   :identifier,
-  :is_blocked,
-  :lorry_parking_feature_icon,
+  :isBlocked,
+  :lorryParkingFeatureIcons,
   :point,
-  :route_recommendation,
-  :start_timestamp,
+  :routeRecommendation,
+  :startTimestamp,
   :subtitle,
   :title,
   keyword_init: true
@@ -117,16 +117,16 @@ ClosureListMatch = Struct.new(
 # @!attribute [rw] identifier
 #   @return [String, nil]
 #
-# @!attribute [rw] is_blocked
-#   @return [Boolean, nil]
+# @!attribute [rw] isBlocked
+#   @return [String, nil]
 #
-# @!attribute [rw] lorry_parking_feature_icon
+# @!attribute [rw] lorryParkingFeatureIcons
 #   @return [Array, nil]
 #
 # @!attribute [rw] point
 #   @return [String, nil]
 #
-# @!attribute [rw] route_recommendation
+# @!attribute [rw] routeRecommendation
 #   @return [Array, nil]
 #
 # @!attribute [rw] subtitle
@@ -143,10 +143,10 @@ ElectricChargingStation = Struct.new(
   :future,
   :icon,
   :identifier,
-  :is_blocked,
-  :lorry_parking_feature_icon,
+  :isBlocked,
+  :lorryParkingFeatureIcons,
   :point,
-  :route_recommendation,
+  :routeRecommendation,
   :subtitle,
   :title,
   keyword_init: true
@@ -172,19 +172,19 @@ ElectricChargingStationListMatch = Struct.new(
 
 # ListAutobahnen entity data model.
 #
-# @!attribute [rw] road
+# @!attribute [rw] roads
 #   @return [Array, nil]
 ListAutobahnen = Struct.new(
-  :road,
+  :roads,
   keyword_init: true
 )
 
 # Request payload for ListAutobahnen#list.
 #
-# @!attribute [rw] road
+# @!attribute [rw] roads
 #   @return [Array, nil]
 ListAutobahnenListMatch = Struct.new(
-  :road,
+  :roads,
   keyword_init: true
 )
 
@@ -214,16 +214,16 @@ ListAutobahnenListMatch = Struct.new(
 # @!attribute [rw] identifier
 #   @return [String, nil]
 #
-# @!attribute [rw] is_blocked
-#   @return [Boolean, nil]
+# @!attribute [rw] isBlocked
+#   @return [String, nil]
 #
-# @!attribute [rw] lorry_parking_feature_icon
+# @!attribute [rw] lorryParkingFeatureIcons
 #   @return [Array, nil]
 #
 # @!attribute [rw] point
 #   @return [String, nil]
 #
-# @!attribute [rw] route_recommendation
+# @!attribute [rw] routeRecommendation
 #   @return [Array, nil]
 #
 # @!attribute [rw] subtitle
@@ -240,10 +240,10 @@ ParkingLorry = Struct.new(
   :future,
   :icon,
   :identifier,
-  :is_blocked,
-  :lorry_parking_feature_icon,
+  :isBlocked,
+  :lorryParkingFeatureIcons,
   :point,
-  :route_recommendation,
+  :routeRecommendation,
   :subtitle,
   :title,
   keyword_init: true
@@ -293,19 +293,19 @@ ParkingLorryListMatch = Struct.new(
 # @!attribute [rw] identifier
 #   @return [String, nil]
 #
-# @!attribute [rw] is_blocked
-#   @return [Boolean, nil]
+# @!attribute [rw] isBlocked
+#   @return [String, nil]
 #
-# @!attribute [rw] lorry_parking_feature_icon
+# @!attribute [rw] lorryParkingFeatureIcons
 #   @return [Array, nil]
 #
 # @!attribute [rw] point
 #   @return [String, nil]
 #
-# @!attribute [rw] route_recommendation
+# @!attribute [rw] routeRecommendation
 #   @return [Array, nil]
 #
-# @!attribute [rw] start_timestamp
+# @!attribute [rw] startTimestamp
 #   @return [String, nil]
 #
 # @!attribute [rw] subtitle
@@ -322,11 +322,11 @@ Roadwork = Struct.new(
   :future,
   :icon,
   :identifier,
-  :is_blocked,
-  :lorry_parking_feature_icon,
+  :isBlocked,
+  :lorryParkingFeatureIcons,
   :point,
-  :route_recommendation,
-  :start_timestamp,
+  :routeRecommendation,
+  :startTimestamp,
   :subtitle,
   :title,
   keyword_init: true
@@ -376,19 +376,19 @@ RoadworkListMatch = Struct.new(
 # @!attribute [rw] identifier
 #   @return [String, nil]
 #
-# @!attribute [rw] is_blocked
-#   @return [Boolean, nil]
+# @!attribute [rw] isBlocked
+#   @return [String, nil]
 #
-# @!attribute [rw] lorry_parking_feature_icon
+# @!attribute [rw] lorryParkingFeatureIcons
 #   @return [Array, nil]
 #
 # @!attribute [rw] point
 #   @return [String, nil]
 #
-# @!attribute [rw] route_recommendation
+# @!attribute [rw] routeRecommendation
 #   @return [Array, nil]
 #
-# @!attribute [rw] start_timestamp
+# @!attribute [rw] startTimestamp
 #   @return [String, nil]
 #
 # @!attribute [rw] subtitle
@@ -396,7 +396,7 @@ RoadworkListMatch = Struct.new(
 #
 # @!attribute [rw] title
 #   @return [String, nil]
-Warning = Struct.new(
+WarningType = Struct.new(
   :coordinate,
   :description,
   :display_type,
@@ -405,11 +405,11 @@ Warning = Struct.new(
   :future,
   :icon,
   :identifier,
-  :is_blocked,
-  :lorry_parking_feature_icon,
+  :isBlocked,
+  :lorryParkingFeatureIcons,
   :point,
-  :route_recommendation,
-  :start_timestamp,
+  :routeRecommendation,
+  :startTimestamp,
   :subtitle,
   :title,
   keyword_init: true
@@ -462,13 +462,13 @@ WarningListMatch = Struct.new(
 # @!attribute [rw] imageurl
 #   @return [String, nil]
 #
-# @!attribute [rw] is_blocked
-#   @return [Boolean, nil]
+# @!attribute [rw] isBlocked
+#   @return [String, nil]
 #
 # @!attribute [rw] linkurl
 #   @return [String, nil]
 #
-# @!attribute [rw] lorry_parking_feature_icon
+# @!attribute [rw] lorryParkingFeatureIcons
 #   @return [Array, nil]
 #
 # @!attribute [rw] operator
@@ -477,7 +477,7 @@ WarningListMatch = Struct.new(
 # @!attribute [rw] point
 #   @return [String, nil]
 #
-# @!attribute [rw] route_recommendation
+# @!attribute [rw] routeRecommendation
 #   @return [Array, nil]
 #
 # @!attribute [rw] subtitle
@@ -495,12 +495,12 @@ Webcam = Struct.new(
   :icon,
   :identifier,
   :imageurl,
-  :is_blocked,
+  :isBlocked,
   :linkurl,
-  :lorry_parking_feature_icon,
+  :lorryParkingFeatureIcons,
   :operator,
   :point,
-  :route_recommendation,
+  :routeRecommendation,
   :subtitle,
   :title,
   keyword_init: true

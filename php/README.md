@@ -49,7 +49,7 @@ try {
 
 ```php
 try {
-    // load() returns the bare Closure record (throws on error).
+    // load() returns the ENTITY — call data_get() for the Closure record (throws on error).
     $closure = $client->Closure()->load(["id" => "example_id"]);
     print_r($closure);
 } catch (\Throwable $err) {
@@ -65,7 +65,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $closures = $client->Closure()->list();
+    $roadworks = $client->Roadwork()->list();
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -137,12 +137,13 @@ data via the `entity` option so offline calls resolve without a live server:
 
 ```php
 $client = AutobahnApiDeSDK::test([
-    "entity" => ["closure" => ["test01" => ["id" => "test01"]]],
+    "entity" => ["roadwork" => ["test01" => ["id" => "test01"]]],
 ]);
 
-// Entity ops return the bare mock record (throws on error).
-$closure = $client->Closure()->list();
-print_r($closure);
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
+$roadwork = $client->Roadwork()->list();
+print_r($roadwork);
 ```
 
 ### Use a custom fetch function
@@ -246,7 +247,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -276,11 +277,11 @@ On error, `ok` is `false` and `$err` contains the error value.
 | `future` |  |
 | `icon` |  |
 | `identifier` |  |
-| `is_blocked` |  |
-| `lorry_parking_feature_icon` |  |
+| `isBlocked` |  |
+| `lorryParkingFeatureIcons` |  |
 | `point` |  |
-| `route_recommendation` |  |
-| `start_timestamp` |  |
+| `routeRecommendation` |  |
+| `startTimestamp` |  |
 | `subtitle` |  |
 | `title` |  |
 
@@ -300,10 +301,10 @@ API path: `/{roadId}/services/closure`
 | `future` |  |
 | `icon` |  |
 | `identifier` |  |
-| `is_blocked` |  |
-| `lorry_parking_feature_icon` |  |
+| `isBlocked` |  |
+| `lorryParkingFeatureIcons` |  |
 | `point` |  |
-| `route_recommendation` |  |
+| `routeRecommendation` |  |
 | `subtitle` |  |
 | `title` |  |
 
@@ -315,7 +316,7 @@ API path: `/{roadId}/services/electric_charging_station`
 
 | Field | Description |
 | --- | --- |
-| `road` |  |
+| `roads` |  |
 
 Operations: List.
 
@@ -333,10 +334,10 @@ API path: `/`
 | `future` |  |
 | `icon` |  |
 | `identifier` |  |
-| `is_blocked` |  |
-| `lorry_parking_feature_icon` |  |
+| `isBlocked` |  |
+| `lorryParkingFeatureIcons` |  |
 | `point` |  |
-| `route_recommendation` |  |
+| `routeRecommendation` |  |
 | `subtitle` |  |
 | `title` |  |
 
@@ -356,11 +357,11 @@ API path: `/{roadId}/services/parking_lorry`
 | `future` |  |
 | `icon` |  |
 | `identifier` |  |
-| `is_blocked` |  |
-| `lorry_parking_feature_icon` |  |
+| `isBlocked` |  |
+| `lorryParkingFeatureIcons` |  |
 | `point` |  |
-| `route_recommendation` |  |
-| `start_timestamp` |  |
+| `routeRecommendation` |  |
+| `startTimestamp` |  |
 | `subtitle` |  |
 | `title` |  |
 
@@ -380,11 +381,11 @@ API path: `/{roadId}/services/roadworks`
 | `future` |  |
 | `icon` |  |
 | `identifier` |  |
-| `is_blocked` |  |
-| `lorry_parking_feature_icon` |  |
+| `isBlocked` |  |
+| `lorryParkingFeatureIcons` |  |
 | `point` |  |
-| `route_recommendation` |  |
-| `start_timestamp` |  |
+| `routeRecommendation` |  |
+| `startTimestamp` |  |
 | `subtitle` |  |
 | `title` |  |
 
@@ -405,12 +406,12 @@ API path: `/{roadId}/services/warning`
 | `icon` |  |
 | `identifier` |  |
 | `imageurl` |  |
-| `is_blocked` |  |
+| `isBlocked` |  |
 | `linkurl` |  |
-| `lorry_parking_feature_icon` |  |
+| `lorryParkingFeatureIcons` |  |
 | `operator` |  |
 | `point` |  |
-| `route_recommendation` |  |
+| `routeRecommendation` |  |
 | `subtitle` |  |
 | `title` |  |
 
@@ -446,18 +447,18 @@ Create an instance: `$closure = $client->Closure();`
 | `future` | `bool` |  |
 | `icon` | `string` |  |
 | `identifier` | `string` |  |
-| `is_blocked` | `bool` |  |
-| `lorry_parking_feature_icon` | `array` |  |
+| `isBlocked` | `string` |  |
+| `lorryParkingFeatureIcons` | `array` |  |
 | `point` | `string` |  |
-| `route_recommendation` | `array` |  |
-| `start_timestamp` | `string` |  |
+| `routeRecommendation` | `array` |  |
+| `startTimestamp` | `string` |  |
 | `subtitle` | `string` |  |
 | `title` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Closure record (throws on error).
+// load() returns the ENTITY — call data_get() for the Closure record (throws on error).
 $closure = $client->Closure()->load(["id" => "closure_id"]);
 ```
 
@@ -492,17 +493,17 @@ Create an instance: `$electric_charging_station = $client->ElectricChargingStati
 | `future` | `bool` |  |
 | `icon` | `string` |  |
 | `identifier` | `string` |  |
-| `is_blocked` | `bool` |  |
-| `lorry_parking_feature_icon` | `array` |  |
+| `isBlocked` | `string` |  |
+| `lorryParkingFeatureIcons` | `array` |  |
 | `point` | `string` |  |
-| `route_recommendation` | `array` |  |
+| `routeRecommendation` | `array` |  |
 | `subtitle` | `string` |  |
 | `title` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare ElectricChargingStation record (throws on error).
+// load() returns the ENTITY — call data_get() for the ElectricChargingStation record (throws on error).
 $electric_charging_station = $client->ElectricChargingStation()->load(["id" => "electric_charging_station_id"]);
 ```
 
@@ -528,7 +529,7 @@ Create an instance: `$list_autobahnen = $client->ListAutobahnen();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `road` | `array` |  |
+| `roads` | `array` |  |
 
 #### Example: List
 
@@ -561,17 +562,17 @@ Create an instance: `$parking_lorry = $client->ParkingLorry();`
 | `future` | `bool` |  |
 | `icon` | `string` |  |
 | `identifier` | `string` |  |
-| `is_blocked` | `bool` |  |
-| `lorry_parking_feature_icon` | `array` |  |
+| `isBlocked` | `string` |  |
+| `lorryParkingFeatureIcons` | `array` |  |
 | `point` | `string` |  |
-| `route_recommendation` | `array` |  |
+| `routeRecommendation` | `array` |  |
 | `subtitle` | `string` |  |
 | `title` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare ParkingLorry record (throws on error).
+// load() returns the ENTITY — call data_get() for the ParkingLorry record (throws on error).
 $parking_lorry = $client->ParkingLorry()->load(["id" => "parking_lorry_id"]);
 ```
 
@@ -606,18 +607,18 @@ Create an instance: `$roadwork = $client->Roadwork();`
 | `future` | `bool` |  |
 | `icon` | `string` |  |
 | `identifier` | `string` |  |
-| `is_blocked` | `bool` |  |
-| `lorry_parking_feature_icon` | `array` |  |
+| `isBlocked` | `string` |  |
+| `lorryParkingFeatureIcons` | `array` |  |
 | `point` | `string` |  |
-| `route_recommendation` | `array` |  |
-| `start_timestamp` | `string` |  |
+| `routeRecommendation` | `array` |  |
+| `startTimestamp` | `string` |  |
 | `subtitle` | `string` |  |
 | `title` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Roadwork record (throws on error).
+// load() returns the ENTITY — call data_get() for the Roadwork record (throws on error).
 $roadwork = $client->Roadwork()->load(["id" => "roadwork_id"]);
 ```
 
@@ -652,18 +653,18 @@ Create an instance: `$warning = $client->Warning();`
 | `future` | `bool` |  |
 | `icon` | `string` |  |
 | `identifier` | `string` |  |
-| `is_blocked` | `bool` |  |
-| `lorry_parking_feature_icon` | `array` |  |
+| `isBlocked` | `string` |  |
+| `lorryParkingFeatureIcons` | `array` |  |
 | `point` | `string` |  |
-| `route_recommendation` | `array` |  |
-| `start_timestamp` | `string` |  |
+| `routeRecommendation` | `array` |  |
+| `startTimestamp` | `string` |  |
 | `subtitle` | `string` |  |
 | `title` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Warning record (throws on error).
+// load() returns the ENTITY — call data_get() for the Warning record (throws on error).
 $warning = $client->Warning()->load(["id" => "warning_id"]);
 ```
 
@@ -699,19 +700,19 @@ Create an instance: `$webcam = $client->Webcam();`
 | `icon` | `string` |  |
 | `identifier` | `string` |  |
 | `imageurl` | `string` |  |
-| `is_blocked` | `bool` |  |
+| `isBlocked` | `string` |  |
 | `linkurl` | `string` |  |
-| `lorry_parking_feature_icon` | `array` |  |
+| `lorryParkingFeatureIcons` | `array` |  |
 | `operator` | `string` |  |
 | `point` | `string` |  |
-| `route_recommendation` | `array` |  |
+| `routeRecommendation` | `array` |  |
 | `subtitle` | `string` |  |
 | `title` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Webcam record (throws on error).
+// load() returns the ENTITY — call data_get() for the Webcam record (throws on error).
 $webcam = $client->Webcam()->load(["id" => "webcam_id"]);
 ```
 
@@ -799,11 +800,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$closure = $client->Closure();
-$closure->list();
+$roadwork = $client->Roadwork();
+$roadwork->list();
 
-// $closure->data_get() now returns the closure data from the last list
-// $closure->match_get() returns the last match criteria
+// $roadwork->data_get() now returns the roadwork data from the last list
+// $roadwork->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

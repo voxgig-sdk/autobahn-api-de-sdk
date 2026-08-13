@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import AutobahnApiDeControl
-from core.error import AutobahnApiDeError
-from core.result import AutobahnApiDeResult
-from core.spec import AutobahnApiDeSpec
+from projectname_sdk.config import make_config
+from projectname_sdk.features import _make_feature
+from projectname_sdk.core.control import AutobahnApiDeControl
+from projectname_sdk.core.error import AutobahnApiDeError
+from projectname_sdk.core.result import AutobahnApiDeResult
+from projectname_sdk.core.spec import AutobahnApiDeSpec
 
 
 # True when this SDK was generated with the named feature.

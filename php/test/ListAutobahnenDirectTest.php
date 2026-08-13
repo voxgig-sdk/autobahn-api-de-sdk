@@ -66,11 +66,11 @@ function list_autobahnen_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "AUTOBAHNAPIDE_TEST_LIST_AUTOBAHNEN_ENTID" => [],
-        "AUTOBAHNAPIDE_TEST_LIVE" => "FALSE",
+        "AUTOBAHN_API_DE_TEST_LIST_AUTOBAHNEN_ENTID" => [],
+        "AUTOBAHN_API_DE_TEST_LIVE" => "FALSE",
     ]);
 
-    $live = $env["AUTOBAHNAPIDE_TEST_LIVE"] === "TRUE";
+    $live = $env["AUTOBAHN_API_DE_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [

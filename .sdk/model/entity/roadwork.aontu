@@ -46,12 +46,12 @@ main: kit: entity: roadwork: {
       type: "`$STRING`"
     }
     {
-      name: "is_blocked"
+      name: "isBlocked"
       req: false
-      type: "`$BOOLEAN`"
+      type: "`$STRING`"
     }
     {
-      name: "lorry_parking_feature_icon"
+      name: "lorryParkingFeatureIcons"
       req: false
       type: "`$ARRAY`"
     }
@@ -61,12 +61,12 @@ main: kit: entity: roadwork: {
       type: "`$STRING`"
     }
     {
-      name: "route_recommendation"
+      name: "routeRecommendation"
       req: false
       type: "`$ARRAY`"
     }
     {
-      name: "start_timestamp"
+      name: "startTimestamp"
       req: false
       type: "`$STRING`"
     }
@@ -119,7 +119,7 @@ main: kit: entity: roadwork: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.roadworks`"
           }
         }
       ]

@@ -130,11 +130,11 @@ fmt.Println(closure.GetName()) // "closure"
 | `future` | `bool` | No |  |
 | `icon` | `string` | No |  |
 | `identifier` | `string` | No |  |
-| `is_blocked` | `bool` | No |  |
-| `lorry_parking_feature_icon` | `[]any` | No |  |
+| `isBlocked` | `string` | No |  |
+| `lorryParkingFeatureIcons` | `[]any` | No |  |
 | `point` | `string` | No |  |
-| `route_recommendation` | `[]any` | No |  |
-| `start_timestamp` | `string` | No |  |
+| `routeRecommendation` | `[]any` | No |  |
+| `startTimestamp` | `string` | No |  |
 | `subtitle` | `string` | No |  |
 | `title` | `string` | No |  |
 
@@ -207,10 +207,10 @@ fmt.Println(electricChargingStation.GetName()) // "electric_charging_station"
 | `future` | `bool` | No |  |
 | `icon` | `string` | No |  |
 | `identifier` | `string` | No |  |
-| `is_blocked` | `bool` | No |  |
-| `lorry_parking_feature_icon` | `[]any` | No |  |
+| `isBlocked` | `string` | No |  |
+| `lorryParkingFeatureIcons` | `[]any` | No |  |
 | `point` | `string` | No |  |
-| `route_recommendation` | `[]any` | No |  |
+| `routeRecommendation` | `[]any` | No |  |
 | `subtitle` | `string` | No |  |
 | `title` | `string` | No |  |
 
@@ -275,7 +275,7 @@ fmt.Println(listAutobahnen.GetName()) // "list_autobahnen"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `road` | `[]any` | No |  |
+| `roads` | `[]any` | No |  |
 
 ### Operations
 
@@ -334,10 +334,10 @@ fmt.Println(parkingLorry.GetName()) // "parking_lorry"
 | `future` | `bool` | No |  |
 | `icon` | `string` | No |  |
 | `identifier` | `string` | No |  |
-| `is_blocked` | `bool` | No |  |
-| `lorry_parking_feature_icon` | `[]any` | No |  |
+| `isBlocked` | `string` | No |  |
+| `lorryParkingFeatureIcons` | `[]any` | No |  |
 | `point` | `string` | No |  |
-| `route_recommendation` | `[]any` | No |  |
+| `routeRecommendation` | `[]any` | No |  |
 | `subtitle` | `string` | No |  |
 | `title` | `string` | No |  |
 
@@ -410,11 +410,11 @@ fmt.Println(roadwork.GetName()) // "roadwork"
 | `future` | `bool` | No |  |
 | `icon` | `string` | No |  |
 | `identifier` | `string` | No |  |
-| `is_blocked` | `bool` | No |  |
-| `lorry_parking_feature_icon` | `[]any` | No |  |
+| `isBlocked` | `string` | No |  |
+| `lorryParkingFeatureIcons` | `[]any` | No |  |
 | `point` | `string` | No |  |
-| `route_recommendation` | `[]any` | No |  |
-| `start_timestamp` | `string` | No |  |
+| `routeRecommendation` | `[]any` | No |  |
+| `startTimestamp` | `string` | No |  |
 | `subtitle` | `string` | No |  |
 | `title` | `string` | No |  |
 
@@ -487,11 +487,11 @@ fmt.Println(warning.GetName()) // "warning"
 | `future` | `bool` | No |  |
 | `icon` | `string` | No |  |
 | `identifier` | `string` | No |  |
-| `is_blocked` | `bool` | No |  |
-| `lorry_parking_feature_icon` | `[]any` | No |  |
+| `isBlocked` | `string` | No |  |
+| `lorryParkingFeatureIcons` | `[]any` | No |  |
 | `point` | `string` | No |  |
-| `route_recommendation` | `[]any` | No |  |
-| `start_timestamp` | `string` | No |  |
+| `routeRecommendation` | `[]any` | No |  |
+| `startTimestamp` | `string` | No |  |
 | `subtitle` | `string` | No |  |
 | `title` | `string` | No |  |
 
@@ -565,12 +565,12 @@ fmt.Println(webcam.GetName()) // "webcam"
 | `icon` | `string` | No |  |
 | `identifier` | `string` | No |  |
 | `imageurl` | `string` | No |  |
-| `is_blocked` | `bool` | No |  |
+| `isBlocked` | `string` | No |  |
 | `linkurl` | `string` | No |  |
-| `lorry_parking_feature_icon` | `[]any` | No |  |
+| `lorryParkingFeatureIcons` | `[]any` | No |  |
 | `operator` | `string` | No |  |
 | `point` | `string` | No |  |
-| `route_recommendation` | `[]any` | No |  |
+| `routeRecommendation` | `[]any` | No |  |
 | `subtitle` | `string` | No |  |
 | `title` | `string` | No |  |
 

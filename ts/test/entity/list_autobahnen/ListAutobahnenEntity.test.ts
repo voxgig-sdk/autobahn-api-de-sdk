@@ -26,8 +26,8 @@ import {
 describe('ListAutobahnenEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when AUTOBAHNAPIDE_TEST_LIVE=TRUE.
-  afterEach(liveDelay('AUTOBAHNAPIDE_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when AUTOBAHN_API_DE_TEST_LIVE=TRUE.
+  afterEach(liveDelay('AUTOBAHN_API_DE_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = AutobahnApiDeSDK.test()
@@ -63,7 +63,7 @@ describe('ListAutobahnenEntity', async () => {
     const list_autobahnen_ref01_ent = client.ListAutobahnen()
     const list_autobahnen_ref01_match: any = {}
 
-    const list_autobahnen_ref01_list = await list_autobahnen_ref01_ent.list(list_autobahnen_ref01_match)
+    const list_autobahnen_ref01_list = (await list_autobahnen_ref01_ent.list(list_autobahnen_ref01_match)).map((e: any) => e.data())
 
 
   })

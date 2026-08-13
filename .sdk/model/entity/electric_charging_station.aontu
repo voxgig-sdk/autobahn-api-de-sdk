@@ -46,12 +46,12 @@ main: kit: entity: electric_charging_station: {
       type: "`$STRING`"
     }
     {
-      name: "is_blocked"
+      name: "isBlocked"
       req: false
-      type: "`$BOOLEAN`"
+      type: "`$STRING`"
     }
     {
-      name: "lorry_parking_feature_icon"
+      name: "lorryParkingFeatureIcons"
       req: false
       type: "`$ARRAY`"
     }
@@ -61,7 +61,7 @@ main: kit: entity: electric_charging_station: {
       type: "`$STRING`"
     }
     {
-      name: "route_recommendation"
+      name: "routeRecommendation"
       req: false
       type: "`$ARRAY`"
     }

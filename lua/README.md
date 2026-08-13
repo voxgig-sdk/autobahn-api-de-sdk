@@ -62,7 +62,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local closures, err = client:Closure():list()
+local roadworks, err = client:Roadwork():list()
 if err then error(err) end
 ```
 
@@ -120,7 +120,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Closure():list()
+local result, err = client:Roadwork():list()
 -- result is the returned data; err is set on failure
 ```
 
@@ -255,11 +255,11 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | `future` |  |
 | `icon` |  |
 | `identifier` |  |
-| `is_blocked` |  |
-| `lorry_parking_feature_icon` |  |
+| `isBlocked` |  |
+| `lorryParkingFeatureIcons` |  |
 | `point` |  |
-| `route_recommendation` |  |
-| `start_timestamp` |  |
+| `routeRecommendation` |  |
+| `startTimestamp` |  |
 | `subtitle` |  |
 | `title` |  |
 
@@ -279,10 +279,10 @@ API path: `/{roadId}/services/closure`
 | `future` |  |
 | `icon` |  |
 | `identifier` |  |
-| `is_blocked` |  |
-| `lorry_parking_feature_icon` |  |
+| `isBlocked` |  |
+| `lorryParkingFeatureIcons` |  |
 | `point` |  |
-| `route_recommendation` |  |
+| `routeRecommendation` |  |
 | `subtitle` |  |
 | `title` |  |
 
@@ -294,7 +294,7 @@ API path: `/{roadId}/services/electric_charging_station`
 
 | Field | Description |
 | --- | --- |
-| `road` |  |
+| `roads` |  |
 
 Operations: List.
 
@@ -312,10 +312,10 @@ API path: `/`
 | `future` |  |
 | `icon` |  |
 | `identifier` |  |
-| `is_blocked` |  |
-| `lorry_parking_feature_icon` |  |
+| `isBlocked` |  |
+| `lorryParkingFeatureIcons` |  |
 | `point` |  |
-| `route_recommendation` |  |
+| `routeRecommendation` |  |
 | `subtitle` |  |
 | `title` |  |
 
@@ -335,11 +335,11 @@ API path: `/{roadId}/services/parking_lorry`
 | `future` |  |
 | `icon` |  |
 | `identifier` |  |
-| `is_blocked` |  |
-| `lorry_parking_feature_icon` |  |
+| `isBlocked` |  |
+| `lorryParkingFeatureIcons` |  |
 | `point` |  |
-| `route_recommendation` |  |
-| `start_timestamp` |  |
+| `routeRecommendation` |  |
+| `startTimestamp` |  |
 | `subtitle` |  |
 | `title` |  |
 
@@ -359,11 +359,11 @@ API path: `/{roadId}/services/roadworks`
 | `future` |  |
 | `icon` |  |
 | `identifier` |  |
-| `is_blocked` |  |
-| `lorry_parking_feature_icon` |  |
+| `isBlocked` |  |
+| `lorryParkingFeatureIcons` |  |
 | `point` |  |
-| `route_recommendation` |  |
-| `start_timestamp` |  |
+| `routeRecommendation` |  |
+| `startTimestamp` |  |
 | `subtitle` |  |
 | `title` |  |
 
@@ -384,12 +384,12 @@ API path: `/{roadId}/services/warning`
 | `icon` |  |
 | `identifier` |  |
 | `imageurl` |  |
-| `is_blocked` |  |
+| `isBlocked` |  |
 | `linkurl` |  |
-| `lorry_parking_feature_icon` |  |
+| `lorryParkingFeatureIcons` |  |
 | `operator` |  |
 | `point` |  |
-| `route_recommendation` |  |
+| `routeRecommendation` |  |
 | `subtitle` |  |
 | `title` |  |
 
@@ -425,11 +425,11 @@ Create an instance: `local closure = client:Closure(nil)`
 | `future` | `boolean` |  |
 | `icon` | `string` |  |
 | `identifier` | `string` |  |
-| `is_blocked` | `boolean` |  |
-| `lorry_parking_feature_icon` | `table` |  |
+| `isBlocked` | `string` |  |
+| `lorryParkingFeatureIcons` | `table` |  |
 | `point` | `string` |  |
-| `route_recommendation` | `table` |  |
-| `start_timestamp` | `string` |  |
+| `routeRecommendation` | `table` |  |
+| `startTimestamp` | `string` |  |
 | `subtitle` | `string` |  |
 | `title` | `string` |  |
 
@@ -469,10 +469,10 @@ Create an instance: `local electric_charging_station = client:ElectricChargingSt
 | `future` | `boolean` |  |
 | `icon` | `string` |  |
 | `identifier` | `string` |  |
-| `is_blocked` | `boolean` |  |
-| `lorry_parking_feature_icon` | `table` |  |
+| `isBlocked` | `string` |  |
+| `lorryParkingFeatureIcons` | `table` |  |
 | `point` | `string` |  |
-| `route_recommendation` | `table` |  |
+| `routeRecommendation` | `table` |  |
 | `subtitle` | `string` |  |
 | `title` | `string` |  |
 
@@ -503,7 +503,7 @@ Create an instance: `local list_autobahnen = client:ListAutobahnen(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `road` | `table` |  |
+| `roads` | `table` |  |
 
 #### Example: List
 
@@ -535,10 +535,10 @@ Create an instance: `local parking_lorry = client:ParkingLorry(nil)`
 | `future` | `boolean` |  |
 | `icon` | `string` |  |
 | `identifier` | `string` |  |
-| `is_blocked` | `boolean` |  |
-| `lorry_parking_feature_icon` | `table` |  |
+| `isBlocked` | `string` |  |
+| `lorryParkingFeatureIcons` | `table` |  |
 | `point` | `string` |  |
-| `route_recommendation` | `table` |  |
+| `routeRecommendation` | `table` |  |
 | `subtitle` | `string` |  |
 | `title` | `string` |  |
 
@@ -578,11 +578,11 @@ Create an instance: `local roadwork = client:Roadwork(nil)`
 | `future` | `boolean` |  |
 | `icon` | `string` |  |
 | `identifier` | `string` |  |
-| `is_blocked` | `boolean` |  |
-| `lorry_parking_feature_icon` | `table` |  |
+| `isBlocked` | `string` |  |
+| `lorryParkingFeatureIcons` | `table` |  |
 | `point` | `string` |  |
-| `route_recommendation` | `table` |  |
-| `start_timestamp` | `string` |  |
+| `routeRecommendation` | `table` |  |
+| `startTimestamp` | `string` |  |
 | `subtitle` | `string` |  |
 | `title` | `string` |  |
 
@@ -622,11 +622,11 @@ Create an instance: `local warning = client:Warning(nil)`
 | `future` | `boolean` |  |
 | `icon` | `string` |  |
 | `identifier` | `string` |  |
-| `is_blocked` | `boolean` |  |
-| `lorry_parking_feature_icon` | `table` |  |
+| `isBlocked` | `string` |  |
+| `lorryParkingFeatureIcons` | `table` |  |
 | `point` | `string` |  |
-| `route_recommendation` | `table` |  |
-| `start_timestamp` | `string` |  |
+| `routeRecommendation` | `table` |  |
+| `startTimestamp` | `string` |  |
 | `subtitle` | `string` |  |
 | `title` | `string` |  |
 
@@ -667,12 +667,12 @@ Create an instance: `local webcam = client:Webcam(nil)`
 | `icon` | `string` |  |
 | `identifier` | `string` |  |
 | `imageurl` | `string` |  |
-| `is_blocked` | `boolean` |  |
+| `isBlocked` | `string` |  |
 | `linkurl` | `string` |  |
-| `lorry_parking_feature_icon` | `table` |  |
+| `lorryParkingFeatureIcons` | `table` |  |
 | `operator` | `string` |  |
 | `point` | `string` |  |
-| `route_recommendation` | `table` |  |
+| `routeRecommendation` | `table` |  |
 | `subtitle` | `string` |  |
 | `title` | `string` |  |
 
@@ -765,11 +765,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local closure = client:Closure()
-closure:list()
+local roadwork = client:Roadwork()
+roadwork:list()
 
--- closure:data_get() now returns the closure data from the last list
--- closure:match_get() returns the last match criteria
+-- roadwork:data_get() now returns the roadwork data from the last list
+-- roadwork:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

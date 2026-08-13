@@ -119,11 +119,11 @@ closure = client.Closure()
 | `future` | `bool` | No |  |
 | `icon` | `str` | No |  |
 | `identifier` | `str` | No |  |
-| `is_blocked` | `bool` | No |  |
-| `lorry_parking_feature_icon` | `list` | No |  |
+| `isBlocked` | `str` | No |  |
+| `lorryParkingFeatureIcons` | `list` | No |  |
 | `point` | `str` | No |  |
-| `route_recommendation` | `list` | No |  |
-| `start_timestamp` | `str` | No |  |
+| `routeRecommendation` | `list` | No |  |
+| `startTimestamp` | `str` | No |  |
 | `subtitle` | `str` | No |  |
 | `title` | `str` | No |  |
 
@@ -134,7 +134,7 @@ closure = client.Closure()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Closure().list()
+results = client.Closure().list({"road_id": "example"})
 for closure in results:
     print(closure)
 ```
@@ -194,10 +194,10 @@ electric_charging_station = client.ElectricChargingStation()
 | `future` | `bool` | No |  |
 | `icon` | `str` | No |  |
 | `identifier` | `str` | No |  |
-| `is_blocked` | `bool` | No |  |
-| `lorry_parking_feature_icon` | `list` | No |  |
+| `isBlocked` | `str` | No |  |
+| `lorryParkingFeatureIcons` | `list` | No |  |
 | `point` | `str` | No |  |
-| `route_recommendation` | `list` | No |  |
+| `routeRecommendation` | `list` | No |  |
 | `subtitle` | `str` | No |  |
 | `title` | `str` | No |  |
 
@@ -208,7 +208,7 @@ electric_charging_station = client.ElectricChargingStation()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ElectricChargingStation().list()
+results = client.ElectricChargingStation().list({"road_id": "example"})
 for electric_charging_station in results:
     print(electric_charging_station)
 ```
@@ -260,7 +260,7 @@ list_autobahnen = client.ListAutobahnen()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `road` | `list` | No |  |
+| `roads` | `list` | No |  |
 
 ### Operations
 
@@ -321,10 +321,10 @@ parking_lorry = client.ParkingLorry()
 | `future` | `bool` | No |  |
 | `icon` | `str` | No |  |
 | `identifier` | `str` | No |  |
-| `is_blocked` | `bool` | No |  |
-| `lorry_parking_feature_icon` | `list` | No |  |
+| `isBlocked` | `str` | No |  |
+| `lorryParkingFeatureIcons` | `list` | No |  |
 | `point` | `str` | No |  |
-| `route_recommendation` | `list` | No |  |
+| `routeRecommendation` | `list` | No |  |
 | `subtitle` | `str` | No |  |
 | `title` | `str` | No |  |
 
@@ -335,7 +335,7 @@ parking_lorry = client.ParkingLorry()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ParkingLorry().list()
+results = client.ParkingLorry().list({"road_id": "example"})
 for parking_lorry in results:
     print(parking_lorry)
 ```
@@ -395,11 +395,11 @@ roadwork = client.Roadwork()
 | `future` | `bool` | No |  |
 | `icon` | `str` | No |  |
 | `identifier` | `str` | No |  |
-| `is_blocked` | `bool` | No |  |
-| `lorry_parking_feature_icon` | `list` | No |  |
+| `isBlocked` | `str` | No |  |
+| `lorryParkingFeatureIcons` | `list` | No |  |
 | `point` | `str` | No |  |
-| `route_recommendation` | `list` | No |  |
-| `start_timestamp` | `str` | No |  |
+| `routeRecommendation` | `list` | No |  |
+| `startTimestamp` | `str` | No |  |
 | `subtitle` | `str` | No |  |
 | `title` | `str` | No |  |
 
@@ -410,7 +410,7 @@ roadwork = client.Roadwork()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Roadwork().list()
+results = client.Roadwork().list({"road_id": "example"})
 for roadwork in results:
     print(roadwork)
 ```
@@ -470,11 +470,11 @@ warning = client.Warning()
 | `future` | `bool` | No |  |
 | `icon` | `str` | No |  |
 | `identifier` | `str` | No |  |
-| `is_blocked` | `bool` | No |  |
-| `lorry_parking_feature_icon` | `list` | No |  |
+| `isBlocked` | `str` | No |  |
+| `lorryParkingFeatureIcons` | `list` | No |  |
 | `point` | `str` | No |  |
-| `route_recommendation` | `list` | No |  |
-| `start_timestamp` | `str` | No |  |
+| `routeRecommendation` | `list` | No |  |
+| `startTimestamp` | `str` | No |  |
 | `subtitle` | `str` | No |  |
 | `title` | `str` | No |  |
 
@@ -485,7 +485,7 @@ warning = client.Warning()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Warning().list()
+results = client.Warning().list({"road_id": "example"})
 for warning in results:
     print(warning)
 ```
@@ -546,12 +546,12 @@ webcam = client.Webcam()
 | `icon` | `str` | No |  |
 | `identifier` | `str` | No |  |
 | `imageurl` | `str` | No |  |
-| `is_blocked` | `bool` | No |  |
+| `isBlocked` | `str` | No |  |
 | `linkurl` | `str` | No |  |
-| `lorry_parking_feature_icon` | `list` | No |  |
+| `lorryParkingFeatureIcons` | `list` | No |  |
 | `operator` | `str` | No |  |
 | `point` | `str` | No |  |
-| `route_recommendation` | `list` | No |  |
+| `routeRecommendation` | `list` | No |  |
 | `subtitle` | `str` | No |  |
 | `title` | `str` | No |  |
 
@@ -562,7 +562,7 @@ webcam = client.Webcam()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Webcam().list()
+results = client.Webcam().list({"road_id": "example"})
 for webcam in results:
     print(webcam)
 ```

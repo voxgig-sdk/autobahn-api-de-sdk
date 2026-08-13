@@ -15,11 +15,11 @@
 ---@field future? boolean
 ---@field icon? string
 ---@field identifier? string
----@field is_blocked? boolean
----@field lorry_parking_feature_icon? table
+---@field isBlocked? string
+---@field lorryParkingFeatureIcons? table
 ---@field point? string
----@field route_recommendation? table
----@field start_timestamp? string
+---@field routeRecommendation? table
+---@field startTimestamp? string
 ---@field subtitle? string
 ---@field title? string
 
@@ -38,10 +38,10 @@
 ---@field future? boolean
 ---@field icon? string
 ---@field identifier? string
----@field is_blocked? boolean
----@field lorry_parking_feature_icon? table
+---@field isBlocked? string
+---@field lorryParkingFeatureIcons? table
 ---@field point? string
----@field route_recommendation? table
+---@field routeRecommendation? table
 ---@field subtitle? string
 ---@field title? string
 
@@ -52,10 +52,10 @@
 ---@field road_id string
 
 ---@class ListAutobahnen
----@field road? table
+---@field roads? table
 
 ---@class ListAutobahnenListMatch
----@field road? table
+---@field roads? table
 
 ---@class ParkingLorry
 ---@field coordinate? table
@@ -66,10 +66,10 @@
 ---@field future? boolean
 ---@field icon? string
 ---@field identifier? string
----@field is_blocked? boolean
----@field lorry_parking_feature_icon? table
+---@field isBlocked? string
+---@field lorryParkingFeatureIcons? table
 ---@field point? string
----@field route_recommendation? table
+---@field routeRecommendation? table
 ---@field subtitle? string
 ---@field title? string
 
@@ -88,11 +88,11 @@
 ---@field future? boolean
 ---@field icon? string
 ---@field identifier? string
----@field is_blocked? boolean
----@field lorry_parking_feature_icon? table
+---@field isBlocked? string
+---@field lorryParkingFeatureIcons? table
 ---@field point? string
----@field route_recommendation? table
----@field start_timestamp? string
+---@field routeRecommendation? table
+---@field startTimestamp? string
 ---@field subtitle? string
 ---@field title? string
 
@@ -111,11 +111,11 @@
 ---@field future? boolean
 ---@field icon? string
 ---@field identifier? string
----@field is_blocked? boolean
----@field lorry_parking_feature_icon? table
+---@field isBlocked? string
+---@field lorryParkingFeatureIcons? table
 ---@field point? string
----@field route_recommendation? table
----@field start_timestamp? string
+---@field routeRecommendation? table
+---@field startTimestamp? string
 ---@field subtitle? string
 ---@field title? string
 
@@ -135,12 +135,12 @@
 ---@field icon? string
 ---@field identifier? string
 ---@field imageurl? string
----@field is_blocked? boolean
+---@field isBlocked? string
 ---@field linkurl? string
----@field lorry_parking_feature_icon? table
+---@field lorryParkingFeatureIcons? table
 ---@field operator? string
 ---@field point? string
----@field route_recommendation? table
+---@field routeRecommendation? table
 ---@field subtitle? string
 ---@field title? string
 

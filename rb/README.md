@@ -48,7 +48,7 @@ end
 
 ```ruby
 begin
-  # load returns the bare Closure record (raises on error).
+  # load returns the ENTITY — call data_get for the Closure record (raises on error).
   closure = client.Closure.load({ "id" => "example_id" })
   puts closure
 rescue => err
@@ -63,7 +63,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  closures = client.Closure.list()
+  roadworks = client.Roadwork.list()
 rescue => err
   warn "list failed: #{err}"
 end
@@ -131,12 +131,13 @@ data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
 client = AutobahnApiDeSDK.test({
-  "entity" => { "closure" => { "test01" => { "id" => "test01" } } },
+  "entity" => { "roadwork" => { "test01" => { "id" => "test01" } } },
 })
 
-# Entity ops return the bare mock record (raises on error).
-closure = client.Closure.list()
-puts closure
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
+roadwork = client.Roadwork.list()
+puts roadwork
 ```
 
 ### Use a custom fetch function
@@ -266,11 +267,11 @@ returns a result `Hash` with these keys:
 | `future` |  |
 | `icon` |  |
 | `identifier` |  |
-| `is_blocked` |  |
-| `lorry_parking_feature_icon` |  |
+| `isBlocked` |  |
+| `lorryParkingFeatureIcons` |  |
 | `point` |  |
-| `route_recommendation` |  |
-| `start_timestamp` |  |
+| `routeRecommendation` |  |
+| `startTimestamp` |  |
 | `subtitle` |  |
 | `title` |  |
 
@@ -290,10 +291,10 @@ API path: `/{roadId}/services/closure`
 | `future` |  |
 | `icon` |  |
 | `identifier` |  |
-| `is_blocked` |  |
-| `lorry_parking_feature_icon` |  |
+| `isBlocked` |  |
+| `lorryParkingFeatureIcons` |  |
 | `point` |  |
-| `route_recommendation` |  |
+| `routeRecommendation` |  |
 | `subtitle` |  |
 | `title` |  |
 
@@ -305,7 +306,7 @@ API path: `/{roadId}/services/electric_charging_station`
 
 | Field | Description |
 | --- | --- |
-| `road` |  |
+| `roads` |  |
 
 Operations: List.
 
@@ -323,10 +324,10 @@ API path: `/`
 | `future` |  |
 | `icon` |  |
 | `identifier` |  |
-| `is_blocked` |  |
-| `lorry_parking_feature_icon` |  |
+| `isBlocked` |  |
+| `lorryParkingFeatureIcons` |  |
 | `point` |  |
-| `route_recommendation` |  |
+| `routeRecommendation` |  |
 | `subtitle` |  |
 | `title` |  |
 
@@ -346,11 +347,11 @@ API path: `/{roadId}/services/parking_lorry`
 | `future` |  |
 | `icon` |  |
 | `identifier` |  |
-| `is_blocked` |  |
-| `lorry_parking_feature_icon` |  |
+| `isBlocked` |  |
+| `lorryParkingFeatureIcons` |  |
 | `point` |  |
-| `route_recommendation` |  |
-| `start_timestamp` |  |
+| `routeRecommendation` |  |
+| `startTimestamp` |  |
 | `subtitle` |  |
 | `title` |  |
 
@@ -370,11 +371,11 @@ API path: `/{roadId}/services/roadworks`
 | `future` |  |
 | `icon` |  |
 | `identifier` |  |
-| `is_blocked` |  |
-| `lorry_parking_feature_icon` |  |
+| `isBlocked` |  |
+| `lorryParkingFeatureIcons` |  |
 | `point` |  |
-| `route_recommendation` |  |
-| `start_timestamp` |  |
+| `routeRecommendation` |  |
+| `startTimestamp` |  |
 | `subtitle` |  |
 | `title` |  |
 
@@ -395,12 +396,12 @@ API path: `/{roadId}/services/warning`
 | `icon` |  |
 | `identifier` |  |
 | `imageurl` |  |
-| `is_blocked` |  |
+| `isBlocked` |  |
 | `linkurl` |  |
-| `lorry_parking_feature_icon` |  |
+| `lorryParkingFeatureIcons` |  |
 | `operator` |  |
 | `point` |  |
-| `route_recommendation` |  |
+| `routeRecommendation` |  |
 | `subtitle` |  |
 | `title` |  |
 
@@ -436,18 +437,18 @@ Create an instance: `closure = client.Closure`
 | `future` | `Boolean` |  |
 | `icon` | `String` |  |
 | `identifier` | `String` |  |
-| `is_blocked` | `Boolean` |  |
-| `lorry_parking_feature_icon` | `Array` |  |
+| `isBlocked` | `String` |  |
+| `lorryParkingFeatureIcons` | `Array` |  |
 | `point` | `String` |  |
-| `route_recommendation` | `Array` |  |
-| `start_timestamp` | `String` |  |
+| `routeRecommendation` | `Array` |  |
+| `startTimestamp` | `String` |  |
 | `subtitle` | `String` |  |
 | `title` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Closure record (raises on error).
+# load returns the ENTITY — call data_get for the Closure record (raises on error).
 closure = client.Closure.load({ "id" => "closure_id" })
 ```
 
@@ -482,17 +483,17 @@ Create an instance: `electric_charging_station = client.ElectricChargingStation`
 | `future` | `Boolean` |  |
 | `icon` | `String` |  |
 | `identifier` | `String` |  |
-| `is_blocked` | `Boolean` |  |
-| `lorry_parking_feature_icon` | `Array` |  |
+| `isBlocked` | `String` |  |
+| `lorryParkingFeatureIcons` | `Array` |  |
 | `point` | `String` |  |
-| `route_recommendation` | `Array` |  |
+| `routeRecommendation` | `Array` |  |
 | `subtitle` | `String` |  |
 | `title` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare ElectricChargingStation record (raises on error).
+# load returns the ENTITY — call data_get for the ElectricChargingStation record (raises on error).
 electric_charging_station = client.ElectricChargingStation.load({ "id" => "electric_charging_station_id" })
 ```
 
@@ -518,7 +519,7 @@ Create an instance: `list_autobahnen = client.ListAutobahnen`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `road` | `Array` |  |
+| `roads` | `Array` |  |
 
 #### Example: List
 
@@ -551,17 +552,17 @@ Create an instance: `parking_lorry = client.ParkingLorry`
 | `future` | `Boolean` |  |
 | `icon` | `String` |  |
 | `identifier` | `String` |  |
-| `is_blocked` | `Boolean` |  |
-| `lorry_parking_feature_icon` | `Array` |  |
+| `isBlocked` | `String` |  |
+| `lorryParkingFeatureIcons` | `Array` |  |
 | `point` | `String` |  |
-| `route_recommendation` | `Array` |  |
+| `routeRecommendation` | `Array` |  |
 | `subtitle` | `String` |  |
 | `title` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare ParkingLorry record (raises on error).
+# load returns the ENTITY — call data_get for the ParkingLorry record (raises on error).
 parking_lorry = client.ParkingLorry.load({ "id" => "parking_lorry_id" })
 ```
 
@@ -596,18 +597,18 @@ Create an instance: `roadwork = client.Roadwork`
 | `future` | `Boolean` |  |
 | `icon` | `String` |  |
 | `identifier` | `String` |  |
-| `is_blocked` | `Boolean` |  |
-| `lorry_parking_feature_icon` | `Array` |  |
+| `isBlocked` | `String` |  |
+| `lorryParkingFeatureIcons` | `Array` |  |
 | `point` | `String` |  |
-| `route_recommendation` | `Array` |  |
-| `start_timestamp` | `String` |  |
+| `routeRecommendation` | `Array` |  |
+| `startTimestamp` | `String` |  |
 | `subtitle` | `String` |  |
 | `title` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Roadwork record (raises on error).
+# load returns the ENTITY — call data_get for the Roadwork record (raises on error).
 roadwork = client.Roadwork.load({ "id" => "roadwork_id" })
 ```
 
@@ -642,18 +643,18 @@ Create an instance: `warning = client.Warning`
 | `future` | `Boolean` |  |
 | `icon` | `String` |  |
 | `identifier` | `String` |  |
-| `is_blocked` | `Boolean` |  |
-| `lorry_parking_feature_icon` | `Array` |  |
+| `isBlocked` | `String` |  |
+| `lorryParkingFeatureIcons` | `Array` |  |
 | `point` | `String` |  |
-| `route_recommendation` | `Array` |  |
-| `start_timestamp` | `String` |  |
+| `routeRecommendation` | `Array` |  |
+| `startTimestamp` | `String` |  |
 | `subtitle` | `String` |  |
 | `title` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Warning record (raises on error).
+# load returns the ENTITY — call data_get for the Warning record (raises on error).
 warning = client.Warning.load({ "id" => "warning_id" })
 ```
 
@@ -689,19 +690,19 @@ Create an instance: `webcam = client.Webcam`
 | `icon` | `String` |  |
 | `identifier` | `String` |  |
 | `imageurl` | `String` |  |
-| `is_blocked` | `Boolean` |  |
+| `isBlocked` | `String` |  |
 | `linkurl` | `String` |  |
-| `lorry_parking_feature_icon` | `Array` |  |
+| `lorryParkingFeatureIcons` | `Array` |  |
 | `operator` | `String` |  |
 | `point` | `String` |  |
-| `route_recommendation` | `Array` |  |
+| `routeRecommendation` | `Array` |  |
 | `subtitle` | `String` |  |
 | `title` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Webcam record (raises on error).
+# load returns the ENTITY — call data_get for the Webcam record (raises on error).
 webcam = client.Webcam.load({ "id" => "webcam_id" })
 ```
 
@@ -789,11 +790,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-closure = client.Closure
-closure.list()
+roadwork = client.Roadwork
+roadwork.list()
 
-# closure.data_get now returns the closure data from the last list
-# closure.match_get returns the last match criteria
+# roadwork.data_get now returns the roadwork data from the last list
+# roadwork.match_get returns the last match criteria
 ```
 
 Call `make` to create a fresh instance with the same configuration

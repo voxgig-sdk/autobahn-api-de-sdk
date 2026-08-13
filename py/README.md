@@ -43,7 +43,7 @@ error — iterate it directly.
 
 ```python
 try:
-    closures = client.Closure().list()
+    closures = client.Closure().list({"road_id": "example"})
     for closure in closures:
         print(closure)
 except Exception as err:
@@ -52,7 +52,7 @@ except Exception as err:
 
 ### 3. Load a closure
 
-`load()` returns the bare record (a `dict`) and raises on error.
+`load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
@@ -69,8 +69,8 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    closures = client.Closure().list()
-    print(closures)
+    roadworks = client.Roadwork().list()
+    print(roadworks)
 except Exception as err:
     print(f"list failed: {err}")
 ```
@@ -136,9 +136,10 @@ Create a mock client for unit testing — no server required:
 ```python
 client = AutobahnApiDeSDK.test()
 
-# Entity ops return the bare record and raise on error.
-closure = client.Closure().list()
-# closure contains the mock response record
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
+roadwork = client.Roadwork().list()
+# roadwork contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -239,7 +240,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -269,11 +270,11 @@ On error, `ok` is `False` and `err` contains the error value.
 | `future` |  |
 | `icon` |  |
 | `identifier` |  |
-| `is_blocked` |  |
-| `lorry_parking_feature_icon` |  |
+| `isBlocked` |  |
+| `lorryParkingFeatureIcons` |  |
 | `point` |  |
-| `route_recommendation` |  |
-| `start_timestamp` |  |
+| `routeRecommendation` |  |
+| `startTimestamp` |  |
 | `subtitle` |  |
 | `title` |  |
 
@@ -293,10 +294,10 @@ API path: `/{roadId}/services/closure`
 | `future` |  |
 | `icon` |  |
 | `identifier` |  |
-| `is_blocked` |  |
-| `lorry_parking_feature_icon` |  |
+| `isBlocked` |  |
+| `lorryParkingFeatureIcons` |  |
 | `point` |  |
-| `route_recommendation` |  |
+| `routeRecommendation` |  |
 | `subtitle` |  |
 | `title` |  |
 
@@ -308,7 +309,7 @@ API path: `/{roadId}/services/electric_charging_station`
 
 | Field | Description |
 | --- | --- |
-| `road` |  |
+| `roads` |  |
 
 Operations: List.
 
@@ -326,10 +327,10 @@ API path: `/`
 | `future` |  |
 | `icon` |  |
 | `identifier` |  |
-| `is_blocked` |  |
-| `lorry_parking_feature_icon` |  |
+| `isBlocked` |  |
+| `lorryParkingFeatureIcons` |  |
 | `point` |  |
-| `route_recommendation` |  |
+| `routeRecommendation` |  |
 | `subtitle` |  |
 | `title` |  |
 
@@ -349,11 +350,11 @@ API path: `/{roadId}/services/parking_lorry`
 | `future` |  |
 | `icon` |  |
 | `identifier` |  |
-| `is_blocked` |  |
-| `lorry_parking_feature_icon` |  |
+| `isBlocked` |  |
+| `lorryParkingFeatureIcons` |  |
 | `point` |  |
-| `route_recommendation` |  |
-| `start_timestamp` |  |
+| `routeRecommendation` |  |
+| `startTimestamp` |  |
 | `subtitle` |  |
 | `title` |  |
 
@@ -373,11 +374,11 @@ API path: `/{roadId}/services/roadworks`
 | `future` |  |
 | `icon` |  |
 | `identifier` |  |
-| `is_blocked` |  |
-| `lorry_parking_feature_icon` |  |
+| `isBlocked` |  |
+| `lorryParkingFeatureIcons` |  |
 | `point` |  |
-| `route_recommendation` |  |
-| `start_timestamp` |  |
+| `routeRecommendation` |  |
+| `startTimestamp` |  |
 | `subtitle` |  |
 | `title` |  |
 
@@ -398,12 +399,12 @@ API path: `/{roadId}/services/warning`
 | `icon` |  |
 | `identifier` |  |
 | `imageurl` |  |
-| `is_blocked` |  |
+| `isBlocked` |  |
 | `linkurl` |  |
-| `lorry_parking_feature_icon` |  |
+| `lorryParkingFeatureIcons` |  |
 | `operator` |  |
 | `point` |  |
-| `route_recommendation` |  |
+| `routeRecommendation` |  |
 | `subtitle` |  |
 | `title` |  |
 
@@ -439,11 +440,11 @@ Create an instance: `closure = client.Closure()`
 | `future` | `bool` |  |
 | `icon` | `str` |  |
 | `identifier` | `str` |  |
-| `is_blocked` | `bool` |  |
-| `lorry_parking_feature_icon` | `list` |  |
+| `isBlocked` | `str` |  |
+| `lorryParkingFeatureIcons` | `list` |  |
 | `point` | `str` |  |
-| `route_recommendation` | `list` |  |
-| `start_timestamp` | `str` |  |
+| `routeRecommendation` | `list` |  |
+| `startTimestamp` | `str` |  |
 | `subtitle` | `str` |  |
 | `title` | `str` |  |
 
@@ -456,7 +457,7 @@ closure = client.Closure().load({"id": "closure_id"})
 #### Example: List
 
 ```python
-closures = client.Closure().list()
+closures = client.Closure().list({"road_id": "example"})
 ```
 
 
@@ -483,10 +484,10 @@ Create an instance: `electric_charging_station = client.ElectricChargingStation(
 | `future` | `bool` |  |
 | `icon` | `str` |  |
 | `identifier` | `str` |  |
-| `is_blocked` | `bool` |  |
-| `lorry_parking_feature_icon` | `list` |  |
+| `isBlocked` | `str` |  |
+| `lorryParkingFeatureIcons` | `list` |  |
 | `point` | `str` |  |
-| `route_recommendation` | `list` |  |
+| `routeRecommendation` | `list` |  |
 | `subtitle` | `str` |  |
 | `title` | `str` |  |
 
@@ -499,7 +500,7 @@ electric_charging_station = client.ElectricChargingStation().load({"id": "electr
 #### Example: List
 
 ```python
-electric_charging_stations = client.ElectricChargingStation().list()
+electric_charging_stations = client.ElectricChargingStation().list({"road_id": "example"})
 ```
 
 
@@ -517,7 +518,7 @@ Create an instance: `list_autobahnen = client.ListAutobahnen()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `road` | `list` |  |
+| `roads` | `list` |  |
 
 #### Example: List
 
@@ -549,10 +550,10 @@ Create an instance: `parking_lorry = client.ParkingLorry()`
 | `future` | `bool` |  |
 | `icon` | `str` |  |
 | `identifier` | `str` |  |
-| `is_blocked` | `bool` |  |
-| `lorry_parking_feature_icon` | `list` |  |
+| `isBlocked` | `str` |  |
+| `lorryParkingFeatureIcons` | `list` |  |
 | `point` | `str` |  |
-| `route_recommendation` | `list` |  |
+| `routeRecommendation` | `list` |  |
 | `subtitle` | `str` |  |
 | `title` | `str` |  |
 
@@ -565,7 +566,7 @@ parking_lorry = client.ParkingLorry().load({"id": "parking_lorry_id"})
 #### Example: List
 
 ```python
-parking_lorrys = client.ParkingLorry().list()
+parking_lorrys = client.ParkingLorry().list({"road_id": "example"})
 ```
 
 
@@ -592,11 +593,11 @@ Create an instance: `roadwork = client.Roadwork()`
 | `future` | `bool` |  |
 | `icon` | `str` |  |
 | `identifier` | `str` |  |
-| `is_blocked` | `bool` |  |
-| `lorry_parking_feature_icon` | `list` |  |
+| `isBlocked` | `str` |  |
+| `lorryParkingFeatureIcons` | `list` |  |
 | `point` | `str` |  |
-| `route_recommendation` | `list` |  |
-| `start_timestamp` | `str` |  |
+| `routeRecommendation` | `list` |  |
+| `startTimestamp` | `str` |  |
 | `subtitle` | `str` |  |
 | `title` | `str` |  |
 
@@ -609,7 +610,7 @@ roadwork = client.Roadwork().load({"id": "roadwork_id"})
 #### Example: List
 
 ```python
-roadworks = client.Roadwork().list()
+roadworks = client.Roadwork().list({"road_id": "example"})
 ```
 
 
@@ -636,11 +637,11 @@ Create an instance: `warning = client.Warning()`
 | `future` | `bool` |  |
 | `icon` | `str` |  |
 | `identifier` | `str` |  |
-| `is_blocked` | `bool` |  |
-| `lorry_parking_feature_icon` | `list` |  |
+| `isBlocked` | `str` |  |
+| `lorryParkingFeatureIcons` | `list` |  |
 | `point` | `str` |  |
-| `route_recommendation` | `list` |  |
-| `start_timestamp` | `str` |  |
+| `routeRecommendation` | `list` |  |
+| `startTimestamp` | `str` |  |
 | `subtitle` | `str` |  |
 | `title` | `str` |  |
 
@@ -653,7 +654,7 @@ warning = client.Warning().load({"id": "warning_id"})
 #### Example: List
 
 ```python
-warnings = client.Warning().list()
+warnings = client.Warning().list({"road_id": "example"})
 ```
 
 
@@ -681,12 +682,12 @@ Create an instance: `webcam = client.Webcam()`
 | `icon` | `str` |  |
 | `identifier` | `str` |  |
 | `imageurl` | `str` |  |
-| `is_blocked` | `bool` |  |
+| `isBlocked` | `str` |  |
 | `linkurl` | `str` |  |
-| `lorry_parking_feature_icon` | `list` |  |
+| `lorryParkingFeatureIcons` | `list` |  |
 | `operator` | `str` |  |
 | `point` | `str` |  |
-| `route_recommendation` | `list` |  |
+| `routeRecommendation` | `list` |  |
 | `subtitle` | `str` |  |
 | `title` | `str` |  |
 
@@ -699,7 +700,7 @@ webcam = client.Webcam().load({"id": "webcam_id"})
 #### Example: List
 
 ```python
-webcams = client.Webcam().list()
+webcams = client.Webcam().list({"road_id": "example"})
 ```
 
 
@@ -778,11 +779,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-closure = client.Closure()
-closure.list()
+roadwork = client.Roadwork()
+roadwork.list()
 
-# closure.data_get() now returns the closure data from the last list
-# closure.match_get() returns the last match criteria
+# roadwork.data_get() now returns the roadwork data from the last list
+# roadwork.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

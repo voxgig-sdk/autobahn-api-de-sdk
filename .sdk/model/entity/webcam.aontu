@@ -51,9 +51,9 @@ main: kit: entity: webcam: {
       type: "`$STRING`"
     }
     {
-      name: "is_blocked"
+      name: "isBlocked"
       req: false
-      type: "`$BOOLEAN`"
+      type: "`$STRING`"
     }
     {
       name: "linkurl"
@@ -61,7 +61,7 @@ main: kit: entity: webcam: {
       type: "`$STRING`"
     }
     {
-      name: "lorry_parking_feature_icon"
+      name: "lorryParkingFeatureIcons"
       req: false
       type: "`$ARRAY`"
     }
@@ -76,7 +76,7 @@ main: kit: entity: webcam: {
       type: "`$STRING`"
     }
     {
-      name: "route_recommendation"
+      name: "routeRecommendation"
       req: false
       type: "`$ARRAY`"
     }

@@ -61,11 +61,11 @@ function list_autobahnen_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["AUTOBAHNAPIDE_TEST_LIST_AUTOBAHNEN_ENTID"] = {},
-    ["AUTOBAHNAPIDE_TEST_LIVE"] = "FALSE",
+    ["AUTOBAHN_API_DE_TEST_LIST_AUTOBAHNEN_ENTID"] = {},
+    ["AUTOBAHN_API_DE_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["AUTOBAHNAPIDE_TEST_LIVE"] == "TRUE"
+  local live = env["AUTOBAHN_API_DE_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

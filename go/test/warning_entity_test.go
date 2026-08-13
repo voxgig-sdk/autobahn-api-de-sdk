@@ -92,7 +92,7 @@ func TestWarningEntity(t *testing.T) {
 		// The basic flow consumes synthetic IDs from the fixture. In live mode
 		// without an *_ENTID env override, those IDs hit the live API and 4xx.
 		if setup.syntheticOnly {
-			t.Skip("live entity test uses synthetic IDs from fixture — set AUTOBAHNAPIDE_TEST_WARNING_ENTID JSON to run live")
+			t.Skip("live entity test uses synthetic IDs from fixture — set AUTOBAHN_API_DE_TEST_WARNING_ENTID JSON to run live")
 			return
 		}
 		client := setup.client
@@ -172,21 +172,21 @@ func warningBasicSetup(extra map[string]any) *entityTestSetup {
 	// Detect ENTID env override before envOverride consumes it. When live
 	// mode is on without a real override, the basic test runs against synthetic
 	// IDs from the fixture and 4xx's. Surface this so the test can skip.
-	entidEnvRaw := os.Getenv("AUTOBAHNAPIDE_TEST_WARNING_ENTID")
+	entidEnvRaw := os.Getenv("AUTOBAHN_API_DE_TEST_WARNING_ENTID")
 	idmapOverridden := entidEnvRaw != "" && strings.HasPrefix(strings.TrimSpace(entidEnvRaw), "{")
 
 	env := envOverride(map[string]any{
-		"AUTOBAHNAPIDE_TEST_WARNING_ENTID": idmap,
-		"AUTOBAHNAPIDE_TEST_LIVE":      "FALSE",
-		"AUTOBAHNAPIDE_TEST_EXPLAIN":   "FALSE",
+		"AUTOBAHN_API_DE_TEST_WARNING_ENTID": idmap,
+		"AUTOBAHN_API_DE_TEST_LIVE":      "FALSE",
+		"AUTOBAHN_API_DE_TEST_EXPLAIN":   "FALSE",
 	})
 
-	idmapResolved := core.ToMapAny(env["AUTOBAHNAPIDE_TEST_WARNING_ENTID"])
+	idmapResolved := core.ToMapAny(env["AUTOBAHN_API_DE_TEST_WARNING_ENTID"])
 	if idmapResolved == nil {
 		idmapResolved = core.ToMapAny(idmap)
 	}
 
-	if env["AUTOBAHNAPIDE_TEST_LIVE"] == "TRUE" {
+	if env["AUTOBAHN_API_DE_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
 			},
@@ -195,13 +195,13 @@ func warningBasicSetup(extra map[string]any) *entityTestSetup {
 		client = sdk.NewAutobahnApiDeSDK(core.ToMapAny(mergedOpts))
 	}
 
-	live := env["AUTOBAHNAPIDE_TEST_LIVE"] == "TRUE"
+	live := env["AUTOBAHN_API_DE_TEST_LIVE"] == "TRUE"
 	return &entityTestSetup{
 		client:        client,
 		data:          entityData,
 		idmap:         idmapResolved,
 		env:           env,
-		explain:       env["AUTOBAHNAPIDE_TEST_EXPLAIN"] == "TRUE",
+		explain:       env["AUTOBAHN_API_DE_TEST_EXPLAIN"] == "TRUE",
 		live:          live,
 		syntheticOnly: live && !idmapOverridden,
 		now:           time.Now().UnixMilli(),

@@ -37,7 +37,7 @@ class ListAutobahnenEntity extends AutobahnApiDeEntityBase<ListAutobahnen> {
 
 
 
-  async list(this: any, reqmatch?: ListAutobahnenListMatch, ctrl?: Control): Promise<ListAutobahnen[]> {
+  async list(this: any, reqmatch?: ListAutobahnenListMatch, ctrl?: Control): Promise<ListAutobahnenEntity[]> {
 
     const utility = this._utility
 

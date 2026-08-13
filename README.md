@@ -23,7 +23,7 @@ support (`list`, `load`):
 
 ```ts
 const client = new AutobahnApiDeSDK()
-const items = await client.Closure().list()
+const items = await client.Closure().list({ road_id: "example" })
 ```
 
 Thinking in entities keeps the mental model small — for people and AI agents alike —
@@ -38,18 +38,27 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = AutobahnApiDeSDK.test()
-const closures = await client.Closure().list()
-// closures is an array of bare Closure records populated with mock data
-console.log(closures)
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = AutobahnApiDeSDK.test({
+  entity: {
+    roadwork: {
+      test01: { id: 'test01' },
+    },
+  },
+})
+const roadworks = await client.Roadwork().list()
+// roadworks is an array of Roadwork entities, populated with mock data
+// — call roadworks[0].data() for the record itself
+console.log(roadworks)
 ```
 
 ### Python
 
 ```python
 client = AutobahnApiDeSDK.test()
-closures = client.Closure().list()
-print(closures)
+roadworks = client.Roadwork().list()
+print(roadworks)
 ```
 
 ### PHP
@@ -57,16 +66,16 @@ print(closures)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = AutobahnApiDeSDK::test([
-    "entity" => ["closure" => ["test01" => ["id" => "test01"]]],
+    "entity" => ["roadwork" => ["test01" => ["id" => "test01"]]],
 ]);
-$closures = $client->Closure()->list();
+$roadworks = $client->Roadwork()->list();
 ```
 
 ### Golang
 
 ```go
 client := sdk.Test()
-result, err := client.Closure(nil).List(
+result, err := client.Roadwork(nil).List(
     nil, nil,
 )
 ```
@@ -76,16 +85,16 @@ result, err := client.Closure(nil).List(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = AutobahnApiDeSDK.test({
-  "entity" => { "closure" => { "test01" => { "id" => "test01" } } },
+  "entity" => { "roadwork" => { "test01" => { "id" => "test01" } } },
 })
-closures = client.Closure.list()
+roadworks = client.Roadwork.list()
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local results, err = client:Closure():list()
+local results, err = client:Roadwork():list()
 ```
 
 ## Packages
@@ -110,8 +119,8 @@ import { AutobahnApiDeSDK } from '@voxgig-sdk/autobahn-api-de'
 
 const client = new AutobahnApiDeSDK()
 
-// List all closures (returns Closure[])
-const closures = await client.Closure().list()
+// List all closures (returns ClosureEntity[] — .data() for the record)
+const closures = await client.Closure().list({ road_id: "example" })
 for (const closure of closures) {
   console.log(closure)
 }
@@ -176,7 +185,7 @@ from autobahnapide_sdk import AutobahnApiDeSDK
 client = AutobahnApiDeSDK()
 
 # List all closures (returns a list, raises on error)
-closures = client.Closure().list()
+closures = client.Closure().list({"road_id": "example"})
 for closure in closures:
     print(closure)
 
@@ -197,7 +206,7 @@ $client = new AutobahnApiDeSDK();
 $closures = $client->Closure()->list();
 print_r($closures);
 
-// Load a specific closure (returns the bare record; throws on error)
+// Load a specific closure (returns the ENTITY; call data_get() for the record; throws on error)
 $closure = $client->Closure()->load(["id" => "example_id"]);
 print_r($closure);
 ```
@@ -228,7 +237,7 @@ client = AutobahnApiDeSDK.new
 closures = client.Closure.list
 puts closures
 
-# Load a specific closure (returns the bare record; raises on error)
+# Load a specific closure (returns the ENTITY; call data_get for the record)
 closure = client.Closure.load({ "id" => "example_id" })
 puts closure
 ```
@@ -365,6 +374,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://www.autobahn.de/datenschutz/](https://www.autobahn.de/datenschutz/)
 

@@ -16,11 +16,11 @@
 import pytest
 
 from autobahnapide_sdk import AutobahnApiDeSDK
-from core.error import AutobahnApiDeError
-from core.result import AutobahnApiDeResult
-from core.response import AutobahnApiDeResponse
-from core.spec import AutobahnApiDeSpec
-from feature.base_feature import AutobahnApiDeBaseFeature
+from autobahnapide_sdk.core.error import AutobahnApiDeError
+from autobahnapide_sdk.core.result import AutobahnApiDeResult
+from autobahnapide_sdk.core.response import AutobahnApiDeResponse
+from autobahnapide_sdk.core.spec import AutobahnApiDeSpec
+from autobahnapide_sdk.feature.base_feature import AutobahnApiDeBaseFeature
 
 
 def _client():

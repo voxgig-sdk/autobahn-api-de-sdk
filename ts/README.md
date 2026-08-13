@@ -35,10 +35,12 @@ const client = new AutobahnApiDeSDK()
 
 ### 2. List closure records
 
-`list()` resolves to an array of Closure objects — iterate it directly:
+`list()` resolves to an array of Closure ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
-const closures = await client.Closure().list()
+const closures = await client.Closure().list({ road_id: "example" })
 
 for (const closure of closures) {
   console.log(closure)
@@ -65,8 +67,8 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const closures = await client.Closure().list()
-  console.log(closures)
+  const roadworks = await client.Roadwork().list()
+  console.log(roadworks)
 } catch (err) {
   console.error('list failed:', err)
 }
@@ -132,9 +134,10 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = AutobahnApiDeSDK.test()
 
-const closure = await client.Closure().list()
-// closure is a bare entity populated with mock response data
-console.log(closure)
+const roadwork = await client.Roadwork().list()
+// roadwork is the entity, populated with mock response data
+// — call roadwork.data() for the record itself
+console.log(roadwork)
 ```
 
 You can also use the instance method:
@@ -149,7 +152,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Closure()
+const entity = client.Roadwork()
 
 // First call runs the operation and stores its result
 await entity.list()
@@ -313,11 +316,11 @@ The `prepare()` method returns:
 | `future` |  |
 | `icon` |  |
 | `identifier` |  |
-| `is_blocked` |  |
-| `lorry_parking_feature_icon` |  |
+| `isBlocked` |  |
+| `lorryParkingFeatureIcons` |  |
 | `point` |  |
-| `route_recommendation` |  |
-| `start_timestamp` |  |
+| `routeRecommendation` |  |
+| `startTimestamp` |  |
 | `subtitle` |  |
 | `title` |  |
 
@@ -337,10 +340,10 @@ API path: `/{roadId}/services/closure`
 | `future` |  |
 | `icon` |  |
 | `identifier` |  |
-| `is_blocked` |  |
-| `lorry_parking_feature_icon` |  |
+| `isBlocked` |  |
+| `lorryParkingFeatureIcons` |  |
 | `point` |  |
-| `route_recommendation` |  |
+| `routeRecommendation` |  |
 | `subtitle` |  |
 | `title` |  |
 
@@ -352,7 +355,7 @@ API path: `/{roadId}/services/electric_charging_station`
 
 | Field | Description |
 | --- | --- |
-| `road` |  |
+| `roads` |  |
 
 Operations: list.
 
@@ -370,10 +373,10 @@ API path: `/`
 | `future` |  |
 | `icon` |  |
 | `identifier` |  |
-| `is_blocked` |  |
-| `lorry_parking_feature_icon` |  |
+| `isBlocked` |  |
+| `lorryParkingFeatureIcons` |  |
 | `point` |  |
-| `route_recommendation` |  |
+| `routeRecommendation` |  |
 | `subtitle` |  |
 | `title` |  |
 
@@ -393,11 +396,11 @@ API path: `/{roadId}/services/parking_lorry`
 | `future` |  |
 | `icon` |  |
 | `identifier` |  |
-| `is_blocked` |  |
-| `lorry_parking_feature_icon` |  |
+| `isBlocked` |  |
+| `lorryParkingFeatureIcons` |  |
 | `point` |  |
-| `route_recommendation` |  |
-| `start_timestamp` |  |
+| `routeRecommendation` |  |
+| `startTimestamp` |  |
 | `subtitle` |  |
 | `title` |  |
 
@@ -417,11 +420,11 @@ API path: `/{roadId}/services/roadworks`
 | `future` |  |
 | `icon` |  |
 | `identifier` |  |
-| `is_blocked` |  |
-| `lorry_parking_feature_icon` |  |
+| `isBlocked` |  |
+| `lorryParkingFeatureIcons` |  |
 | `point` |  |
-| `route_recommendation` |  |
-| `start_timestamp` |  |
+| `routeRecommendation` |  |
+| `startTimestamp` |  |
 | `subtitle` |  |
 | `title` |  |
 
@@ -442,12 +445,12 @@ API path: `/{roadId}/services/warning`
 | `icon` |  |
 | `identifier` |  |
 | `imageurl` |  |
-| `is_blocked` |  |
+| `isBlocked` |  |
 | `linkurl` |  |
-| `lorry_parking_feature_icon` |  |
+| `lorryParkingFeatureIcons` |  |
 | `operator` |  |
 | `point` |  |
-| `route_recommendation` |  |
+| `routeRecommendation` |  |
 | `subtitle` |  |
 | `title` |  |
 
@@ -483,11 +486,11 @@ Create an instance: `const closure = client.Closure()`
 | `future` | `boolean` |  |
 | `icon` | `string` |  |
 | `identifier` | `string` |  |
-| `is_blocked` | `boolean` |  |
-| `lorry_parking_feature_icon` | `any[]` |  |
+| `isBlocked` | `string` |  |
+| `lorryParkingFeatureIcons` | `any[]` |  |
 | `point` | `string` |  |
-| `route_recommendation` | `any[]` |  |
-| `start_timestamp` | `string` |  |
+| `routeRecommendation` | `any[]` |  |
+| `startTimestamp` | `string` |  |
 | `subtitle` | `string` |  |
 | `title` | `string` |  |
 
@@ -500,7 +503,7 @@ const closure = await client.Closure().load({ id: 'closure_id' })
 #### Example: List
 
 ```ts
-const closures = await client.Closure().list()
+const closures = await client.Closure().list({ road_id: "example" })
 ```
 
 
@@ -527,10 +530,10 @@ Create an instance: `const electric_charging_station = client.ElectricChargingSt
 | `future` | `boolean` |  |
 | `icon` | `string` |  |
 | `identifier` | `string` |  |
-| `is_blocked` | `boolean` |  |
-| `lorry_parking_feature_icon` | `any[]` |  |
+| `isBlocked` | `string` |  |
+| `lorryParkingFeatureIcons` | `any[]` |  |
 | `point` | `string` |  |
-| `route_recommendation` | `any[]` |  |
+| `routeRecommendation` | `any[]` |  |
 | `subtitle` | `string` |  |
 | `title` | `string` |  |
 
@@ -543,7 +546,7 @@ const electric_charging_station = await client.ElectricChargingStation().load({ 
 #### Example: List
 
 ```ts
-const electric_charging_stations = await client.ElectricChargingStation().list()
+const electric_charging_stations = await client.ElectricChargingStation().list({ road_id: "example" })
 ```
 
 
@@ -561,7 +564,7 @@ Create an instance: `const list_autobahnen = client.ListAutobahnen()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `road` | `any[]` |  |
+| `roads` | `any[]` |  |
 
 #### Example: List
 
@@ -593,10 +596,10 @@ Create an instance: `const parking_lorry = client.ParkingLorry()`
 | `future` | `boolean` |  |
 | `icon` | `string` |  |
 | `identifier` | `string` |  |
-| `is_blocked` | `boolean` |  |
-| `lorry_parking_feature_icon` | `any[]` |  |
+| `isBlocked` | `string` |  |
+| `lorryParkingFeatureIcons` | `any[]` |  |
 | `point` | `string` |  |
-| `route_recommendation` | `any[]` |  |
+| `routeRecommendation` | `any[]` |  |
 | `subtitle` | `string` |  |
 | `title` | `string` |  |
 
@@ -609,7 +612,7 @@ const parking_lorry = await client.ParkingLorry().load({ id: 'parking_lorry_id' 
 #### Example: List
 
 ```ts
-const parking_lorrys = await client.ParkingLorry().list()
+const parking_lorrys = await client.ParkingLorry().list({ road_id: "example" })
 ```
 
 
@@ -636,11 +639,11 @@ Create an instance: `const roadwork = client.Roadwork()`
 | `future` | `boolean` |  |
 | `icon` | `string` |  |
 | `identifier` | `string` |  |
-| `is_blocked` | `boolean` |  |
-| `lorry_parking_feature_icon` | `any[]` |  |
+| `isBlocked` | `string` |  |
+| `lorryParkingFeatureIcons` | `any[]` |  |
 | `point` | `string` |  |
-| `route_recommendation` | `any[]` |  |
-| `start_timestamp` | `string` |  |
+| `routeRecommendation` | `any[]` |  |
+| `startTimestamp` | `string` |  |
 | `subtitle` | `string` |  |
 | `title` | `string` |  |
 
@@ -653,7 +656,7 @@ const roadwork = await client.Roadwork().load({ id: 'roadwork_id' })
 #### Example: List
 
 ```ts
-const roadworks = await client.Roadwork().list()
+const roadworks = await client.Roadwork().list({ road_id: "example" })
 ```
 
 
@@ -680,11 +683,11 @@ Create an instance: `const warning = client.Warning()`
 | `future` | `boolean` |  |
 | `icon` | `string` |  |
 | `identifier` | `string` |  |
-| `is_blocked` | `boolean` |  |
-| `lorry_parking_feature_icon` | `any[]` |  |
+| `isBlocked` | `string` |  |
+| `lorryParkingFeatureIcons` | `any[]` |  |
 | `point` | `string` |  |
-| `route_recommendation` | `any[]` |  |
-| `start_timestamp` | `string` |  |
+| `routeRecommendation` | `any[]` |  |
+| `startTimestamp` | `string` |  |
 | `subtitle` | `string` |  |
 | `title` | `string` |  |
 
@@ -697,7 +700,7 @@ const warning = await client.Warning().load({ id: 'warning_id' })
 #### Example: List
 
 ```ts
-const warnings = await client.Warning().list()
+const warnings = await client.Warning().list({ road_id: "example" })
 ```
 
 
@@ -725,12 +728,12 @@ Create an instance: `const webcam = client.Webcam()`
 | `icon` | `string` |  |
 | `identifier` | `string` |  |
 | `imageurl` | `string` |  |
-| `is_blocked` | `boolean` |  |
+| `isBlocked` | `string` |  |
 | `linkurl` | `string` |  |
-| `lorry_parking_feature_icon` | `any[]` |  |
+| `lorryParkingFeatureIcons` | `any[]` |  |
 | `operator` | `string` |  |
 | `point` | `string` |  |
-| `route_recommendation` | `any[]` |  |
+| `routeRecommendation` | `any[]` |  |
 | `subtitle` | `string` |  |
 | `title` | `string` |  |
 
@@ -743,7 +746,7 @@ const webcam = await client.Webcam().load({ id: 'webcam_id' })
 #### Example: List
 
 ```ts
-const webcams = await client.Webcam().list()
+const webcams = await client.Webcam().list({ road_id: "example" })
 ```
 
 
@@ -816,11 +819,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const closure = client.Closure()
-await closure.list()
+const roadwork = client.Roadwork()
+await roadwork.list()
 
-// closure.data() now returns the closure data from the last `list`
-// closure.match() returns the last match criteria
+// roadwork.data() now returns the roadwork data from the last `list`
+// roadwork.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

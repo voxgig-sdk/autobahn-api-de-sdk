@@ -125,11 +125,11 @@ closure = client.Closure
 | `future` | `Boolean` | No |  |
 | `icon` | `String` | No |  |
 | `identifier` | `String` | No |  |
-| `is_blocked` | `Boolean` | No |  |
-| `lorry_parking_feature_icon` | `Array` | No |  |
+| `isBlocked` | `String` | No |  |
+| `lorryParkingFeatureIcons` | `Array` | No |  |
 | `point` | `String` | No |  |
-| `route_recommendation` | `Array` | No |  |
-| `start_timestamp` | `String` | No |  |
+| `routeRecommendation` | `Array` | No |  |
+| `startTimestamp` | `String` | No |  |
 | `subtitle` | `String` | No |  |
 | `title` | `String` | No |  |
 
@@ -199,10 +199,10 @@ electric_charging_station = client.ElectricChargingStation
 | `future` | `Boolean` | No |  |
 | `icon` | `String` | No |  |
 | `identifier` | `String` | No |  |
-| `is_blocked` | `Boolean` | No |  |
-| `lorry_parking_feature_icon` | `Array` | No |  |
+| `isBlocked` | `String` | No |  |
+| `lorryParkingFeatureIcons` | `Array` | No |  |
 | `point` | `String` | No |  |
-| `route_recommendation` | `Array` | No |  |
+| `routeRecommendation` | `Array` | No |  |
 | `subtitle` | `String` | No |  |
 | `title` | `String` | No |  |
 
@@ -264,7 +264,7 @@ list_autobahnen = client.ListAutobahnen
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `road` | `Array` | No |  |
+| `roads` | `Array` | No |  |
 
 ### Operations
 
@@ -324,10 +324,10 @@ parking_lorry = client.ParkingLorry
 | `future` | `Boolean` | No |  |
 | `icon` | `String` | No |  |
 | `identifier` | `String` | No |  |
-| `is_blocked` | `Boolean` | No |  |
-| `lorry_parking_feature_icon` | `Array` | No |  |
+| `isBlocked` | `String` | No |  |
+| `lorryParkingFeatureIcons` | `Array` | No |  |
 | `point` | `String` | No |  |
-| `route_recommendation` | `Array` | No |  |
+| `routeRecommendation` | `Array` | No |  |
 | `subtitle` | `String` | No |  |
 | `title` | `String` | No |  |
 
@@ -397,11 +397,11 @@ roadwork = client.Roadwork
 | `future` | `Boolean` | No |  |
 | `icon` | `String` | No |  |
 | `identifier` | `String` | No |  |
-| `is_blocked` | `Boolean` | No |  |
-| `lorry_parking_feature_icon` | `Array` | No |  |
+| `isBlocked` | `String` | No |  |
+| `lorryParkingFeatureIcons` | `Array` | No |  |
 | `point` | `String` | No |  |
-| `route_recommendation` | `Array` | No |  |
-| `start_timestamp` | `String` | No |  |
+| `routeRecommendation` | `Array` | No |  |
+| `startTimestamp` | `String` | No |  |
 | `subtitle` | `String` | No |  |
 | `title` | `String` | No |  |
 
@@ -471,11 +471,11 @@ warning = client.Warning
 | `future` | `Boolean` | No |  |
 | `icon` | `String` | No |  |
 | `identifier` | `String` | No |  |
-| `is_blocked` | `Boolean` | No |  |
-| `lorry_parking_feature_icon` | `Array` | No |  |
+| `isBlocked` | `String` | No |  |
+| `lorryParkingFeatureIcons` | `Array` | No |  |
 | `point` | `String` | No |  |
-| `route_recommendation` | `Array` | No |  |
-| `start_timestamp` | `String` | No |  |
+| `routeRecommendation` | `Array` | No |  |
+| `startTimestamp` | `String` | No |  |
 | `subtitle` | `String` | No |  |
 | `title` | `String` | No |  |
 
@@ -546,12 +546,12 @@ webcam = client.Webcam
 | `icon` | `String` | No |  |
 | `identifier` | `String` | No |  |
 | `imageurl` | `String` | No |  |
-| `is_blocked` | `Boolean` | No |  |
+| `isBlocked` | `String` | No |  |
 | `linkurl` | `String` | No |  |
-| `lorry_parking_feature_icon` | `Array` | No |  |
+| `lorryParkingFeatureIcons` | `Array` | No |  |
 | `operator` | `String` | No |  |
 | `point` | `String` | No |  |
-| `route_recommendation` | `Array` | No |  |
+| `routeRecommendation` | `Array` | No |  |
 | `subtitle` | `String` | No |  |
 | `title` | `String` | No |  |
 

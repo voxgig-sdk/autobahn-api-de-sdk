@@ -75,12 +75,12 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-closures, err := client.Closure(nil).List(nil, nil)
+roadworks, err := client.Roadwork(nil).List(nil, nil)
 if err != nil {
     // handle err
     return
 }
-_ = closures
+_ = roadworks
 ```
 
 `Direct` follows the same `(value, error)` convention:
@@ -144,13 +144,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-closure, err := client.Closure(nil).List(
+roadwork, err := client.Roadwork(nil).List(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(closure) // the returned mock data
+fmt.Println(roadwork) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -283,11 +283,11 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | `"future"` |  |
 | `"icon"` |  |
 | `"identifier"` |  |
-| `"is_blocked"` |  |
-| `"lorry_parking_feature_icon"` |  |
+| `"isBlocked"` |  |
+| `"lorryParkingFeatureIcons"` |  |
 | `"point"` |  |
-| `"route_recommendation"` |  |
-| `"start_timestamp"` |  |
+| `"routeRecommendation"` |  |
+| `"startTimestamp"` |  |
 | `"subtitle"` |  |
 | `"title"` |  |
 
@@ -307,10 +307,10 @@ API path: `/{roadId}/services/closure`
 | `"future"` |  |
 | `"icon"` |  |
 | `"identifier"` |  |
-| `"is_blocked"` |  |
-| `"lorry_parking_feature_icon"` |  |
+| `"isBlocked"` |  |
+| `"lorryParkingFeatureIcons"` |  |
 | `"point"` |  |
-| `"route_recommendation"` |  |
+| `"routeRecommendation"` |  |
 | `"subtitle"` |  |
 | `"title"` |  |
 
@@ -322,7 +322,7 @@ API path: `/{roadId}/services/electric_charging_station`
 
 | Field | Description |
 | --- | --- |
-| `"road"` |  |
+| `"roads"` |  |
 
 Operations: List.
 
@@ -340,10 +340,10 @@ API path: `/`
 | `"future"` |  |
 | `"icon"` |  |
 | `"identifier"` |  |
-| `"is_blocked"` |  |
-| `"lorry_parking_feature_icon"` |  |
+| `"isBlocked"` |  |
+| `"lorryParkingFeatureIcons"` |  |
 | `"point"` |  |
-| `"route_recommendation"` |  |
+| `"routeRecommendation"` |  |
 | `"subtitle"` |  |
 | `"title"` |  |
 
@@ -363,11 +363,11 @@ API path: `/{roadId}/services/parking_lorry`
 | `"future"` |  |
 | `"icon"` |  |
 | `"identifier"` |  |
-| `"is_blocked"` |  |
-| `"lorry_parking_feature_icon"` |  |
+| `"isBlocked"` |  |
+| `"lorryParkingFeatureIcons"` |  |
 | `"point"` |  |
-| `"route_recommendation"` |  |
-| `"start_timestamp"` |  |
+| `"routeRecommendation"` |  |
+| `"startTimestamp"` |  |
 | `"subtitle"` |  |
 | `"title"` |  |
 
@@ -387,11 +387,11 @@ API path: `/{roadId}/services/roadworks`
 | `"future"` |  |
 | `"icon"` |  |
 | `"identifier"` |  |
-| `"is_blocked"` |  |
-| `"lorry_parking_feature_icon"` |  |
+| `"isBlocked"` |  |
+| `"lorryParkingFeatureIcons"` |  |
 | `"point"` |  |
-| `"route_recommendation"` |  |
-| `"start_timestamp"` |  |
+| `"routeRecommendation"` |  |
+| `"startTimestamp"` |  |
 | `"subtitle"` |  |
 | `"title"` |  |
 
@@ -412,12 +412,12 @@ API path: `/{roadId}/services/warning`
 | `"icon"` |  |
 | `"identifier"` |  |
 | `"imageurl"` |  |
-| `"is_blocked"` |  |
+| `"isBlocked"` |  |
 | `"linkurl"` |  |
-| `"lorry_parking_feature_icon"` |  |
+| `"lorryParkingFeatureIcons"` |  |
 | `"operator"` |  |
 | `"point"` |  |
-| `"route_recommendation"` |  |
+| `"routeRecommendation"` |  |
 | `"subtitle"` |  |
 | `"title"` |  |
 
@@ -453,11 +453,11 @@ Create an instance: `closure := client.Closure(nil)`
 | `future` | `bool` |  |
 | `icon` | `string` |  |
 | `identifier` | `string` |  |
-| `is_blocked` | `bool` |  |
-| `lorry_parking_feature_icon` | `[]any` |  |
+| `isBlocked` | `string` |  |
+| `lorryParkingFeatureIcons` | `[]any` |  |
 | `point` | `string` |  |
-| `route_recommendation` | `[]any` |  |
-| `start_timestamp` | `string` |  |
+| `routeRecommendation` | `[]any` |  |
+| `startTimestamp` | `string` |  |
 | `subtitle` | `string` |  |
 | `title` | `string` |  |
 
@@ -505,10 +505,10 @@ Create an instance: `electricChargingStation := client.ElectricChargingStation(n
 | `future` | `bool` |  |
 | `icon` | `string` |  |
 | `identifier` | `string` |  |
-| `is_blocked` | `bool` |  |
-| `lorry_parking_feature_icon` | `[]any` |  |
+| `isBlocked` | `string` |  |
+| `lorryParkingFeatureIcons` | `[]any` |  |
 | `point` | `string` |  |
-| `route_recommendation` | `[]any` |  |
+| `routeRecommendation` | `[]any` |  |
 | `subtitle` | `string` |  |
 | `title` | `string` |  |
 
@@ -547,7 +547,7 @@ Create an instance: `listAutobahnen := client.ListAutobahnen(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `road` | `[]any` |  |
+| `roads` | `[]any` |  |
 
 #### Example: List
 
@@ -583,10 +583,10 @@ Create an instance: `parkingLorry := client.ParkingLorry(nil)`
 | `future` | `bool` |  |
 | `icon` | `string` |  |
 | `identifier` | `string` |  |
-| `is_blocked` | `bool` |  |
-| `lorry_parking_feature_icon` | `[]any` |  |
+| `isBlocked` | `string` |  |
+| `lorryParkingFeatureIcons` | `[]any` |  |
 | `point` | `string` |  |
-| `route_recommendation` | `[]any` |  |
+| `routeRecommendation` | `[]any` |  |
 | `subtitle` | `string` |  |
 | `title` | `string` |  |
 
@@ -634,11 +634,11 @@ Create an instance: `roadwork := client.Roadwork(nil)`
 | `future` | `bool` |  |
 | `icon` | `string` |  |
 | `identifier` | `string` |  |
-| `is_blocked` | `bool` |  |
-| `lorry_parking_feature_icon` | `[]any` |  |
+| `isBlocked` | `string` |  |
+| `lorryParkingFeatureIcons` | `[]any` |  |
 | `point` | `string` |  |
-| `route_recommendation` | `[]any` |  |
-| `start_timestamp` | `string` |  |
+| `routeRecommendation` | `[]any` |  |
+| `startTimestamp` | `string` |  |
 | `subtitle` | `string` |  |
 | `title` | `string` |  |
 
@@ -686,11 +686,11 @@ Create an instance: `warning := client.Warning(nil)`
 | `future` | `bool` |  |
 | `icon` | `string` |  |
 | `identifier` | `string` |  |
-| `is_blocked` | `bool` |  |
-| `lorry_parking_feature_icon` | `[]any` |  |
+| `isBlocked` | `string` |  |
+| `lorryParkingFeatureIcons` | `[]any` |  |
 | `point` | `string` |  |
-| `route_recommendation` | `[]any` |  |
-| `start_timestamp` | `string` |  |
+| `routeRecommendation` | `[]any` |  |
+| `startTimestamp` | `string` |  |
 | `subtitle` | `string` |  |
 | `title` | `string` |  |
 
@@ -739,12 +739,12 @@ Create an instance: `webcam := client.Webcam(nil)`
 | `icon` | `string` |  |
 | `identifier` | `string` |  |
 | `imageurl` | `string` |  |
-| `is_blocked` | `bool` |  |
+| `isBlocked` | `string` |  |
 | `linkurl` | `string` |  |
-| `lorry_parking_feature_icon` | `[]any` |  |
+| `lorryParkingFeatureIcons` | `[]any` |  |
 | `operator` | `string` |  |
 | `point` | `string` |  |
-| `route_recommendation` | `[]any` |  |
+| `routeRecommendation` | `[]any` |  |
 | `subtitle` | `string` |  |
 | `title` | `string` |  |
 
@@ -842,11 +842,11 @@ Entity instances are stateful. After a successful `List`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-closure := client.Closure(nil)
-closure.List(nil, nil)
+roadwork := client.Roadwork(nil)
+roadwork.List(nil, nil)
 
-// closure.Data() now returns the closure data from the last list
-// closure.Match() returns the last match criteria
+// roadwork.Data() now returns the roadwork data from the last list
+// roadwork.Match() returns the last match criteria
 ```
 
 Call `Make()` to create a fresh instance with the same configuration

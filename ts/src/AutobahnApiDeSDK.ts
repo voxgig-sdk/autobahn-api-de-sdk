@@ -152,8 +152,29 @@ class AutobahnApiDeSDK {
   }
 
 
+  // Raw endpoint access is operator-controllable, like every entity op.
+  // Blocking it means denying BOTH the 'direct' and 'graphql' tokens, since
+  // either one reaches the same endpoint.
   async direct(fetchargs?: any) {
+    if (!this._options.allow.op.includes('direct')) {
+      return {
+        ok: false,
+        err: new Error('AutobahnApiDeSDK: direct: operation not allowed by' +
+          ' SDK option allow.op value: "' + this._options.allow.op + '"'),
+      }
+    }
+
+    return this._rawRequest(fetchargs)
+  }
+
+
+  // Ungated request path shared by direct() and graphql(), each of which
+  // checks its own allow.op token first. Private, rather than a flag on
+  // fetchargs: a caller-supplied marker would let anyone opt straight back
+  // out of the gate by passing it.
+  async _rawRequest(fetchargs?: any) {
     const utility = this._utility
+
     const fetcher = utility.fetcher
     const makeContext = utility.makeContext
 
@@ -214,52 +235,120 @@ class AutobahnApiDeSDK {
 
 
 
+  // Raw GraphQL access: the pressure valve that makes the generated
+  // surface's deliberate omissions (per-call selection sets, typed filter
+  // builders, batching, subscriptions) livable — the whole schema stays
+  // reachable.
+  //
+  // Thin wrapper over the same prepare/fetch path `direct` uses, with the
+  // one thing raw `direct` cannot do for GraphQL: a GraphQL failure rides
+  // HTTP 200 as a top-level `errors` array, so status alone would report a
+  // failed query as ok.
+  //
+  // NOTE: like `direct`, this bypasses the feature pipeline — no retry,
+  // ratelimit or paging features apply.
+  async graphql(query: string, variables?: any, ctrl?: any) {
+    const options = this._options
+
+    if (!options.allow.op.includes('graphql')) {
+      return {
+        ok: false,
+        err: new Error('AutobahnApiDeSDK: graphql: operation not allowed by' +
+          ' SDK option allow.op value: "' + options.allow.op + '"'),
+      }
+    }
+
+    const res: any = await this._rawRequest({
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: { query, variables: variables || {} },
+      ctrl,
+    })
+
+    if (res instanceof Error) {
+      return res
+    }
+
+    // Errors are read BEFORE any status check: a GraphQL parse or validation
+    // failure comes back as HTTP 400 carrying the standard { errors: [...] }
+    // body, and the raw path represents a non-2xx as { ok: false } with no
+    // err — so returning early on status would discard the server's own
+    // diagnostics, which are the only useful part of that response.
+    const errors = null == res.data ? undefined : res.data.errors
+
+    if (null != errors && Array.isArray(errors) && 0 < errors.length) {
+      const first = errors[0] || {}
+      const err: any = new Error('AutobahnApiDeSDK: graphql: ' +
+        (first.message || 'graphql error'))
+      err.graphql = errors
+      return { ok: false, status: res.status, headers: res.headers, err, data: res.data }
+    }
+
+    return res
+  }
+
+
+
   // Entity access: `client.Closure().list()` / `client.Closure().load({ id })`.
-  Closure(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Closure(entopts?: Record<string, any>) {
     const self = this
-    return new ClosureEntity(self,data)
+    return new ClosureEntity(self, entopts)
   }
 
 
   // Entity access: `client.ElectricChargingStation().list()` / `client.ElectricChargingStation().load({ id })`.
-  ElectricChargingStation(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ElectricChargingStation(entopts?: Record<string, any>) {
     const self = this
-    return new ElectricChargingStationEntity(self,data)
+    return new ElectricChargingStationEntity(self, entopts)
   }
 
 
   // Entity access: `client.ListAutobahnen().list()` / `client.ListAutobahnen().load({ id })`.
-  ListAutobahnen(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ListAutobahnen(entopts?: Record<string, any>) {
     const self = this
-    return new ListAutobahnenEntity(self,data)
+    return new ListAutobahnenEntity(self, entopts)
   }
 
 
   // Entity access: `client.ParkingLorry().list()` / `client.ParkingLorry().load({ id })`.
-  ParkingLorry(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ParkingLorry(entopts?: Record<string, any>) {
     const self = this
-    return new ParkingLorryEntity(self,data)
+    return new ParkingLorryEntity(self, entopts)
   }
 
 
   // Entity access: `client.Roadwork().list()` / `client.Roadwork().load({ id })`.
-  Roadwork(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Roadwork(entopts?: Record<string, any>) {
     const self = this
-    return new RoadworkEntity(self,data)
+    return new RoadworkEntity(self, entopts)
   }
 
 
   // Entity access: `client.Warning().list()` / `client.Warning().load({ id })`.
-  Warning(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Warning(entopts?: Record<string, any>) {
     const self = this
-    return new WarningEntity(self,data)
+    return new WarningEntity(self, entopts)
   }
 
 
   // Entity access: `client.Webcam().list()` / `client.Webcam().load({ id })`.
-  Webcam(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Webcam(entopts?: Record<string, any>) {
     const self = this
-    return new WebcamEntity(self,data)
+    return new WebcamEntity(self, entopts)
   }
 
 

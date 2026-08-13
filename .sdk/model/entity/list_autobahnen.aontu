@@ -6,7 +6,7 @@ main: kit: entity: list_autobahnen: {
 
   fields: [
     {
-      name: "road"
+      name: "roads"
       req: false
       type: "`$ARRAY`"
     }
@@ -22,7 +22,7 @@ main: kit: entity: list_autobahnen: {
           orig: "/"
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.roads`"
           }
         }
       ]

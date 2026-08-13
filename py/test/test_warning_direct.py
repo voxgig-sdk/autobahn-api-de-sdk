@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from autobahnapide_sdk.utility.voxgig_struct import voxgig_struct as vs
 from autobahnapide_sdk import AutobahnApiDeSDK
-from core import helpers
+from autobahnapide_sdk.core import helpers
 from test import runner
 
 
@@ -114,11 +114,11 @@ def _warning_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "AUTOBAHNAPIDE_TEST_WARNING_ENTID": {},
-        "AUTOBAHNAPIDE_TEST_LIVE": "FALSE",
+        "AUTOBAHN_API_DE_TEST_WARNING_ENTID": {},
+        "AUTOBAHN_API_DE_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("AUTOBAHNAPIDE_TEST_LIVE") == "TRUE"
+    live = env.get("AUTOBAHN_API_DE_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

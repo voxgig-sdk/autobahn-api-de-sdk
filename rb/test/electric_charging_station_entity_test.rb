@@ -62,7 +62,7 @@ class ElectricChargingStationEntityTest < Minitest::Test
     # The basic flow consumes synthetic IDs from the fixture. In live mode
     # without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup[:synthetic_only]
-      skip "live entity test uses synthetic IDs from fixture — set AUTOBAHNAPIDE_TEST_ELECTRIC_CHARGING_STATION_ENTID JSON to run live"
+      skip "live entity test uses synthetic IDs from fixture — set AUTOBAHN_API_DE_TEST_ELECTRIC_CHARGING_STATION_ENTID JSON to run live"
       return
     end
     client = setup[:client]
@@ -118,22 +118,22 @@ def electric_charging_station_basic_setup(extra)
   # Detect ENTID env override before envOverride consumes it. When live
   # mode is on without a real override, the basic test runs against synthetic
   # IDs from the fixture and 4xx's. Surface this so the test can skip.
-  entid_env_raw = ENV["AUTOBAHNAPIDE_TEST_ELECTRIC_CHARGING_STATION_ENTID"]
+  entid_env_raw = ENV["AUTOBAHN_API_DE_TEST_ELECTRIC_CHARGING_STATION_ENTID"]
   idmap_overridden = !entid_env_raw.nil? && entid_env_raw.strip.start_with?("{")
 
   env = Runner.env_override({
-    "AUTOBAHNAPIDE_TEST_ELECTRIC_CHARGING_STATION_ENTID" => idmap,
-    "AUTOBAHNAPIDE_TEST_LIVE" => "FALSE",
-    "AUTOBAHNAPIDE_TEST_EXPLAIN" => "FALSE",
+    "AUTOBAHN_API_DE_TEST_ELECTRIC_CHARGING_STATION_ENTID" => idmap,
+    "AUTOBAHN_API_DE_TEST_LIVE" => "FALSE",
+    "AUTOBAHN_API_DE_TEST_EXPLAIN" => "FALSE",
   })
 
   idmap_resolved = Helpers.to_map(
-    env["AUTOBAHNAPIDE_TEST_ELECTRIC_CHARGING_STATION_ENTID"])
+    env["AUTOBAHN_API_DE_TEST_ELECTRIC_CHARGING_STATION_ENTID"])
   if idmap_resolved.nil?
     idmap_resolved = Helpers.to_map(idmap)
   end
 
-  if env["AUTOBAHNAPIDE_TEST_LIVE"] == "TRUE"
+  if env["AUTOBAHN_API_DE_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
       },
@@ -142,13 +142,13 @@ def electric_charging_station_basic_setup(extra)
     client = AutobahnApiDeSDK.new(Helpers.to_map(merged_opts))
   end
 
-  live = env["AUTOBAHNAPIDE_TEST_LIVE"] == "TRUE"
+  live = env["AUTOBAHN_API_DE_TEST_LIVE"] == "TRUE"
   {
     client: client,
     data: entity_data,
     idmap: idmap_resolved,
     env: env,
-    explain: env["AUTOBAHNAPIDE_TEST_EXPLAIN"] == "TRUE",
+    explain: env["AUTOBAHN_API_DE_TEST_EXPLAIN"] == "TRUE",
     live: live,
     synthetic_only: live && !idmap_overridden,
     now: (Time.now.to_f * 1000).to_i,

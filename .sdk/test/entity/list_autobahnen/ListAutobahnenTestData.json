@@ -2,20 +2,20 @@
   "existing": {
     "list_autobahnen": {
       "LIST_AUTOBAHNEN00": {
-        "road": []
+        "roads": []
       },
       "LIST_AUTOBAHNEN01": {
-        "road": []
+        "roads": []
       },
       "LIST_AUTOBAHNEN02": {
-        "road": []
+        "roads": []
       }
     }
   },
   "new": {
     "list_autobahnen": {
       "list_autobahnen_ref01": {
-        "road": []
+        "roads": []
       }
     }
   }

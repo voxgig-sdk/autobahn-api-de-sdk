@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ AutobahnApiDeUtility.registrar = ->(u) {
   u.prepare_params = AutobahnApiDeUtilities::PrepareParams
   u.prepare_path = AutobahnApiDeUtilities::PreparePath
   u.prepare_query = AutobahnApiDeUtilities::PrepareQuery
+  u.graphql_body = AutobahnApiDeUtilities::GraphqlBody
+  u.graphql_errors = AutobahnApiDeUtilities::GraphqlErrors
   u.result_basic = AutobahnApiDeUtilities::ResultBasic
   u.result_body = AutobahnApiDeUtilities::ResultBody
   u.result_headers = AutobahnApiDeUtilities::ResultHeaders

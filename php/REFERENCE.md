@@ -124,11 +124,11 @@ $closure = $client->Closure();
 | `future` | `bool` | No |  |
 | `icon` | `string` | No |  |
 | `identifier` | `string` | No |  |
-| `is_blocked` | `bool` | No |  |
-| `lorry_parking_feature_icon` | `array` | No |  |
+| `isBlocked` | `string` | No |  |
+| `lorryParkingFeatureIcons` | `array` | No |  |
 | `point` | `string` | No |  |
-| `route_recommendation` | `array` | No |  |
-| `start_timestamp` | `string` | No |  |
+| `routeRecommendation` | `array` | No |  |
+| `startTimestamp` | `string` | No |  |
 | `subtitle` | `string` | No |  |
 | `title` | `string` | No |  |
 
@@ -198,10 +198,10 @@ $electric_charging_station = $client->ElectricChargingStation();
 | `future` | `bool` | No |  |
 | `icon` | `string` | No |  |
 | `identifier` | `string` | No |  |
-| `is_blocked` | `bool` | No |  |
-| `lorry_parking_feature_icon` | `array` | No |  |
+| `isBlocked` | `string` | No |  |
+| `lorryParkingFeatureIcons` | `array` | No |  |
 | `point` | `string` | No |  |
-| `route_recommendation` | `array` | No |  |
+| `routeRecommendation` | `array` | No |  |
 | `subtitle` | `string` | No |  |
 | `title` | `string` | No |  |
 
@@ -263,7 +263,7 @@ $list_autobahnen = $client->ListAutobahnen();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `road` | `array` | No |  |
+| `roads` | `array` | No |  |
 
 ### Operations
 
@@ -323,10 +323,10 @@ $parking_lorry = $client->ParkingLorry();
 | `future` | `bool` | No |  |
 | `icon` | `string` | No |  |
 | `identifier` | `string` | No |  |
-| `is_blocked` | `bool` | No |  |
-| `lorry_parking_feature_icon` | `array` | No |  |
+| `isBlocked` | `string` | No |  |
+| `lorryParkingFeatureIcons` | `array` | No |  |
 | `point` | `string` | No |  |
-| `route_recommendation` | `array` | No |  |
+| `routeRecommendation` | `array` | No |  |
 | `subtitle` | `string` | No |  |
 | `title` | `string` | No |  |
 
@@ -396,11 +396,11 @@ $roadwork = $client->Roadwork();
 | `future` | `bool` | No |  |
 | `icon` | `string` | No |  |
 | `identifier` | `string` | No |  |
-| `is_blocked` | `bool` | No |  |
-| `lorry_parking_feature_icon` | `array` | No |  |
+| `isBlocked` | `string` | No |  |
+| `lorryParkingFeatureIcons` | `array` | No |  |
 | `point` | `string` | No |  |
-| `route_recommendation` | `array` | No |  |
-| `start_timestamp` | `string` | No |  |
+| `routeRecommendation` | `array` | No |  |
+| `startTimestamp` | `string` | No |  |
 | `subtitle` | `string` | No |  |
 | `title` | `string` | No |  |
 
@@ -470,11 +470,11 @@ $warning = $client->Warning();
 | `future` | `bool` | No |  |
 | `icon` | `string` | No |  |
 | `identifier` | `string` | No |  |
-| `is_blocked` | `bool` | No |  |
-| `lorry_parking_feature_icon` | `array` | No |  |
+| `isBlocked` | `string` | No |  |
+| `lorryParkingFeatureIcons` | `array` | No |  |
 | `point` | `string` | No |  |
-| `route_recommendation` | `array` | No |  |
-| `start_timestamp` | `string` | No |  |
+| `routeRecommendation` | `array` | No |  |
+| `startTimestamp` | `string` | No |  |
 | `subtitle` | `string` | No |  |
 | `title` | `string` | No |  |
 
@@ -545,12 +545,12 @@ $webcam = $client->Webcam();
 | `icon` | `string` | No |  |
 | `identifier` | `string` | No |  |
 | `imageurl` | `string` | No |  |
-| `is_blocked` | `bool` | No |  |
+| `isBlocked` | `string` | No |  |
 | `linkurl` | `string` | No |  |
-| `lorry_parking_feature_icon` | `array` | No |  |
+| `lorryParkingFeatureIcons` | `array` | No |  |
 | `operator` | `string` | No |  |
 | `point` | `string` | No |  |
-| `route_recommendation` | `array` | No |  |
+| `routeRecommendation` | `array` | No |  |
 | `subtitle` | `string` | No |  |
 | `title` | `string` | No |  |
 

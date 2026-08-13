@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# AutobahnApiDe SDK exists test
 
 import pytest
 from autobahnapide_sdk import AutobahnApiDeSDK

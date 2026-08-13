@@ -23,11 +23,11 @@ class Closure
     public ?bool $future = null;
     public ?string $icon = null;
     public ?string $identifier = null;
-    public ?bool $is_blocked = null;
-    public ?array $lorry_parking_feature_icon = null;
+    public ?string $isBlocked = null;
+    public ?array $lorryParkingFeatureIcons = null;
     public ?string $point = null;
-    public ?array $route_recommendation = null;
-    public ?string $start_timestamp = null;
+    public ?array $routeRecommendation = null;
+    public ?string $startTimestamp = null;
     public ?string $subtitle = null;
     public ?string $title = null;
 }
@@ -55,10 +55,10 @@ class ElectricChargingStation
     public ?bool $future = null;
     public ?string $icon = null;
     public ?string $identifier = null;
-    public ?bool $is_blocked = null;
-    public ?array $lorry_parking_feature_icon = null;
+    public ?string $isBlocked = null;
+    public ?array $lorryParkingFeatureIcons = null;
     public ?string $point = null;
-    public ?array $route_recommendation = null;
+    public ?array $routeRecommendation = null;
     public ?string $subtitle = null;
     public ?string $title = null;
 }
@@ -78,13 +78,13 @@ class ElectricChargingStationListMatch
 /** ListAutobahnen entity data model. */
 class ListAutobahnen
 {
-    public ?array $road = null;
+    public ?array $roads = null;
 }
 
 /** Request payload for ListAutobahnen#list. */
 class ListAutobahnenListMatch
 {
-    public ?array $road = null;
+    public ?array $roads = null;
 }
 
 /** ParkingLorry entity data model. */
@@ -98,10 +98,10 @@ class ParkingLorry
     public ?bool $future = null;
     public ?string $icon = null;
     public ?string $identifier = null;
-    public ?bool $is_blocked = null;
-    public ?array $lorry_parking_feature_icon = null;
+    public ?string $isBlocked = null;
+    public ?array $lorryParkingFeatureIcons = null;
     public ?string $point = null;
-    public ?array $route_recommendation = null;
+    public ?array $routeRecommendation = null;
     public ?string $subtitle = null;
     public ?string $title = null;
 }
@@ -129,11 +129,11 @@ class Roadwork
     public ?bool $future = null;
     public ?string $icon = null;
     public ?string $identifier = null;
-    public ?bool $is_blocked = null;
-    public ?array $lorry_parking_feature_icon = null;
+    public ?string $isBlocked = null;
+    public ?array $lorryParkingFeatureIcons = null;
     public ?string $point = null;
-    public ?array $route_recommendation = null;
-    public ?string $start_timestamp = null;
+    public ?array $routeRecommendation = null;
+    public ?string $startTimestamp = null;
     public ?string $subtitle = null;
     public ?string $title = null;
 }
@@ -161,11 +161,11 @@ class Warning
     public ?bool $future = null;
     public ?string $icon = null;
     public ?string $identifier = null;
-    public ?bool $is_blocked = null;
-    public ?array $lorry_parking_feature_icon = null;
+    public ?string $isBlocked = null;
+    public ?array $lorryParkingFeatureIcons = null;
     public ?string $point = null;
-    public ?array $route_recommendation = null;
-    public ?string $start_timestamp = null;
+    public ?array $routeRecommendation = null;
+    public ?string $startTimestamp = null;
     public ?string $subtitle = null;
     public ?string $title = null;
 }
@@ -194,12 +194,12 @@ class Webcam
     public ?string $icon = null;
     public ?string $identifier = null;
     public ?string $imageurl = null;
-    public ?bool $is_blocked = null;
+    public ?string $isBlocked = null;
     public ?string $linkurl = null;
-    public ?array $lorry_parking_feature_icon = null;
+    public ?array $lorryParkingFeatureIcons = null;
     public ?string $operator = null;
     public ?string $point = null;
-    public ?array $route_recommendation = null;
+    public ?array $routeRecommendation = null;
     public ?string $subtitle = null;
     public ?string $title = null;
 }
