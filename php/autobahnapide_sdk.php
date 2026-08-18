@@ -40,7 +40,7 @@ class AutobahnApiDeSDK
         $utility = new AutobahnApiDeUtility();
         $this->_utility = $utility;
 
-        $config = AutobahnApiDeConfig::make_config();
+        $config = AutobahnApiDeConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

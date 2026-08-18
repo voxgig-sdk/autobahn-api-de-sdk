@@ -1,7 +1,30 @@
 # AutobahnApiDe SDK configuration
 
 
+_shared_config = None
+
+
+def shared_config():
+    """Return the process-wide config, built once on first use.
+
+    The SDK reads the config on every request and never writes to it, so one
+    instance is shared by every client rather than rebuilt per client.
+
+    The returned dict is shared: treat it as read-only. Callers that need to
+    mutate should use make_config, which always returns a fresh copy.
+    """
+    global _shared_config
+    if _shared_config is None:
+        _shared_config = make_config()
+    return _shared_config
+
+
 def make_config():
+    """Build a fresh, fully materialised config dict.
+
+    Every call rebuilds the whole structure, so prefer shared_config unless
+    you need a private copy you intend to mutate.
+    """
     return {
         "main": {
             "name": "AutobahnApiDe",
@@ -32,109 +55,64 @@ def make_config():
       "closure": {
         "fields": [
           {
-            "active": True,
             "name": "coordinate",
-            "req": False,
             "type": "`$OBJECT`",
-            "index$": 0,
           },
           {
-            "active": True,
             "name": "description",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 1,
           },
           {
-            "active": True,
             "name": "display_type",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 2,
           },
           {
-            "active": True,
             "name": "extent",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 3,
           },
           {
-            "active": True,
             "name": "footer",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 4,
           },
           {
-            "active": True,
             "name": "future",
-            "req": False,
             "type": "`$BOOLEAN`",
-            "index$": 5,
           },
           {
-            "active": True,
             "name": "icon",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 6,
           },
           {
-            "active": True,
             "name": "identifier",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 7,
           },
           {
-            "active": True,
             "name": "isBlocked",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 8,
           },
           {
-            "active": True,
             "name": "lorryParkingFeatureIcons",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 9,
           },
           {
-            "active": True,
             "name": "point",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 10,
           },
           {
-            "active": True,
             "name": "routeRecommendation",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 11,
           },
           {
-            "active": True,
             "name": "startTimestamp",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 12,
           },
           {
-            "active": True,
             "name": "subtitle",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 13,
           },
           {
-            "active": True,
             "name": "title",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 14,
           },
         ],
         "name": "closure",
@@ -144,18 +122,15 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "example": "A1",
                       "kind": "param",
                       "name": "road_id",
                       "orig": "road_id",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -181,28 +156,23 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.closure`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "list",
           },
           "load": {
             "input": "data",
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "example": "Q0xPU1VSRV9fbWRtLnZpel9fTE1TLU5XL3JfVElDLU5SV0JMSy8zOS9OUldCTEsvMTAgMzUgMjEgRCAwOTI0Mi0wMV9EICBOVyBMTVMtTlcuMA==",
                       "kind": "param",
                       "name": "id",
                       "orig": "closure_id",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -228,10 +198,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -241,102 +209,60 @@ def make_config():
       "electric_charging_station": {
         "fields": [
           {
-            "active": True,
             "name": "coordinate",
-            "req": False,
             "type": "`$OBJECT`",
-            "index$": 0,
           },
           {
-            "active": True,
             "name": "description",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 1,
           },
           {
-            "active": True,
             "name": "display_type",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 2,
           },
           {
-            "active": True,
             "name": "extent",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 3,
           },
           {
-            "active": True,
             "name": "footer",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 4,
           },
           {
-            "active": True,
             "name": "future",
-            "req": False,
             "type": "`$BOOLEAN`",
-            "index$": 5,
           },
           {
-            "active": True,
             "name": "icon",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 6,
           },
           {
-            "active": True,
             "name": "identifier",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 7,
           },
           {
-            "active": True,
             "name": "isBlocked",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 8,
           },
           {
-            "active": True,
             "name": "lorryParkingFeatureIcons",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 9,
           },
           {
-            "active": True,
             "name": "point",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 10,
           },
           {
-            "active": True,
             "name": "routeRecommendation",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 11,
           },
           {
-            "active": True,
             "name": "subtitle",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 12,
           },
           {
-            "active": True,
             "name": "title",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 13,
           },
         ],
         "name": "electric_charging_station",
@@ -346,18 +272,15 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "example": "A1",
                       "kind": "param",
                       "name": "road_id",
                       "orig": "road_id",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -383,28 +306,23 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.electric_charging_station`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "list",
           },
           "load": {
             "input": "data",
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "example": "RUxFQ1RSSUNfQ0hBUkdJTkdfU1RBVElPTl9fMTczMzM=",
                       "kind": "param",
                       "name": "id",
                       "orig": "station_id",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -430,10 +348,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -443,11 +359,8 @@ def make_config():
       "list_autobahnen": {
         "fields": [
           {
-            "active": True,
             "name": "roads",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 0,
           },
         ],
         "name": "list_autobahnen",
@@ -457,7 +370,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -468,10 +380,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.roads`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "list",
           },
         },
         "relations": {
@@ -481,102 +391,60 @@ def make_config():
       "parking_lorry": {
         "fields": [
           {
-            "active": True,
             "name": "coordinate",
-            "req": False,
             "type": "`$OBJECT`",
-            "index$": 0,
           },
           {
-            "active": True,
             "name": "description",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 1,
           },
           {
-            "active": True,
             "name": "display_type",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 2,
           },
           {
-            "active": True,
             "name": "extent",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 3,
           },
           {
-            "active": True,
             "name": "footer",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 4,
           },
           {
-            "active": True,
             "name": "future",
-            "req": False,
             "type": "`$BOOLEAN`",
-            "index$": 5,
           },
           {
-            "active": True,
             "name": "icon",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 6,
           },
           {
-            "active": True,
             "name": "identifier",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 7,
           },
           {
-            "active": True,
             "name": "isBlocked",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 8,
           },
           {
-            "active": True,
             "name": "lorryParkingFeatureIcons",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 9,
           },
           {
-            "active": True,
             "name": "point",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 10,
           },
           {
-            "active": True,
             "name": "routeRecommendation",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 11,
           },
           {
-            "active": True,
             "name": "subtitle",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 12,
           },
           {
-            "active": True,
             "name": "title",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 13,
           },
         ],
         "name": "parking_lorry",
@@ -586,18 +454,15 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "example": "A1",
                       "kind": "param",
                       "name": "road_id",
                       "orig": "road_id",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -623,28 +488,23 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.parking_lorry`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "list",
           },
           "load": {
             "input": "data",
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "example": "UEFSS0lOR19fbWRtLmxvcnJ5LnBhcmtpbmdfX0RFLVNILTAwMTEwOA==",
                       "kind": "param",
                       "name": "id",
                       "orig": "lorry_id",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -670,10 +530,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -683,109 +541,64 @@ def make_config():
       "roadwork": {
         "fields": [
           {
-            "active": True,
             "name": "coordinate",
-            "req": False,
             "type": "`$OBJECT`",
-            "index$": 0,
           },
           {
-            "active": True,
             "name": "description",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 1,
           },
           {
-            "active": True,
             "name": "display_type",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 2,
           },
           {
-            "active": True,
             "name": "extent",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 3,
           },
           {
-            "active": True,
             "name": "footer",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 4,
           },
           {
-            "active": True,
             "name": "future",
-            "req": False,
             "type": "`$BOOLEAN`",
-            "index$": 5,
           },
           {
-            "active": True,
             "name": "icon",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 6,
           },
           {
-            "active": True,
             "name": "identifier",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 7,
           },
           {
-            "active": True,
             "name": "isBlocked",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 8,
           },
           {
-            "active": True,
             "name": "lorryParkingFeatureIcons",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 9,
           },
           {
-            "active": True,
             "name": "point",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 10,
           },
           {
-            "active": True,
             "name": "routeRecommendation",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 11,
           },
           {
-            "active": True,
             "name": "startTimestamp",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 12,
           },
           {
-            "active": True,
             "name": "subtitle",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 13,
           },
           {
-            "active": True,
             "name": "title",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 14,
           },
         ],
         "name": "roadwork",
@@ -795,18 +608,15 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "example": "A1",
                       "kind": "param",
                       "name": "road_id",
                       "orig": "road_id",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -832,28 +642,23 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.roadworks`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "list",
           },
           "load": {
             "input": "data",
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "example": "Uk9BRFdPUktTX19tZG0ubndfXzAyLTgwMDAwIEQgNzEgMTkgMDkvS0xCV1JO",
                       "kind": "param",
                       "name": "id",
                       "orig": "roadwork_id",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -879,10 +684,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -892,109 +695,64 @@ def make_config():
       "warning": {
         "fields": [
           {
-            "active": True,
             "name": "coordinate",
-            "req": False,
             "type": "`$OBJECT`",
-            "index$": 0,
           },
           {
-            "active": True,
             "name": "description",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 1,
           },
           {
-            "active": True,
             "name": "display_type",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 2,
           },
           {
-            "active": True,
             "name": "extent",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 3,
           },
           {
-            "active": True,
             "name": "footer",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 4,
           },
           {
-            "active": True,
             "name": "future",
-            "req": False,
             "type": "`$BOOLEAN`",
-            "index$": 5,
           },
           {
-            "active": True,
             "name": "icon",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 6,
           },
           {
-            "active": True,
             "name": "identifier",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 7,
           },
           {
-            "active": True,
             "name": "isBlocked",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 8,
           },
           {
-            "active": True,
             "name": "lorryParkingFeatureIcons",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 9,
           },
           {
-            "active": True,
             "name": "point",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 10,
           },
           {
-            "active": True,
             "name": "routeRecommendation",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 11,
           },
           {
-            "active": True,
             "name": "startTimestamp",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 12,
           },
           {
-            "active": True,
             "name": "subtitle",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 13,
           },
           {
-            "active": True,
             "name": "title",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 14,
           },
         ],
         "name": "warning",
@@ -1004,18 +762,15 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "example": "A1",
                       "kind": "param",
                       "name": "road_id",
                       "orig": "road_id",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -1041,28 +796,23 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.warning`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "list",
           },
           "load": {
             "input": "data",
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "example": "V0FSTklOR19fbWRtLnZpel9fTE1TLU5XL3JfTE1TLU5XLzMyNDE3OV9EICBOVyBMTVMtTlcuMA==",
                       "kind": "param",
                       "name": "id",
                       "orig": "warning_id",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -1088,10 +838,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -1101,123 +849,72 @@ def make_config():
       "webcam": {
         "fields": [
           {
-            "active": True,
             "name": "coordinate",
-            "req": False,
             "type": "`$OBJECT`",
-            "index$": 0,
           },
           {
-            "active": True,
             "name": "description",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 1,
           },
           {
-            "active": True,
             "name": "display_type",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 2,
           },
           {
-            "active": True,
             "name": "extent",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 3,
           },
           {
-            "active": True,
             "name": "footer",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 4,
           },
           {
-            "active": True,
             "name": "future",
-            "req": False,
             "type": "`$BOOLEAN`",
-            "index$": 5,
           },
           {
-            "active": True,
             "name": "icon",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 6,
           },
           {
-            "active": True,
             "name": "identifier",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 7,
           },
           {
-            "active": True,
             "name": "imageurl",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 8,
           },
           {
-            "active": True,
             "name": "isBlocked",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 9,
           },
           {
-            "active": True,
             "name": "linkurl",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 10,
           },
           {
-            "active": True,
             "name": "lorryParkingFeatureIcons",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 11,
           },
           {
-            "active": True,
             "name": "operator",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 12,
           },
           {
-            "active": True,
             "name": "point",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 13,
           },
           {
-            "active": True,
             "name": "routeRecommendation",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 14,
           },
           {
-            "active": True,
             "name": "subtitle",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 15,
           },
           {
-            "active": True,
             "name": "title",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 16,
           },
         ],
         "name": "webcam",
@@ -1227,18 +924,15 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "example": "A1",
                       "kind": "param",
                       "name": "road_id",
                       "orig": "road_id",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -1264,28 +958,23 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.webcam`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "list",
           },
           "load": {
             "input": "data",
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "example": "V0VCQ0FNX19OUldfU2lsYS1TaWduYWxiYXVfMTAxMDgxNDE3MjM4ODYzOTk5MTU=",
                       "kind": "param",
                       "name": "id",
                       "orig": "webcam_id",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -1311,10 +1000,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {

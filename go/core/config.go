@@ -1,5 +1,12 @@
 package core
 
+import (
+	"sync"
+)
+
+// MakeConfig builds a fresh, fully materialised config map. Every call
+// rebuilds the whole structure, so prefer SharedConfig unless you need a
+// private copy you intend to mutate.
 func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
@@ -31,109 +38,64 @@ func MakeConfig() map[string]any {
 			"closure": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"active": true,
 						"name": "coordinate",
-						"req": false,
 						"type": "`$OBJECT`",
-						"index$": 0,
 					},
 					map[string]any{
-						"active": true,
 						"name": "description",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 1,
 					},
 					map[string]any{
-						"active": true,
 						"name": "display_type",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 2,
 					},
 					map[string]any{
-						"active": true,
 						"name": "extent",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 3,
 					},
 					map[string]any{
-						"active": true,
 						"name": "footer",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 4,
 					},
 					map[string]any{
-						"active": true,
 						"name": "future",
-						"req": false,
 						"type": "`$BOOLEAN`",
-						"index$": 5,
 					},
 					map[string]any{
-						"active": true,
 						"name": "icon",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 6,
 					},
 					map[string]any{
-						"active": true,
 						"name": "identifier",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 7,
 					},
 					map[string]any{
-						"active": true,
 						"name": "isBlocked",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 8,
 					},
 					map[string]any{
-						"active": true,
 						"name": "lorryParkingFeatureIcons",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 9,
 					},
 					map[string]any{
-						"active": true,
 						"name": "point",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 10,
 					},
 					map[string]any{
-						"active": true,
 						"name": "routeRecommendation",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 11,
 					},
 					map[string]any{
-						"active": true,
 						"name": "startTimestamp",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 12,
 					},
 					map[string]any{
-						"active": true,
 						"name": "subtitle",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 13,
 					},
 					map[string]any{
-						"active": true,
 						"name": "title",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 14,
 					},
 				},
 				"name": "closure",
@@ -143,18 +105,15 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"active": true,
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"active": true,
 											"example": "A1",
 											"kind": "param",
 											"name": "road_id",
 											"orig": "road_id",
 											"reqd": true,
 											"type": "`$STRING`",
-											"index$": 0,
 										},
 									},
 								},
@@ -180,7 +139,6 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body.closure`",
 								},
-								"index$": 0,
 							},
 						},
 					},
@@ -189,18 +147,15 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"active": true,
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"active": true,
 											"example": "Q0xPU1VSRV9fbWRtLnZpel9fTE1TLU5XL3JfVElDLU5SV0JMSy8zOS9OUldCTEsvMTAgMzUgMjEgRCAwOTI0Mi0wMV9EICBOVyBMTVMtTlcuMA==",
 											"kind": "param",
 											"name": "id",
 											"orig": "closure_id",
 											"reqd": true,
 											"type": "`$STRING`",
-											"index$": 0,
 										},
 									},
 								},
@@ -226,7 +181,6 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"index$": 0,
 							},
 						},
 					},
@@ -238,102 +192,60 @@ func MakeConfig() map[string]any {
 			"electric_charging_station": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"active": true,
 						"name": "coordinate",
-						"req": false,
 						"type": "`$OBJECT`",
-						"index$": 0,
 					},
 					map[string]any{
-						"active": true,
 						"name": "description",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 1,
 					},
 					map[string]any{
-						"active": true,
 						"name": "display_type",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 2,
 					},
 					map[string]any{
-						"active": true,
 						"name": "extent",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 3,
 					},
 					map[string]any{
-						"active": true,
 						"name": "footer",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 4,
 					},
 					map[string]any{
-						"active": true,
 						"name": "future",
-						"req": false,
 						"type": "`$BOOLEAN`",
-						"index$": 5,
 					},
 					map[string]any{
-						"active": true,
 						"name": "icon",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 6,
 					},
 					map[string]any{
-						"active": true,
 						"name": "identifier",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 7,
 					},
 					map[string]any{
-						"active": true,
 						"name": "isBlocked",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 8,
 					},
 					map[string]any{
-						"active": true,
 						"name": "lorryParkingFeatureIcons",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 9,
 					},
 					map[string]any{
-						"active": true,
 						"name": "point",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 10,
 					},
 					map[string]any{
-						"active": true,
 						"name": "routeRecommendation",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 11,
 					},
 					map[string]any{
-						"active": true,
 						"name": "subtitle",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 12,
 					},
 					map[string]any{
-						"active": true,
 						"name": "title",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 13,
 					},
 				},
 				"name": "electric_charging_station",
@@ -343,18 +255,15 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"active": true,
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"active": true,
 											"example": "A1",
 											"kind": "param",
 											"name": "road_id",
 											"orig": "road_id",
 											"reqd": true,
 											"type": "`$STRING`",
-											"index$": 0,
 										},
 									},
 								},
@@ -380,7 +289,6 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body.electric_charging_station`",
 								},
-								"index$": 0,
 							},
 						},
 					},
@@ -389,18 +297,15 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"active": true,
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"active": true,
 											"example": "RUxFQ1RSSUNfQ0hBUkdJTkdfU1RBVElPTl9fMTczMzM=",
 											"kind": "param",
 											"name": "id",
 											"orig": "station_id",
 											"reqd": true,
 											"type": "`$STRING`",
-											"index$": 0,
 										},
 									},
 								},
@@ -426,7 +331,6 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"index$": 0,
 							},
 						},
 					},
@@ -438,11 +342,8 @@ func MakeConfig() map[string]any {
 			"list_autobahnen": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"active": true,
 						"name": "roads",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 0,
 					},
 				},
 				"name": "list_autobahnen",
@@ -452,7 +353,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"active": true,
 								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
@@ -463,7 +363,6 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body.roads`",
 								},
-								"index$": 0,
 							},
 						},
 					},
@@ -475,102 +374,60 @@ func MakeConfig() map[string]any {
 			"parking_lorry": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"active": true,
 						"name": "coordinate",
-						"req": false,
 						"type": "`$OBJECT`",
-						"index$": 0,
 					},
 					map[string]any{
-						"active": true,
 						"name": "description",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 1,
 					},
 					map[string]any{
-						"active": true,
 						"name": "display_type",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 2,
 					},
 					map[string]any{
-						"active": true,
 						"name": "extent",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 3,
 					},
 					map[string]any{
-						"active": true,
 						"name": "footer",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 4,
 					},
 					map[string]any{
-						"active": true,
 						"name": "future",
-						"req": false,
 						"type": "`$BOOLEAN`",
-						"index$": 5,
 					},
 					map[string]any{
-						"active": true,
 						"name": "icon",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 6,
 					},
 					map[string]any{
-						"active": true,
 						"name": "identifier",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 7,
 					},
 					map[string]any{
-						"active": true,
 						"name": "isBlocked",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 8,
 					},
 					map[string]any{
-						"active": true,
 						"name": "lorryParkingFeatureIcons",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 9,
 					},
 					map[string]any{
-						"active": true,
 						"name": "point",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 10,
 					},
 					map[string]any{
-						"active": true,
 						"name": "routeRecommendation",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 11,
 					},
 					map[string]any{
-						"active": true,
 						"name": "subtitle",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 12,
 					},
 					map[string]any{
-						"active": true,
 						"name": "title",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 13,
 					},
 				},
 				"name": "parking_lorry",
@@ -580,18 +437,15 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"active": true,
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"active": true,
 											"example": "A1",
 											"kind": "param",
 											"name": "road_id",
 											"orig": "road_id",
 											"reqd": true,
 											"type": "`$STRING`",
-											"index$": 0,
 										},
 									},
 								},
@@ -617,7 +471,6 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body.parking_lorry`",
 								},
-								"index$": 0,
 							},
 						},
 					},
@@ -626,18 +479,15 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"active": true,
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"active": true,
 											"example": "UEFSS0lOR19fbWRtLmxvcnJ5LnBhcmtpbmdfX0RFLVNILTAwMTEwOA==",
 											"kind": "param",
 											"name": "id",
 											"orig": "lorry_id",
 											"reqd": true,
 											"type": "`$STRING`",
-											"index$": 0,
 										},
 									},
 								},
@@ -663,7 +513,6 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"index$": 0,
 							},
 						},
 					},
@@ -675,109 +524,64 @@ func MakeConfig() map[string]any {
 			"roadwork": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"active": true,
 						"name": "coordinate",
-						"req": false,
 						"type": "`$OBJECT`",
-						"index$": 0,
 					},
 					map[string]any{
-						"active": true,
 						"name": "description",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 1,
 					},
 					map[string]any{
-						"active": true,
 						"name": "display_type",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 2,
 					},
 					map[string]any{
-						"active": true,
 						"name": "extent",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 3,
 					},
 					map[string]any{
-						"active": true,
 						"name": "footer",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 4,
 					},
 					map[string]any{
-						"active": true,
 						"name": "future",
-						"req": false,
 						"type": "`$BOOLEAN`",
-						"index$": 5,
 					},
 					map[string]any{
-						"active": true,
 						"name": "icon",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 6,
 					},
 					map[string]any{
-						"active": true,
 						"name": "identifier",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 7,
 					},
 					map[string]any{
-						"active": true,
 						"name": "isBlocked",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 8,
 					},
 					map[string]any{
-						"active": true,
 						"name": "lorryParkingFeatureIcons",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 9,
 					},
 					map[string]any{
-						"active": true,
 						"name": "point",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 10,
 					},
 					map[string]any{
-						"active": true,
 						"name": "routeRecommendation",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 11,
 					},
 					map[string]any{
-						"active": true,
 						"name": "startTimestamp",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 12,
 					},
 					map[string]any{
-						"active": true,
 						"name": "subtitle",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 13,
 					},
 					map[string]any{
-						"active": true,
 						"name": "title",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 14,
 					},
 				},
 				"name": "roadwork",
@@ -787,18 +591,15 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"active": true,
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"active": true,
 											"example": "A1",
 											"kind": "param",
 											"name": "road_id",
 											"orig": "road_id",
 											"reqd": true,
 											"type": "`$STRING`",
-											"index$": 0,
 										},
 									},
 								},
@@ -824,7 +625,6 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body.roadworks`",
 								},
-								"index$": 0,
 							},
 						},
 					},
@@ -833,18 +633,15 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"active": true,
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"active": true,
 											"example": "Uk9BRFdPUktTX19tZG0ubndfXzAyLTgwMDAwIEQgNzEgMTkgMDkvS0xCV1JO",
 											"kind": "param",
 											"name": "id",
 											"orig": "roadwork_id",
 											"reqd": true,
 											"type": "`$STRING`",
-											"index$": 0,
 										},
 									},
 								},
@@ -870,7 +667,6 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"index$": 0,
 							},
 						},
 					},
@@ -882,109 +678,64 @@ func MakeConfig() map[string]any {
 			"warning": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"active": true,
 						"name": "coordinate",
-						"req": false,
 						"type": "`$OBJECT`",
-						"index$": 0,
 					},
 					map[string]any{
-						"active": true,
 						"name": "description",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 1,
 					},
 					map[string]any{
-						"active": true,
 						"name": "display_type",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 2,
 					},
 					map[string]any{
-						"active": true,
 						"name": "extent",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 3,
 					},
 					map[string]any{
-						"active": true,
 						"name": "footer",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 4,
 					},
 					map[string]any{
-						"active": true,
 						"name": "future",
-						"req": false,
 						"type": "`$BOOLEAN`",
-						"index$": 5,
 					},
 					map[string]any{
-						"active": true,
 						"name": "icon",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 6,
 					},
 					map[string]any{
-						"active": true,
 						"name": "identifier",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 7,
 					},
 					map[string]any{
-						"active": true,
 						"name": "isBlocked",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 8,
 					},
 					map[string]any{
-						"active": true,
 						"name": "lorryParkingFeatureIcons",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 9,
 					},
 					map[string]any{
-						"active": true,
 						"name": "point",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 10,
 					},
 					map[string]any{
-						"active": true,
 						"name": "routeRecommendation",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 11,
 					},
 					map[string]any{
-						"active": true,
 						"name": "startTimestamp",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 12,
 					},
 					map[string]any{
-						"active": true,
 						"name": "subtitle",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 13,
 					},
 					map[string]any{
-						"active": true,
 						"name": "title",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 14,
 					},
 				},
 				"name": "warning",
@@ -994,18 +745,15 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"active": true,
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"active": true,
 											"example": "A1",
 											"kind": "param",
 											"name": "road_id",
 											"orig": "road_id",
 											"reqd": true,
 											"type": "`$STRING`",
-											"index$": 0,
 										},
 									},
 								},
@@ -1031,7 +779,6 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body.warning`",
 								},
-								"index$": 0,
 							},
 						},
 					},
@@ -1040,18 +787,15 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"active": true,
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"active": true,
 											"example": "V0FSTklOR19fbWRtLnZpel9fTE1TLU5XL3JfTE1TLU5XLzMyNDE3OV9EICBOVyBMTVMtTlcuMA==",
 											"kind": "param",
 											"name": "id",
 											"orig": "warning_id",
 											"reqd": true,
 											"type": "`$STRING`",
-											"index$": 0,
 										},
 									},
 								},
@@ -1077,7 +821,6 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"index$": 0,
 							},
 						},
 					},
@@ -1089,123 +832,72 @@ func MakeConfig() map[string]any {
 			"webcam": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"active": true,
 						"name": "coordinate",
-						"req": false,
 						"type": "`$OBJECT`",
-						"index$": 0,
 					},
 					map[string]any{
-						"active": true,
 						"name": "description",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 1,
 					},
 					map[string]any{
-						"active": true,
 						"name": "display_type",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 2,
 					},
 					map[string]any{
-						"active": true,
 						"name": "extent",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 3,
 					},
 					map[string]any{
-						"active": true,
 						"name": "footer",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 4,
 					},
 					map[string]any{
-						"active": true,
 						"name": "future",
-						"req": false,
 						"type": "`$BOOLEAN`",
-						"index$": 5,
 					},
 					map[string]any{
-						"active": true,
 						"name": "icon",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 6,
 					},
 					map[string]any{
-						"active": true,
 						"name": "identifier",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 7,
 					},
 					map[string]any{
-						"active": true,
 						"name": "imageurl",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 8,
 					},
 					map[string]any{
-						"active": true,
 						"name": "isBlocked",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 9,
 					},
 					map[string]any{
-						"active": true,
 						"name": "linkurl",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 10,
 					},
 					map[string]any{
-						"active": true,
 						"name": "lorryParkingFeatureIcons",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 11,
 					},
 					map[string]any{
-						"active": true,
 						"name": "operator",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 12,
 					},
 					map[string]any{
-						"active": true,
 						"name": "point",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 13,
 					},
 					map[string]any{
-						"active": true,
 						"name": "routeRecommendation",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 14,
 					},
 					map[string]any{
-						"active": true,
 						"name": "subtitle",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 15,
 					},
 					map[string]any{
-						"active": true,
 						"name": "title",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 16,
 					},
 				},
 				"name": "webcam",
@@ -1215,18 +907,15 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"active": true,
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"active": true,
 											"example": "A1",
 											"kind": "param",
 											"name": "road_id",
 											"orig": "road_id",
 											"reqd": true,
 											"type": "`$STRING`",
-											"index$": 0,
 										},
 									},
 								},
@@ -1252,7 +941,6 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body.webcam`",
 								},
-								"index$": 0,
 							},
 						},
 					},
@@ -1261,18 +949,15 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"active": true,
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"active": true,
 											"example": "V0VCQ0FNX19OUldfU2lsYS1TaWduYWxiYXVfMTAxMDgxNDE3MjM4ODYzOTk5MTU=",
 											"kind": "param",
 											"name": "id",
 											"orig": "webcam_id",
 											"reqd": true,
 											"type": "`$STRING`",
-											"index$": 0,
 										},
 									},
 								},
@@ -1298,7 +983,6 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"index$": 0,
 							},
 						},
 					},
@@ -1309,6 +993,24 @@ func MakeConfig() map[string]any {
 			},
 		},
 	}
+}
+
+var (
+	sharedConfigOnce sync.Once
+	sharedConfigVal  map[string]any
+)
+
+// SharedConfig returns the process-wide config, built once on first use.
+// The SDK reads the config on every request and never writes to it, so one
+// instance is shared by every client rather than rebuilt per client.
+//
+// The returned map is shared: treat it as read-only. Callers that need to
+// mutate should use MakeConfig, which always returns a fresh copy.
+func SharedConfig() map[string]any {
+	sharedConfigOnce.Do(func() {
+		sharedConfigVal = MakeConfig()
+	})
+	return sharedConfigVal
 }
 
 func makeFeature(name string) Feature {

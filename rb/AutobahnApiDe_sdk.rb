@@ -28,7 +28,7 @@ class AutobahnApiDeSDK
     utility = AutobahnApiDeUtility.new
     @_utility = utility
 
-    config = AutobahnApiDeConfig.make_config
+    config = AutobahnApiDeConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

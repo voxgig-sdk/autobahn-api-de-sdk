@@ -14,7 +14,7 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from autobahnapide_sdk.config import make_config
+from autobahnapide_sdk.config import shared_config
 from autobahnapide_sdk.features import _make_feature
 from autobahnapide_sdk.core.control import AutobahnApiDeControl
 from autobahnapide_sdk.core.error import AutobahnApiDeError
@@ -24,7 +24,7 @@ from autobahnapide_sdk.core.spec import AutobahnApiDeSpec
 
 # True when this SDK was generated with the named feature.
 def has_feature(name):
-    feature = make_config().get("feature")
+    feature = shared_config().get("feature")
     return isinstance(feature, dict) and feature.get(name) is not None
 
 

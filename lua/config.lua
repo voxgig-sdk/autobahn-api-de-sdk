@@ -1,5 +1,8 @@
 -- AutobahnApiDe SDK configuration
 
+-- Build a fresh, fully materialised config table. Every call rebuilds the
+-- whole structure, so prefer require("config_shared") unless you need a
+-- private copy you intend to mutate.
 local function make_config()
   return {
     main = {
@@ -31,109 +34,64 @@ local function make_config()
       ["closure"] = {
         ["fields"] = {
           {
-            ["active"] = true,
             ["name"] = "coordinate",
-            ["req"] = false,
             ["type"] = "`$OBJECT`",
-            ["index$"] = 0,
           },
           {
-            ["active"] = true,
             ["name"] = "description",
-            ["req"] = false,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 1,
           },
           {
-            ["active"] = true,
             ["name"] = "display_type",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 2,
           },
           {
-            ["active"] = true,
             ["name"] = "extent",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 3,
           },
           {
-            ["active"] = true,
             ["name"] = "footer",
-            ["req"] = false,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 4,
           },
           {
-            ["active"] = true,
             ["name"] = "future",
-            ["req"] = false,
             ["type"] = "`$BOOLEAN`",
-            ["index$"] = 5,
           },
           {
-            ["active"] = true,
             ["name"] = "icon",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 6,
           },
           {
-            ["active"] = true,
             ["name"] = "identifier",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 7,
           },
           {
-            ["active"] = true,
             ["name"] = "isBlocked",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 8,
           },
           {
-            ["active"] = true,
             ["name"] = "lorryParkingFeatureIcons",
-            ["req"] = false,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 9,
           },
           {
-            ["active"] = true,
             ["name"] = "point",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 10,
           },
           {
-            ["active"] = true,
             ["name"] = "routeRecommendation",
-            ["req"] = false,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 11,
           },
           {
-            ["active"] = true,
             ["name"] = "startTimestamp",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 12,
           },
           {
-            ["active"] = true,
             ["name"] = "subtitle",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 13,
           },
           {
-            ["active"] = true,
             ["name"] = "title",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 14,
           },
         },
         ["name"] = "closure",
@@ -143,18 +101,15 @@ local function make_config()
             ["name"] = "list",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {
                   ["params"] = {
                     {
-                      ["active"] = true,
                       ["example"] = "A1",
                       ["kind"] = "param",
                       ["name"] = "road_id",
                       ["orig"] = "road_id",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["index$"] = 0,
                     },
                   },
                 },
@@ -180,28 +135,23 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.closure`",
                 },
-                ["index$"] = 0,
               },
             },
-            ["key$"] = "list",
           },
           ["load"] = {
             ["input"] = "data",
             ["name"] = "load",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {
                   ["params"] = {
                     {
-                      ["active"] = true,
                       ["example"] = "Q0xPU1VSRV9fbWRtLnZpel9fTE1TLU5XL3JfVElDLU5SV0JMSy8zOS9OUldCTEsvMTAgMzUgMjEgRCAwOTI0Mi0wMV9EICBOVyBMTVMtTlcuMA==",
                       ["kind"] = "param",
                       ["name"] = "id",
                       ["orig"] = "closure_id",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["index$"] = 0,
                     },
                   },
                 },
@@ -227,10 +177,8 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["index$"] = 0,
               },
             },
-            ["key$"] = "load",
           },
         },
         ["relations"] = {
@@ -240,102 +188,60 @@ local function make_config()
       ["electric_charging_station"] = {
         ["fields"] = {
           {
-            ["active"] = true,
             ["name"] = "coordinate",
-            ["req"] = false,
             ["type"] = "`$OBJECT`",
-            ["index$"] = 0,
           },
           {
-            ["active"] = true,
             ["name"] = "description",
-            ["req"] = false,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 1,
           },
           {
-            ["active"] = true,
             ["name"] = "display_type",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 2,
           },
           {
-            ["active"] = true,
             ["name"] = "extent",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 3,
           },
           {
-            ["active"] = true,
             ["name"] = "footer",
-            ["req"] = false,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 4,
           },
           {
-            ["active"] = true,
             ["name"] = "future",
-            ["req"] = false,
             ["type"] = "`$BOOLEAN`",
-            ["index$"] = 5,
           },
           {
-            ["active"] = true,
             ["name"] = "icon",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 6,
           },
           {
-            ["active"] = true,
             ["name"] = "identifier",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 7,
           },
           {
-            ["active"] = true,
             ["name"] = "isBlocked",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 8,
           },
           {
-            ["active"] = true,
             ["name"] = "lorryParkingFeatureIcons",
-            ["req"] = false,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 9,
           },
           {
-            ["active"] = true,
             ["name"] = "point",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 10,
           },
           {
-            ["active"] = true,
             ["name"] = "routeRecommendation",
-            ["req"] = false,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 11,
           },
           {
-            ["active"] = true,
             ["name"] = "subtitle",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 12,
           },
           {
-            ["active"] = true,
             ["name"] = "title",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 13,
           },
         },
         ["name"] = "electric_charging_station",
@@ -345,18 +251,15 @@ local function make_config()
             ["name"] = "list",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {
                   ["params"] = {
                     {
-                      ["active"] = true,
                       ["example"] = "A1",
                       ["kind"] = "param",
                       ["name"] = "road_id",
                       ["orig"] = "road_id",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["index$"] = 0,
                     },
                   },
                 },
@@ -382,28 +285,23 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.electric_charging_station`",
                 },
-                ["index$"] = 0,
               },
             },
-            ["key$"] = "list",
           },
           ["load"] = {
             ["input"] = "data",
             ["name"] = "load",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {
                   ["params"] = {
                     {
-                      ["active"] = true,
                       ["example"] = "RUxFQ1RSSUNfQ0hBUkdJTkdfU1RBVElPTl9fMTczMzM=",
                       ["kind"] = "param",
                       ["name"] = "id",
                       ["orig"] = "station_id",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["index$"] = 0,
                     },
                   },
                 },
@@ -429,10 +327,8 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["index$"] = 0,
               },
             },
-            ["key$"] = "load",
           },
         },
         ["relations"] = {
@@ -442,11 +338,8 @@ local function make_config()
       ["list_autobahnen"] = {
         ["fields"] = {
           {
-            ["active"] = true,
             ["name"] = "roads",
-            ["req"] = false,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 0,
           },
         },
         ["name"] = "list_autobahnen",
@@ -456,7 +349,6 @@ local function make_config()
             ["name"] = "list",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "GET",
@@ -467,10 +359,8 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.roads`",
                 },
-                ["index$"] = 0,
               },
             },
-            ["key$"] = "list",
           },
         },
         ["relations"] = {
@@ -480,102 +370,60 @@ local function make_config()
       ["parking_lorry"] = {
         ["fields"] = {
           {
-            ["active"] = true,
             ["name"] = "coordinate",
-            ["req"] = false,
             ["type"] = "`$OBJECT`",
-            ["index$"] = 0,
           },
           {
-            ["active"] = true,
             ["name"] = "description",
-            ["req"] = false,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 1,
           },
           {
-            ["active"] = true,
             ["name"] = "display_type",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 2,
           },
           {
-            ["active"] = true,
             ["name"] = "extent",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 3,
           },
           {
-            ["active"] = true,
             ["name"] = "footer",
-            ["req"] = false,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 4,
           },
           {
-            ["active"] = true,
             ["name"] = "future",
-            ["req"] = false,
             ["type"] = "`$BOOLEAN`",
-            ["index$"] = 5,
           },
           {
-            ["active"] = true,
             ["name"] = "icon",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 6,
           },
           {
-            ["active"] = true,
             ["name"] = "identifier",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 7,
           },
           {
-            ["active"] = true,
             ["name"] = "isBlocked",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 8,
           },
           {
-            ["active"] = true,
             ["name"] = "lorryParkingFeatureIcons",
-            ["req"] = false,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 9,
           },
           {
-            ["active"] = true,
             ["name"] = "point",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 10,
           },
           {
-            ["active"] = true,
             ["name"] = "routeRecommendation",
-            ["req"] = false,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 11,
           },
           {
-            ["active"] = true,
             ["name"] = "subtitle",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 12,
           },
           {
-            ["active"] = true,
             ["name"] = "title",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 13,
           },
         },
         ["name"] = "parking_lorry",
@@ -585,18 +433,15 @@ local function make_config()
             ["name"] = "list",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {
                   ["params"] = {
                     {
-                      ["active"] = true,
                       ["example"] = "A1",
                       ["kind"] = "param",
                       ["name"] = "road_id",
                       ["orig"] = "road_id",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["index$"] = 0,
                     },
                   },
                 },
@@ -622,28 +467,23 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.parking_lorry`",
                 },
-                ["index$"] = 0,
               },
             },
-            ["key$"] = "list",
           },
           ["load"] = {
             ["input"] = "data",
             ["name"] = "load",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {
                   ["params"] = {
                     {
-                      ["active"] = true,
                       ["example"] = "UEFSS0lOR19fbWRtLmxvcnJ5LnBhcmtpbmdfX0RFLVNILTAwMTEwOA==",
                       ["kind"] = "param",
                       ["name"] = "id",
                       ["orig"] = "lorry_id",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["index$"] = 0,
                     },
                   },
                 },
@@ -669,10 +509,8 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["index$"] = 0,
               },
             },
-            ["key$"] = "load",
           },
         },
         ["relations"] = {
@@ -682,109 +520,64 @@ local function make_config()
       ["roadwork"] = {
         ["fields"] = {
           {
-            ["active"] = true,
             ["name"] = "coordinate",
-            ["req"] = false,
             ["type"] = "`$OBJECT`",
-            ["index$"] = 0,
           },
           {
-            ["active"] = true,
             ["name"] = "description",
-            ["req"] = false,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 1,
           },
           {
-            ["active"] = true,
             ["name"] = "display_type",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 2,
           },
           {
-            ["active"] = true,
             ["name"] = "extent",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 3,
           },
           {
-            ["active"] = true,
             ["name"] = "footer",
-            ["req"] = false,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 4,
           },
           {
-            ["active"] = true,
             ["name"] = "future",
-            ["req"] = false,
             ["type"] = "`$BOOLEAN`",
-            ["index$"] = 5,
           },
           {
-            ["active"] = true,
             ["name"] = "icon",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 6,
           },
           {
-            ["active"] = true,
             ["name"] = "identifier",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 7,
           },
           {
-            ["active"] = true,
             ["name"] = "isBlocked",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 8,
           },
           {
-            ["active"] = true,
             ["name"] = "lorryParkingFeatureIcons",
-            ["req"] = false,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 9,
           },
           {
-            ["active"] = true,
             ["name"] = "point",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 10,
           },
           {
-            ["active"] = true,
             ["name"] = "routeRecommendation",
-            ["req"] = false,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 11,
           },
           {
-            ["active"] = true,
             ["name"] = "startTimestamp",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 12,
           },
           {
-            ["active"] = true,
             ["name"] = "subtitle",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 13,
           },
           {
-            ["active"] = true,
             ["name"] = "title",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 14,
           },
         },
         ["name"] = "roadwork",
@@ -794,18 +587,15 @@ local function make_config()
             ["name"] = "list",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {
                   ["params"] = {
                     {
-                      ["active"] = true,
                       ["example"] = "A1",
                       ["kind"] = "param",
                       ["name"] = "road_id",
                       ["orig"] = "road_id",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["index$"] = 0,
                     },
                   },
                 },
@@ -831,28 +621,23 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.roadworks`",
                 },
-                ["index$"] = 0,
               },
             },
-            ["key$"] = "list",
           },
           ["load"] = {
             ["input"] = "data",
             ["name"] = "load",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {
                   ["params"] = {
                     {
-                      ["active"] = true,
                       ["example"] = "Uk9BRFdPUktTX19tZG0ubndfXzAyLTgwMDAwIEQgNzEgMTkgMDkvS0xCV1JO",
                       ["kind"] = "param",
                       ["name"] = "id",
                       ["orig"] = "roadwork_id",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["index$"] = 0,
                     },
                   },
                 },
@@ -878,10 +663,8 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["index$"] = 0,
               },
             },
-            ["key$"] = "load",
           },
         },
         ["relations"] = {
@@ -891,109 +674,64 @@ local function make_config()
       ["warning"] = {
         ["fields"] = {
           {
-            ["active"] = true,
             ["name"] = "coordinate",
-            ["req"] = false,
             ["type"] = "`$OBJECT`",
-            ["index$"] = 0,
           },
           {
-            ["active"] = true,
             ["name"] = "description",
-            ["req"] = false,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 1,
           },
           {
-            ["active"] = true,
             ["name"] = "display_type",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 2,
           },
           {
-            ["active"] = true,
             ["name"] = "extent",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 3,
           },
           {
-            ["active"] = true,
             ["name"] = "footer",
-            ["req"] = false,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 4,
           },
           {
-            ["active"] = true,
             ["name"] = "future",
-            ["req"] = false,
             ["type"] = "`$BOOLEAN`",
-            ["index$"] = 5,
           },
           {
-            ["active"] = true,
             ["name"] = "icon",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 6,
           },
           {
-            ["active"] = true,
             ["name"] = "identifier",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 7,
           },
           {
-            ["active"] = true,
             ["name"] = "isBlocked",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 8,
           },
           {
-            ["active"] = true,
             ["name"] = "lorryParkingFeatureIcons",
-            ["req"] = false,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 9,
           },
           {
-            ["active"] = true,
             ["name"] = "point",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 10,
           },
           {
-            ["active"] = true,
             ["name"] = "routeRecommendation",
-            ["req"] = false,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 11,
           },
           {
-            ["active"] = true,
             ["name"] = "startTimestamp",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 12,
           },
           {
-            ["active"] = true,
             ["name"] = "subtitle",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 13,
           },
           {
-            ["active"] = true,
             ["name"] = "title",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 14,
           },
         },
         ["name"] = "warning",
@@ -1003,18 +741,15 @@ local function make_config()
             ["name"] = "list",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {
                   ["params"] = {
                     {
-                      ["active"] = true,
                       ["example"] = "A1",
                       ["kind"] = "param",
                       ["name"] = "road_id",
                       ["orig"] = "road_id",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["index$"] = 0,
                     },
                   },
                 },
@@ -1040,28 +775,23 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.warning`",
                 },
-                ["index$"] = 0,
               },
             },
-            ["key$"] = "list",
           },
           ["load"] = {
             ["input"] = "data",
             ["name"] = "load",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {
                   ["params"] = {
                     {
-                      ["active"] = true,
                       ["example"] = "V0FSTklOR19fbWRtLnZpel9fTE1TLU5XL3JfTE1TLU5XLzMyNDE3OV9EICBOVyBMTVMtTlcuMA==",
                       ["kind"] = "param",
                       ["name"] = "id",
                       ["orig"] = "warning_id",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["index$"] = 0,
                     },
                   },
                 },
@@ -1087,10 +817,8 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["index$"] = 0,
               },
             },
-            ["key$"] = "load",
           },
         },
         ["relations"] = {
@@ -1100,123 +828,72 @@ local function make_config()
       ["webcam"] = {
         ["fields"] = {
           {
-            ["active"] = true,
             ["name"] = "coordinate",
-            ["req"] = false,
             ["type"] = "`$OBJECT`",
-            ["index$"] = 0,
           },
           {
-            ["active"] = true,
             ["name"] = "description",
-            ["req"] = false,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 1,
           },
           {
-            ["active"] = true,
             ["name"] = "display_type",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 2,
           },
           {
-            ["active"] = true,
             ["name"] = "extent",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 3,
           },
           {
-            ["active"] = true,
             ["name"] = "footer",
-            ["req"] = false,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 4,
           },
           {
-            ["active"] = true,
             ["name"] = "future",
-            ["req"] = false,
             ["type"] = "`$BOOLEAN`",
-            ["index$"] = 5,
           },
           {
-            ["active"] = true,
             ["name"] = "icon",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 6,
           },
           {
-            ["active"] = true,
             ["name"] = "identifier",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 7,
           },
           {
-            ["active"] = true,
             ["name"] = "imageurl",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 8,
           },
           {
-            ["active"] = true,
             ["name"] = "isBlocked",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 9,
           },
           {
-            ["active"] = true,
             ["name"] = "linkurl",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 10,
           },
           {
-            ["active"] = true,
             ["name"] = "lorryParkingFeatureIcons",
-            ["req"] = false,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 11,
           },
           {
-            ["active"] = true,
             ["name"] = "operator",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 12,
           },
           {
-            ["active"] = true,
             ["name"] = "point",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 13,
           },
           {
-            ["active"] = true,
             ["name"] = "routeRecommendation",
-            ["req"] = false,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 14,
           },
           {
-            ["active"] = true,
             ["name"] = "subtitle",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 15,
           },
           {
-            ["active"] = true,
             ["name"] = "title",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 16,
           },
         },
         ["name"] = "webcam",
@@ -1226,18 +903,15 @@ local function make_config()
             ["name"] = "list",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {
                   ["params"] = {
                     {
-                      ["active"] = true,
                       ["example"] = "A1",
                       ["kind"] = "param",
                       ["name"] = "road_id",
                       ["orig"] = "road_id",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["index$"] = 0,
                     },
                   },
                 },
@@ -1263,28 +937,23 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.webcam`",
                 },
-                ["index$"] = 0,
               },
             },
-            ["key$"] = "list",
           },
           ["load"] = {
             ["input"] = "data",
             ["name"] = "load",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {
                   ["params"] = {
                     {
-                      ["active"] = true,
                       ["example"] = "V0VCQ0FNX19OUldfU2lsYS1TaWduYWxiYXVfMTAxMDgxNDE3MjM4ODYzOTk5MTU=",
                       ["kind"] = "param",
                       ["name"] = "id",
                       ["orig"] = "webcam_id",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["index$"] = 0,
                     },
                   },
                 },
@@ -1310,10 +979,8 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["index$"] = 0,
               },
             },
-            ["key$"] = "load",
           },
         },
         ["relations"] = {
