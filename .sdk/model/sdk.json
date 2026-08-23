@@ -228,6 +228,7 @@
               "active": true,
               "name": "coordinate",
               "req": false,
+              "short": "Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84).",
               "type": "`$OBJECT`"
             },
             {
@@ -246,6 +247,7 @@
               "active": true,
               "name": "extent",
               "req": false,
+              "short": "Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt.",
               "type": "`$STRING`"
             },
             {
@@ -264,6 +266,7 @@
               "active": true,
               "name": "icon",
               "req": false,
+              "short": "Sinnbild, das die Art des Eintrags beschreibt.",
               "type": "`$STRING`"
             },
             {
@@ -288,6 +291,7 @@
               "active": true,
               "name": "point",
               "req": false,
+              "short": "Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84).",
               "type": "`$STRING`"
             },
             {
@@ -453,6 +457,7 @@
               "active": true,
               "name": "coordinate",
               "req": false,
+              "short": "Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84).",
               "type": "`$OBJECT`"
             },
             {
@@ -471,6 +476,7 @@
               "active": true,
               "name": "extent",
               "req": false,
+              "short": "Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt.",
               "type": "`$STRING`"
             },
             {
@@ -489,6 +495,7 @@
               "active": true,
               "name": "icon",
               "req": false,
+              "short": "Sinnbild, das die Art des Eintrags beschreibt.",
               "type": "`$STRING`"
             },
             {
@@ -513,6 +520,7 @@
               "active": true,
               "name": "point",
               "req": false,
+              "short": "Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84).",
               "type": "`$STRING`"
             },
             {
@@ -1023,6 +1031,7 @@
               "active": true,
               "name": "coordinate",
               "req": false,
+              "short": "Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84).",
               "type": "`$OBJECT`"
             },
             {
@@ -1041,6 +1050,7 @@
               "active": true,
               "name": "extent",
               "req": false,
+              "short": "Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt.",
               "type": "`$STRING`"
             },
             {
@@ -1059,6 +1069,7 @@
               "active": true,
               "name": "icon",
               "req": false,
+              "short": "Sinnbild, das die Art des Eintrags beschreibt.",
               "type": "`$STRING`"
             },
             {
@@ -1101,6 +1112,7 @@
               "active": true,
               "name": "point",
               "req": false,
+              "short": "Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84).",
               "type": "`$STRING`"
             },
             {

@@ -188,17 +188,17 @@ local electric_charging_station = client:ElectricChargingStation(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `coordinate` | `table` | No |  |
+| `coordinate` | `table` | No | Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84). |
 | `description` | `table` | No |  |
 | `display_type` | `string` | No |  |
-| `extent` | `string` | No |  |
+| `extent` | `string` | No | Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt. |
 | `footer` | `table` | No |  |
 | `future` | `boolean` | No |  |
-| `icon` | `string` | No |  |
+| `icon` | `string` | No | Sinnbild, das die Art des Eintrags beschreibt. |
 | `identifier` | `string` | No |  |
 | `isBlocked` | `string` | No |  |
 | `lorryParkingFeatureIcons` | `table` | No |  |
-| `point` | `string` | No |  |
+| `point` | `string` | No | Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84). |
 | `routeRecommendation` | `table` | No |  |
 | `subtitle` | `string` | No |  |
 | `title` | `string` | No |  |
@@ -313,17 +313,17 @@ local parking_lorry = client:ParkingLorry(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `coordinate` | `table` | No |  |
+| `coordinate` | `table` | No | Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84). |
 | `description` | `table` | No |  |
 | `display_type` | `string` | No |  |
-| `extent` | `string` | No |  |
+| `extent` | `string` | No | Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt. |
 | `footer` | `table` | No |  |
 | `future` | `boolean` | No |  |
-| `icon` | `string` | No |  |
+| `icon` | `string` | No | Sinnbild, das die Art des Eintrags beschreibt. |
 | `identifier` | `string` | No |  |
 | `isBlocked` | `string` | No |  |
 | `lorryParkingFeatureIcons` | `table` | No |  |
-| `point` | `string` | No |  |
+| `point` | `string` | No | Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84). |
 | `routeRecommendation` | `table` | No |  |
 | `subtitle` | `string` | No |  |
 | `title` | `string` | No |  |
@@ -534,20 +534,20 @@ local webcam = client:Webcam(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `coordinate` | `table` | No |  |
+| `coordinate` | `table` | No | Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84). |
 | `description` | `table` | No |  |
 | `display_type` | `string` | No |  |
-| `extent` | `string` | No |  |
+| `extent` | `string` | No | Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt. |
 | `footer` | `table` | No |  |
 | `future` | `boolean` | No |  |
-| `icon` | `string` | No |  |
+| `icon` | `string` | No | Sinnbild, das die Art des Eintrags beschreibt. |
 | `identifier` | `string` | No |  |
 | `imageurl` | `string` | No |  |
 | `isBlocked` | `string` | No |  |
 | `linkurl` | `string` | No |  |
 | `lorryParkingFeatureIcons` | `table` | No |  |
 | `operator` | `string` | No |  |
-| `point` | `string` | No |  |
+| `point` | `string` | No | Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84). |
 | `routeRecommendation` | `table` | No |  |
 | `subtitle` | `string` | No |  |
 | `title` | `string` | No |  |

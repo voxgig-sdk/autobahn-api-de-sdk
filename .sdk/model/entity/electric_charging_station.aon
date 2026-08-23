@@ -8,6 +8,7 @@ main: kit: entity: electric_charging_station: {
     {
       name: "coordinate"
       req: false
+      short: "Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84)."
       type: "`$OBJECT`"
     }
     {
@@ -23,6 +24,7 @@ main: kit: entity: electric_charging_station: {
     {
       name: "extent"
       req: false
+      short: "Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt."
       type: "`$STRING`"
     }
     {
@@ -38,6 +40,7 @@ main: kit: entity: electric_charging_station: {
     {
       name: "icon"
       req: false
+      short: "Sinnbild, das die Art des Eintrags beschreibt."
       type: "`$STRING`"
     }
     {
@@ -58,6 +61,7 @@ main: kit: entity: electric_charging_station: {
     {
       name: "point"
       req: false
+      short: "Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84)."
       type: "`$STRING`"
     }
     {

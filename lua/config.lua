@@ -7,6 +7,9 @@ local function make_config()
   return {
     main = {
       name = "AutobahnApiDe",
+      slug = "autobahn-api-de",
+      version = "0.0.1",
+      target = "lua",
     },
     feature = {
       ["test"] = {
@@ -189,6 +192,7 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "coordinate",
+            ["short"] = "Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84).",
             ["type"] = "`$OBJECT`",
           },
           {
@@ -201,6 +205,7 @@ local function make_config()
           },
           {
             ["name"] = "extent",
+            ["short"] = "Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt.",
             ["type"] = "`$STRING`",
           },
           {
@@ -213,6 +218,7 @@ local function make_config()
           },
           {
             ["name"] = "icon",
+            ["short"] = "Sinnbild, das die Art des Eintrags beschreibt.",
             ["type"] = "`$STRING`",
           },
           {
@@ -229,6 +235,7 @@ local function make_config()
           },
           {
             ["name"] = "point",
+            ["short"] = "Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84).",
             ["type"] = "`$STRING`",
           },
           {
@@ -371,6 +378,7 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "coordinate",
+            ["short"] = "Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84).",
             ["type"] = "`$OBJECT`",
           },
           {
@@ -383,6 +391,7 @@ local function make_config()
           },
           {
             ["name"] = "extent",
+            ["short"] = "Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt.",
             ["type"] = "`$STRING`",
           },
           {
@@ -395,6 +404,7 @@ local function make_config()
           },
           {
             ["name"] = "icon",
+            ["short"] = "Sinnbild, das die Art des Eintrags beschreibt.",
             ["type"] = "`$STRING`",
           },
           {
@@ -411,6 +421,7 @@ local function make_config()
           },
           {
             ["name"] = "point",
+            ["short"] = "Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84).",
             ["type"] = "`$STRING`",
           },
           {
@@ -829,6 +840,7 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "coordinate",
+            ["short"] = "Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84).",
             ["type"] = "`$OBJECT`",
           },
           {
@@ -841,6 +853,7 @@ local function make_config()
           },
           {
             ["name"] = "extent",
+            ["short"] = "Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt.",
             ["type"] = "`$STRING`",
           },
           {
@@ -853,6 +866,7 @@ local function make_config()
           },
           {
             ["name"] = "icon",
+            ["short"] = "Sinnbild, das die Art des Eintrags beschreibt.",
             ["type"] = "`$STRING`",
           },
           {
@@ -881,6 +895,7 @@ local function make_config()
           },
           {
             ["name"] = "point",
+            ["short"] = "Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84).",
             ["type"] = "`$STRING`",
           },
           {

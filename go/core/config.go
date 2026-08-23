@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "AutobahnApiDe",
+			"slug": "autobahn-api-de",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -193,6 +196,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "coordinate",
+						"short": "Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84).",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
@@ -205,6 +209,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "extent",
+						"short": "Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -217,6 +222,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "icon",
+						"short": "Sinnbild, das die Art des Eintrags beschreibt.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -233,6 +239,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "point",
+						"short": "Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -375,6 +382,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "coordinate",
+						"short": "Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84).",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
@@ -387,6 +395,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "extent",
+						"short": "Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -399,6 +408,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "icon",
+						"short": "Sinnbild, das die Art des Eintrags beschreibt.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -415,6 +425,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "point",
+						"short": "Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -833,6 +844,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "coordinate",
+						"short": "Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84).",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
@@ -845,6 +857,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "extent",
+						"short": "Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -857,6 +870,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "icon",
+						"short": "Sinnbild, das die Art des Eintrags beschreibt.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -885,6 +899,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "point",
+						"short": "Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84).",
 						"type": "`$STRING`",
 					},
 					map[string]any{

@@ -199,17 +199,17 @@ fmt.Println(electricChargingStation.GetName()) // "electric_charging_station"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `coordinate` | `map[string]any` | No |  |
+| `coordinate` | `map[string]any` | No | Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84). |
 | `description` | `[]any` | No |  |
 | `display_type` | `string` | No |  |
-| `extent` | `string` | No |  |
+| `extent` | `string` | No | Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt. |
 | `footer` | `[]any` | No |  |
 | `future` | `bool` | No |  |
-| `icon` | `string` | No |  |
+| `icon` | `string` | No | Sinnbild, das die Art des Eintrags beschreibt. |
 | `identifier` | `string` | No |  |
 | `isBlocked` | `string` | No |  |
 | `lorryParkingFeatureIcons` | `[]any` | No |  |
-| `point` | `string` | No |  |
+| `point` | `string` | No | Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84). |
 | `routeRecommendation` | `[]any` | No |  |
 | `subtitle` | `string` | No |  |
 | `title` | `string` | No |  |
@@ -326,17 +326,17 @@ fmt.Println(parkingLorry.GetName()) // "parking_lorry"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `coordinate` | `map[string]any` | No |  |
+| `coordinate` | `map[string]any` | No | Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84). |
 | `description` | `[]any` | No |  |
 | `display_type` | `string` | No |  |
-| `extent` | `string` | No |  |
+| `extent` | `string` | No | Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt. |
 | `footer` | `[]any` | No |  |
 | `future` | `bool` | No |  |
-| `icon` | `string` | No |  |
+| `icon` | `string` | No | Sinnbild, das die Art des Eintrags beschreibt. |
 | `identifier` | `string` | No |  |
 | `isBlocked` | `string` | No |  |
 | `lorryParkingFeatureIcons` | `[]any` | No |  |
-| `point` | `string` | No |  |
+| `point` | `string` | No | Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84). |
 | `routeRecommendation` | `[]any` | No |  |
 | `subtitle` | `string` | No |  |
 | `title` | `string` | No |  |
@@ -556,20 +556,20 @@ fmt.Println(webcam.GetName()) // "webcam"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `coordinate` | `map[string]any` | No |  |
+| `coordinate` | `map[string]any` | No | Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84). |
 | `description` | `[]any` | No |  |
 | `display_type` | `string` | No |  |
-| `extent` | `string` | No |  |
+| `extent` | `string` | No | Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt. |
 | `footer` | `[]any` | No |  |
 | `future` | `bool` | No |  |
-| `icon` | `string` | No |  |
+| `icon` | `string` | No | Sinnbild, das die Art des Eintrags beschreibt. |
 | `identifier` | `string` | No |  |
 | `imageurl` | `string` | No |  |
 | `isBlocked` | `string` | No |  |
 | `linkurl` | `string` | No |  |
 | `lorryParkingFeatureIcons` | `[]any` | No |  |
 | `operator` | `string` | No |  |
-| `point` | `string` | No |  |
+| `point` | `string` | No | Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84). |
 | `routeRecommendation` | `[]any` | No |  |
 | `subtitle` | `string` | No |  |
 | `title` | `string` | No |  |

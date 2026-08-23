@@ -1,9 +1,0 @@
-# Flows
-
-@"BasicClosureFlow.aontu"
-@"BasicElectricChargingStationFlow.aontu"
-@"BasicListAutobahnenFlow.aontu"
-@"BasicParkingLorryFlow.aontu"
-@"BasicRoadworkFlow.aontu"
-@"BasicWarningFlow.aontu"
-@"BasicWebcamFlow.aontu"

@@ -19,6 +19,9 @@ module AutobahnApiDeConfig
     {
       "main" => {
         "name" => "AutobahnApiDe",
+        "slug" => "autobahn-api-de",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {
@@ -201,6 +204,7 @@ module AutobahnApiDeConfig
           "fields" => [
             {
               "name" => "coordinate",
+              "short" => "Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84).",
               "type" => "`$OBJECT`",
             },
             {
@@ -213,6 +217,7 @@ module AutobahnApiDeConfig
             },
             {
               "name" => "extent",
+              "short" => "Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt.",
               "type" => "`$STRING`",
             },
             {
@@ -225,6 +230,7 @@ module AutobahnApiDeConfig
             },
             {
               "name" => "icon",
+              "short" => "Sinnbild, das die Art des Eintrags beschreibt.",
               "type" => "`$STRING`",
             },
             {
@@ -241,6 +247,7 @@ module AutobahnApiDeConfig
             },
             {
               "name" => "point",
+              "short" => "Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84).",
               "type" => "`$STRING`",
             },
             {
@@ -383,6 +390,7 @@ module AutobahnApiDeConfig
           "fields" => [
             {
               "name" => "coordinate",
+              "short" => "Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84).",
               "type" => "`$OBJECT`",
             },
             {
@@ -395,6 +403,7 @@ module AutobahnApiDeConfig
             },
             {
               "name" => "extent",
+              "short" => "Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt.",
               "type" => "`$STRING`",
             },
             {
@@ -407,6 +416,7 @@ module AutobahnApiDeConfig
             },
             {
               "name" => "icon",
+              "short" => "Sinnbild, das die Art des Eintrags beschreibt.",
               "type" => "`$STRING`",
             },
             {
@@ -423,6 +433,7 @@ module AutobahnApiDeConfig
             },
             {
               "name" => "point",
+              "short" => "Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84).",
               "type" => "`$STRING`",
             },
             {
@@ -841,6 +852,7 @@ module AutobahnApiDeConfig
           "fields" => [
             {
               "name" => "coordinate",
+              "short" => "Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84).",
               "type" => "`$OBJECT`",
             },
             {
@@ -853,6 +865,7 @@ module AutobahnApiDeConfig
             },
             {
               "name" => "extent",
+              "short" => "Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt.",
               "type" => "`$STRING`",
             },
             {
@@ -865,6 +878,7 @@ module AutobahnApiDeConfig
             },
             {
               "name" => "icon",
+              "short" => "Sinnbild, das die Art des Eintrags beschreibt.",
               "type" => "`$STRING`",
             },
             {
@@ -893,6 +907,7 @@ module AutobahnApiDeConfig
             },
             {
               "name" => "point",
+              "short" => "Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84).",
               "type" => "`$STRING`",
             },
             {

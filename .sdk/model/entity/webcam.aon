@@ -1,6 +1,6 @@
-# Entity: parking_lorry
+# Entity: webcam
 
-main: kit: entity: parking_lorry: {
+main: kit: entity: webcam: {
 
   alias: field: {}
 
@@ -8,6 +8,7 @@ main: kit: entity: parking_lorry: {
     {
       name: "coordinate"
       req: false
+      short: "Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84)."
       type: "`$OBJECT`"
     }
     {
@@ -23,6 +24,7 @@ main: kit: entity: parking_lorry: {
     {
       name: "extent"
       req: false
+      short: "Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt."
       type: "`$STRING`"
     }
     {
@@ -38,10 +40,16 @@ main: kit: entity: parking_lorry: {
     {
       name: "icon"
       req: false
+      short: "Sinnbild, das die Art des Eintrags beschreibt."
       type: "`$STRING`"
     }
     {
       name: "identifier"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "imageurl"
       req: false
       type: "`$STRING`"
     }
@@ -51,13 +59,24 @@ main: kit: entity: parking_lorry: {
       type: "`$STRING`"
     }
     {
+      name: "linkurl"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "lorryParkingFeatureIcons"
       req: false
       type: "`$ARRAY`"
     }
     {
+      name: "operator"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "point"
       req: false
+      short: "Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84)."
       type: "`$STRING`"
     }
     {
@@ -77,7 +96,7 @@ main: kit: entity: parking_lorry: {
     }
   ]
 
-  name: "parking_lorry"
+  name: "webcam"
   op: {
     list: {
       name: "list"
@@ -96,11 +115,11 @@ main: kit: entity: parking_lorry: {
             ]
           }
           method: "GET"
-          orig: "/{roadId}/services/parking_lorry"
+          orig: "/{roadId}/services/webcam"
           parts: [
             "{road_id}"
             "services"
-            "parking_lorry"
+            "webcam"
           ]
           rename: {
             param: {
@@ -114,7 +133,7 @@ main: kit: entity: parking_lorry: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body.parking_lorry`"
+            res: "`body.webcam`"
           }
         }
       ]
@@ -126,25 +145,25 @@ main: kit: entity: parking_lorry: {
           args: {
             params: [
               {
-                example: "UEFSS0lOR19fbWRtLmxvcnJ5LnBhcmtpbmdfX0RFLVNILTAwMTEwOA=="
+                example: "V0VCQ0FNX19OUldfU2lsYS1TaWduYWxiYXVfMTAxMDgxNDE3MjM4ODYzOTk5MTU="
                 kind: "param"
                 name: "id"
-                orig: "lorry_id"
+                orig: "webcam_id"
                 reqd: true
                 type: "`$STRING`"
               }
             ]
           }
           method: "GET"
-          orig: "/details/parking_lorry/{lorryId}"
+          orig: "/details/webcam/{webcamId}"
           parts: [
             "details"
-            "parking_lorry"
+            "webcam"
             "{id}"
           ]
           rename: {
             param: {
-              lorryId: "id"
+              webcamId: "id"
             }
           }
           select: {

@@ -283,17 +283,17 @@ API path: `/{roadId}/services/closure`
 
 | Field | Description |
 | --- | --- |
-| `coordinate` |  |
+| `coordinate` | Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84). |
 | `description` |  |
 | `display_type` |  |
-| `extent` |  |
+| `extent` | Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt. |
 | `footer` |  |
 | `future` |  |
-| `icon` |  |
+| `icon` | Sinnbild, das die Art des Eintrags beschreibt. |
 | `identifier` |  |
 | `isBlocked` |  |
 | `lorryParkingFeatureIcons` |  |
-| `point` |  |
+| `point` | Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84). |
 | `routeRecommendation` |  |
 | `subtitle` |  |
 | `title` |  |
@@ -316,17 +316,17 @@ API path: `/`
 
 | Field | Description |
 | --- | --- |
-| `coordinate` |  |
+| `coordinate` | Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84). |
 | `description` |  |
 | `display_type` |  |
-| `extent` |  |
+| `extent` | Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt. |
 | `footer` |  |
 | `future` |  |
-| `icon` |  |
+| `icon` | Sinnbild, das die Art des Eintrags beschreibt. |
 | `identifier` |  |
 | `isBlocked` |  |
 | `lorryParkingFeatureIcons` |  |
-| `point` |  |
+| `point` | Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84). |
 | `routeRecommendation` |  |
 | `subtitle` |  |
 | `title` |  |
@@ -387,20 +387,20 @@ API path: `/{roadId}/services/warning`
 
 | Field | Description |
 | --- | --- |
-| `coordinate` |  |
+| `coordinate` | Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84). |
 | `description` |  |
 | `display_type` |  |
-| `extent` |  |
+| `extent` | Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt. |
 | `footer` |  |
 | `future` |  |
-| `icon` |  |
+| `icon` | Sinnbild, das die Art des Eintrags beschreibt. |
 | `identifier` |  |
 | `imageurl` |  |
 | `isBlocked` |  |
 | `linkurl` |  |
 | `lorryParkingFeatureIcons` |  |
 | `operator` |  |
-| `point` |  |
+| `point` | Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84). |
 | `routeRecommendation` |  |
 | `subtitle` |  |
 | `title` |  |
@@ -475,17 +475,17 @@ Create an instance: `electric_charging_station = client.ElectricChargingStation`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `coordinate` | `Hash` |  |
+| `coordinate` | `Hash` | Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84). |
 | `description` | `Array` |  |
 | `display_type` | `String` |  |
-| `extent` | `String` |  |
+| `extent` | `String` | Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt. |
 | `footer` | `Array` |  |
 | `future` | `Boolean` |  |
-| `icon` | `String` |  |
+| `icon` | `String` | Sinnbild, das die Art des Eintrags beschreibt. |
 | `identifier` | `String` |  |
 | `isBlocked` | `String` |  |
 | `lorryParkingFeatureIcons` | `Array` |  |
-| `point` | `String` |  |
+| `point` | `String` | Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84). |
 | `routeRecommendation` | `Array` |  |
 | `subtitle` | `String` |  |
 | `title` | `String` |  |
@@ -544,17 +544,17 @@ Create an instance: `parking_lorry = client.ParkingLorry`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `coordinate` | `Hash` |  |
+| `coordinate` | `Hash` | Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84). |
 | `description` | `Array` |  |
 | `display_type` | `String` |  |
-| `extent` | `String` |  |
+| `extent` | `String` | Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt. |
 | `footer` | `Array` |  |
 | `future` | `Boolean` |  |
-| `icon` | `String` |  |
+| `icon` | `String` | Sinnbild, das die Art des Eintrags beschreibt. |
 | `identifier` | `String` |  |
 | `isBlocked` | `String` |  |
 | `lorryParkingFeatureIcons` | `Array` |  |
-| `point` | `String` |  |
+| `point` | `String` | Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84). |
 | `routeRecommendation` | `Array` |  |
 | `subtitle` | `String` |  |
 | `title` | `String` |  |
@@ -681,20 +681,20 @@ Create an instance: `webcam = client.Webcam`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `coordinate` | `Hash` |  |
+| `coordinate` | `Hash` | Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84). |
 | `description` | `Array` |  |
 | `display_type` | `String` |  |
-| `extent` | `String` |  |
+| `extent` | `String` | Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt. |
 | `footer` | `Array` |  |
 | `future` | `Boolean` |  |
-| `icon` | `String` |  |
+| `icon` | `String` | Sinnbild, das die Art des Eintrags beschreibt. |
 | `identifier` | `String` |  |
 | `imageurl` | `String` |  |
 | `isBlocked` | `String` |  |
 | `linkurl` | `String` |  |
 | `lorryParkingFeatureIcons` | `Array` |  |
 | `operator` | `String` |  |
-| `point` | `String` |  |
+| `point` | `String` | Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84). |
 | `routeRecommendation` | `Array` |  |
 | `subtitle` | `String` |  |
 | `title` | `String` |  |

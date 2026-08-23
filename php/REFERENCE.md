@@ -190,17 +190,17 @@ $electric_charging_station = $client->ElectricChargingStation();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `coordinate` | `array` | No |  |
+| `coordinate` | `array` | No | Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84). |
 | `description` | `array` | No |  |
 | `display_type` | `string` | No |  |
-| `extent` | `string` | No |  |
+| `extent` | `string` | No | Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt. |
 | `footer` | `array` | No |  |
 | `future` | `bool` | No |  |
-| `icon` | `string` | No |  |
+| `icon` | `string` | No | Sinnbild, das die Art des Eintrags beschreibt. |
 | `identifier` | `string` | No |  |
 | `isBlocked` | `string` | No |  |
 | `lorryParkingFeatureIcons` | `array` | No |  |
-| `point` | `string` | No |  |
+| `point` | `string` | No | Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84). |
 | `routeRecommendation` | `array` | No |  |
 | `subtitle` | `string` | No |  |
 | `title` | `string` | No |  |
@@ -315,17 +315,17 @@ $parking_lorry = $client->ParkingLorry();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `coordinate` | `array` | No |  |
+| `coordinate` | `array` | No | Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84). |
 | `description` | `array` | No |  |
 | `display_type` | `string` | No |  |
-| `extent` | `string` | No |  |
+| `extent` | `string` | No | Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt. |
 | `footer` | `array` | No |  |
 | `future` | `bool` | No |  |
-| `icon` | `string` | No |  |
+| `icon` | `string` | No | Sinnbild, das die Art des Eintrags beschreibt. |
 | `identifier` | `string` | No |  |
 | `isBlocked` | `string` | No |  |
 | `lorryParkingFeatureIcons` | `array` | No |  |
-| `point` | `string` | No |  |
+| `point` | `string` | No | Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84). |
 | `routeRecommendation` | `array` | No |  |
 | `subtitle` | `string` | No |  |
 | `title` | `string` | No |  |
@@ -536,20 +536,20 @@ $webcam = $client->Webcam();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `coordinate` | `array` | No |  |
+| `coordinate` | `array` | No | Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84). |
 | `description` | `array` | No |  |
 | `display_type` | `string` | No |  |
-| `extent` | `string` | No |  |
+| `extent` | `string` | No | Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt. |
 | `footer` | `array` | No |  |
 | `future` | `bool` | No |  |
-| `icon` | `string` | No |  |
+| `icon` | `string` | No | Sinnbild, das die Art des Eintrags beschreibt. |
 | `identifier` | `string` | No |  |
 | `imageurl` | `string` | No |  |
 | `isBlocked` | `string` | No |  |
 | `linkurl` | `string` | No |  |
 | `lorryParkingFeatureIcons` | `array` | No |  |
 | `operator` | `string` | No |  |
-| `point` | `string` | No |  |
+| `point` | `string` | No | Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84). |
 | `routeRecommendation` | `array` | No |  |
 | `subtitle` | `string` | No |  |
 | `title` | `string` | No |  |

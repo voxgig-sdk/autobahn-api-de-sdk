@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -332,17 +332,17 @@ API path: `/{roadId}/services/closure`
 
 | Field | Description |
 | --- | --- |
-| `coordinate` |  |
+| `coordinate` | Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84). |
 | `description` |  |
 | `display_type` |  |
-| `extent` |  |
+| `extent` | Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt. |
 | `footer` |  |
 | `future` |  |
-| `icon` |  |
+| `icon` | Sinnbild, das die Art des Eintrags beschreibt. |
 | `identifier` |  |
 | `isBlocked` |  |
 | `lorryParkingFeatureIcons` |  |
-| `point` |  |
+| `point` | Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84). |
 | `routeRecommendation` |  |
 | `subtitle` |  |
 | `title` |  |
@@ -365,17 +365,17 @@ API path: `/`
 
 | Field | Description |
 | --- | --- |
-| `coordinate` |  |
+| `coordinate` | Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84). |
 | `description` |  |
 | `display_type` |  |
-| `extent` |  |
+| `extent` | Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt. |
 | `footer` |  |
 | `future` |  |
-| `icon` |  |
+| `icon` | Sinnbild, das die Art des Eintrags beschreibt. |
 | `identifier` |  |
 | `isBlocked` |  |
 | `lorryParkingFeatureIcons` |  |
-| `point` |  |
+| `point` | Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84). |
 | `routeRecommendation` |  |
 | `subtitle` |  |
 | `title` |  |
@@ -436,20 +436,20 @@ API path: `/{roadId}/services/warning`
 
 | Field | Description |
 | --- | --- |
-| `coordinate` |  |
+| `coordinate` | Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84). |
 | `description` |  |
 | `display_type` |  |
-| `extent` |  |
+| `extent` | Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt. |
 | `footer` |  |
 | `future` |  |
-| `icon` |  |
+| `icon` | Sinnbild, das die Art des Eintrags beschreibt. |
 | `identifier` |  |
 | `imageurl` |  |
 | `isBlocked` |  |
 | `linkurl` |  |
 | `lorryParkingFeatureIcons` |  |
 | `operator` |  |
-| `point` |  |
+| `point` | Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84). |
 | `routeRecommendation` |  |
 | `subtitle` |  |
 | `title` |  |
@@ -522,17 +522,17 @@ Create an instance: `const electric_charging_station = client.ElectricChargingSt
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `coordinate` | `Record<string, any>` |  |
+| `coordinate` | `Record<string, any>` | Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84). |
 | `description` | `any[]` |  |
 | `display_type` | `string` |  |
-| `extent` | `string` |  |
+| `extent` | `string` | Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt. |
 | `footer` | `any[]` |  |
 | `future` | `boolean` |  |
-| `icon` | `string` |  |
+| `icon` | `string` | Sinnbild, das die Art des Eintrags beschreibt. |
 | `identifier` | `string` |  |
 | `isBlocked` | `string` |  |
 | `lorryParkingFeatureIcons` | `any[]` |  |
-| `point` | `string` |  |
+| `point` | `string` | Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84). |
 | `routeRecommendation` | `any[]` |  |
 | `subtitle` | `string` |  |
 | `title` | `string` |  |
@@ -588,17 +588,17 @@ Create an instance: `const parking_lorry = client.ParkingLorry()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `coordinate` | `Record<string, any>` |  |
+| `coordinate` | `Record<string, any>` | Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84). |
 | `description` | `any[]` |  |
 | `display_type` | `string` |  |
-| `extent` | `string` |  |
+| `extent` | `string` | Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt. |
 | `footer` | `any[]` |  |
 | `future` | `boolean` |  |
-| `icon` | `string` |  |
+| `icon` | `string` | Sinnbild, das die Art des Eintrags beschreibt. |
 | `identifier` | `string` |  |
 | `isBlocked` | `string` |  |
 | `lorryParkingFeatureIcons` | `any[]` |  |
-| `point` | `string` |  |
+| `point` | `string` | Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84). |
 | `routeRecommendation` | `any[]` |  |
 | `subtitle` | `string` |  |
 | `title` | `string` |  |
@@ -719,20 +719,20 @@ Create an instance: `const webcam = client.Webcam()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `coordinate` | `Record<string, any>` |  |
+| `coordinate` | `Record<string, any>` | Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84). |
 | `description` | `any[]` |  |
 | `display_type` | `string` |  |
-| `extent` | `string` |  |
+| `extent` | `string` | Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt. |
 | `footer` | `any[]` |  |
 | `future` | `boolean` |  |
-| `icon` | `string` |  |
+| `icon` | `string` | Sinnbild, das die Art des Eintrags beschreibt. |
 | `identifier` | `string` |  |
 | `imageurl` | `string` |  |
 | `isBlocked` | `string` |  |
 | `linkurl` | `string` |  |
 | `lorryParkingFeatureIcons` | `any[]` |  |
 | `operator` | `string` |  |
-| `point` | `string` |  |
+| `point` | `string` | Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84). |
 | `routeRecommendation` | `any[]` |  |
 | `subtitle` | `string` |  |
 | `title` | `string` |  |

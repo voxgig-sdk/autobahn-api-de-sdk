@@ -1,6 +1,6 @@
-# Entity: webcam
+# Entity: parking_lorry
 
-main: kit: entity: webcam: {
+main: kit: entity: parking_lorry: {
 
   alias: field: {}
 
@@ -8,6 +8,7 @@ main: kit: entity: webcam: {
     {
       name: "coordinate"
       req: false
+      short: "Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84)."
       type: "`$OBJECT`"
     }
     {
@@ -23,6 +24,7 @@ main: kit: entity: webcam: {
     {
       name: "extent"
       req: false
+      short: "Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt."
       type: "`$STRING`"
     }
     {
@@ -38,15 +40,11 @@ main: kit: entity: webcam: {
     {
       name: "icon"
       req: false
+      short: "Sinnbild, das die Art des Eintrags beschreibt."
       type: "`$STRING`"
     }
     {
       name: "identifier"
-      req: false
-      type: "`$STRING`"
-    }
-    {
-      name: "imageurl"
       req: false
       type: "`$STRING`"
     }
@@ -56,23 +54,14 @@ main: kit: entity: webcam: {
       type: "`$STRING`"
     }
     {
-      name: "linkurl"
-      req: false
-      type: "`$STRING`"
-    }
-    {
       name: "lorryParkingFeatureIcons"
       req: false
       type: "`$ARRAY`"
     }
     {
-      name: "operator"
-      req: false
-      type: "`$STRING`"
-    }
-    {
       name: "point"
       req: false
+      short: "Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84)."
       type: "`$STRING`"
     }
     {
@@ -92,7 +81,7 @@ main: kit: entity: webcam: {
     }
   ]
 
-  name: "webcam"
+  name: "parking_lorry"
   op: {
     list: {
       name: "list"
@@ -111,11 +100,11 @@ main: kit: entity: webcam: {
             ]
           }
           method: "GET"
-          orig: "/{roadId}/services/webcam"
+          orig: "/{roadId}/services/parking_lorry"
           parts: [
             "{road_id}"
             "services"
-            "webcam"
+            "parking_lorry"
           ]
           rename: {
             param: {
@@ -129,7 +118,7 @@ main: kit: entity: webcam: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body.webcam`"
+            res: "`body.parking_lorry`"
           }
         }
       ]
@@ -141,25 +130,25 @@ main: kit: entity: webcam: {
           args: {
             params: [
               {
-                example: "V0VCQ0FNX19OUldfU2lsYS1TaWduYWxiYXVfMTAxMDgxNDE3MjM4ODYzOTk5MTU="
+                example: "UEFSS0lOR19fbWRtLmxvcnJ5LnBhcmtpbmdfX0RFLVNILTAwMTEwOA=="
                 kind: "param"
                 name: "id"
-                orig: "webcam_id"
+                orig: "lorry_id"
                 reqd: true
                 type: "`$STRING`"
               }
             ]
           }
           method: "GET"
-          orig: "/details/webcam/{webcamId}"
+          orig: "/details/parking_lorry/{lorryId}"
           parts: [
             "details"
-            "webcam"
+            "parking_lorry"
             "{id}"
           ]
           rename: {
             param: {
-              webcamId: "id"
+              lorryId: "id"
             }
           }
           select: {

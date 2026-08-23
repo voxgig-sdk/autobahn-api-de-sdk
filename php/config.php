@@ -33,6 +33,9 @@ class AutobahnApiDeConfig
         return [
             "main" => [
                 "name" => "AutobahnApiDe",
+                "slug" => "autobahn-api-de",
+                "version" => "0.0.1",
+                "target" => "php",
             ],
             "feature" => [
                 "test" => [
@@ -215,6 +218,7 @@ class AutobahnApiDeConfig
           'fields' => [
             [
               'name' => 'coordinate',
+              'short' => 'Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84).',
               'type' => '`$OBJECT`',
             ],
             [
@@ -227,6 +231,7 @@ class AutobahnApiDeConfig
             ],
             [
               'name' => 'extent',
+              'short' => 'Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt.',
               'type' => '`$STRING`',
             ],
             [
@@ -239,6 +244,7 @@ class AutobahnApiDeConfig
             ],
             [
               'name' => 'icon',
+              'short' => 'Sinnbild, das die Art des Eintrags beschreibt.',
               'type' => '`$STRING`',
             ],
             [
@@ -255,6 +261,7 @@ class AutobahnApiDeConfig
             ],
             [
               'name' => 'point',
+              'short' => 'Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84).',
               'type' => '`$STRING`',
             ],
             [
@@ -397,6 +404,7 @@ class AutobahnApiDeConfig
           'fields' => [
             [
               'name' => 'coordinate',
+              'short' => 'Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84).',
               'type' => '`$OBJECT`',
             ],
             [
@@ -409,6 +417,7 @@ class AutobahnApiDeConfig
             ],
             [
               'name' => 'extent',
+              'short' => 'Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt.',
               'type' => '`$STRING`',
             ],
             [
@@ -421,6 +430,7 @@ class AutobahnApiDeConfig
             ],
             [
               'name' => 'icon',
+              'short' => 'Sinnbild, das die Art des Eintrags beschreibt.',
               'type' => '`$STRING`',
             ],
             [
@@ -437,6 +447,7 @@ class AutobahnApiDeConfig
             ],
             [
               'name' => 'point',
+              'short' => 'Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84).',
               'type' => '`$STRING`',
             ],
             [
@@ -855,6 +866,7 @@ class AutobahnApiDeConfig
           'fields' => [
             [
               'name' => 'coordinate',
+              'short' => 'Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84).',
               'type' => '`$OBJECT`',
             ],
             [
@@ -867,6 +879,7 @@ class AutobahnApiDeConfig
             ],
             [
               'name' => 'extent',
+              'short' => 'Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt.',
               'type' => '`$STRING`',
             ],
             [
@@ -879,6 +892,7 @@ class AutobahnApiDeConfig
             ],
             [
               'name' => 'icon',
+              'short' => 'Sinnbild, das die Art des Eintrags beschreibt.',
               'type' => '`$STRING`',
             ],
             [
@@ -907,6 +921,7 @@ class AutobahnApiDeConfig
             ],
             [
               'name' => 'point',
+              'short' => 'Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84).',
               'type' => '`$STRING`',
             ],
             [

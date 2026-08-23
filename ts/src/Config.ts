@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(this: any, fn: string) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'AutobahnApiDe',
+        slug: "autobahn-api-de",
+    version: "0.0.1",
+    target: "ts",
+
   }
 
 
@@ -228,6 +239,7 @@ class Config {
       "fields": [
         {
           "name": "coordinate",
+          "short": "Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84).",
           "type": "`$OBJECT`"
         },
         {
@@ -240,6 +252,7 @@ class Config {
         },
         {
           "name": "extent",
+          "short": "Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt.",
           "type": "`$STRING`"
         },
         {
@@ -252,6 +265,7 @@ class Config {
         },
         {
           "name": "icon",
+          "short": "Sinnbild, das die Art des Eintrags beschreibt.",
           "type": "`$STRING`"
         },
         {
@@ -268,6 +282,7 @@ class Config {
         },
         {
           "name": "point",
+          "short": "Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84).",
           "type": "`$STRING`"
         },
         {
@@ -410,6 +425,7 @@ class Config {
       "fields": [
         {
           "name": "coordinate",
+          "short": "Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84).",
           "type": "`$OBJECT`"
         },
         {
@@ -422,6 +438,7 @@ class Config {
         },
         {
           "name": "extent",
+          "short": "Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt.",
           "type": "`$STRING`"
         },
         {
@@ -434,6 +451,7 @@ class Config {
         },
         {
           "name": "icon",
+          "short": "Sinnbild, das die Art des Eintrags beschreibt.",
           "type": "`$STRING`"
         },
         {
@@ -450,6 +468,7 @@ class Config {
         },
         {
           "name": "point",
+          "short": "Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84).",
           "type": "`$STRING`"
         },
         {
@@ -868,6 +887,7 @@ class Config {
       "fields": [
         {
           "name": "coordinate",
+          "short": "Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84).",
           "type": "`$OBJECT`"
         },
         {
@@ -880,6 +900,7 @@ class Config {
         },
         {
           "name": "extent",
+          "short": "Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt.",
           "type": "`$STRING`"
         },
         {
@@ -892,6 +913,7 @@ class Config {
         },
         {
           "name": "icon",
+          "short": "Sinnbild, das die Art des Eintrags beschreibt.",
           "type": "`$STRING`"
         },
         {
@@ -920,6 +942,7 @@ class Config {
         },
         {
           "name": "point",
+          "short": "Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84).",
           "type": "`$STRING`"
         },
         {
