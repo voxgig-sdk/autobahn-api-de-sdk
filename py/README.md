@@ -269,6 +269,7 @@ On error, `ok` is `False` and `err` contains the error value.
 | `footer` |  |
 | `future` |  |
 | `icon` |  |
+| `id` |  |
 | `identifier` |  |
 | `isBlocked` |  |
 | `lorryParkingFeatureIcons` |  |
@@ -293,6 +294,7 @@ API path: `/{roadId}/services/closure`
 | `footer` |  |
 | `future` |  |
 | `icon` | Sinnbild, das die Art des Eintrags beschreibt. |
+| `id` |  |
 | `identifier` |  |
 | `isBlocked` |  |
 | `lorryParkingFeatureIcons` |  |
@@ -326,6 +328,7 @@ API path: `/`
 | `footer` |  |
 | `future` |  |
 | `icon` | Sinnbild, das die Art des Eintrags beschreibt. |
+| `id` |  |
 | `identifier` |  |
 | `isBlocked` |  |
 | `lorryParkingFeatureIcons` |  |
@@ -349,6 +352,7 @@ API path: `/{roadId}/services/parking_lorry`
 | `footer` |  |
 | `future` |  |
 | `icon` |  |
+| `id` |  |
 | `identifier` |  |
 | `isBlocked` |  |
 | `lorryParkingFeatureIcons` |  |
@@ -373,6 +377,7 @@ API path: `/{roadId}/services/roadworks`
 | `footer` |  |
 | `future` |  |
 | `icon` |  |
+| `id` |  |
 | `identifier` |  |
 | `isBlocked` |  |
 | `lorryParkingFeatureIcons` |  |
@@ -397,6 +402,7 @@ API path: `/{roadId}/services/warning`
 | `footer` |  |
 | `future` |  |
 | `icon` | Sinnbild, das die Art des Eintrags beschreibt. |
+| `id` |  |
 | `identifier` |  |
 | `imageurl` |  |
 | `isBlocked` |  |
@@ -439,6 +445,7 @@ Create an instance: `closure = client.Closure()`
 | `footer` | `list` |  |
 | `future` | `bool` |  |
 | `icon` | `str` |  |
+| `id` | `str` |  |
 | `identifier` | `str` |  |
 | `isBlocked` | `str` |  |
 | `lorryParkingFeatureIcons` | `list` |  |
@@ -483,6 +490,7 @@ Create an instance: `electric_charging_station = client.ElectricChargingStation(
 | `footer` | `list` |  |
 | `future` | `bool` |  |
 | `icon` | `str` | Sinnbild, das die Art des Eintrags beschreibt. |
+| `id` | `str` |  |
 | `identifier` | `str` |  |
 | `isBlocked` | `str` |  |
 | `lorryParkingFeatureIcons` | `list` |  |
@@ -549,6 +557,7 @@ Create an instance: `parking_lorry = client.ParkingLorry()`
 | `footer` | `list` |  |
 | `future` | `bool` |  |
 | `icon` | `str` | Sinnbild, das die Art des Eintrags beschreibt. |
+| `id` | `str` |  |
 | `identifier` | `str` |  |
 | `isBlocked` | `str` |  |
 | `lorryParkingFeatureIcons` | `list` |  |
@@ -592,6 +601,7 @@ Create an instance: `roadwork = client.Roadwork()`
 | `footer` | `list` |  |
 | `future` | `bool` |  |
 | `icon` | `str` |  |
+| `id` | `str` |  |
 | `identifier` | `str` |  |
 | `isBlocked` | `str` |  |
 | `lorryParkingFeatureIcons` | `list` |  |
@@ -636,6 +646,7 @@ Create an instance: `warning = client.Warning()`
 | `footer` | `list` |  |
 | `future` | `bool` |  |
 | `icon` | `str` |  |
+| `id` | `str` |  |
 | `identifier` | `str` |  |
 | `isBlocked` | `str` |  |
 | `lorryParkingFeatureIcons` | `list` |  |
@@ -680,6 +691,7 @@ Create an instance: `webcam = client.Webcam()`
 | `footer` | `list` |  |
 | `future` | `bool` |  |
 | `icon` | `str` | Sinnbild, das die Art des Eintrags beschreibt. |
+| `id` | `str` |  |
 | `identifier` | `str` |  |
 | `imageurl` | `str` |  |
 | `isBlocked` | `str` |  |

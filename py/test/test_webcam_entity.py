@@ -90,9 +90,13 @@ class TestWebcamEntity:
         assert isinstance(webcam_ref01_list_result, list)
 
         # LOAD
-        webcam_ref01_match_dt0 = {}
+        webcam_ref01_match_dt0 = {
+            "id": webcam_ref01_data["id"],
+        }
         webcam_ref01_data_dt0_loaded = webcam_ref01_ent.load(webcam_ref01_match_dt0, None)
-        assert webcam_ref01_data_dt0_loaded is not None
+        webcam_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(webcam_ref01_data_dt0_loaded))
+        assert webcam_ref01_data_dt0_load_result is not None
+        assert webcam_ref01_data_dt0_load_result["id"] == webcam_ref01_data["id"]
 
 
 

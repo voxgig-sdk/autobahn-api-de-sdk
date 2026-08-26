@@ -31,6 +31,9 @@
 # @!attribute [rw] icon
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] identifier
 #   @return [String, nil]
 #
@@ -62,6 +65,7 @@ Closure = Struct.new(
   :footer,
   :future,
   :icon,
+  :id,
   :identifier,
   :isBlocked,
   :lorryParkingFeatureIcons,
@@ -114,6 +118,9 @@ ClosureListMatch = Struct.new(
 # @!attribute [rw] icon
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] identifier
 #   @return [String, nil]
 #
@@ -142,6 +149,7 @@ ElectricChargingStation = Struct.new(
   :footer,
   :future,
   :icon,
+  :id,
   :identifier,
   :isBlocked,
   :lorryParkingFeatureIcons,
@@ -211,6 +219,9 @@ ListAutobahnenListMatch = Struct.new(
 # @!attribute [rw] icon
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] identifier
 #   @return [String, nil]
 #
@@ -239,6 +250,7 @@ ParkingLorry = Struct.new(
   :footer,
   :future,
   :icon,
+  :id,
   :identifier,
   :isBlocked,
   :lorryParkingFeatureIcons,
@@ -290,6 +302,9 @@ ParkingLorryListMatch = Struct.new(
 # @!attribute [rw] icon
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] identifier
 #   @return [String, nil]
 #
@@ -321,6 +336,7 @@ Roadwork = Struct.new(
   :footer,
   :future,
   :icon,
+  :id,
   :identifier,
   :isBlocked,
   :lorryParkingFeatureIcons,
@@ -373,6 +389,9 @@ RoadworkListMatch = Struct.new(
 # @!attribute [rw] icon
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] identifier
 #   @return [String, nil]
 #
@@ -404,6 +423,7 @@ WarningType = Struct.new(
   :footer,
   :future,
   :icon,
+  :id,
   :identifier,
   :isBlocked,
   :lorryParkingFeatureIcons,
@@ -456,6 +476,9 @@ WarningListMatch = Struct.new(
 # @!attribute [rw] icon
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] identifier
 #   @return [String, nil]
 #
@@ -493,6 +516,7 @@ Webcam = Struct.new(
   :footer,
   :future,
   :icon,
+  :id,
   :identifier,
   :imageurl,
   :isBlocked,

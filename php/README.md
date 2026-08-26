@@ -38,7 +38,7 @@ try {
     // list() returns an array of Closure records — iterate directly.
     $closures = $client->Closure()->list();
     foreach ($closures as $item) {
-        echo $item["coordinate"] . "\n";
+        echo $item["id"] . " " . $item["coordinate"] . "\n";
     }
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -276,6 +276,7 @@ On error, `ok` is `false` and `$err` contains the error value.
 | `footer` |  |
 | `future` |  |
 | `icon` |  |
+| `id` |  |
 | `identifier` |  |
 | `isBlocked` |  |
 | `lorryParkingFeatureIcons` |  |
@@ -300,6 +301,7 @@ API path: `/{roadId}/services/closure`
 | `footer` |  |
 | `future` |  |
 | `icon` | Sinnbild, das die Art des Eintrags beschreibt. |
+| `id` |  |
 | `identifier` |  |
 | `isBlocked` |  |
 | `lorryParkingFeatureIcons` |  |
@@ -333,6 +335,7 @@ API path: `/`
 | `footer` |  |
 | `future` |  |
 | `icon` | Sinnbild, das die Art des Eintrags beschreibt. |
+| `id` |  |
 | `identifier` |  |
 | `isBlocked` |  |
 | `lorryParkingFeatureIcons` |  |
@@ -356,6 +359,7 @@ API path: `/{roadId}/services/parking_lorry`
 | `footer` |  |
 | `future` |  |
 | `icon` |  |
+| `id` |  |
 | `identifier` |  |
 | `isBlocked` |  |
 | `lorryParkingFeatureIcons` |  |
@@ -380,6 +384,7 @@ API path: `/{roadId}/services/roadworks`
 | `footer` |  |
 | `future` |  |
 | `icon` |  |
+| `id` |  |
 | `identifier` |  |
 | `isBlocked` |  |
 | `lorryParkingFeatureIcons` |  |
@@ -404,6 +409,7 @@ API path: `/{roadId}/services/warning`
 | `footer` |  |
 | `future` |  |
 | `icon` | Sinnbild, das die Art des Eintrags beschreibt. |
+| `id` |  |
 | `identifier` |  |
 | `imageurl` |  |
 | `isBlocked` |  |
@@ -446,6 +452,7 @@ Create an instance: `$closure = $client->Closure();`
 | `footer` | `array` |  |
 | `future` | `bool` |  |
 | `icon` | `string` |  |
+| `id` | `string` |  |
 | `identifier` | `string` |  |
 | `isBlocked` | `string` |  |
 | `lorryParkingFeatureIcons` | `array` |  |
@@ -492,6 +499,7 @@ Create an instance: `$electric_charging_station = $client->ElectricChargingStati
 | `footer` | `array` |  |
 | `future` | `bool` |  |
 | `icon` | `string` | Sinnbild, das die Art des Eintrags beschreibt. |
+| `id` | `string` |  |
 | `identifier` | `string` |  |
 | `isBlocked` | `string` |  |
 | `lorryParkingFeatureIcons` | `array` |  |
@@ -561,6 +569,7 @@ Create an instance: `$parking_lorry = $client->ParkingLorry();`
 | `footer` | `array` |  |
 | `future` | `bool` |  |
 | `icon` | `string` | Sinnbild, das die Art des Eintrags beschreibt. |
+| `id` | `string` |  |
 | `identifier` | `string` |  |
 | `isBlocked` | `string` |  |
 | `lorryParkingFeatureIcons` | `array` |  |
@@ -606,6 +615,7 @@ Create an instance: `$roadwork = $client->Roadwork();`
 | `footer` | `array` |  |
 | `future` | `bool` |  |
 | `icon` | `string` |  |
+| `id` | `string` |  |
 | `identifier` | `string` |  |
 | `isBlocked` | `string` |  |
 | `lorryParkingFeatureIcons` | `array` |  |
@@ -652,6 +662,7 @@ Create an instance: `$warning = $client->Warning();`
 | `footer` | `array` |  |
 | `future` | `bool` |  |
 | `icon` | `string` |  |
+| `id` | `string` |  |
 | `identifier` | `string` |  |
 | `isBlocked` | `string` |  |
 | `lorryParkingFeatureIcons` | `array` |  |
@@ -698,6 +709,7 @@ Create an instance: `$webcam = $client->Webcam();`
 | `footer` | `array` |  |
 | `future` | `bool` |  |
 | `icon` | `string` | Sinnbild, das die Art des Eintrags beschreibt. |
+| `id` | `string` |  |
 | `identifier` | `string` |  |
 | `imageurl` | `string` |  |
 | `isBlocked` | `string` |  |

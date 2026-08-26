@@ -67,6 +67,12 @@ describe('RoadworkEntity', async () => {
     const roadwork_ref01_list = (await roadwork_ref01_ent.list(roadwork_ref01_match)).map((e: any) => e.data())
 
 
+    // LOAD
+    const roadwork_ref01_match_dt0: any = {}
+    roadwork_ref01_match_dt0.id = roadwork_ref01_data.id
+    const roadwork_ref01_data_dt0 = (await roadwork_ref01_ent.load(roadwork_ref01_match_dt0)).data()
+    assert(roadwork_ref01_data_dt0.id === roadwork_ref01_data.id)
+
 
   })
 })

@@ -95,9 +95,13 @@ class ClosureEntityTest extends TestCase
         $this->assertIsArray($closure_ref01_list_result);
 
         // LOAD
-        $closure_ref01_match_dt0 = [];
+        $closure_ref01_match_dt0 = [
+            "id" => $closure_ref01_data["id"],
+        ];
         $closure_ref01_data_dt0_loaded = $closure_ref01_ent->load($closure_ref01_match_dt0, null);
-        $this->assertNotNull($closure_ref01_data_dt0_loaded);
+        $closure_ref01_data_dt0_load_result = Helpers::to_map(is_object($closure_ref01_data_dt0_loaded) && method_exists($closure_ref01_data_dt0_loaded, 'data_get') ? $closure_ref01_data_dt0_loaded->data_get() : $closure_ref01_data_dt0_loaded);
+        $this->assertNotNull($closure_ref01_data_dt0_load_result);
+        $this->assertEquals($closure_ref01_data_dt0_load_result["id"], $closure_ref01_data["id"]);
 
     }
 }

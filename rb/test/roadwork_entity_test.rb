@@ -85,9 +85,13 @@ class RoadworkEntityTest < Minitest::Test
     assert roadwork_ref01_list_result.is_a?(Array)
 
     # LOAD
-    roadwork_ref01_match_dt0 = {}
+    roadwork_ref01_match_dt0 = {
+      "id" => roadwork_ref01_data["id"],
+    }
     roadwork_ref01_data_dt0_loaded = roadwork_ref01_ent.load(roadwork_ref01_match_dt0, nil)
-    assert !roadwork_ref01_data_dt0_loaded.nil?
+    roadwork_ref01_data_dt0_load_result = Helpers.to_map(roadwork_ref01_data_dt0_loaded.respond_to?(:data_get) ? roadwork_ref01_data_dt0_loaded.data_get : roadwork_ref01_data_dt0_loaded)
+    assert !roadwork_ref01_data_dt0_load_result.nil?
+    assert_equal roadwork_ref01_data_dt0_load_result["id"], roadwork_ref01_data["id"]
 
   end
 end

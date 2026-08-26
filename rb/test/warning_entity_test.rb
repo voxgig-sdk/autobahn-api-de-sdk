@@ -85,9 +85,13 @@ class WarningEntityTest < Minitest::Test
     assert warning_ref01_list_result.is_a?(Array)
 
     # LOAD
-    warning_ref01_match_dt0 = {}
+    warning_ref01_match_dt0 = {
+      "id" => warning_ref01_data["id"],
+    }
     warning_ref01_data_dt0_loaded = warning_ref01_ent.load(warning_ref01_match_dt0, nil)
-    assert !warning_ref01_data_dt0_loaded.nil?
+    warning_ref01_data_dt0_load_result = Helpers.to_map(warning_ref01_data_dt0_loaded.respond_to?(:data_get) ? warning_ref01_data_dt0_loaded.data_get : warning_ref01_data_dt0_loaded)
+    assert !warning_ref01_data_dt0_load_result.nil?
+    assert_equal warning_ref01_data_dt0_load_result["id"], warning_ref01_data["id"]
 
   end
 end

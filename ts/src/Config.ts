@@ -40,7 +40,8 @@ class Config {
      test:     {
       "options": {
         "active": false
-      }
+      },
+      "transport": "base"
     },
 
   }
@@ -109,6 +110,10 @@ class Config {
         },
         {
           "name": "icon",
+          "type": "`$STRING`"
+        },
+        {
+          "name": "id",
           "type": "`$STRING`"
         },
         {
@@ -266,6 +271,10 @@ class Config {
         {
           "name": "icon",
           "short": "Sinnbild, das die Art des Eintrags beschreibt.",
+          "type": "`$STRING`"
+        },
+        {
+          "name": "id",
           "type": "`$STRING`"
         },
         {
@@ -455,6 +464,10 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "name": "id",
+          "type": "`$STRING`"
+        },
+        {
           "name": "identifier",
           "type": "`$STRING`"
         },
@@ -603,6 +616,10 @@ class Config {
         },
         {
           "name": "icon",
+          "type": "`$STRING`"
+        },
+        {
+          "name": "id",
           "type": "`$STRING`"
         },
         {
@@ -760,6 +777,10 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "name": "id",
+          "type": "`$STRING`"
+        },
+        {
           "name": "identifier",
           "type": "`$STRING`"
         },
@@ -914,6 +935,10 @@ class Config {
         {
           "name": "icon",
           "short": "Sinnbild, das die Art des Eintrags beschreibt.",
+          "type": "`$STRING`"
+        },
+        {
+          "name": "id",
           "type": "`$STRING`"
         },
         {

@@ -95,9 +95,13 @@ class ElectricChargingStationEntityTest extends TestCase
         $this->assertIsArray($electric_charging_station_ref01_list_result);
 
         // LOAD
-        $electric_charging_station_ref01_match_dt0 = [];
+        $electric_charging_station_ref01_match_dt0 = [
+            "id" => $electric_charging_station_ref01_data["id"],
+        ];
         $electric_charging_station_ref01_data_dt0_loaded = $electric_charging_station_ref01_ent->load($electric_charging_station_ref01_match_dt0, null);
-        $this->assertNotNull($electric_charging_station_ref01_data_dt0_loaded);
+        $electric_charging_station_ref01_data_dt0_load_result = Helpers::to_map(is_object($electric_charging_station_ref01_data_dt0_loaded) && method_exists($electric_charging_station_ref01_data_dt0_loaded, 'data_get') ? $electric_charging_station_ref01_data_dt0_loaded->data_get() : $electric_charging_station_ref01_data_dt0_loaded);
+        $this->assertNotNull($electric_charging_station_ref01_data_dt0_load_result);
+        $this->assertEquals($electric_charging_station_ref01_data_dt0_load_result["id"], $electric_charging_station_ref01_data["id"]);
 
     }
 }

@@ -67,6 +67,12 @@ describe('ParkingLorryEntity', async () => {
     const parking_lorry_ref01_list = (await parking_lorry_ref01_ent.list(parking_lorry_ref01_match)).map((e: any) => e.data())
 
 
+    // LOAD
+    const parking_lorry_ref01_match_dt0: any = {}
+    parking_lorry_ref01_match_dt0.id = parking_lorry_ref01_data.id
+    const parking_lorry_ref01_data_dt0 = (await parking_lorry_ref01_ent.load(parking_lorry_ref01_match_dt0)).data()
+    assert(parking_lorry_ref01_data_dt0.id === parking_lorry_ref01_data.id)
+
 
   })
 })

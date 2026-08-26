@@ -13,6 +13,7 @@ export interface Closure {
   footer?: any[]
   future?: boolean
   icon?: string
+  id?: string
   identifier?: string
   isBlocked?: string
   lorryParkingFeatureIcons?: any[]
@@ -39,6 +40,7 @@ export interface ElectricChargingStation {
   footer?: any[]
   future?: boolean
   icon?: string
+  id?: string
   identifier?: string
   isBlocked?: string
   lorryParkingFeatureIcons?: any[]
@@ -72,6 +74,7 @@ export interface ParkingLorry {
   footer?: any[]
   future?: boolean
   icon?: string
+  id?: string
   identifier?: string
   isBlocked?: string
   lorryParkingFeatureIcons?: any[]
@@ -97,6 +100,7 @@ export interface Roadwork {
   footer?: any[]
   future?: boolean
   icon?: string
+  id?: string
   identifier?: string
   isBlocked?: string
   lorryParkingFeatureIcons?: any[]
@@ -123,6 +127,7 @@ export interface Warning {
   footer?: any[]
   future?: boolean
   icon?: string
+  id?: string
   identifier?: string
   isBlocked?: string
   lorryParkingFeatureIcons?: any[]
@@ -149,6 +154,7 @@ export interface Webcam {
   footer?: any[]
   future?: boolean
   icon?: string
+  id?: string
   identifier?: string
   imageurl?: string
   isBlocked?: string

@@ -94,10 +94,14 @@ describe("WarningEntity", function()
     assert.is_table(warning_ref01_list_result)
 
     -- LOAD
-    local warning_ref01_match_dt0 = {}
+    local warning_ref01_match_dt0 = {
+      id = warning_ref01_data["id"],
+    }
     local warning_ref01_data_dt0_loaded, err = warning_ref01_ent:load(warning_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(warning_ref01_data_dt0_loaded)
+    local warning_ref01_data_dt0_load_result = helpers.to_map(type(warning_ref01_data_dt0_loaded) == 'table' and warning_ref01_data_dt0_loaded.data_get and warning_ref01_data_dt0_loaded:data_get() or warning_ref01_data_dt0_loaded)
+    assert.is_not_nil(warning_ref01_data_dt0_load_result)
+    assert.are.equal(warning_ref01_data_dt0_load_result["id"], warning_ref01_data["id"])
 
   end)
 end)

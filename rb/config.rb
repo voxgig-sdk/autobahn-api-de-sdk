@@ -28,6 +28,7 @@ module AutobahnApiDeConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
@@ -74,6 +75,10 @@ module AutobahnApiDeConfig
             },
             {
               "name" => "icon",
+              "type" => "`$STRING`",
+            },
+            {
+              "name" => "id",
               "type" => "`$STRING`",
             },
             {
@@ -231,6 +236,10 @@ module AutobahnApiDeConfig
             {
               "name" => "icon",
               "short" => "Sinnbild, das die Art des Eintrags beschreibt.",
+              "type" => "`$STRING`",
+            },
+            {
+              "name" => "id",
               "type" => "`$STRING`",
             },
             {
@@ -420,6 +429,10 @@ module AutobahnApiDeConfig
               "type" => "`$STRING`",
             },
             {
+              "name" => "id",
+              "type" => "`$STRING`",
+            },
+            {
               "name" => "identifier",
               "type" => "`$STRING`",
             },
@@ -568,6 +581,10 @@ module AutobahnApiDeConfig
             },
             {
               "name" => "icon",
+              "type" => "`$STRING`",
+            },
+            {
+              "name" => "id",
               "type" => "`$STRING`",
             },
             {
@@ -725,6 +742,10 @@ module AutobahnApiDeConfig
               "type" => "`$STRING`",
             },
             {
+              "name" => "id",
+              "type" => "`$STRING`",
+            },
+            {
               "name" => "identifier",
               "type" => "`$STRING`",
             },
@@ -879,6 +900,10 @@ module AutobahnApiDeConfig
             {
               "name" => "icon",
               "short" => "Sinnbild, das die Art des Eintrags beschreibt.",
+              "type" => "`$STRING`",
+            },
+            {
+              "name" => "id",
               "type" => "`$STRING`",
             },
             {

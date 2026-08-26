@@ -123,13 +123,19 @@ func TestWebcamEntity(t *testing.T) {
 		}
 
 		// LOAD
-		webcamRef01MatchDt0 := map[string]any{}
+		webcamRef01MatchDt0 := map[string]any{
+			"id": webcamRef01Data["id"],
+		}
 		webcamRef01DataDt0Loaded, err := webcamRef01Ent.Load(webcamRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if webcamRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		webcamRef01DataDt0LoadResult := core.ToMapAny(entityData(webcamRef01DataDt0Loaded))
+		if webcamRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if webcamRef01DataDt0LoadResult["id"] != webcamRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

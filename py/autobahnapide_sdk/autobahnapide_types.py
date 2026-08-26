@@ -24,6 +24,7 @@ class Closure(TypedDict, total=False):
     footer: list
     future: bool
     icon: str
+    id: str
     identifier: str
     isBlocked: str
     lorryParkingFeatureIcons: list
@@ -50,6 +51,7 @@ class ElectricChargingStation(TypedDict, total=False):
     footer: list
     future: bool
     icon: str
+    id: str
     identifier: str
     isBlocked: str
     lorryParkingFeatureIcons: list
@@ -83,6 +85,7 @@ class ParkingLorry(TypedDict, total=False):
     footer: list
     future: bool
     icon: str
+    id: str
     identifier: str
     isBlocked: str
     lorryParkingFeatureIcons: list
@@ -108,6 +111,7 @@ class Roadwork(TypedDict, total=False):
     footer: list
     future: bool
     icon: str
+    id: str
     identifier: str
     isBlocked: str
     lorryParkingFeatureIcons: list
@@ -134,6 +138,7 @@ class Warning(TypedDict, total=False):
     footer: list
     future: bool
     icon: str
+    id: str
     identifier: str
     isBlocked: str
     lorryParkingFeatureIcons: list
@@ -160,6 +165,7 @@ class Webcam(TypedDict, total=False):
     footer: list
     future: bool
     icon: str
+    id: str
     identifier: str
     imageurl: str
     isBlocked: str

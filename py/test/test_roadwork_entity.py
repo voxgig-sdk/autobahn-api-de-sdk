@@ -90,9 +90,13 @@ class TestRoadworkEntity:
         assert isinstance(roadwork_ref01_list_result, list)
 
         # LOAD
-        roadwork_ref01_match_dt0 = {}
+        roadwork_ref01_match_dt0 = {
+            "id": roadwork_ref01_data["id"],
+        }
         roadwork_ref01_data_dt0_loaded = roadwork_ref01_ent.load(roadwork_ref01_match_dt0, None)
-        assert roadwork_ref01_data_dt0_loaded is not None
+        roadwork_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(roadwork_ref01_data_dt0_loaded))
+        assert roadwork_ref01_data_dt0_load_result is not None
+        assert roadwork_ref01_data_dt0_load_result["id"] == roadwork_ref01_data["id"]
 
 
 

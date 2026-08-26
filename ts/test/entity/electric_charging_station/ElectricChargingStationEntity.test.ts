@@ -67,6 +67,12 @@ describe('ElectricChargingStationEntity', async () => {
     const electric_charging_station_ref01_list = (await electric_charging_station_ref01_ent.list(electric_charging_station_ref01_match)).map((e: any) => e.data())
 
 
+    // LOAD
+    const electric_charging_station_ref01_match_dt0: any = {}
+    electric_charging_station_ref01_match_dt0.id = electric_charging_station_ref01_data.id
+    const electric_charging_station_ref01_data_dt0 = (await electric_charging_station_ref01_ent.load(electric_charging_station_ref01_match_dt0)).data()
+    assert(electric_charging_station_ref01_data_dt0.id === electric_charging_station_ref01_data.id)
+
 
   })
 })

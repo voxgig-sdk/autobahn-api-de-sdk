@@ -42,6 +42,7 @@ class AutobahnApiDeConfig
           'options' => [
             'active' => false,
           ],
+          'transport' => 'base',
         ],
             ],
             "options" => [
@@ -88,6 +89,10 @@ class AutobahnApiDeConfig
             ],
             [
               'name' => 'icon',
+              'type' => '`$STRING`',
+            ],
+            [
+              'name' => 'id',
               'type' => '`$STRING`',
             ],
             [
@@ -245,6 +250,10 @@ class AutobahnApiDeConfig
             [
               'name' => 'icon',
               'short' => 'Sinnbild, das die Art des Eintrags beschreibt.',
+              'type' => '`$STRING`',
+            ],
+            [
+              'name' => 'id',
               'type' => '`$STRING`',
             ],
             [
@@ -434,6 +443,10 @@ class AutobahnApiDeConfig
               'type' => '`$STRING`',
             ],
             [
+              'name' => 'id',
+              'type' => '`$STRING`',
+            ],
+            [
               'name' => 'identifier',
               'type' => '`$STRING`',
             ],
@@ -582,6 +595,10 @@ class AutobahnApiDeConfig
             ],
             [
               'name' => 'icon',
+              'type' => '`$STRING`',
+            ],
+            [
+              'name' => 'id',
               'type' => '`$STRING`',
             ],
             [
@@ -739,6 +756,10 @@ class AutobahnApiDeConfig
               'type' => '`$STRING`',
             ],
             [
+              'name' => 'id',
+              'type' => '`$STRING`',
+            ],
+            [
               'name' => 'identifier',
               'type' => '`$STRING`',
             ],
@@ -893,6 +914,10 @@ class AutobahnApiDeConfig
             [
               'name' => 'icon',
               'short' => 'Sinnbild, das die Art des Eintrags beschreibt.',
+              'type' => '`$STRING`',
+            ],
+            [
+              'name' => 'id',
               'type' => '`$STRING`',
             ],
             [

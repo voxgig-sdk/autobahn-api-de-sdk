@@ -85,9 +85,13 @@ class ElectricChargingStationEntityTest < Minitest::Test
     assert electric_charging_station_ref01_list_result.is_a?(Array)
 
     # LOAD
-    electric_charging_station_ref01_match_dt0 = {}
+    electric_charging_station_ref01_match_dt0 = {
+      "id" => electric_charging_station_ref01_data["id"],
+    }
     electric_charging_station_ref01_data_dt0_loaded = electric_charging_station_ref01_ent.load(electric_charging_station_ref01_match_dt0, nil)
-    assert !electric_charging_station_ref01_data_dt0_loaded.nil?
+    electric_charging_station_ref01_data_dt0_load_result = Helpers.to_map(electric_charging_station_ref01_data_dt0_loaded.respond_to?(:data_get) ? electric_charging_station_ref01_data_dt0_loaded.data_get : electric_charging_station_ref01_data_dt0_loaded)
+    assert !electric_charging_station_ref01_data_dt0_load_result.nil?
+    assert_equal electric_charging_station_ref01_data_dt0_load_result["id"], electric_charging_station_ref01_data["id"]
 
   end
 end

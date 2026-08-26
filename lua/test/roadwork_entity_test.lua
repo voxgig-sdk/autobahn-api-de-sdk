@@ -94,10 +94,14 @@ describe("RoadworkEntity", function()
     assert.is_table(roadwork_ref01_list_result)
 
     -- LOAD
-    local roadwork_ref01_match_dt0 = {}
+    local roadwork_ref01_match_dt0 = {
+      id = roadwork_ref01_data["id"],
+    }
     local roadwork_ref01_data_dt0_loaded, err = roadwork_ref01_ent:load(roadwork_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(roadwork_ref01_data_dt0_loaded)
+    local roadwork_ref01_data_dt0_load_result = helpers.to_map(type(roadwork_ref01_data_dt0_loaded) == 'table' and roadwork_ref01_data_dt0_loaded.data_get and roadwork_ref01_data_dt0_loaded:data_get() or roadwork_ref01_data_dt0_loaded)
+    assert.is_not_nil(roadwork_ref01_data_dt0_load_result)
+    assert.are.equal(roadwork_ref01_data_dt0_load_result["id"], roadwork_ref01_data["id"])
 
   end)
 end)

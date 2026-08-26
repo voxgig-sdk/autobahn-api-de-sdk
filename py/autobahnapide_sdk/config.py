@@ -37,6 +37,7 @@ def make_config():
         "options": {
           "active": False,
         },
+        "transport": "base",
       },
         },
         "options": {
@@ -83,6 +84,10 @@ def make_config():
           },
           {
             "name": "icon",
+            "type": "`$STRING`",
+          },
+          {
+            "name": "id",
             "type": "`$STRING`",
           },
           {
@@ -240,6 +245,10 @@ def make_config():
           {
             "name": "icon",
             "short": "Sinnbild, das die Art des Eintrags beschreibt.",
+            "type": "`$STRING`",
+          },
+          {
+            "name": "id",
             "type": "`$STRING`",
           },
           {
@@ -429,6 +438,10 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "name": "id",
+            "type": "`$STRING`",
+          },
+          {
             "name": "identifier",
             "type": "`$STRING`",
           },
@@ -577,6 +590,10 @@ def make_config():
           },
           {
             "name": "icon",
+            "type": "`$STRING`",
+          },
+          {
+            "name": "id",
             "type": "`$STRING`",
           },
           {
@@ -734,6 +751,10 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "name": "id",
+            "type": "`$STRING`",
+          },
+          {
             "name": "identifier",
             "type": "`$STRING`",
           },
@@ -888,6 +909,10 @@ def make_config():
           {
             "name": "icon",
             "short": "Sinnbild, das die Art des Eintrags beschreibt.",
+            "type": "`$STRING`",
+          },
+          {
+            "name": "id",
             "type": "`$STRING`",
           },
           {

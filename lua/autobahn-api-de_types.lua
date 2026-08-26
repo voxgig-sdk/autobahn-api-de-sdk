@@ -14,6 +14,7 @@
 ---@field footer? table
 ---@field future? boolean
 ---@field icon? string
+---@field id? string
 ---@field identifier? string
 ---@field isBlocked? string
 ---@field lorryParkingFeatureIcons? table
@@ -37,6 +38,7 @@
 ---@field footer? table
 ---@field future? boolean
 ---@field icon? string
+---@field id? string
 ---@field identifier? string
 ---@field isBlocked? string
 ---@field lorryParkingFeatureIcons? table
@@ -65,6 +67,7 @@
 ---@field footer? table
 ---@field future? boolean
 ---@field icon? string
+---@field id? string
 ---@field identifier? string
 ---@field isBlocked? string
 ---@field lorryParkingFeatureIcons? table
@@ -87,6 +90,7 @@
 ---@field footer? table
 ---@field future? boolean
 ---@field icon? string
+---@field id? string
 ---@field identifier? string
 ---@field isBlocked? string
 ---@field lorryParkingFeatureIcons? table
@@ -110,6 +114,7 @@
 ---@field footer? table
 ---@field future? boolean
 ---@field icon? string
+---@field id? string
 ---@field identifier? string
 ---@field isBlocked? string
 ---@field lorryParkingFeatureIcons? table
@@ -133,6 +138,7 @@
 ---@field footer? table
 ---@field future? boolean
 ---@field icon? string
+---@field id? string
 ---@field identifier? string
 ---@field imageurl? string
 ---@field isBlocked? string

@@ -124,6 +124,7 @@ closure = client.Closure
 | `footer` | `Array` | No |  |
 | `future` | `Boolean` | No |  |
 | `icon` | `String` | No |  |
+| `id` | `String` | No |  |
 | `identifier` | `String` | No |  |
 | `isBlocked` | `String` | No |  |
 | `lorryParkingFeatureIcons` | `Array` | No |  |
@@ -198,6 +199,7 @@ electric_charging_station = client.ElectricChargingStation
 | `footer` | `Array` | No |  |
 | `future` | `Boolean` | No |  |
 | `icon` | `String` | No | Sinnbild, das die Art des Eintrags beschreibt. |
+| `id` | `String` | No |  |
 | `identifier` | `String` | No |  |
 | `isBlocked` | `String` | No |  |
 | `lorryParkingFeatureIcons` | `Array` | No |  |
@@ -323,6 +325,7 @@ parking_lorry = client.ParkingLorry
 | `footer` | `Array` | No |  |
 | `future` | `Boolean` | No |  |
 | `icon` | `String` | No | Sinnbild, das die Art des Eintrags beschreibt. |
+| `id` | `String` | No |  |
 | `identifier` | `String` | No |  |
 | `isBlocked` | `String` | No |  |
 | `lorryParkingFeatureIcons` | `Array` | No |  |
@@ -396,6 +399,7 @@ roadwork = client.Roadwork
 | `footer` | `Array` | No |  |
 | `future` | `Boolean` | No |  |
 | `icon` | `String` | No |  |
+| `id` | `String` | No |  |
 | `identifier` | `String` | No |  |
 | `isBlocked` | `String` | No |  |
 | `lorryParkingFeatureIcons` | `Array` | No |  |
@@ -470,6 +474,7 @@ warning = client.Warning
 | `footer` | `Array` | No |  |
 | `future` | `Boolean` | No |  |
 | `icon` | `String` | No |  |
+| `id` | `String` | No |  |
 | `identifier` | `String` | No |  |
 | `isBlocked` | `String` | No |  |
 | `lorryParkingFeatureIcons` | `Array` | No |  |
@@ -544,6 +549,7 @@ webcam = client.Webcam
 | `footer` | `Array` | No |  |
 | `future` | `Boolean` | No |  |
 | `icon` | `String` | No | Sinnbild, das die Art des Eintrags beschreibt. |
+| `id` | `String` | No |  |
 | `identifier` | `String` | No |  |
 | `imageurl` | `String` | No |  |
 | `isBlocked` | `String` | No |  |

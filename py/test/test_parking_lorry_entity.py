@@ -90,9 +90,13 @@ class TestParkingLorryEntity:
         assert isinstance(parking_lorry_ref01_list_result, list)
 
         # LOAD
-        parking_lorry_ref01_match_dt0 = {}
+        parking_lorry_ref01_match_dt0 = {
+            "id": parking_lorry_ref01_data["id"],
+        }
         parking_lorry_ref01_data_dt0_loaded = parking_lorry_ref01_ent.load(parking_lorry_ref01_match_dt0, None)
-        assert parking_lorry_ref01_data_dt0_loaded is not None
+        parking_lorry_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(parking_lorry_ref01_data_dt0_loaded))
+        assert parking_lorry_ref01_data_dt0_load_result is not None
+        assert parking_lorry_ref01_data_dt0_load_result["id"] == parking_lorry_ref01_data["id"]
 
 
 

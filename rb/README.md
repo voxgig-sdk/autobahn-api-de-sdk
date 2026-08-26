@@ -37,7 +37,7 @@ begin
   # list returns an Array of Closure records — iterate directly.
   closures = client.Closure.list
   closures.each do |item|
-    puts "#{item["coordinate"]}"
+    puts "#{item["id"]} #{item["coordinate"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -266,6 +266,7 @@ returns a result `Hash` with these keys:
 | `footer` |  |
 | `future` |  |
 | `icon` |  |
+| `id` |  |
 | `identifier` |  |
 | `isBlocked` |  |
 | `lorryParkingFeatureIcons` |  |
@@ -290,6 +291,7 @@ API path: `/{roadId}/services/closure`
 | `footer` |  |
 | `future` |  |
 | `icon` | Sinnbild, das die Art des Eintrags beschreibt. |
+| `id` |  |
 | `identifier` |  |
 | `isBlocked` |  |
 | `lorryParkingFeatureIcons` |  |
@@ -323,6 +325,7 @@ API path: `/`
 | `footer` |  |
 | `future` |  |
 | `icon` | Sinnbild, das die Art des Eintrags beschreibt. |
+| `id` |  |
 | `identifier` |  |
 | `isBlocked` |  |
 | `lorryParkingFeatureIcons` |  |
@@ -346,6 +349,7 @@ API path: `/{roadId}/services/parking_lorry`
 | `footer` |  |
 | `future` |  |
 | `icon` |  |
+| `id` |  |
 | `identifier` |  |
 | `isBlocked` |  |
 | `lorryParkingFeatureIcons` |  |
@@ -370,6 +374,7 @@ API path: `/{roadId}/services/roadworks`
 | `footer` |  |
 | `future` |  |
 | `icon` |  |
+| `id` |  |
 | `identifier` |  |
 | `isBlocked` |  |
 | `lorryParkingFeatureIcons` |  |
@@ -394,6 +399,7 @@ API path: `/{roadId}/services/warning`
 | `footer` |  |
 | `future` |  |
 | `icon` | Sinnbild, das die Art des Eintrags beschreibt. |
+| `id` |  |
 | `identifier` |  |
 | `imageurl` |  |
 | `isBlocked` |  |
@@ -436,6 +442,7 @@ Create an instance: `closure = client.Closure`
 | `footer` | `Array` |  |
 | `future` | `Boolean` |  |
 | `icon` | `String` |  |
+| `id` | `String` |  |
 | `identifier` | `String` |  |
 | `isBlocked` | `String` |  |
 | `lorryParkingFeatureIcons` | `Array` |  |
@@ -482,6 +489,7 @@ Create an instance: `electric_charging_station = client.ElectricChargingStation`
 | `footer` | `Array` |  |
 | `future` | `Boolean` |  |
 | `icon` | `String` | Sinnbild, das die Art des Eintrags beschreibt. |
+| `id` | `String` |  |
 | `identifier` | `String` |  |
 | `isBlocked` | `String` |  |
 | `lorryParkingFeatureIcons` | `Array` |  |
@@ -551,6 +559,7 @@ Create an instance: `parking_lorry = client.ParkingLorry`
 | `footer` | `Array` |  |
 | `future` | `Boolean` |  |
 | `icon` | `String` | Sinnbild, das die Art des Eintrags beschreibt. |
+| `id` | `String` |  |
 | `identifier` | `String` |  |
 | `isBlocked` | `String` |  |
 | `lorryParkingFeatureIcons` | `Array` |  |
@@ -596,6 +605,7 @@ Create an instance: `roadwork = client.Roadwork`
 | `footer` | `Array` |  |
 | `future` | `Boolean` |  |
 | `icon` | `String` |  |
+| `id` | `String` |  |
 | `identifier` | `String` |  |
 | `isBlocked` | `String` |  |
 | `lorryParkingFeatureIcons` | `Array` |  |
@@ -642,6 +652,7 @@ Create an instance: `warning = client.Warning`
 | `footer` | `Array` |  |
 | `future` | `Boolean` |  |
 | `icon` | `String` |  |
+| `id` | `String` |  |
 | `identifier` | `String` |  |
 | `isBlocked` | `String` |  |
 | `lorryParkingFeatureIcons` | `Array` |  |
@@ -688,6 +699,7 @@ Create an instance: `webcam = client.Webcam`
 | `footer` | `Array` |  |
 | `future` | `Boolean` |  |
 | `icon` | `String` | Sinnbild, das die Art des Eintrags beschreibt. |
+| `id` | `String` |  |
 | `identifier` | `String` |  |
 | `imageurl` | `String` |  |
 | `isBlocked` | `String` |  |

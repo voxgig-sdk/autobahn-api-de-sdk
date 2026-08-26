@@ -90,9 +90,13 @@ class TestElectricChargingStationEntity:
         assert isinstance(electric_charging_station_ref01_list_result, list)
 
         # LOAD
-        electric_charging_station_ref01_match_dt0 = {}
+        electric_charging_station_ref01_match_dt0 = {
+            "id": electric_charging_station_ref01_data["id"],
+        }
         electric_charging_station_ref01_data_dt0_loaded = electric_charging_station_ref01_ent.load(electric_charging_station_ref01_match_dt0, None)
-        assert electric_charging_station_ref01_data_dt0_loaded is not None
+        electric_charging_station_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(electric_charging_station_ref01_data_dt0_loaded))
+        assert electric_charging_station_ref01_data_dt0_load_result is not None
+        assert electric_charging_station_ref01_data_dt0_load_result["id"] == electric_charging_station_ref01_data["id"]
 
 
 

@@ -123,13 +123,19 @@ func TestClosureEntity(t *testing.T) {
 		}
 
 		// LOAD
-		closureRef01MatchDt0 := map[string]any{}
+		closureRef01MatchDt0 := map[string]any{
+			"id": closureRef01Data["id"],
+		}
 		closureRef01DataDt0Loaded, err := closureRef01Ent.Load(closureRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if closureRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		closureRef01DataDt0LoadResult := core.ToMapAny(entityData(closureRef01DataDt0Loaded))
+		if closureRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if closureRef01DataDt0LoadResult["id"] != closureRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

@@ -95,9 +95,13 @@ class WarningEntityTest extends TestCase
         $this->assertIsArray($warning_ref01_list_result);
 
         // LOAD
-        $warning_ref01_match_dt0 = [];
+        $warning_ref01_match_dt0 = [
+            "id" => $warning_ref01_data["id"],
+        ];
         $warning_ref01_data_dt0_loaded = $warning_ref01_ent->load($warning_ref01_match_dt0, null);
-        $this->assertNotNull($warning_ref01_data_dt0_loaded);
+        $warning_ref01_data_dt0_load_result = Helpers::to_map(is_object($warning_ref01_data_dt0_loaded) && method_exists($warning_ref01_data_dt0_loaded, 'data_get') ? $warning_ref01_data_dt0_loaded->data_get() : $warning_ref01_data_dt0_loaded);
+        $this->assertNotNull($warning_ref01_data_dt0_load_result);
+        $this->assertEquals($warning_ref01_data_dt0_load_result["id"], $warning_ref01_data["id"]);
 
     }
 }

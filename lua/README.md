@@ -43,7 +43,7 @@ local closures, err = client:Closure():list()
 if err then error(err) end
 
 for _, item in ipairs(closures) do
-  print(item["display_type"])
+  print(item["id"], item["display_type"])
 end
 ```
 
@@ -254,6 +254,7 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | `footer` |  |
 | `future` |  |
 | `icon` |  |
+| `id` |  |
 | `identifier` |  |
 | `isBlocked` |  |
 | `lorryParkingFeatureIcons` |  |
@@ -278,6 +279,7 @@ API path: `/{roadId}/services/closure`
 | `footer` |  |
 | `future` |  |
 | `icon` | Sinnbild, das die Art des Eintrags beschreibt. |
+| `id` |  |
 | `identifier` |  |
 | `isBlocked` |  |
 | `lorryParkingFeatureIcons` |  |
@@ -311,6 +313,7 @@ API path: `/`
 | `footer` |  |
 | `future` |  |
 | `icon` | Sinnbild, das die Art des Eintrags beschreibt. |
+| `id` |  |
 | `identifier` |  |
 | `isBlocked` |  |
 | `lorryParkingFeatureIcons` |  |
@@ -334,6 +337,7 @@ API path: `/{roadId}/services/parking_lorry`
 | `footer` |  |
 | `future` |  |
 | `icon` |  |
+| `id` |  |
 | `identifier` |  |
 | `isBlocked` |  |
 | `lorryParkingFeatureIcons` |  |
@@ -358,6 +362,7 @@ API path: `/{roadId}/services/roadworks`
 | `footer` |  |
 | `future` |  |
 | `icon` |  |
+| `id` |  |
 | `identifier` |  |
 | `isBlocked` |  |
 | `lorryParkingFeatureIcons` |  |
@@ -382,6 +387,7 @@ API path: `/{roadId}/services/warning`
 | `footer` |  |
 | `future` |  |
 | `icon` | Sinnbild, das die Art des Eintrags beschreibt. |
+| `id` |  |
 | `identifier` |  |
 | `imageurl` |  |
 | `isBlocked` |  |
@@ -424,6 +430,7 @@ Create an instance: `local closure = client:Closure(nil)`
 | `footer` | `table` |  |
 | `future` | `boolean` |  |
 | `icon` | `string` |  |
+| `id` | `string` |  |
 | `identifier` | `string` |  |
 | `isBlocked` | `string` |  |
 | `lorryParkingFeatureIcons` | `table` |  |
@@ -468,6 +475,7 @@ Create an instance: `local electric_charging_station = client:ElectricChargingSt
 | `footer` | `table` |  |
 | `future` | `boolean` |  |
 | `icon` | `string` | Sinnbild, das die Art des Eintrags beschreibt. |
+| `id` | `string` |  |
 | `identifier` | `string` |  |
 | `isBlocked` | `string` |  |
 | `lorryParkingFeatureIcons` | `table` |  |
@@ -534,6 +542,7 @@ Create an instance: `local parking_lorry = client:ParkingLorry(nil)`
 | `footer` | `table` |  |
 | `future` | `boolean` |  |
 | `icon` | `string` | Sinnbild, das die Art des Eintrags beschreibt. |
+| `id` | `string` |  |
 | `identifier` | `string` |  |
 | `isBlocked` | `string` |  |
 | `lorryParkingFeatureIcons` | `table` |  |
@@ -577,6 +586,7 @@ Create an instance: `local roadwork = client:Roadwork(nil)`
 | `footer` | `table` |  |
 | `future` | `boolean` |  |
 | `icon` | `string` |  |
+| `id` | `string` |  |
 | `identifier` | `string` |  |
 | `isBlocked` | `string` |  |
 | `lorryParkingFeatureIcons` | `table` |  |
@@ -621,6 +631,7 @@ Create an instance: `local warning = client:Warning(nil)`
 | `footer` | `table` |  |
 | `future` | `boolean` |  |
 | `icon` | `string` |  |
+| `id` | `string` |  |
 | `identifier` | `string` |  |
 | `isBlocked` | `string` |  |
 | `lorryParkingFeatureIcons` | `table` |  |
@@ -665,6 +676,7 @@ Create an instance: `local webcam = client:Webcam(nil)`
 | `footer` | `table` |  |
 | `future` | `boolean` |  |
 | `icon` | `string` | Sinnbild, das die Art des Eintrags beschreibt. |
+| `id` | `string` |  |
 | `identifier` | `string` |  |
 | `imageurl` | `string` |  |
 | `isBlocked` | `string` |  |

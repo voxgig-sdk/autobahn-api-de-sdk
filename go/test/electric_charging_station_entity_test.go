@@ -123,13 +123,19 @@ func TestElectricChargingStationEntity(t *testing.T) {
 		}
 
 		// LOAD
-		electricChargingStationRef01MatchDt0 := map[string]any{}
+		electricChargingStationRef01MatchDt0 := map[string]any{
+			"id": electricChargingStationRef01Data["id"],
+		}
 		electricChargingStationRef01DataDt0Loaded, err := electricChargingStationRef01Ent.Load(electricChargingStationRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if electricChargingStationRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		electricChargingStationRef01DataDt0LoadResult := core.ToMapAny(entityData(electricChargingStationRef01DataDt0Loaded))
+		if electricChargingStationRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if electricChargingStationRef01DataDt0LoadResult["id"] != electricChargingStationRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

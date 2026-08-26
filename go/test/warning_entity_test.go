@@ -123,13 +123,19 @@ func TestWarningEntity(t *testing.T) {
 		}
 
 		// LOAD
-		warningRef01MatchDt0 := map[string]any{}
+		warningRef01MatchDt0 := map[string]any{
+			"id": warningRef01Data["id"],
+		}
 		warningRef01DataDt0Loaded, err := warningRef01Ent.Load(warningRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if warningRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		warningRef01DataDt0LoadResult := core.ToMapAny(entityData(warningRef01DataDt0Loaded))
+		if warningRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if warningRef01DataDt0LoadResult["id"] != warningRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

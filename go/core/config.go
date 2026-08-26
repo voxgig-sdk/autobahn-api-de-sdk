@@ -20,6 +20,7 @@ func MakeConfig() map[string]any {
 				"options": map[string]any{
 					"active": false,
 				},
+				"transport": "base",
 			},
 		},
 		"options": map[string]any{
@@ -66,6 +67,10 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "icon",
+						"type": "`$STRING`",
+					},
+					map[string]any{
+						"name": "id",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -223,6 +228,10 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "icon",
 						"short": "Sinnbild, das die Art des Eintrags beschreibt.",
+						"type": "`$STRING`",
+					},
+					map[string]any{
+						"name": "id",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -412,6 +421,10 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"name": "id",
+						"type": "`$STRING`",
+					},
+					map[string]any{
 						"name": "identifier",
 						"type": "`$STRING`",
 					},
@@ -560,6 +573,10 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "icon",
+						"type": "`$STRING`",
+					},
+					map[string]any{
+						"name": "id",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -717,6 +734,10 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"name": "id",
+						"type": "`$STRING`",
+					},
+					map[string]any{
 						"name": "identifier",
 						"type": "`$STRING`",
 					},
@@ -871,6 +892,10 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "icon",
 						"short": "Sinnbild, das die Art des Eintrags beschreibt.",
+						"type": "`$STRING`",
+					},
+					map[string]any{
+						"name": "id",
 						"type": "`$STRING`",
 					},
 					map[string]any{

@@ -90,9 +90,13 @@ class TestWarningEntity:
         assert isinstance(warning_ref01_list_result, list)
 
         # LOAD
-        warning_ref01_match_dt0 = {}
+        warning_ref01_match_dt0 = {
+            "id": warning_ref01_data["id"],
+        }
         warning_ref01_data_dt0_loaded = warning_ref01_ent.load(warning_ref01_match_dt0, None)
-        assert warning_ref01_data_dt0_loaded is not None
+        warning_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(warning_ref01_data_dt0_loaded))
+        assert warning_ref01_data_dt0_load_result is not None
+        assert warning_ref01_data_dt0_load_result["id"] == warning_ref01_data["id"]
 
 
 

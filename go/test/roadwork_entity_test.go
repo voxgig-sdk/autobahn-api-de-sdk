@@ -123,13 +123,19 @@ func TestRoadworkEntity(t *testing.T) {
 		}
 
 		// LOAD
-		roadworkRef01MatchDt0 := map[string]any{}
+		roadworkRef01MatchDt0 := map[string]any{
+			"id": roadworkRef01Data["id"],
+		}
 		roadworkRef01DataDt0Loaded, err := roadworkRef01Ent.Load(roadworkRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if roadworkRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		roadworkRef01DataDt0LoadResult := core.ToMapAny(entityData(roadworkRef01DataDt0Loaded))
+		if roadworkRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if roadworkRef01DataDt0LoadResult["id"] != roadworkRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

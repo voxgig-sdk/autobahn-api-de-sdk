@@ -95,9 +95,13 @@ class RoadworkEntityTest extends TestCase
         $this->assertIsArray($roadwork_ref01_list_result);
 
         // LOAD
-        $roadwork_ref01_match_dt0 = [];
+        $roadwork_ref01_match_dt0 = [
+            "id" => $roadwork_ref01_data["id"],
+        ];
         $roadwork_ref01_data_dt0_loaded = $roadwork_ref01_ent->load($roadwork_ref01_match_dt0, null);
-        $this->assertNotNull($roadwork_ref01_data_dt0_loaded);
+        $roadwork_ref01_data_dt0_load_result = Helpers::to_map(is_object($roadwork_ref01_data_dt0_loaded) && method_exists($roadwork_ref01_data_dt0_loaded, 'data_get') ? $roadwork_ref01_data_dt0_loaded->data_get() : $roadwork_ref01_data_dt0_loaded);
+        $this->assertNotNull($roadwork_ref01_data_dt0_load_result);
+        $this->assertEquals($roadwork_ref01_data_dt0_load_result["id"], $roadwork_ref01_data["id"]);
 
     }
 }

@@ -159,7 +159,7 @@ await entity.list()
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
-console.log(data)
+console.log(data.id)
 ```
 
 ### Add custom middleware
@@ -315,6 +315,7 @@ The `prepare()` method returns:
 | `footer` |  |
 | `future` |  |
 | `icon` |  |
+| `id` |  |
 | `identifier` |  |
 | `isBlocked` |  |
 | `lorryParkingFeatureIcons` |  |
@@ -339,6 +340,7 @@ API path: `/{roadId}/services/closure`
 | `footer` |  |
 | `future` |  |
 | `icon` | Sinnbild, das die Art des Eintrags beschreibt. |
+| `id` |  |
 | `identifier` |  |
 | `isBlocked` |  |
 | `lorryParkingFeatureIcons` |  |
@@ -372,6 +374,7 @@ API path: `/`
 | `footer` |  |
 | `future` |  |
 | `icon` | Sinnbild, das die Art des Eintrags beschreibt. |
+| `id` |  |
 | `identifier` |  |
 | `isBlocked` |  |
 | `lorryParkingFeatureIcons` |  |
@@ -395,6 +398,7 @@ API path: `/{roadId}/services/parking_lorry`
 | `footer` |  |
 | `future` |  |
 | `icon` |  |
+| `id` |  |
 | `identifier` |  |
 | `isBlocked` |  |
 | `lorryParkingFeatureIcons` |  |
@@ -419,6 +423,7 @@ API path: `/{roadId}/services/roadworks`
 | `footer` |  |
 | `future` |  |
 | `icon` |  |
+| `id` |  |
 | `identifier` |  |
 | `isBlocked` |  |
 | `lorryParkingFeatureIcons` |  |
@@ -443,6 +448,7 @@ API path: `/{roadId}/services/warning`
 | `footer` |  |
 | `future` |  |
 | `icon` | Sinnbild, das die Art des Eintrags beschreibt. |
+| `id` |  |
 | `identifier` |  |
 | `imageurl` |  |
 | `isBlocked` |  |
@@ -485,6 +491,7 @@ Create an instance: `const closure = client.Closure()`
 | `footer` | `any[]` |  |
 | `future` | `boolean` |  |
 | `icon` | `string` |  |
+| `id` | `string` |  |
 | `identifier` | `string` |  |
 | `isBlocked` | `string` |  |
 | `lorryParkingFeatureIcons` | `any[]` |  |
@@ -529,6 +536,7 @@ Create an instance: `const electric_charging_station = client.ElectricChargingSt
 | `footer` | `any[]` |  |
 | `future` | `boolean` |  |
 | `icon` | `string` | Sinnbild, das die Art des Eintrags beschreibt. |
+| `id` | `string` |  |
 | `identifier` | `string` |  |
 | `isBlocked` | `string` |  |
 | `lorryParkingFeatureIcons` | `any[]` |  |
@@ -595,6 +603,7 @@ Create an instance: `const parking_lorry = client.ParkingLorry()`
 | `footer` | `any[]` |  |
 | `future` | `boolean` |  |
 | `icon` | `string` | Sinnbild, das die Art des Eintrags beschreibt. |
+| `id` | `string` |  |
 | `identifier` | `string` |  |
 | `isBlocked` | `string` |  |
 | `lorryParkingFeatureIcons` | `any[]` |  |
@@ -638,6 +647,7 @@ Create an instance: `const roadwork = client.Roadwork()`
 | `footer` | `any[]` |  |
 | `future` | `boolean` |  |
 | `icon` | `string` |  |
+| `id` | `string` |  |
 | `identifier` | `string` |  |
 | `isBlocked` | `string` |  |
 | `lorryParkingFeatureIcons` | `any[]` |  |
@@ -682,6 +692,7 @@ Create an instance: `const warning = client.Warning()`
 | `footer` | `any[]` |  |
 | `future` | `boolean` |  |
 | `icon` | `string` |  |
+| `id` | `string` |  |
 | `identifier` | `string` |  |
 | `isBlocked` | `string` |  |
 | `lorryParkingFeatureIcons` | `any[]` |  |
@@ -726,6 +737,7 @@ Create an instance: `const webcam = client.Webcam()`
 | `footer` | `any[]` |  |
 | `future` | `boolean` |  |
 | `icon` | `string` | Sinnbild, das die Art des Eintrags beschreibt. |
+| `id` | `string` |  |
 | `identifier` | `string` |  |
 | `imageurl` | `string` |  |
 | `isBlocked` | `string` |  |

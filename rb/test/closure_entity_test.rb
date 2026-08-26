@@ -85,9 +85,13 @@ class ClosureEntityTest < Minitest::Test
     assert closure_ref01_list_result.is_a?(Array)
 
     # LOAD
-    closure_ref01_match_dt0 = {}
+    closure_ref01_match_dt0 = {
+      "id" => closure_ref01_data["id"],
+    }
     closure_ref01_data_dt0_loaded = closure_ref01_ent.load(closure_ref01_match_dt0, nil)
-    assert !closure_ref01_data_dt0_loaded.nil?
+    closure_ref01_data_dt0_load_result = Helpers.to_map(closure_ref01_data_dt0_loaded.respond_to?(:data_get) ? closure_ref01_data_dt0_loaded.data_get : closure_ref01_data_dt0_loaded)
+    assert !closure_ref01_data_dt0_load_result.nil?
+    assert_equal closure_ref01_data_dt0_load_result["id"], closure_ref01_data["id"]
 
   end
 end

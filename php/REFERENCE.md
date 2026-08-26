@@ -123,6 +123,7 @@ $closure = $client->Closure();
 | `footer` | `array` | No |  |
 | `future` | `bool` | No |  |
 | `icon` | `string` | No |  |
+| `id` | `string` | No |  |
 | `identifier` | `string` | No |  |
 | `isBlocked` | `string` | No |  |
 | `lorryParkingFeatureIcons` | `array` | No |  |
@@ -197,6 +198,7 @@ $electric_charging_station = $client->ElectricChargingStation();
 | `footer` | `array` | No |  |
 | `future` | `bool` | No |  |
 | `icon` | `string` | No | Sinnbild, das die Art des Eintrags beschreibt. |
+| `id` | `string` | No |  |
 | `identifier` | `string` | No |  |
 | `isBlocked` | `string` | No |  |
 | `lorryParkingFeatureIcons` | `array` | No |  |
@@ -322,6 +324,7 @@ $parking_lorry = $client->ParkingLorry();
 | `footer` | `array` | No |  |
 | `future` | `bool` | No |  |
 | `icon` | `string` | No | Sinnbild, das die Art des Eintrags beschreibt. |
+| `id` | `string` | No |  |
 | `identifier` | `string` | No |  |
 | `isBlocked` | `string` | No |  |
 | `lorryParkingFeatureIcons` | `array` | No |  |
@@ -395,6 +398,7 @@ $roadwork = $client->Roadwork();
 | `footer` | `array` | No |  |
 | `future` | `bool` | No |  |
 | `icon` | `string` | No |  |
+| `id` | `string` | No |  |
 | `identifier` | `string` | No |  |
 | `isBlocked` | `string` | No |  |
 | `lorryParkingFeatureIcons` | `array` | No |  |
@@ -469,6 +473,7 @@ $warning = $client->Warning();
 | `footer` | `array` | No |  |
 | `future` | `bool` | No |  |
 | `icon` | `string` | No |  |
+| `id` | `string` | No |  |
 | `identifier` | `string` | No |  |
 | `isBlocked` | `string` | No |  |
 | `lorryParkingFeatureIcons` | `array` | No |  |
@@ -543,6 +548,7 @@ $webcam = $client->Webcam();
 | `footer` | `array` | No |  |
 | `future` | `bool` | No |  |
 | `icon` | `string` | No | Sinnbild, das die Art des Eintrags beschreibt. |
+| `id` | `string` | No |  |
 | `identifier` | `string` | No |  |
 | `imageurl` | `string` | No |  |
 | `isBlocked` | `string` | No |  |

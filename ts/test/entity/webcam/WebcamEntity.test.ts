@@ -67,6 +67,12 @@ describe('WebcamEntity', async () => {
     const webcam_ref01_list = (await webcam_ref01_ent.list(webcam_ref01_match)).map((e: any) => e.data())
 
 
+    // LOAD
+    const webcam_ref01_match_dt0: any = {}
+    webcam_ref01_match_dt0.id = webcam_ref01_data.id
+    const webcam_ref01_data_dt0 = (await webcam_ref01_ent.load(webcam_ref01_match_dt0)).data()
+    assert(webcam_ref01_data_dt0.id === webcam_ref01_data.id)
+
 
   })
 })

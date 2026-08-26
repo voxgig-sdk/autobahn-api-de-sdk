@@ -44,6 +44,11 @@ main: kit: entity: webcam: {
       type: "`$STRING`"
     }
     {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "identifier"
       req: false
       type: "`$STRING`"
@@ -95,6 +100,11 @@ main: kit: entity: webcam: {
       type: "`$STRING`"
     }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "webcam"
   op: {

@@ -123,13 +123,19 @@ func TestParkingLorryEntity(t *testing.T) {
 		}
 
 		// LOAD
-		parkingLorryRef01MatchDt0 := map[string]any{}
+		parkingLorryRef01MatchDt0 := map[string]any{
+			"id": parkingLorryRef01Data["id"],
+		}
 		parkingLorryRef01DataDt0Loaded, err := parkingLorryRef01Ent.Load(parkingLorryRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if parkingLorryRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		parkingLorryRef01DataDt0LoadResult := core.ToMapAny(entityData(parkingLorryRef01DataDt0Loaded))
+		if parkingLorryRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if parkingLorryRef01DataDt0LoadResult["id"] != parkingLorryRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

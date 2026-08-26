@@ -94,10 +94,14 @@ describe("ClosureEntity", function()
     assert.is_table(closure_ref01_list_result)
 
     -- LOAD
-    local closure_ref01_match_dt0 = {}
+    local closure_ref01_match_dt0 = {
+      id = closure_ref01_data["id"],
+    }
     local closure_ref01_data_dt0_loaded, err = closure_ref01_ent:load(closure_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(closure_ref01_data_dt0_loaded)
+    local closure_ref01_data_dt0_load_result = helpers.to_map(type(closure_ref01_data_dt0_loaded) == 'table' and closure_ref01_data_dt0_loaded.data_get and closure_ref01_data_dt0_loaded:data_get() or closure_ref01_data_dt0_loaded)
+    assert.is_not_nil(closure_ref01_data_dt0_load_result)
+    assert.are.equal(closure_ref01_data_dt0_load_result["id"], closure_ref01_data["id"])
 
   end)
 end)

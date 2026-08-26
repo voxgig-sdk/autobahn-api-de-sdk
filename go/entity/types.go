@@ -21,6 +21,7 @@ type Closure struct {
 	Footer *[]any `json:"footer,omitempty"`
 	Future *bool `json:"future,omitempty"`
 	Icon *string `json:"icon,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Identifier *string `json:"identifier,omitempty"`
 	IsBlocked *string `json:"isBlocked,omitempty"`
 	LorryParkingFeatureIcons *[]any `json:"lorryParkingFeatureIcons,omitempty"`
@@ -50,6 +51,7 @@ type ElectricChargingStation struct {
 	Footer *[]any `json:"footer,omitempty"`
 	Future *bool `json:"future,omitempty"`
 	Icon *string `json:"icon,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Identifier *string `json:"identifier,omitempty"`
 	IsBlocked *string `json:"isBlocked,omitempty"`
 	LorryParkingFeatureIcons *[]any `json:"lorryParkingFeatureIcons,omitempty"`
@@ -88,6 +90,7 @@ type ParkingLorry struct {
 	Footer *[]any `json:"footer,omitempty"`
 	Future *bool `json:"future,omitempty"`
 	Icon *string `json:"icon,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Identifier *string `json:"identifier,omitempty"`
 	IsBlocked *string `json:"isBlocked,omitempty"`
 	LorryParkingFeatureIcons *[]any `json:"lorryParkingFeatureIcons,omitempty"`
@@ -116,6 +119,7 @@ type Roadwork struct {
 	Footer *[]any `json:"footer,omitempty"`
 	Future *bool `json:"future,omitempty"`
 	Icon *string `json:"icon,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Identifier *string `json:"identifier,omitempty"`
 	IsBlocked *string `json:"isBlocked,omitempty"`
 	LorryParkingFeatureIcons *[]any `json:"lorryParkingFeatureIcons,omitempty"`
@@ -145,6 +149,7 @@ type Warning struct {
 	Footer *[]any `json:"footer,omitempty"`
 	Future *bool `json:"future,omitempty"`
 	Icon *string `json:"icon,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Identifier *string `json:"identifier,omitempty"`
 	IsBlocked *string `json:"isBlocked,omitempty"`
 	LorryParkingFeatureIcons *[]any `json:"lorryParkingFeatureIcons,omitempty"`
@@ -174,6 +179,7 @@ type Webcam struct {
 	Footer *[]any `json:"footer,omitempty"`
 	Future *bool `json:"future,omitempty"`
 	Icon *string `json:"icon,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Identifier *string `json:"identifier,omitempty"`
 	Imageurl *string `json:"imageurl,omitempty"`
 	IsBlocked *string `json:"isBlocked,omitempty"`

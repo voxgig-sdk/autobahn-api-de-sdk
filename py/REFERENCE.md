@@ -118,6 +118,7 @@ closure = client.Closure()
 | `footer` | `list` | No |  |
 | `future` | `bool` | No |  |
 | `icon` | `str` | No |  |
+| `id` | `str` | No |  |
 | `identifier` | `str` | No |  |
 | `isBlocked` | `str` | No |  |
 | `lorryParkingFeatureIcons` | `list` | No |  |
@@ -193,6 +194,7 @@ electric_charging_station = client.ElectricChargingStation()
 | `footer` | `list` | No |  |
 | `future` | `bool` | No |  |
 | `icon` | `str` | No | Sinnbild, das die Art des Eintrags beschreibt. |
+| `id` | `str` | No |  |
 | `identifier` | `str` | No |  |
 | `isBlocked` | `str` | No |  |
 | `lorryParkingFeatureIcons` | `list` | No |  |
@@ -320,6 +322,7 @@ parking_lorry = client.ParkingLorry()
 | `footer` | `list` | No |  |
 | `future` | `bool` | No |  |
 | `icon` | `str` | No | Sinnbild, das die Art des Eintrags beschreibt. |
+| `id` | `str` | No |  |
 | `identifier` | `str` | No |  |
 | `isBlocked` | `str` | No |  |
 | `lorryParkingFeatureIcons` | `list` | No |  |
@@ -394,6 +397,7 @@ roadwork = client.Roadwork()
 | `footer` | `list` | No |  |
 | `future` | `bool` | No |  |
 | `icon` | `str` | No |  |
+| `id` | `str` | No |  |
 | `identifier` | `str` | No |  |
 | `isBlocked` | `str` | No |  |
 | `lorryParkingFeatureIcons` | `list` | No |  |
@@ -469,6 +473,7 @@ warning = client.Warning()
 | `footer` | `list` | No |  |
 | `future` | `bool` | No |  |
 | `icon` | `str` | No |  |
+| `id` | `str` | No |  |
 | `identifier` | `str` | No |  |
 | `isBlocked` | `str` | No |  |
 | `lorryParkingFeatureIcons` | `list` | No |  |
@@ -544,6 +549,7 @@ webcam = client.Webcam()
 | `footer` | `list` | No |  |
 | `future` | `bool` | No |  |
 | `icon` | `str` | No | Sinnbild, das die Art des Eintrags beschreibt. |
+| `id` | `str` | No |  |
 | `identifier` | `str` | No |  |
 | `imageurl` | `str` | No |  |
 | `isBlocked` | `str` | No |  |

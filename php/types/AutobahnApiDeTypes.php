@@ -22,6 +22,7 @@ class Closure
     public ?array $footer = null;
     public ?bool $future = null;
     public ?string $icon = null;
+    public ?string $id = null;
     public ?string $identifier = null;
     public ?string $isBlocked = null;
     public ?array $lorryParkingFeatureIcons = null;
@@ -54,6 +55,7 @@ class ElectricChargingStation
     public ?array $footer = null;
     public ?bool $future = null;
     public ?string $icon = null;
+    public ?string $id = null;
     public ?string $identifier = null;
     public ?string $isBlocked = null;
     public ?array $lorryParkingFeatureIcons = null;
@@ -97,6 +99,7 @@ class ParkingLorry
     public ?array $footer = null;
     public ?bool $future = null;
     public ?string $icon = null;
+    public ?string $id = null;
     public ?string $identifier = null;
     public ?string $isBlocked = null;
     public ?array $lorryParkingFeatureIcons = null;
@@ -128,6 +131,7 @@ class Roadwork
     public ?array $footer = null;
     public ?bool $future = null;
     public ?string $icon = null;
+    public ?string $id = null;
     public ?string $identifier = null;
     public ?string $isBlocked = null;
     public ?array $lorryParkingFeatureIcons = null;
@@ -160,6 +164,7 @@ class Warning
     public ?array $footer = null;
     public ?bool $future = null;
     public ?string $icon = null;
+    public ?string $id = null;
     public ?string $identifier = null;
     public ?string $isBlocked = null;
     public ?array $lorryParkingFeatureIcons = null;
@@ -192,6 +197,7 @@ class Webcam
     public ?array $footer = null;
     public ?bool $future = null;
     public ?string $icon = null;
+    public ?string $id = null;
     public ?string $identifier = null;
     public ?string $imageurl = null;
     public ?string $isBlocked = null;

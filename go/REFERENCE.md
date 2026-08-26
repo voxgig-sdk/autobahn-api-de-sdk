@@ -129,6 +129,7 @@ fmt.Println(closure.GetName()) // "closure"
 | `footer` | `[]any` | No |  |
 | `future` | `bool` | No |  |
 | `icon` | `string` | No |  |
+| `id` | `string` | No |  |
 | `identifier` | `string` | No |  |
 | `isBlocked` | `string` | No |  |
 | `lorryParkingFeatureIcons` | `[]any` | No |  |
@@ -206,6 +207,7 @@ fmt.Println(electricChargingStation.GetName()) // "electric_charging_station"
 | `footer` | `[]any` | No |  |
 | `future` | `bool` | No |  |
 | `icon` | `string` | No | Sinnbild, das die Art des Eintrags beschreibt. |
+| `id` | `string` | No |  |
 | `identifier` | `string` | No |  |
 | `isBlocked` | `string` | No |  |
 | `lorryParkingFeatureIcons` | `[]any` | No |  |
@@ -333,6 +335,7 @@ fmt.Println(parkingLorry.GetName()) // "parking_lorry"
 | `footer` | `[]any` | No |  |
 | `future` | `bool` | No |  |
 | `icon` | `string` | No | Sinnbild, das die Art des Eintrags beschreibt. |
+| `id` | `string` | No |  |
 | `identifier` | `string` | No |  |
 | `isBlocked` | `string` | No |  |
 | `lorryParkingFeatureIcons` | `[]any` | No |  |
@@ -409,6 +412,7 @@ fmt.Println(roadwork.GetName()) // "roadwork"
 | `footer` | `[]any` | No |  |
 | `future` | `bool` | No |  |
 | `icon` | `string` | No |  |
+| `id` | `string` | No |  |
 | `identifier` | `string` | No |  |
 | `isBlocked` | `string` | No |  |
 | `lorryParkingFeatureIcons` | `[]any` | No |  |
@@ -486,6 +490,7 @@ fmt.Println(warning.GetName()) // "warning"
 | `footer` | `[]any` | No |  |
 | `future` | `bool` | No |  |
 | `icon` | `string` | No |  |
+| `id` | `string` | No |  |
 | `identifier` | `string` | No |  |
 | `isBlocked` | `string` | No |  |
 | `lorryParkingFeatureIcons` | `[]any` | No |  |
@@ -563,6 +568,7 @@ fmt.Println(webcam.GetName()) // "webcam"
 | `footer` | `[]any` | No |  |
 | `future` | `bool` | No |  |
 | `icon` | `string` | No | Sinnbild, das die Art des Eintrags beschreibt. |
+| `id` | `string` | No |  |
 | `identifier` | `string` | No |  |
 | `imageurl` | `string` | No |  |
 | `isBlocked` | `string` | No |  |

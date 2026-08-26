@@ -90,9 +90,13 @@ class TestClosureEntity:
         assert isinstance(closure_ref01_list_result, list)
 
         # LOAD
-        closure_ref01_match_dt0 = {}
+        closure_ref01_match_dt0 = {
+            "id": closure_ref01_data["id"],
+        }
         closure_ref01_data_dt0_loaded = closure_ref01_ent.load(closure_ref01_match_dt0, None)
-        assert closure_ref01_data_dt0_loaded is not None
+        closure_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(closure_ref01_data_dt0_loaded))
+        assert closure_ref01_data_dt0_load_result is not None
+        assert closure_ref01_data_dt0_load_result["id"] == closure_ref01_data["id"]
 
 
 

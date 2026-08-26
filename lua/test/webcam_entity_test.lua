@@ -94,10 +94,14 @@ describe("WebcamEntity", function()
     assert.is_table(webcam_ref01_list_result)
 
     -- LOAD
-    local webcam_ref01_match_dt0 = {}
+    local webcam_ref01_match_dt0 = {
+      id = webcam_ref01_data["id"],
+    }
     local webcam_ref01_data_dt0_loaded, err = webcam_ref01_ent:load(webcam_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(webcam_ref01_data_dt0_loaded)
+    local webcam_ref01_data_dt0_load_result = helpers.to_map(type(webcam_ref01_data_dt0_loaded) == 'table' and webcam_ref01_data_dt0_loaded.data_get and webcam_ref01_data_dt0_loaded:data_get() or webcam_ref01_data_dt0_loaded)
+    assert.is_not_nil(webcam_ref01_data_dt0_load_result)
+    assert.are.equal(webcam_ref01_data_dt0_load_result["id"], webcam_ref01_data["id"])
 
   end)
 end)

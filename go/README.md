@@ -282,6 +282,7 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | `"footer"` |  |
 | `"future"` |  |
 | `"icon"` |  |
+| `"id"` |  |
 | `"identifier"` |  |
 | `"isBlocked"` |  |
 | `"lorryParkingFeatureIcons"` |  |
@@ -306,6 +307,7 @@ API path: `/{roadId}/services/closure`
 | `"footer"` |  |
 | `"future"` |  |
 | `"icon"` | Sinnbild, das die Art des Eintrags beschreibt. |
+| `"id"` |  |
 | `"identifier"` |  |
 | `"isBlocked"` |  |
 | `"lorryParkingFeatureIcons"` |  |
@@ -339,6 +341,7 @@ API path: `/`
 | `"footer"` |  |
 | `"future"` |  |
 | `"icon"` | Sinnbild, das die Art des Eintrags beschreibt. |
+| `"id"` |  |
 | `"identifier"` |  |
 | `"isBlocked"` |  |
 | `"lorryParkingFeatureIcons"` |  |
@@ -362,6 +365,7 @@ API path: `/{roadId}/services/parking_lorry`
 | `"footer"` |  |
 | `"future"` |  |
 | `"icon"` |  |
+| `"id"` |  |
 | `"identifier"` |  |
 | `"isBlocked"` |  |
 | `"lorryParkingFeatureIcons"` |  |
@@ -386,6 +390,7 @@ API path: `/{roadId}/services/roadworks`
 | `"footer"` |  |
 | `"future"` |  |
 | `"icon"` |  |
+| `"id"` |  |
 | `"identifier"` |  |
 | `"isBlocked"` |  |
 | `"lorryParkingFeatureIcons"` |  |
@@ -410,6 +415,7 @@ API path: `/{roadId}/services/warning`
 | `"footer"` |  |
 | `"future"` |  |
 | `"icon"` | Sinnbild, das die Art des Eintrags beschreibt. |
+| `"id"` |  |
 | `"identifier"` |  |
 | `"imageurl"` |  |
 | `"isBlocked"` |  |
@@ -452,6 +458,7 @@ Create an instance: `closure := client.Closure(nil)`
 | `footer` | `[]any` |  |
 | `future` | `bool` |  |
 | `icon` | `string` |  |
+| `id` | `string` |  |
 | `identifier` | `string` |  |
 | `isBlocked` | `string` |  |
 | `lorryParkingFeatureIcons` | `[]any` |  |
@@ -504,6 +511,7 @@ Create an instance: `electricChargingStation := client.ElectricChargingStation(n
 | `footer` | `[]any` |  |
 | `future` | `bool` |  |
 | `icon` | `string` | Sinnbild, das die Art des Eintrags beschreibt. |
+| `id` | `string` |  |
 | `identifier` | `string` |  |
 | `isBlocked` | `string` |  |
 | `lorryParkingFeatureIcons` | `[]any` |  |
@@ -582,6 +590,7 @@ Create an instance: `parkingLorry := client.ParkingLorry(nil)`
 | `footer` | `[]any` |  |
 | `future` | `bool` |  |
 | `icon` | `string` | Sinnbild, das die Art des Eintrags beschreibt. |
+| `id` | `string` |  |
 | `identifier` | `string` |  |
 | `isBlocked` | `string` |  |
 | `lorryParkingFeatureIcons` | `[]any` |  |
@@ -633,6 +642,7 @@ Create an instance: `roadwork := client.Roadwork(nil)`
 | `footer` | `[]any` |  |
 | `future` | `bool` |  |
 | `icon` | `string` |  |
+| `id` | `string` |  |
 | `identifier` | `string` |  |
 | `isBlocked` | `string` |  |
 | `lorryParkingFeatureIcons` | `[]any` |  |
@@ -685,6 +695,7 @@ Create an instance: `warning := client.Warning(nil)`
 | `footer` | `[]any` |  |
 | `future` | `bool` |  |
 | `icon` | `string` |  |
+| `id` | `string` |  |
 | `identifier` | `string` |  |
 | `isBlocked` | `string` |  |
 | `lorryParkingFeatureIcons` | `[]any` |  |
@@ -737,6 +748,7 @@ Create an instance: `webcam := client.Webcam(nil)`
 | `footer` | `[]any` |  |
 | `future` | `bool` |  |
 | `icon` | `string` | Sinnbild, das die Art des Eintrags beschreibt. |
+| `id` | `string` |  |
 | `identifier` | `string` |  |
 | `imageurl` | `string` |  |
 | `isBlocked` | `string` |  |

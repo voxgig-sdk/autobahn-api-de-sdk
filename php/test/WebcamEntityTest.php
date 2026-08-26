@@ -95,9 +95,13 @@ class WebcamEntityTest extends TestCase
         $this->assertIsArray($webcam_ref01_list_result);
 
         // LOAD
-        $webcam_ref01_match_dt0 = [];
+        $webcam_ref01_match_dt0 = [
+            "id" => $webcam_ref01_data["id"],
+        ];
         $webcam_ref01_data_dt0_loaded = $webcam_ref01_ent->load($webcam_ref01_match_dt0, null);
-        $this->assertNotNull($webcam_ref01_data_dt0_loaded);
+        $webcam_ref01_data_dt0_load_result = Helpers::to_map(is_object($webcam_ref01_data_dt0_loaded) && method_exists($webcam_ref01_data_dt0_loaded, 'data_get') ? $webcam_ref01_data_dt0_loaded->data_get() : $webcam_ref01_data_dt0_loaded);
+        $this->assertNotNull($webcam_ref01_data_dt0_load_result);
+        $this->assertEquals($webcam_ref01_data_dt0_load_result["id"], $webcam_ref01_data["id"]);
 
     }
 }
