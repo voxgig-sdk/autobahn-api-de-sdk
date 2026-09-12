@@ -114,6 +114,10 @@ module AutobahnApiDeConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "closure",
           "op" => {
             "list" => {
@@ -136,16 +140,22 @@ module AutobahnApiDeConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/{roadId}/services/closure",
-                  "parts" => [
-                    "{road_id}",
-                    "services",
-                    "closure",
-                  ],
                   "rename" => {
                     "param" => {
                       "roadId" => "road_id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "var" => "road_id",
+                    },
+                    {
+                      "lit" => "services",
+                    },
+                    {
+                      "lit" => "closure",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "road_id",
@@ -155,6 +165,11 @@ module AutobahnApiDeConfig
                     "req" => "`reqdata`",
                     "res" => "`body.closure`",
                   },
+                  "parts" => [
+                    "{road_id}",
+                    "services",
+                    "closure",
+                  ],
                 },
               ],
             },
@@ -178,16 +193,22 @@ module AutobahnApiDeConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/details/closure/{closureId}",
-                  "parts" => [
-                    "details",
-                    "closure",
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "closureId" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "details",
+                    },
+                    {
+                      "lit" => "closure",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "id",
@@ -197,6 +218,11 @@ module AutobahnApiDeConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "details",
+                    "closure",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -243,6 +269,7 @@ module AutobahnApiDeConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "byte",
               "name" => "identifier",
               "type" => "`$STRING`",
             },
@@ -272,6 +299,10 @@ module AutobahnApiDeConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "electric_charging_station",
           "op" => {
             "list" => {
@@ -294,16 +325,22 @@ module AutobahnApiDeConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/{roadId}/services/electric_charging_station",
-                  "parts" => [
-                    "{road_id}",
-                    "services",
-                    "electric_charging_station",
-                  ],
                   "rename" => {
                     "param" => {
                       "roadId" => "road_id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "var" => "road_id",
+                    },
+                    {
+                      "lit" => "services",
+                    },
+                    {
+                      "lit" => "electric_charging_station",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "road_id",
@@ -313,6 +350,11 @@ module AutobahnApiDeConfig
                     "req" => "`reqdata`",
                     "res" => "`body.electric_charging_station`",
                   },
+                  "parts" => [
+                    "{road_id}",
+                    "services",
+                    "electric_charging_station",
+                  ],
                 },
               ],
             },
@@ -336,16 +378,22 @@ module AutobahnApiDeConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/details/electric_charging_station/{stationId}",
-                  "parts" => [
-                    "details",
-                    "electric_charging_station",
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "stationId" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "details",
+                    },
+                    {
+                      "lit" => "electric_charging_station",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "id",
@@ -355,6 +403,11 @@ module AutobahnApiDeConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "details",
+                    "electric_charging_station",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -381,12 +434,13 @@ module AutobahnApiDeConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/",
-                  "parts" => [],
+                  "segments" => [],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body.roads`",
                   },
+                  "parts" => [],
                 },
               ],
             },
@@ -433,6 +487,7 @@ module AutobahnApiDeConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "byte",
               "name" => "identifier",
               "type" => "`$STRING`",
             },
@@ -462,6 +517,10 @@ module AutobahnApiDeConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "parking_lorry",
           "op" => {
             "list" => {
@@ -484,16 +543,22 @@ module AutobahnApiDeConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/{roadId}/services/parking_lorry",
-                  "parts" => [
-                    "{road_id}",
-                    "services",
-                    "parking_lorry",
-                  ],
                   "rename" => {
                     "param" => {
                       "roadId" => "road_id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "var" => "road_id",
+                    },
+                    {
+                      "lit" => "services",
+                    },
+                    {
+                      "lit" => "parking_lorry",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "road_id",
@@ -503,6 +568,11 @@ module AutobahnApiDeConfig
                     "req" => "`reqdata`",
                     "res" => "`body.parking_lorry`",
                   },
+                  "parts" => [
+                    "{road_id}",
+                    "services",
+                    "parking_lorry",
+                  ],
                 },
               ],
             },
@@ -526,16 +596,22 @@ module AutobahnApiDeConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/details/parking_lorry/{lorryId}",
-                  "parts" => [
-                    "details",
-                    "parking_lorry",
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "lorryId" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "details",
+                    },
+                    {
+                      "lit" => "parking_lorry",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "id",
@@ -545,6 +621,11 @@ module AutobahnApiDeConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "details",
+                    "parking_lorry",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -620,6 +701,10 @@ module AutobahnApiDeConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "roadwork",
           "op" => {
             "list" => {
@@ -642,16 +727,22 @@ module AutobahnApiDeConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/{roadId}/services/roadworks",
-                  "parts" => [
-                    "{road_id}",
-                    "services",
-                    "roadworks",
-                  ],
                   "rename" => {
                     "param" => {
                       "roadId" => "road_id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "var" => "road_id",
+                    },
+                    {
+                      "lit" => "services",
+                    },
+                    {
+                      "lit" => "roadworks",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "road_id",
@@ -661,6 +752,11 @@ module AutobahnApiDeConfig
                     "req" => "`reqdata`",
                     "res" => "`body.roadworks`",
                   },
+                  "parts" => [
+                    "{road_id}",
+                    "services",
+                    "roadworks",
+                  ],
                 },
               ],
             },
@@ -684,16 +780,22 @@ module AutobahnApiDeConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/details/roadworks/{roadworkId}",
-                  "parts" => [
-                    "details",
-                    "roadworks",
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "roadworkId" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "details",
+                    },
+                    {
+                      "lit" => "roadworks",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "id",
@@ -703,6 +805,11 @@ module AutobahnApiDeConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "details",
+                    "roadworks",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -778,6 +885,10 @@ module AutobahnApiDeConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "warning",
           "op" => {
             "list" => {
@@ -800,16 +911,22 @@ module AutobahnApiDeConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/{roadId}/services/warning",
-                  "parts" => [
-                    "{road_id}",
-                    "services",
-                    "warning",
-                  ],
                   "rename" => {
                     "param" => {
                       "roadId" => "road_id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "var" => "road_id",
+                    },
+                    {
+                      "lit" => "services",
+                    },
+                    {
+                      "lit" => "warning",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "road_id",
@@ -819,6 +936,11 @@ module AutobahnApiDeConfig
                     "req" => "`reqdata`",
                     "res" => "`body.warning`",
                   },
+                  "parts" => [
+                    "{road_id}",
+                    "services",
+                    "warning",
+                  ],
                 },
               ],
             },
@@ -842,16 +964,22 @@ module AutobahnApiDeConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/details/warning/{warningId}",
-                  "parts" => [
-                    "details",
-                    "warning",
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "warningId" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "details",
+                    },
+                    {
+                      "lit" => "warning",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "id",
@@ -861,6 +989,11 @@ module AutobahnApiDeConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "details",
+                    "warning",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -907,10 +1040,12 @@ module AutobahnApiDeConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "byte",
               "name" => "identifier",
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "imageurl",
               "type" => "`$STRING`",
             },
@@ -919,6 +1054,7 @@ module AutobahnApiDeConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "linkurl",
               "type" => "`$STRING`",
             },
@@ -948,6 +1084,10 @@ module AutobahnApiDeConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "webcam",
           "op" => {
             "list" => {
@@ -970,16 +1110,22 @@ module AutobahnApiDeConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/{roadId}/services/webcam",
-                  "parts" => [
-                    "{road_id}",
-                    "services",
-                    "webcam",
-                  ],
                   "rename" => {
                     "param" => {
                       "roadId" => "road_id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "var" => "road_id",
+                    },
+                    {
+                      "lit" => "services",
+                    },
+                    {
+                      "lit" => "webcam",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "road_id",
@@ -989,6 +1135,11 @@ module AutobahnApiDeConfig
                     "req" => "`reqdata`",
                     "res" => "`body.webcam`",
                   },
+                  "parts" => [
+                    "{road_id}",
+                    "services",
+                    "webcam",
+                  ],
                 },
               ],
             },
@@ -1012,16 +1163,22 @@ module AutobahnApiDeConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/details/webcam/{webcamId}",
-                  "parts" => [
-                    "details",
-                    "webcam",
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "webcamId" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "details",
+                    },
+                    {
+                      "lit" => "webcam",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "id",
@@ -1031,6 +1188,11 @@ module AutobahnApiDeConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "details",
+                    "webcam",
+                    "{id}",
+                  ],
                 },
               ],
             },

@@ -112,16 +112,22 @@ main: kit: entity: roadwork: {
           }
           method: "GET"
           orig: "/{roadId}/services/roadworks"
-          parts: [
-            "{road_id}"
-            "services"
-            "roadworks"
-          ]
           rename: {
             param: {
               roadId: "road_id"
             }
           }
+          segments: [
+            {
+              var: "road_id"
+            }
+            {
+              lit: "services"
+            }
+            {
+              lit: "roadworks"
+            }
+          ]
           select: {
             exist: [
               "road_id"
@@ -152,16 +158,22 @@ main: kit: entity: roadwork: {
           }
           method: "GET"
           orig: "/details/roadworks/{roadworkId}"
-          parts: [
-            "details"
-            "roadworks"
-            "{id}"
-          ]
           rename: {
             param: {
               roadworkId: "id"
             }
           }
+          segments: [
+            {
+              lit: "details"
+            }
+            {
+              lit: "roadworks"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"

@@ -112,16 +112,22 @@ main: kit: entity: warning: {
           }
           method: "GET"
           orig: "/{roadId}/services/warning"
-          parts: [
-            "{road_id}"
-            "services"
-            "warning"
-          ]
           rename: {
             param: {
               roadId: "road_id"
             }
           }
+          segments: [
+            {
+              var: "road_id"
+            }
+            {
+              lit: "services"
+            }
+            {
+              lit: "warning"
+            }
+          ]
           select: {
             exist: [
               "road_id"
@@ -152,16 +158,22 @@ main: kit: entity: warning: {
           }
           method: "GET"
           orig: "/details/warning/{warningId}"
-          parts: [
-            "details"
-            "warning"
-            "{id}"
-          ]
           rename: {
             param: {
               warningId: "id"
             }
           }
+          segments: [
+            {
+              lit: "details"
+            }
+            {
+              lit: "warning"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"

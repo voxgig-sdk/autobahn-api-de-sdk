@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -149,6 +160,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "closure",
       "op": {
         "list": {
@@ -171,16 +186,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/{roadId}/services/closure",
-              "parts": [
-                "{road_id}",
-                "services",
-                "closure"
-              ],
               "rename": {
                 "param": {
                   "roadId": "road_id"
                 }
               },
+              "segments": [
+                {
+                  "var": "road_id"
+                },
+                {
+                  "lit": "services"
+                },
+                {
+                  "lit": "closure"
+                }
+              ],
               "select": {
                 "exist": [
                   "road_id"
@@ -189,7 +210,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.closure`"
-              }
+              },
+              "parts": [
+                "{road_id}",
+                "services",
+                "closure"
+              ]
             }
           ]
         },
@@ -213,16 +239,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/details/closure/{closureId}",
-              "parts": [
-                "details",
-                "closure",
-                "{id}"
-              ],
               "rename": {
                 "param": {
                   "closureId": "id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "details"
+                },
+                {
+                  "lit": "closure"
+                },
+                {
+                  "var": "id"
+                }
+              ],
               "select": {
                 "exist": [
                   "id"
@@ -231,7 +263,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "details",
+                "closure",
+                "{id}"
+              ]
             }
           ]
         }
@@ -278,6 +315,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "byte",
           "name": "identifier",
           "type": "`$STRING`"
         },
@@ -307,6 +345,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "electric_charging_station",
       "op": {
         "list": {
@@ -329,16 +371,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/{roadId}/services/electric_charging_station",
-              "parts": [
-                "{road_id}",
-                "services",
-                "electric_charging_station"
-              ],
               "rename": {
                 "param": {
                   "roadId": "road_id"
                 }
               },
+              "segments": [
+                {
+                  "var": "road_id"
+                },
+                {
+                  "lit": "services"
+                },
+                {
+                  "lit": "electric_charging_station"
+                }
+              ],
               "select": {
                 "exist": [
                   "road_id"
@@ -347,7 +395,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.electric_charging_station`"
-              }
+              },
+              "parts": [
+                "{road_id}",
+                "services",
+                "electric_charging_station"
+              ]
             }
           ]
         },
@@ -371,16 +424,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/details/electric_charging_station/{stationId}",
-              "parts": [
-                "details",
-                "electric_charging_station",
-                "{id}"
-              ],
               "rename": {
                 "param": {
                   "stationId": "id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "details"
+                },
+                {
+                  "lit": "electric_charging_station"
+                },
+                {
+                  "var": "id"
+                }
+              ],
               "select": {
                 "exist": [
                   "id"
@@ -389,7 +448,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "details",
+                "electric_charging_station",
+                "{id}"
+              ]
             }
           ]
         }
@@ -416,12 +480,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/",
-              "parts": [],
+              "segments": [],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.roads`"
-              }
+              },
+              "parts": []
             }
           ]
         }
@@ -468,6 +533,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "byte",
           "name": "identifier",
           "type": "`$STRING`"
         },
@@ -497,6 +563,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "parking_lorry",
       "op": {
         "list": {
@@ -519,16 +589,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/{roadId}/services/parking_lorry",
-              "parts": [
-                "{road_id}",
-                "services",
-                "parking_lorry"
-              ],
               "rename": {
                 "param": {
                   "roadId": "road_id"
                 }
               },
+              "segments": [
+                {
+                  "var": "road_id"
+                },
+                {
+                  "lit": "services"
+                },
+                {
+                  "lit": "parking_lorry"
+                }
+              ],
               "select": {
                 "exist": [
                   "road_id"
@@ -537,7 +613,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.parking_lorry`"
-              }
+              },
+              "parts": [
+                "{road_id}",
+                "services",
+                "parking_lorry"
+              ]
             }
           ]
         },
@@ -561,16 +642,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/details/parking_lorry/{lorryId}",
-              "parts": [
-                "details",
-                "parking_lorry",
-                "{id}"
-              ],
               "rename": {
                 "param": {
                   "lorryId": "id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "details"
+                },
+                {
+                  "lit": "parking_lorry"
+                },
+                {
+                  "var": "id"
+                }
+              ],
               "select": {
                 "exist": [
                   "id"
@@ -579,7 +666,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "details",
+                "parking_lorry",
+                "{id}"
+              ]
             }
           ]
         }
@@ -655,6 +747,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "roadwork",
       "op": {
         "list": {
@@ -677,16 +773,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/{roadId}/services/roadworks",
-              "parts": [
-                "{road_id}",
-                "services",
-                "roadworks"
-              ],
               "rename": {
                 "param": {
                   "roadId": "road_id"
                 }
               },
+              "segments": [
+                {
+                  "var": "road_id"
+                },
+                {
+                  "lit": "services"
+                },
+                {
+                  "lit": "roadworks"
+                }
+              ],
               "select": {
                 "exist": [
                   "road_id"
@@ -695,7 +797,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.roadworks`"
-              }
+              },
+              "parts": [
+                "{road_id}",
+                "services",
+                "roadworks"
+              ]
             }
           ]
         },
@@ -719,16 +826,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/details/roadworks/{roadworkId}",
-              "parts": [
-                "details",
-                "roadworks",
-                "{id}"
-              ],
               "rename": {
                 "param": {
                   "roadworkId": "id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "details"
+                },
+                {
+                  "lit": "roadworks"
+                },
+                {
+                  "var": "id"
+                }
+              ],
               "select": {
                 "exist": [
                   "id"
@@ -737,7 +850,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "details",
+                "roadworks",
+                "{id}"
+              ]
             }
           ]
         }
@@ -813,6 +931,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "warning",
       "op": {
         "list": {
@@ -835,16 +957,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/{roadId}/services/warning",
-              "parts": [
-                "{road_id}",
-                "services",
-                "warning"
-              ],
               "rename": {
                 "param": {
                   "roadId": "road_id"
                 }
               },
+              "segments": [
+                {
+                  "var": "road_id"
+                },
+                {
+                  "lit": "services"
+                },
+                {
+                  "lit": "warning"
+                }
+              ],
               "select": {
                 "exist": [
                   "road_id"
@@ -853,7 +981,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.warning`"
-              }
+              },
+              "parts": [
+                "{road_id}",
+                "services",
+                "warning"
+              ]
             }
           ]
         },
@@ -877,16 +1010,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/details/warning/{warningId}",
-              "parts": [
-                "details",
-                "warning",
-                "{id}"
-              ],
               "rename": {
                 "param": {
                   "warningId": "id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "details"
+                },
+                {
+                  "lit": "warning"
+                },
+                {
+                  "var": "id"
+                }
+              ],
               "select": {
                 "exist": [
                   "id"
@@ -895,7 +1034,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "details",
+                "warning",
+                "{id}"
+              ]
             }
           ]
         }
@@ -942,10 +1086,12 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "byte",
           "name": "identifier",
           "type": "`$STRING`"
         },
         {
+          "format": "uri",
           "name": "imageurl",
           "type": "`$STRING`"
         },
@@ -954,6 +1100,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "uri",
           "name": "linkurl",
           "type": "`$STRING`"
         },
@@ -983,6 +1130,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "webcam",
       "op": {
         "list": {
@@ -1005,16 +1156,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/{roadId}/services/webcam",
-              "parts": [
-                "{road_id}",
-                "services",
-                "webcam"
-              ],
               "rename": {
                 "param": {
                   "roadId": "road_id"
                 }
               },
+              "segments": [
+                {
+                  "var": "road_id"
+                },
+                {
+                  "lit": "services"
+                },
+                {
+                  "lit": "webcam"
+                }
+              ],
               "select": {
                 "exist": [
                   "road_id"
@@ -1023,7 +1180,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.webcam`"
-              }
+              },
+              "parts": [
+                "{road_id}",
+                "services",
+                "webcam"
+              ]
             }
           ]
         },
@@ -1047,16 +1209,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/details/webcam/{webcamId}",
-              "parts": [
-                "details",
-                "webcam",
-                "{id}"
-              ],
               "rename": {
                 "param": {
                   "webcamId": "id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "details"
+                },
+                {
+                  "lit": "webcam"
+                },
+                {
+                  "var": "id"
+                }
+              ],
               "select": {
                 "exist": [
                   "id"
@@ -1065,7 +1233,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "details",
+                "webcam",
+                "{id}"
+              ]
             }
           ]
         }
@@ -1081,6 +1254,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 

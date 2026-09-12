@@ -98,7 +98,7 @@ func TestClosureEntity(t *testing.T) {
 		client := setup.client
 
 		// Bootstrap entity data from existing test data (no create step in flow).
-		closureRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath("existing.closure", setup.data)))
+		closureRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.closure")))
 		var closureRef01Data map[string]any
 		if len(closureRef01DataRaw) > 0 {
 			closureRef01Data = core.ToMapAny(closureRef01DataRaw[0][1])
@@ -165,7 +165,7 @@ func closureBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"closure01", "closure02", "closure03", "road01"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -193,10 +193,22 @@ func closureBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["AUTOBAHN_API_DE_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewAutobahnApiDeSDK(core.ToMapAny(mergedOpts))
 	}

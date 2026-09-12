@@ -106,6 +106,10 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
+				},
 				"name": "closure",
 				"op": map[string]any{
 					"list": map[string]any{
@@ -128,14 +132,20 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/{roadId}/services/closure",
-								"parts": []any{
-									"{road_id}",
-									"services",
-									"closure",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"roadId": "road_id",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"var": "road_id",
+									},
+									map[string]any{
+										"lit": "services",
+									},
+									map[string]any{
+										"lit": "closure",
 									},
 								},
 								"select": map[string]any{
@@ -146,6 +156,11 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.closure`",
+								},
+								"parts": []any{
+									"{road_id}",
+									"services",
+									"closure",
 								},
 							},
 						},
@@ -170,14 +185,20 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/details/closure/{closureId}",
-								"parts": []any{
-									"details",
-									"closure",
-									"{id}",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"closureId": "id",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"lit": "details",
+									},
+									map[string]any{
+										"lit": "closure",
+									},
+									map[string]any{
+										"var": "id",
 									},
 								},
 								"select": map[string]any{
@@ -188,6 +209,11 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"details",
+									"closure",
+									"{id}",
 								},
 							},
 						},
@@ -235,6 +261,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "byte",
 						"name": "identifier",
 						"type": "`$STRING`",
 					},
@@ -264,6 +291,10 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
+				},
 				"name": "electric_charging_station",
 				"op": map[string]any{
 					"list": map[string]any{
@@ -286,14 +317,20 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/{roadId}/services/electric_charging_station",
-								"parts": []any{
-									"{road_id}",
-									"services",
-									"electric_charging_station",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"roadId": "road_id",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"var": "road_id",
+									},
+									map[string]any{
+										"lit": "services",
+									},
+									map[string]any{
+										"lit": "electric_charging_station",
 									},
 								},
 								"select": map[string]any{
@@ -304,6 +341,11 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.electric_charging_station`",
+								},
+								"parts": []any{
+									"{road_id}",
+									"services",
+									"electric_charging_station",
 								},
 							},
 						},
@@ -328,14 +370,20 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/details/electric_charging_station/{stationId}",
-								"parts": []any{
-									"details",
-									"electric_charging_station",
-									"{id}",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"stationId": "id",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"lit": "details",
+									},
+									map[string]any{
+										"lit": "electric_charging_station",
+									},
+									map[string]any{
+										"var": "id",
 									},
 								},
 								"select": map[string]any{
@@ -346,6 +394,11 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"details",
+									"electric_charging_station",
+									"{id}",
 								},
 							},
 						},
@@ -373,12 +426,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/",
-								"parts": []any{},
+								"segments": []any{},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.roads`",
 								},
+								"parts": []any{},
 							},
 						},
 					},
@@ -425,6 +479,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "byte",
 						"name": "identifier",
 						"type": "`$STRING`",
 					},
@@ -454,6 +509,10 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
+				},
 				"name": "parking_lorry",
 				"op": map[string]any{
 					"list": map[string]any{
@@ -476,14 +535,20 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/{roadId}/services/parking_lorry",
-								"parts": []any{
-									"{road_id}",
-									"services",
-									"parking_lorry",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"roadId": "road_id",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"var": "road_id",
+									},
+									map[string]any{
+										"lit": "services",
+									},
+									map[string]any{
+										"lit": "parking_lorry",
 									},
 								},
 								"select": map[string]any{
@@ -494,6 +559,11 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.parking_lorry`",
+								},
+								"parts": []any{
+									"{road_id}",
+									"services",
+									"parking_lorry",
 								},
 							},
 						},
@@ -518,14 +588,20 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/details/parking_lorry/{lorryId}",
-								"parts": []any{
-									"details",
-									"parking_lorry",
-									"{id}",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"lorryId": "id",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"lit": "details",
+									},
+									map[string]any{
+										"lit": "parking_lorry",
+									},
+									map[string]any{
+										"var": "id",
 									},
 								},
 								"select": map[string]any{
@@ -536,6 +612,11 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"details",
+									"parking_lorry",
+									"{id}",
 								},
 							},
 						},
@@ -612,6 +693,10 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
+				},
 				"name": "roadwork",
 				"op": map[string]any{
 					"list": map[string]any{
@@ -634,14 +719,20 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/{roadId}/services/roadworks",
-								"parts": []any{
-									"{road_id}",
-									"services",
-									"roadworks",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"roadId": "road_id",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"var": "road_id",
+									},
+									map[string]any{
+										"lit": "services",
+									},
+									map[string]any{
+										"lit": "roadworks",
 									},
 								},
 								"select": map[string]any{
@@ -652,6 +743,11 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.roadworks`",
+								},
+								"parts": []any{
+									"{road_id}",
+									"services",
+									"roadworks",
 								},
 							},
 						},
@@ -676,14 +772,20 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/details/roadworks/{roadworkId}",
-								"parts": []any{
-									"details",
-									"roadworks",
-									"{id}",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"roadworkId": "id",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"lit": "details",
+									},
+									map[string]any{
+										"lit": "roadworks",
+									},
+									map[string]any{
+										"var": "id",
 									},
 								},
 								"select": map[string]any{
@@ -694,6 +796,11 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"details",
+									"roadworks",
+									"{id}",
 								},
 							},
 						},
@@ -770,6 +877,10 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
+				},
 				"name": "warning",
 				"op": map[string]any{
 					"list": map[string]any{
@@ -792,14 +903,20 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/{roadId}/services/warning",
-								"parts": []any{
-									"{road_id}",
-									"services",
-									"warning",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"roadId": "road_id",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"var": "road_id",
+									},
+									map[string]any{
+										"lit": "services",
+									},
+									map[string]any{
+										"lit": "warning",
 									},
 								},
 								"select": map[string]any{
@@ -810,6 +927,11 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.warning`",
+								},
+								"parts": []any{
+									"{road_id}",
+									"services",
+									"warning",
 								},
 							},
 						},
@@ -834,14 +956,20 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/details/warning/{warningId}",
-								"parts": []any{
-									"details",
-									"warning",
-									"{id}",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"warningId": "id",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"lit": "details",
+									},
+									map[string]any{
+										"lit": "warning",
+									},
+									map[string]any{
+										"var": "id",
 									},
 								},
 								"select": map[string]any{
@@ -852,6 +980,11 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"details",
+									"warning",
+									"{id}",
 								},
 							},
 						},
@@ -899,10 +1032,12 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "byte",
 						"name": "identifier",
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "uri",
 						"name": "imageurl",
 						"type": "`$STRING`",
 					},
@@ -911,6 +1046,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "uri",
 						"name": "linkurl",
 						"type": "`$STRING`",
 					},
@@ -940,6 +1076,10 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
+				},
 				"name": "webcam",
 				"op": map[string]any{
 					"list": map[string]any{
@@ -962,14 +1102,20 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/{roadId}/services/webcam",
-								"parts": []any{
-									"{road_id}",
-									"services",
-									"webcam",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"roadId": "road_id",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"var": "road_id",
+									},
+									map[string]any{
+										"lit": "services",
+									},
+									map[string]any{
+										"lit": "webcam",
 									},
 								},
 								"select": map[string]any{
@@ -980,6 +1126,11 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.webcam`",
+								},
+								"parts": []any{
+									"{road_id}",
+									"services",
+									"webcam",
 								},
 							},
 						},
@@ -1004,14 +1155,20 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/details/webcam/{webcamId}",
-								"parts": []any{
-									"details",
-									"webcam",
-									"{id}",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"webcamId": "id",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"lit": "details",
+									},
+									map[string]any{
+										"lit": "webcam",
+									},
+									map[string]any{
+										"var": "id",
 									},
 								},
 								"select": map[string]any{
@@ -1023,6 +1180,11 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
+								"parts": []any{
+									"details",
+									"webcam",
+									"{id}",
+								},
 							},
 						},
 					},
@@ -1033,6 +1195,17 @@ func MakeConfig() map[string]any {
 			},
 		},
 	}
+}
+
+// The plugin definitions the model selected per feature, as []any so a
+// feature package can consume them without core naming its types. Empty
+// when no active feature declares active plugin groups for this target.
+var featurePlugins = map[string][]any{
+}
+
+// FeaturePlugins is the definitions list for one feature's chain.
+func FeaturePlugins(name string) []any {
+	return featurePlugins[name]
 }
 
 var (

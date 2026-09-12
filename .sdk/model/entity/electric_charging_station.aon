@@ -49,6 +49,7 @@ main: kit: entity: electric_charging_station: {
       type: "`$STRING`"
     }
     {
+      format: "byte"
       name: "identifier"
       req: false
       type: "`$STRING`"
@@ -111,16 +112,22 @@ main: kit: entity: electric_charging_station: {
           }
           method: "GET"
           orig: "/{roadId}/services/electric_charging_station"
-          parts: [
-            "{road_id}"
-            "services"
-            "electric_charging_station"
-          ]
           rename: {
             param: {
               roadId: "road_id"
             }
           }
+          segments: [
+            {
+              var: "road_id"
+            }
+            {
+              lit: "services"
+            }
+            {
+              lit: "electric_charging_station"
+            }
+          ]
           select: {
             exist: [
               "road_id"
@@ -151,16 +158,22 @@ main: kit: entity: electric_charging_station: {
           }
           method: "GET"
           orig: "/details/electric_charging_station/{stationId}"
-          parts: [
-            "details"
-            "electric_charging_station"
-            "{id}"
-          ]
           rename: {
             param: {
               stationId: "id"
             }
           }
+          segments: [
+            {
+              lit: "details"
+            }
+            {
+              lit: "electric_charging_station"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"

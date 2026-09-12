@@ -49,6 +49,7 @@ main: kit: entity: parking_lorry: {
       type: "`$STRING`"
     }
     {
+      format: "byte"
       name: "identifier"
       req: false
       type: "`$STRING`"
@@ -111,16 +112,22 @@ main: kit: entity: parking_lorry: {
           }
           method: "GET"
           orig: "/{roadId}/services/parking_lorry"
-          parts: [
-            "{road_id}"
-            "services"
-            "parking_lorry"
-          ]
           rename: {
             param: {
               roadId: "road_id"
             }
           }
+          segments: [
+            {
+              var: "road_id"
+            }
+            {
+              lit: "services"
+            }
+            {
+              lit: "parking_lorry"
+            }
+          ]
           select: {
             exist: [
               "road_id"
@@ -151,16 +158,22 @@ main: kit: entity: parking_lorry: {
           }
           method: "GET"
           orig: "/details/parking_lorry/{lorryId}"
-          parts: [
-            "details"
-            "parking_lorry"
-            "{id}"
-          ]
           rename: {
             param: {
               lorryId: "id"
             }
           }
+          segments: [
+            {
+              lit: "details"
+            }
+            {
+              lit: "parking_lorry"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"

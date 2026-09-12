@@ -112,16 +112,22 @@ main: kit: entity: closure: {
           }
           method: "GET"
           orig: "/{roadId}/services/closure"
-          parts: [
-            "{road_id}"
-            "services"
-            "closure"
-          ]
           rename: {
             param: {
               roadId: "road_id"
             }
           }
+          segments: [
+            {
+              var: "road_id"
+            }
+            {
+              lit: "services"
+            }
+            {
+              lit: "closure"
+            }
+          ]
           select: {
             exist: [
               "road_id"
@@ -152,16 +158,22 @@ main: kit: entity: closure: {
           }
           method: "GET"
           orig: "/details/closure/{closureId}"
-          parts: [
-            "details"
-            "closure"
-            "{id}"
-          ]
           rename: {
             param: {
               closureId: "id"
             }
           }
+          segments: [
+            {
+              lit: "details"
+            }
+            {
+              lit: "closure"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"

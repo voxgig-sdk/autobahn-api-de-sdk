@@ -49,11 +49,13 @@ main: kit: entity: webcam: {
       type: "`$STRING`"
     }
     {
+      format: "byte"
       name: "identifier"
       req: false
       type: "`$STRING`"
     }
     {
+      format: "uri"
       name: "imageurl"
       req: false
       type: "`$STRING`"
@@ -64,6 +66,7 @@ main: kit: entity: webcam: {
       type: "`$STRING`"
     }
     {
+      format: "uri"
       name: "linkurl"
       req: false
       type: "`$STRING`"
@@ -126,16 +129,22 @@ main: kit: entity: webcam: {
           }
           method: "GET"
           orig: "/{roadId}/services/webcam"
-          parts: [
-            "{road_id}"
-            "services"
-            "webcam"
-          ]
           rename: {
             param: {
               roadId: "road_id"
             }
           }
+          segments: [
+            {
+              var: "road_id"
+            }
+            {
+              lit: "services"
+            }
+            {
+              lit: "webcam"
+            }
+          ]
           select: {
             exist: [
               "road_id"
@@ -166,16 +175,22 @@ main: kit: entity: webcam: {
           }
           method: "GET"
           orig: "/details/webcam/{webcamId}"
-          parts: [
-            "details"
-            "webcam"
-            "{id}"
-          ]
           rename: {
             param: {
               webcamId: "id"
             }
           }
+          segments: [
+            {
+              lit: "details"
+            }
+            {
+              lit: "webcam"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"

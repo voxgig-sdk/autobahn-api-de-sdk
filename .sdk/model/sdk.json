@@ -157,16 +157,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/{roadId}/services/closure",
-                  "parts": [
-                    "{road_id}",
-                    "services",
-                    "closure"
-                  ],
                   "rename": {
                     "param": {
                       "roadId": "road_id"
                     }
                   },
+                  "segments": [
+                    {
+                      "var": "road_id"
+                    },
+                    {
+                      "lit": "services"
+                    },
+                    {
+                      "lit": "closure"
+                    }
+                  ],
                   "select": {
                     "exist": [
                       "road_id"
@@ -201,16 +207,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/details/closure/{closureId}",
-                  "parts": [
-                    "details",
-                    "closure",
-                    "{id}"
-                  ],
                   "rename": {
                     "param": {
                       "closureId": "id"
                     }
                   },
+                  "segments": [
+                    {
+                      "lit": "details"
+                    },
+                    {
+                      "lit": "closure"
+                    },
+                    {
+                      "var": "id"
+                    }
+                  ],
                   "select": {
                     "exist": [
                       "id"
@@ -287,6 +299,7 @@
             },
             {
               "active": true,
+              "format": "byte",
               "name": "identifier",
               "req": false,
               "type": "`$STRING`"
@@ -357,16 +370,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/{roadId}/services/electric_charging_station",
-                  "parts": [
-                    "{road_id}",
-                    "services",
-                    "electric_charging_station"
-                  ],
                   "rename": {
                     "param": {
                       "roadId": "road_id"
                     }
                   },
+                  "segments": [
+                    {
+                      "var": "road_id"
+                    },
+                    {
+                      "lit": "services"
+                    },
+                    {
+                      "lit": "electric_charging_station"
+                    }
+                  ],
                   "select": {
                     "exist": [
                       "road_id"
@@ -401,16 +420,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/details/electric_charging_station/{stationId}",
-                  "parts": [
-                    "details",
-                    "electric_charging_station",
-                    "{id}"
-                  ],
                   "rename": {
                     "param": {
                       "stationId": "id"
                     }
                   },
+                  "segments": [
+                    {
+                      "lit": "details"
+                    },
+                    {
+                      "lit": "electric_charging_station"
+                    },
+                    {
+                      "var": "id"
+                    }
+                  ],
                   "select": {
                     "exist": [
                       "id"
@@ -453,7 +478,7 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/",
-                  "parts": [],
+                  "segments": [],
                   "select": {},
                   "transform": {
                     "req": "`reqdata`",
@@ -526,6 +551,7 @@
             },
             {
               "active": true,
+              "format": "byte",
               "name": "identifier",
               "req": false,
               "type": "`$STRING`"
@@ -596,16 +622,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/{roadId}/services/parking_lorry",
-                  "parts": [
-                    "{road_id}",
-                    "services",
-                    "parking_lorry"
-                  ],
                   "rename": {
                     "param": {
                       "roadId": "road_id"
                     }
                   },
+                  "segments": [
+                    {
+                      "var": "road_id"
+                    },
+                    {
+                      "lit": "services"
+                    },
+                    {
+                      "lit": "parking_lorry"
+                    }
+                  ],
                   "select": {
                     "exist": [
                       "road_id"
@@ -640,16 +672,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/details/parking_lorry/{lorryId}",
-                  "parts": [
-                    "details",
-                    "parking_lorry",
-                    "{id}"
-                  ],
                   "rename": {
                     "param": {
                       "lorryId": "id"
                     }
                   },
+                  "segments": [
+                    {
+                      "lit": "details"
+                    },
+                    {
+                      "lit": "parking_lorry"
+                    },
+                    {
+                      "var": "id"
+                    }
+                  ],
                   "select": {
                     "exist": [
                       "id"
@@ -798,16 +836,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/{roadId}/services/roadworks",
-                  "parts": [
-                    "{road_id}",
-                    "services",
-                    "roadworks"
-                  ],
                   "rename": {
                     "param": {
                       "roadId": "road_id"
                     }
                   },
+                  "segments": [
+                    {
+                      "var": "road_id"
+                    },
+                    {
+                      "lit": "services"
+                    },
+                    {
+                      "lit": "roadworks"
+                    }
+                  ],
                   "select": {
                     "exist": [
                       "road_id"
@@ -842,16 +886,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/details/roadworks/{roadworkId}",
-                  "parts": [
-                    "details",
-                    "roadworks",
-                    "{id}"
-                  ],
                   "rename": {
                     "param": {
                       "roadworkId": "id"
                     }
                   },
+                  "segments": [
+                    {
+                      "lit": "details"
+                    },
+                    {
+                      "lit": "roadworks"
+                    },
+                    {
+                      "var": "id"
+                    }
+                  ],
                   "select": {
                     "exist": [
                       "id"
@@ -1000,16 +1050,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/{roadId}/services/warning",
-                  "parts": [
-                    "{road_id}",
-                    "services",
-                    "warning"
-                  ],
                   "rename": {
                     "param": {
                       "roadId": "road_id"
                     }
                   },
+                  "segments": [
+                    {
+                      "var": "road_id"
+                    },
+                    {
+                      "lit": "services"
+                    },
+                    {
+                      "lit": "warning"
+                    }
+                  ],
                   "select": {
                     "exist": [
                       "road_id"
@@ -1044,16 +1100,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/details/warning/{warningId}",
-                  "parts": [
-                    "details",
-                    "warning",
-                    "{id}"
-                  ],
                   "rename": {
                     "param": {
                       "warningId": "id"
                     }
                   },
+                  "segments": [
+                    {
+                      "lit": "details"
+                    },
+                    {
+                      "lit": "warning"
+                    },
+                    {
+                      "var": "id"
+                    }
+                  ],
                   "select": {
                     "exist": [
                       "id"
@@ -1130,12 +1192,14 @@
             },
             {
               "active": true,
+              "format": "byte",
               "name": "identifier",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
+              "format": "uri",
               "name": "imageurl",
               "req": false,
               "type": "`$STRING`"
@@ -1148,6 +1212,7 @@
             },
             {
               "active": true,
+              "format": "uri",
               "name": "linkurl",
               "req": false,
               "type": "`$STRING`"
@@ -1218,16 +1283,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/{roadId}/services/webcam",
-                  "parts": [
-                    "{road_id}",
-                    "services",
-                    "webcam"
-                  ],
                   "rename": {
                     "param": {
                       "roadId": "road_id"
                     }
                   },
+                  "segments": [
+                    {
+                      "var": "road_id"
+                    },
+                    {
+                      "lit": "services"
+                    },
+                    {
+                      "lit": "webcam"
+                    }
+                  ],
                   "select": {
                     "exist": [
                       "road_id"
@@ -1262,16 +1333,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/details/webcam/{webcamId}",
-                  "parts": [
-                    "details",
-                    "webcam",
-                    "{id}"
-                  ],
                   "rename": {
                     "param": {
                       "webcamId": "id"
                     }
                   },
+                  "segments": [
+                    {
+                      "lit": "details"
+                    },
+                    {
+                      "lit": "webcam"
+                    },
+                    {
+                      "var": "id"
+                    }
+                  ],
                   "select": {
                     "exist": [
                       "id"
@@ -1354,8 +1431,11 @@
             }
           },
           "name": "test",
+          "needs": {},
           "origname": "",
           "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
           "target": {
             "go": {
               "deps": {}
@@ -1775,6 +1855,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1800,6 +1883,10 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/runner_test.go",
+            "test/struct_runner_test.go"
+          ],
           "title": "Golang"
         },
         "go-cli": {
@@ -1851,6 +1938,7 @@
               "active": false
             }
           },
+          "provides": {},
           "publish": {
             "registry": {
               "active": false,
@@ -1875,6 +1963,7 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [],
           "title": "Go CLI"
         },
         "go-mcp": {
@@ -1926,6 +2015,7 @@
               "active": false
             }
           },
+          "provides": {},
           "publish": {
             "registry": {
               "active": false,
@@ -1950,6 +2040,7 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [],
           "title": "Go MCP server"
         },
         "lua": {
@@ -1990,6 +2081,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2015,6 +2109,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.lua"
+          ],
           "title": "Lua"
         },
         "php": {
@@ -2049,6 +2146,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2074,6 +2174,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/StructRunner.php"
+          ],
           "title": "PHP"
         },
         "py": {
@@ -2114,6 +2217,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2139,6 +2245,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.py"
+          ],
           "title": "Python"
         },
         "rb": {
@@ -2184,6 +2293,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2209,6 +2321,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.rb"
+          ],
           "title": "Ruby"
         },
         "ts": {
@@ -2226,11 +2341,6 @@
               "active": true,
               "kind": "dev",
               "version": "^25.6.0"
-            },
-            "dotenv": {
-              "active": true,
-              "kind": "dev",
-              "version": "^17.4.2"
             },
             "typescript": {
               "active": true,
@@ -2259,6 +2369,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2283,6 +2396,14 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [
+            "test/runner.ts",
+            "test/vendor/omni/compat.ts",
+            "src/feature/secrets/sekreto/Providers.ts",
+            "src/feature/secrets/sekreto/Sigv4.ts",
+            "src/feature/secrets/sekreto/provider/Registry.ts",
+            "src/feature/secrets/sekreto/provider/http.ts"
+          ],
           "title": "TypeScript"
         }
       },

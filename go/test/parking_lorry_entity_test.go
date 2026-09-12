@@ -98,7 +98,7 @@ func TestParkingLorryEntity(t *testing.T) {
 		client := setup.client
 
 		// Bootstrap entity data from existing test data (no create step in flow).
-		parkingLorryRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath("existing.parking_lorry", setup.data)))
+		parkingLorryRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.parking_lorry")))
 		var parkingLorryRef01Data map[string]any
 		if len(parkingLorryRef01DataRaw) > 0 {
 			parkingLorryRef01Data = core.ToMapAny(parkingLorryRef01DataRaw[0][1])
@@ -165,7 +165,7 @@ func parking_lorryBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"parking_lorry01", "parking_lorry02", "parking_lorry03", "road01"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -193,10 +193,22 @@ func parking_lorryBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["AUTOBAHN_API_DE_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewAutobahnApiDeSDK(core.ToMapAny(mergedOpts))
 	}
