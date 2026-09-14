@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { AutobahnApiDeSDK } from '@voxgig-sdk/autobahn-api-de'
+import { AutobahnApiDeSDK } from '@voxgig-sdk/autobahn-api-de-sdk'
 
 const client = new AutobahnApiDeSDK()
 ```
@@ -844,7 +844,7 @@ autobahn-api-de/
 Import the SDK from the package root:
 
 ```ts
-import { AutobahnApiDeSDK } from '@voxgig-sdk/autobahn-api-de'
+import { AutobahnApiDeSDK } from '@voxgig-sdk/autobahn-api-de-sdk'
 ```
 
 ### Entity state

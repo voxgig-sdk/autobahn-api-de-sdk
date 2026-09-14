@@ -105,7 +105,7 @@ local results, err = client:Roadwork():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/autobahn-api-de` | publish pending — [install from git tag](https://github.com/voxgig-sdk/autobahn-api-de-sdk/releases) |
+| TypeScript | `@voxgig-sdk/autobahn-api-de-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/autobahn-api-de-sdk/releases) |
 | Python | `voxgig-sdk-autobahn-api-de` | publish pending — [install from git tag](https://github.com/voxgig-sdk/autobahn-api-de-sdk/releases) |
 | PHP | `voxgig-sdk/autobahn-api-de` | publish pending — [install from git tag](https://github.com/voxgig-sdk/autobahn-api-de-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/autobahn-api-de-sdk/go` | `go get github.com/voxgig-sdk/autobahn-api-de-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:Roadwork():list()
 ### TypeScript
 
 ```ts
-import { AutobahnApiDeSDK } from '@voxgig-sdk/autobahn-api-de'
+import { AutobahnApiDeSDK } from '@voxgig-sdk/autobahn-api-de-sdk'
 
 const client = new AutobahnApiDeSDK()
 
