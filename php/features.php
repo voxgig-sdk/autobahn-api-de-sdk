@@ -4,7 +4,10 @@ declare(strict_types=1);
 // AutobahnApiDe SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class AutobahnApiDeFeatures
@@ -14,8 +17,14 @@ class AutobahnApiDeFeatures
         switch ($name) {
             case "base":
                 return new AutobahnApiDeBaseFeature();
+            case "ratelimit":
+                return new AutobahnApiDeRatelimitFeature();
+            case "retry":
+                return new AutobahnApiDeRetryFeature();
             case "test":
                 return new AutobahnApiDeTestFeature();
+            case "timeout":
+                return new AutobahnApiDeTimeoutFeature();
             default:
                 return new AutobahnApiDeBaseFeature();
         }
@@ -31,7 +40,10 @@ class AutobahnApiDeFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;

@@ -24,7 +24,71 @@
         "repr": "auto"
       },
       "contributor": {},
-      "docs": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "closure": {
           "active": true,
@@ -154,6 +218,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /{roadId}/services/closure",
+                    "json": "{\"operationId\":\"list-closures\",\"parameters\":[{\"in\":\"path\",\"name\":\"roadId\",\"required\":true,\"schema\":{\"description\":\"Kann jede gültige Straßenbezeichnung sein (nicht auf Autobahnen beschränkt). Die Gültigkeit wird nicht überprüft: Abfragen mit nicht existierenden Straßenbezeichnungen liefern einen leeren Datensatz zurück. Die Schreibweise kann von der sonst üblichen Form abweichen (z.B. S1234 statt St1234 für Staatsstraßen).\\n\",\"example\":\"A1\",\"pattern\":\"[A-Z][A-Za-z]*[1-9]([0-9]{1,3})?(\\\\/[A-Z][A-Za-z]*[1-9]([0-9]{1,3})?)?\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"closure\":{\"items\":{\"allOf\":[{\"allOf\":[{\"properties\":{\"coordinate\":{\"description\":\"Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84). Identisch zu Point, jedoch sind rundungsbedingte Abweichungen möglich.\",\"example\":{\"lat\":\"54.006057\",\"long\":\"10.729057\"},\"properties\":{\"lat\":{\"pattern\":\"-?\\\\d+(?:\\\\.\\\\d+)?\",\"type\":\"string\"},\"long\":{\"pattern\":\"-?\\\\d+(?:\\\\.\\\\d+)?\",\"type\":\"string\"}},\"type\":\"object\"},\"description\":{\"example\":[\"Beginn: 29.06.2021 09:00\",\"Ende: 28.11.2021 17:00\",\"\",\"Art der Maßnahme:Asphaltdeckenerneuerung\",\"Einschränkungen:Es steht nur 1 Fahrstreifen zur Verfügung.\\n\\nVollsperrung der AS Eutin Ostseite vom 17.07.2021 - 15.09.2021.\\n\\nVollsperrung der AS Scharbeutz Ostseite vom 16.09.2021 - 17.11.2021.\",\"Maximale Durchfahrsbreite: 3.25\\n\"],\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"display_type\":{\"enum\":[\"ROADWORKS\",\"WEBCAM\",\"PARKING\",\"WARNING\",\"WEIGHT_LIMIT_35\",\"CLOSURE\",\"CLOSURE_ENTRY_EXIT\",\"STRONG_ELECTRIC_CHARGING_STATION\",\"SHORT_TERM_ROADWORKS\",\"ELECTRIC_CHARGING_STATION\"],\"type\":\"string\"},\"extent\":{\"description\":\"Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt.\",\"example\":\"10.728384054665147,54.00605746113356,10.775848767524598,54.09436740278899\",\"pattern\":\"-?\\\\d+(?:\\\\.\\\\d+)?,\\\\s*-?\\\\d+(?:\\\\.\\\\d+)?,\\\\s*-?\\\\d+(?:\\\\.\\\\d+)?,\\\\s*-?\\\\d+(?:\\\\.\\\\d+)?\",\"type\":\"string\"},\"footer\":{\"example\":[\"Beginn: 29.06.2021 09:00\",\"Ende: 28.11.2021 17:00\",\"\",\"Art der Maßnahme:Asphaltdeckenerneuerung\",\"Einschränkungen:Es steht nur 1 Fahrstreifen zur Verfügung.\\n\\nVollsperrung der AS Eutin Ostseite vom 17.07.2021 - 15.09.2021.\\n\\nVollsperrung der AS Scharbeutz Ostseite vom 16.09.2021 - 17.11.2021.\",\"Maximale Durchfahrsbreite: 3.25\\n\"],\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"future\":{\"type\":\"boolean\"},\"icon\":{\"description\":\"Sinnbild, das die Art des Eintrags beschreibt. Größtenteils sind diese dem offiziellen Verkehrszeichenkatalog entnommen, teilweise allerdings mit abweichender Bedeutung und/oder nicht offiziellen Unternummern. Wo kein passendes Verkehrszeichen existiert, werden nicht-numerische Werte verwendet:\\n<ul>\\n<li>101: Gefahr</li>\\n<li>123: Bauarbeiten</li>\\n<li>250: Sperrung</li>\\n<li>262-2: Max. 3,5t</li>\\n<li>314-50: Park-/Rastplatz (Pkw/Lkw)</li>\\n<li>314-50-2: Park-/Rastplatz (nur Pkw)</li>\\n<li>448: Anschlussstelle gesperrt</li>\\n<li>charging_plug_strong: Schnellladestation für E-Fahrzeuge</li>\\n<li>warnkegel: Kurzzeitbaustelle</li>\\n</ul>\\n\",\"type\":\"string\"},\"identifier\":{\"format\":\"byte\",\"type\":\"string\"},\"isBlocked\":{\"type\":\"string\"},\"lorryParkingFeatureIcons\":{\"items\":{\"example\":{\"description\":\"Picknickmöglichkeiten\",\"icon\":\"almofont almo-picnic_facility\",\"style\":\"\"},\"properties\":{\"description\":{\"type\":\"string\"},\"icon\":{\"type\":\"string\"},\"style\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"point\":{\"description\":\"Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84). Identisch zu Coordinate, jedoch sind rundungsbedingte Abweichungen möglich.\",\"example\":\"10.729057,54.006057\",\"pattern\":\"-?\\\\d+(?:\\\\.\\\\d+)?,\\\\s*-?\\\\d+(?:\\\\.\\\\d+)?\",\"type\":\"string\"},\"routeRecommendation\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"subtitle\":{\"type\":\"string\"},\"title\":{\"type\":\"string\"}},\"type\":\"object\"},{\"properties\":{\"startTimestamp\":{\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}]}],\"example\":{\"coordinate\":{\"lat\":\"51.036440\",\"long\":\"6.964910\"},\"description\":[\"Beginn: 20.06.2021 14:19\",\"Ende: 31.12.2025 23:59\",\"\",\"A1 Dortmund - Köln\",\"Leverkusener Brücke\",\"in beiden Richtungen gesperrt für LKW über 3,5 t, bis 31.12.2025\"],\"display_type\":\"WEIGHT_LIMIT_35\",\"extent\":\"6.95325,51.02996,6.96491,51.03644\",\"footer\":[],\"future\":false,\"icon\":\"262-2\",\"identifier\":\"Q0xPU1VSRV9fbWRtLnZpel9fTE1TLU5XL3JfTE1TLU5XLzMxNTEyMV9EICBOVyBMTVMtTlcuMA==\",\"isBlocked\":\"false\",\"lorryParkingFeatureIcons\":[],\"point\":\"6.964910,51.036440\",\"routeRecommendation\":[],\"startTimestamp\":\"2021-06-20T14:19:26.000+0200\",\"subtitle\":\"Dortmund Richtung Köln\",\"title\":\"A1 | AK Leverkusen-West (99) - AS Köln-Niehl (100)\"}},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Success\"},\"204\":{\"description\":\"Not found.\"},\"400\":{\"description\":\"Internal server error.\"},\"404\":{\"description\":\"Not found.\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/{roadId}/services/closure",
@@ -203,6 +273,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /details/closure/{closureId}",
+                    "json": "{\"operationId\":\"get-closure\",\"parameters\":[{\"in\":\"path\",\"name\":\"closureId\",\"required\":true,\"schema\":{\"example\":\"Q0xPU1VSRV9fbWRtLnZpel9fTE1TLU5XL3JfVElDLU5SV0JMSy8zOS9OUldCTEsvMTAgMzUgMjEgRCAwOTI0Mi0wMV9EICBOVyBMTVMtTlcuMA==\",\"format\":\"byte\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"allOf\":[{\"allOf\":[{\"properties\":{\"coordinate\":{\"description\":\"Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84). Identisch zu Point, jedoch sind rundungsbedingte Abweichungen möglich.\",\"example\":{\"lat\":\"54.006057\",\"long\":\"10.729057\"},\"properties\":{\"lat\":{\"pattern\":\"-?\\\\d+(?:\\\\.\\\\d+)?\",\"type\":\"string\"},\"long\":{\"pattern\":\"-?\\\\d+(?:\\\\.\\\\d+)?\",\"type\":\"string\"}},\"type\":\"object\"},\"description\":{\"example\":[\"Beginn: 29.06.2021 09:00\",\"Ende: 28.11.2021 17:00\",\"\",\"Art der Maßnahme:Asphaltdeckenerneuerung\",\"Einschränkungen:Es steht nur 1 Fahrstreifen zur Verfügung.\\n\\nVollsperrung der AS Eutin Ostseite vom 17.07.2021 - 15.09.2021.\\n\\nVollsperrung der AS Scharbeutz Ostseite vom 16.09.2021 - 17.11.2021.\",\"Maximale Durchfahrsbreite: 3.25\\n\"],\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"display_type\":{\"enum\":[\"ROADWORKS\",\"WEBCAM\",\"PARKING\",\"WARNING\",\"WEIGHT_LIMIT_35\",\"CLOSURE\",\"CLOSURE_ENTRY_EXIT\",\"STRONG_ELECTRIC_CHARGING_STATION\",\"SHORT_TERM_ROADWORKS\",\"ELECTRIC_CHARGING_STATION\"],\"type\":\"string\"},\"extent\":{\"description\":\"Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt.\",\"example\":\"10.728384054665147,54.00605746113356,10.775848767524598,54.09436740278899\",\"pattern\":\"-?\\\\d+(?:\\\\.\\\\d+)?,\\\\s*-?\\\\d+(?:\\\\.\\\\d+)?,\\\\s*-?\\\\d+(?:\\\\.\\\\d+)?,\\\\s*-?\\\\d+(?:\\\\.\\\\d+)?\",\"type\":\"string\"},\"footer\":{\"example\":[\"Beginn: 29.06.2021 09:00\",\"Ende: 28.11.2021 17:00\",\"\",\"Art der Maßnahme:Asphaltdeckenerneuerung\",\"Einschränkungen:Es steht nur 1 Fahrstreifen zur Verfügung.\\n\\nVollsperrung der AS Eutin Ostseite vom 17.07.2021 - 15.09.2021.\\n\\nVollsperrung der AS Scharbeutz Ostseite vom 16.09.2021 - 17.11.2021.\",\"Maximale Durchfahrsbreite: 3.25\\n\"],\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"future\":{\"type\":\"boolean\"},\"icon\":{\"description\":\"Sinnbild, das die Art des Eintrags beschreibt. Größtenteils sind diese dem offiziellen Verkehrszeichenkatalog entnommen, teilweise allerdings mit abweichender Bedeutung und/oder nicht offiziellen Unternummern. Wo kein passendes Verkehrszeichen existiert, werden nicht-numerische Werte verwendet:\\n<ul>\\n<li>101: Gefahr</li>\\n<li>123: Bauarbeiten</li>\\n<li>250: Sperrung</li>\\n<li>262-2: Max. 3,5t</li>\\n<li>314-50: Park-/Rastplatz (Pkw/Lkw)</li>\\n<li>314-50-2: Park-/Rastplatz (nur Pkw)</li>\\n<li>448: Anschlussstelle gesperrt</li>\\n<li>charging_plug_strong: Schnellladestation für E-Fahrzeuge</li>\\n<li>warnkegel: Kurzzeitbaustelle</li>\\n</ul>\\n\",\"type\":\"string\"},\"identifier\":{\"format\":\"byte\",\"type\":\"string\"},\"isBlocked\":{\"type\":\"string\"},\"lorryParkingFeatureIcons\":{\"items\":{\"example\":{\"description\":\"Picknickmöglichkeiten\",\"icon\":\"almofont almo-picnic_facility\",\"style\":\"\"},\"properties\":{\"description\":{\"type\":\"string\"},\"icon\":{\"type\":\"string\"},\"style\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"point\":{\"description\":\"Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84). Identisch zu Coordinate, jedoch sind rundungsbedingte Abweichungen möglich.\",\"example\":\"10.729057,54.006057\",\"pattern\":\"-?\\\\d+(?:\\\\.\\\\d+)?,\\\\s*-?\\\\d+(?:\\\\.\\\\d+)?\",\"type\":\"string\"},\"routeRecommendation\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"subtitle\":{\"type\":\"string\"},\"title\":{\"type\":\"string\"}},\"type\":\"object\"},{\"properties\":{\"startTimestamp\":{\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}]}],\"example\":{\"coordinate\":{\"lat\":\"51.036440\",\"long\":\"6.964910\"},\"description\":[\"Beginn: 20.06.2021 14:19\",\"Ende: 31.12.2025 23:59\",\"\",\"A1 Dortmund - Köln\",\"Leverkusener Brücke\",\"in beiden Richtungen gesperrt für LKW über 3,5 t, bis 31.12.2025\"],\"display_type\":\"WEIGHT_LIMIT_35\",\"extent\":\"6.95325,51.02996,6.96491,51.03644\",\"footer\":[],\"future\":false,\"icon\":\"262-2\",\"identifier\":\"Q0xPU1VSRV9fbWRtLnZpel9fTE1TLU5XL3JfTE1TLU5XLzMxNTEyMV9EICBOVyBMTVMtTlcuMA==\",\"isBlocked\":\"false\",\"lorryParkingFeatureIcons\":[],\"point\":\"6.964910,51.036440\",\"routeRecommendation\":[],\"startTimestamp\":\"2021-06-20T14:19:26.000+0200\",\"subtitle\":\"Dortmund Richtung Köln\",\"title\":\"A1 | AK Leverkusen-West (99) - AS Köln-Niehl (100)\"}}}},\"description\":\"Success\"},\"204\":{\"description\":\"Not found.\"},\"400\":{\"description\":\"Internal server error.\"},\"404\":{\"description\":\"Not found.\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -367,6 +443,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /{roadId}/services/electric_charging_station",
+                    "json": "{\"operationId\":\"list-charging-stations\",\"parameters\":[{\"in\":\"path\",\"name\":\"roadId\",\"required\":true,\"schema\":{\"description\":\"Kann jede gültige Straßenbezeichnung sein (nicht auf Autobahnen beschränkt). Die Gültigkeit wird nicht überprüft: Abfragen mit nicht existierenden Straßenbezeichnungen liefern einen leeren Datensatz zurück. Die Schreibweise kann von der sonst üblichen Form abweichen (z.B. S1234 statt St1234 für Staatsstraßen).\\n\",\"example\":\"A1\",\"pattern\":\"[A-Z][A-Za-z]*[1-9]([0-9]{1,3})?(\\\\/[A-Z][A-Za-z]*[1-9]([0-9]{1,3})?)?\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"electric_charging_station\":{\"items\":{\"allOf\":[{\"properties\":{\"coordinate\":{\"description\":\"Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84). Identisch zu Point, jedoch sind rundungsbedingte Abweichungen möglich.\",\"example\":{\"lat\":\"54.006057\",\"long\":\"10.729057\"},\"properties\":{\"lat\":{\"pattern\":\"-?\\\\d+(?:\\\\.\\\\d+)?\",\"type\":\"string\"},\"long\":{\"pattern\":\"-?\\\\d+(?:\\\\.\\\\d+)?\",\"type\":\"string\"}},\"type\":\"object\"},\"description\":{\"example\":[\"Beginn: 29.06.2021 09:00\",\"Ende: 28.11.2021 17:00\",\"\",\"Art der Maßnahme:Asphaltdeckenerneuerung\",\"Einschränkungen:Es steht nur 1 Fahrstreifen zur Verfügung.\\n\\nVollsperrung der AS Eutin Ostseite vom 17.07.2021 - 15.09.2021.\\n\\nVollsperrung der AS Scharbeutz Ostseite vom 16.09.2021 - 17.11.2021.\",\"Maximale Durchfahrsbreite: 3.25\\n\"],\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"display_type\":{\"enum\":[\"ROADWORKS\",\"WEBCAM\",\"PARKING\",\"WARNING\",\"WEIGHT_LIMIT_35\",\"CLOSURE\",\"CLOSURE_ENTRY_EXIT\",\"STRONG_ELECTRIC_CHARGING_STATION\",\"SHORT_TERM_ROADWORKS\",\"ELECTRIC_CHARGING_STATION\"],\"type\":\"string\"},\"extent\":{\"description\":\"Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt.\",\"example\":\"10.728384054665147,54.00605746113356,10.775848767524598,54.09436740278899\",\"pattern\":\"-?\\\\d+(?:\\\\.\\\\d+)?,\\\\s*-?\\\\d+(?:\\\\.\\\\d+)?,\\\\s*-?\\\\d+(?:\\\\.\\\\d+)?,\\\\s*-?\\\\d+(?:\\\\.\\\\d+)?\",\"type\":\"string\"},\"footer\":{\"example\":[\"Beginn: 29.06.2021 09:00\",\"Ende: 28.11.2021 17:00\",\"\",\"Art der Maßnahme:Asphaltdeckenerneuerung\",\"Einschränkungen:Es steht nur 1 Fahrstreifen zur Verfügung.\\n\\nVollsperrung der AS Eutin Ostseite vom 17.07.2021 - 15.09.2021.\\n\\nVollsperrung der AS Scharbeutz Ostseite vom 16.09.2021 - 17.11.2021.\",\"Maximale Durchfahrsbreite: 3.25\\n\"],\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"future\":{\"type\":\"boolean\"},\"icon\":{\"description\":\"Sinnbild, das die Art des Eintrags beschreibt. Größtenteils sind diese dem offiziellen Verkehrszeichenkatalog entnommen, teilweise allerdings mit abweichender Bedeutung und/oder nicht offiziellen Unternummern. Wo kein passendes Verkehrszeichen existiert, werden nicht-numerische Werte verwendet:\\n<ul>\\n<li>101: Gefahr</li>\\n<li>123: Bauarbeiten</li>\\n<li>250: Sperrung</li>\\n<li>262-2: Max. 3,5t</li>\\n<li>314-50: Park-/Rastplatz (Pkw/Lkw)</li>\\n<li>314-50-2: Park-/Rastplatz (nur Pkw)</li>\\n<li>448: Anschlussstelle gesperrt</li>\\n<li>charging_plug_strong: Schnellladestation für E-Fahrzeuge</li>\\n<li>warnkegel: Kurzzeitbaustelle</li>\\n</ul>\\n\",\"type\":\"string\"},\"identifier\":{\"format\":\"byte\",\"type\":\"string\"},\"isBlocked\":{\"type\":\"string\"},\"lorryParkingFeatureIcons\":{\"items\":{\"example\":{\"description\":\"Picknickmöglichkeiten\",\"icon\":\"almofont almo-picnic_facility\",\"style\":\"\"},\"properties\":{\"description\":{\"type\":\"string\"},\"icon\":{\"type\":\"string\"},\"style\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"point\":{\"description\":\"Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84). Identisch zu Coordinate, jedoch sind rundungsbedingte Abweichungen möglich.\",\"example\":\"10.729057,54.006057\",\"pattern\":\"-?\\\\d+(?:\\\\.\\\\d+)?,\\\\s*-?\\\\d+(?:\\\\.\\\\d+)?\",\"type\":\"string\"},\"routeRecommendation\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"subtitle\":{\"type\":\"string\"},\"title\":{\"type\":\"string\"}},\"type\":\"object\"}],\"example\":{\"coordinate\":{\"lat\":\"53.090847\",\"long\":\"9.176298\"},\"description\":[\"A1 | Bremen | Raststätte Grundbergsee Nord\",\"27376 Sottrum\",\"\",\"Ladepunkt 1:\",\"AC Kupplung Typ 2\",\"43 kW\",\"\",\"Ladepunkt 2:\",\"DC Kupplung Combo, DC CHAdeMO\",\"50 kW\"],\"display_type\":\"STRONG_ELECTRIC_CHARGING_STATION\",\"extent\":\"9.176298,53.090847,9.176298,53.090847\",\"footer\":[],\"future\":false,\"icon\":\"charging_plug_strong\",\"identifier\":\"RUxFQ1RSSUNfQ0hBUkdJTkdfU1RBVElPTl9fMTI2OTk=\",\"isBlocked\":\"false\",\"lorryParkingFeatureIcons\":[],\"point\":\"9.176298,53.090847\",\"routeRecommendation\":[],\"subtitle\":\"Schnellladeeinrichtung\",\"title\":\"A1 | Bremen | Raststätte Grundbergsee Nord\"}},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Success\"},\"204\":{\"description\":\"Not found.\"},\"400\":{\"description\":\"Internal server error.\"},\"404\":{\"description\":\"Not found.\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/{roadId}/services/electric_charging_station",
@@ -416,6 +498,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /details/electric_charging_station/{stationId}",
+                    "json": "{\"operationId\":\"get-charging-station\",\"parameters\":[{\"in\":\"path\",\"name\":\"stationId\",\"required\":true,\"schema\":{\"example\":\"RUxFQ1RSSUNfQ0hBUkdJTkdfU1RBVElPTl9fMTczMzM=\",\"format\":\"byte\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"allOf\":[{\"properties\":{\"coordinate\":{\"description\":\"Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84). Identisch zu Point, jedoch sind rundungsbedingte Abweichungen möglich.\",\"example\":{\"lat\":\"54.006057\",\"long\":\"10.729057\"},\"properties\":{\"lat\":{\"pattern\":\"-?\\\\d+(?:\\\\.\\\\d+)?\",\"type\":\"string\"},\"long\":{\"pattern\":\"-?\\\\d+(?:\\\\.\\\\d+)?\",\"type\":\"string\"}},\"type\":\"object\"},\"description\":{\"example\":[\"Beginn: 29.06.2021 09:00\",\"Ende: 28.11.2021 17:00\",\"\",\"Art der Maßnahme:Asphaltdeckenerneuerung\",\"Einschränkungen:Es steht nur 1 Fahrstreifen zur Verfügung.\\n\\nVollsperrung der AS Eutin Ostseite vom 17.07.2021 - 15.09.2021.\\n\\nVollsperrung der AS Scharbeutz Ostseite vom 16.09.2021 - 17.11.2021.\",\"Maximale Durchfahrsbreite: 3.25\\n\"],\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"display_type\":{\"enum\":[\"ROADWORKS\",\"WEBCAM\",\"PARKING\",\"WARNING\",\"WEIGHT_LIMIT_35\",\"CLOSURE\",\"CLOSURE_ENTRY_EXIT\",\"STRONG_ELECTRIC_CHARGING_STATION\",\"SHORT_TERM_ROADWORKS\",\"ELECTRIC_CHARGING_STATION\"],\"type\":\"string\"},\"extent\":{\"description\":\"Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt.\",\"example\":\"10.728384054665147,54.00605746113356,10.775848767524598,54.09436740278899\",\"pattern\":\"-?\\\\d+(?:\\\\.\\\\d+)?,\\\\s*-?\\\\d+(?:\\\\.\\\\d+)?,\\\\s*-?\\\\d+(?:\\\\.\\\\d+)?,\\\\s*-?\\\\d+(?:\\\\.\\\\d+)?\",\"type\":\"string\"},\"footer\":{\"example\":[\"Beginn: 29.06.2021 09:00\",\"Ende: 28.11.2021 17:00\",\"\",\"Art der Maßnahme:Asphaltdeckenerneuerung\",\"Einschränkungen:Es steht nur 1 Fahrstreifen zur Verfügung.\\n\\nVollsperrung der AS Eutin Ostseite vom 17.07.2021 - 15.09.2021.\\n\\nVollsperrung der AS Scharbeutz Ostseite vom 16.09.2021 - 17.11.2021.\",\"Maximale Durchfahrsbreite: 3.25\\n\"],\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"future\":{\"type\":\"boolean\"},\"icon\":{\"description\":\"Sinnbild, das die Art des Eintrags beschreibt. Größtenteils sind diese dem offiziellen Verkehrszeichenkatalog entnommen, teilweise allerdings mit abweichender Bedeutung und/oder nicht offiziellen Unternummern. Wo kein passendes Verkehrszeichen existiert, werden nicht-numerische Werte verwendet:\\n<ul>\\n<li>101: Gefahr</li>\\n<li>123: Bauarbeiten</li>\\n<li>250: Sperrung</li>\\n<li>262-2: Max. 3,5t</li>\\n<li>314-50: Park-/Rastplatz (Pkw/Lkw)</li>\\n<li>314-50-2: Park-/Rastplatz (nur Pkw)</li>\\n<li>448: Anschlussstelle gesperrt</li>\\n<li>charging_plug_strong: Schnellladestation für E-Fahrzeuge</li>\\n<li>warnkegel: Kurzzeitbaustelle</li>\\n</ul>\\n\",\"type\":\"string\"},\"identifier\":{\"format\":\"byte\",\"type\":\"string\"},\"isBlocked\":{\"type\":\"string\"},\"lorryParkingFeatureIcons\":{\"items\":{\"example\":{\"description\":\"Picknickmöglichkeiten\",\"icon\":\"almofont almo-picnic_facility\",\"style\":\"\"},\"properties\":{\"description\":{\"type\":\"string\"},\"icon\":{\"type\":\"string\"},\"style\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"point\":{\"description\":\"Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84). Identisch zu Coordinate, jedoch sind rundungsbedingte Abweichungen möglich.\",\"example\":\"10.729057,54.006057\",\"pattern\":\"-?\\\\d+(?:\\\\.\\\\d+)?,\\\\s*-?\\\\d+(?:\\\\.\\\\d+)?\",\"type\":\"string\"},\"routeRecommendation\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"subtitle\":{\"type\":\"string\"},\"title\":{\"type\":\"string\"}},\"type\":\"object\"}],\"example\":{\"coordinate\":{\"lat\":\"53.090847\",\"long\":\"9.176298\"},\"description\":[\"A1 | Bremen | Raststätte Grundbergsee Nord\",\"27376 Sottrum\",\"\",\"Ladepunkt 1:\",\"AC Kupplung Typ 2\",\"43 kW\",\"\",\"Ladepunkt 2:\",\"DC Kupplung Combo, DC CHAdeMO\",\"50 kW\"],\"display_type\":\"STRONG_ELECTRIC_CHARGING_STATION\",\"extent\":\"9.176298,53.090847,9.176298,53.090847\",\"footer\":[],\"future\":false,\"icon\":\"charging_plug_strong\",\"identifier\":\"RUxFQ1RSSUNfQ0hBUkdJTkdfU1RBVElPTl9fMTI2OTk=\",\"isBlocked\":\"false\",\"lorryParkingFeatureIcons\":[],\"point\":\"9.176298,53.090847\",\"routeRecommendation\":[],\"subtitle\":\"Schnellladeeinrichtung\",\"title\":\"A1 | Bremen | Raststätte Grundbergsee Nord\"}}}},\"description\":\"Success\"},\"204\":{\"description\":\"Not found.\"},\"400\":{\"description\":\"Internal server error.\"},\"404\":{\"description\":\"Not found.\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -475,6 +563,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /",
+                    "json": "{\"operationId\":\"list-autobahnen\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"roads\":{\"items\":{\"description\":\"Kann jede gültige Straßenbezeichnung sein (nicht auf Autobahnen beschränkt). Die Gültigkeit wird nicht überprüft: Abfragen mit nicht existierenden Straßenbezeichnungen liefern einen leeren Datensatz zurück. Die Schreibweise kann von der sonst üblichen Form abweichen (z.B. S1234 statt St1234 für Staatsstraßen).\\n\",\"example\":\"A1\",\"pattern\":\"[A-Z][A-Za-z]*[1-9]([0-9]{1,3})?(\\\\/[A-Z][A-Za-z]*[1-9]([0-9]{1,3})?)?\",\"type\":\"string\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Success\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/",
@@ -619,6 +713,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /{roadId}/services/parking_lorry",
+                    "json": "{\"operationId\":\"list-parking-lorries\",\"parameters\":[{\"in\":\"path\",\"name\":\"roadId\",\"required\":true,\"schema\":{\"description\":\"Kann jede gültige Straßenbezeichnung sein (nicht auf Autobahnen beschränkt). Die Gültigkeit wird nicht überprüft: Abfragen mit nicht existierenden Straßenbezeichnungen liefern einen leeren Datensatz zurück. Die Schreibweise kann von der sonst üblichen Form abweichen (z.B. S1234 statt St1234 für Staatsstraßen).\\n\",\"example\":\"A1\",\"pattern\":\"[A-Z][A-Za-z]*[1-9]([0-9]{1,3})?(\\\\/[A-Z][A-Za-z]*[1-9]([0-9]{1,3})?)?\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"parking_lorry\":{\"items\":{\"allOf\":[{\"properties\":{\"coordinate\":{\"description\":\"Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84). Identisch zu Point, jedoch sind rundungsbedingte Abweichungen möglich.\",\"example\":{\"lat\":\"54.006057\",\"long\":\"10.729057\"},\"properties\":{\"lat\":{\"pattern\":\"-?\\\\d+(?:\\\\.\\\\d+)?\",\"type\":\"string\"},\"long\":{\"pattern\":\"-?\\\\d+(?:\\\\.\\\\d+)?\",\"type\":\"string\"}},\"type\":\"object\"},\"description\":{\"example\":[\"Beginn: 29.06.2021 09:00\",\"Ende: 28.11.2021 17:00\",\"\",\"Art der Maßnahme:Asphaltdeckenerneuerung\",\"Einschränkungen:Es steht nur 1 Fahrstreifen zur Verfügung.\\n\\nVollsperrung der AS Eutin Ostseite vom 17.07.2021 - 15.09.2021.\\n\\nVollsperrung der AS Scharbeutz Ostseite vom 16.09.2021 - 17.11.2021.\",\"Maximale Durchfahrsbreite: 3.25\\n\"],\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"display_type\":{\"enum\":[\"ROADWORKS\",\"WEBCAM\",\"PARKING\",\"WARNING\",\"WEIGHT_LIMIT_35\",\"CLOSURE\",\"CLOSURE_ENTRY_EXIT\",\"STRONG_ELECTRIC_CHARGING_STATION\",\"SHORT_TERM_ROADWORKS\",\"ELECTRIC_CHARGING_STATION\"],\"type\":\"string\"},\"extent\":{\"description\":\"Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt.\",\"example\":\"10.728384054665147,54.00605746113356,10.775848767524598,54.09436740278899\",\"pattern\":\"-?\\\\d+(?:\\\\.\\\\d+)?,\\\\s*-?\\\\d+(?:\\\\.\\\\d+)?,\\\\s*-?\\\\d+(?:\\\\.\\\\d+)?,\\\\s*-?\\\\d+(?:\\\\.\\\\d+)?\",\"type\":\"string\"},\"footer\":{\"example\":[\"Beginn: 29.06.2021 09:00\",\"Ende: 28.11.2021 17:00\",\"\",\"Art der Maßnahme:Asphaltdeckenerneuerung\",\"Einschränkungen:Es steht nur 1 Fahrstreifen zur Verfügung.\\n\\nVollsperrung der AS Eutin Ostseite vom 17.07.2021 - 15.09.2021.\\n\\nVollsperrung der AS Scharbeutz Ostseite vom 16.09.2021 - 17.11.2021.\",\"Maximale Durchfahrsbreite: 3.25\\n\"],\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"future\":{\"type\":\"boolean\"},\"icon\":{\"description\":\"Sinnbild, das die Art des Eintrags beschreibt. Größtenteils sind diese dem offiziellen Verkehrszeichenkatalog entnommen, teilweise allerdings mit abweichender Bedeutung und/oder nicht offiziellen Unternummern. Wo kein passendes Verkehrszeichen existiert, werden nicht-numerische Werte verwendet:\\n<ul>\\n<li>101: Gefahr</li>\\n<li>123: Bauarbeiten</li>\\n<li>250: Sperrung</li>\\n<li>262-2: Max. 3,5t</li>\\n<li>314-50: Park-/Rastplatz (Pkw/Lkw)</li>\\n<li>314-50-2: Park-/Rastplatz (nur Pkw)</li>\\n<li>448: Anschlussstelle gesperrt</li>\\n<li>charging_plug_strong: Schnellladestation für E-Fahrzeuge</li>\\n<li>warnkegel: Kurzzeitbaustelle</li>\\n</ul>\\n\",\"type\":\"string\"},\"identifier\":{\"format\":\"byte\",\"type\":\"string\"},\"isBlocked\":{\"type\":\"string\"},\"lorryParkingFeatureIcons\":{\"items\":{\"example\":{\"description\":\"Picknickmöglichkeiten\",\"icon\":\"almofont almo-picnic_facility\",\"style\":\"\"},\"properties\":{\"description\":{\"type\":\"string\"},\"icon\":{\"type\":\"string\"},\"style\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"point\":{\"description\":\"Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84). Identisch zu Coordinate, jedoch sind rundungsbedingte Abweichungen möglich.\",\"example\":\"10.729057,54.006057\",\"pattern\":\"-?\\\\d+(?:\\\\.\\\\d+)?,\\\\s*-?\\\\d+(?:\\\\.\\\\d+)?\",\"type\":\"string\"},\"routeRecommendation\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"subtitle\":{\"type\":\"string\"},\"title\":{\"type\":\"string\"}},\"type\":\"object\"}],\"example\":{\"coordinate\":{\"lat\":\"54.362572\",\"long\":\"10.979850\"},\"description\":[\"PKW Stellplätze: 21 \",\"LKW Stellplätze: 20 \"],\"display_type\":\"PARKING\",\"extent\":\"10.979849815368652,54.362571716308594,10.979849815368652,54.362571716308594\",\"footer\":[],\"future\":false,\"icon\":\"314-50\",\"identifier\":\"UEFSS0lOR19fbWRtLmxvcnJ5LnBhcmtpbmdfX0RFLVNILTAwMTEwOA==\",\"isBlocked\":\"false\",\"lorryParkingFeatureIcons\":[{\"description\":\"Picknickmöglichkeiten\",\"icon\":\"almofont almo-picnic_facility\",\"style\":\"\"},{\"description\":\"Toilette vorhanden\",\"icon\":\"almofont almo-restroom\",\"style\":\"\"}],\"point\":\"10.979850,54.362572\",\"routeRecommendation\":[],\"subtitle\":\"(Ostseeblick S)\",\"title\":\"A 1 | Richtung Puttgarden\"}},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Success\"},\"204\":{\"description\":\"Not found.\"},\"400\":{\"description\":\"Internal server error.\"},\"404\":{\"description\":\"Not found.\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/{roadId}/services/parking_lorry",
@@ -668,6 +768,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /details/parking_lorry/{lorryId}",
+                    "json": "{\"operationId\":\"get-parking-lorry\",\"parameters\":[{\"in\":\"path\",\"name\":\"lorryId\",\"required\":true,\"schema\":{\"example\":\"UEFSS0lOR19fbWRtLmxvcnJ5LnBhcmtpbmdfX0RFLVNILTAwMTEwOA==\",\"format\":\"byte\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"allOf\":[{\"properties\":{\"coordinate\":{\"description\":\"Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84). Identisch zu Point, jedoch sind rundungsbedingte Abweichungen möglich.\",\"example\":{\"lat\":\"54.006057\",\"long\":\"10.729057\"},\"properties\":{\"lat\":{\"pattern\":\"-?\\\\d+(?:\\\\.\\\\d+)?\",\"type\":\"string\"},\"long\":{\"pattern\":\"-?\\\\d+(?:\\\\.\\\\d+)?\",\"type\":\"string\"}},\"type\":\"object\"},\"description\":{\"example\":[\"Beginn: 29.06.2021 09:00\",\"Ende: 28.11.2021 17:00\",\"\",\"Art der Maßnahme:Asphaltdeckenerneuerung\",\"Einschränkungen:Es steht nur 1 Fahrstreifen zur Verfügung.\\n\\nVollsperrung der AS Eutin Ostseite vom 17.07.2021 - 15.09.2021.\\n\\nVollsperrung der AS Scharbeutz Ostseite vom 16.09.2021 - 17.11.2021.\",\"Maximale Durchfahrsbreite: 3.25\\n\"],\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"display_type\":{\"enum\":[\"ROADWORKS\",\"WEBCAM\",\"PARKING\",\"WARNING\",\"WEIGHT_LIMIT_35\",\"CLOSURE\",\"CLOSURE_ENTRY_EXIT\",\"STRONG_ELECTRIC_CHARGING_STATION\",\"SHORT_TERM_ROADWORKS\",\"ELECTRIC_CHARGING_STATION\"],\"type\":\"string\"},\"extent\":{\"description\":\"Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt.\",\"example\":\"10.728384054665147,54.00605746113356,10.775848767524598,54.09436740278899\",\"pattern\":\"-?\\\\d+(?:\\\\.\\\\d+)?,\\\\s*-?\\\\d+(?:\\\\.\\\\d+)?,\\\\s*-?\\\\d+(?:\\\\.\\\\d+)?,\\\\s*-?\\\\d+(?:\\\\.\\\\d+)?\",\"type\":\"string\"},\"footer\":{\"example\":[\"Beginn: 29.06.2021 09:00\",\"Ende: 28.11.2021 17:00\",\"\",\"Art der Maßnahme:Asphaltdeckenerneuerung\",\"Einschränkungen:Es steht nur 1 Fahrstreifen zur Verfügung.\\n\\nVollsperrung der AS Eutin Ostseite vom 17.07.2021 - 15.09.2021.\\n\\nVollsperrung der AS Scharbeutz Ostseite vom 16.09.2021 - 17.11.2021.\",\"Maximale Durchfahrsbreite: 3.25\\n\"],\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"future\":{\"type\":\"boolean\"},\"icon\":{\"description\":\"Sinnbild, das die Art des Eintrags beschreibt. Größtenteils sind diese dem offiziellen Verkehrszeichenkatalog entnommen, teilweise allerdings mit abweichender Bedeutung und/oder nicht offiziellen Unternummern. Wo kein passendes Verkehrszeichen existiert, werden nicht-numerische Werte verwendet:\\n<ul>\\n<li>101: Gefahr</li>\\n<li>123: Bauarbeiten</li>\\n<li>250: Sperrung</li>\\n<li>262-2: Max. 3,5t</li>\\n<li>314-50: Park-/Rastplatz (Pkw/Lkw)</li>\\n<li>314-50-2: Park-/Rastplatz (nur Pkw)</li>\\n<li>448: Anschlussstelle gesperrt</li>\\n<li>charging_plug_strong: Schnellladestation für E-Fahrzeuge</li>\\n<li>warnkegel: Kurzzeitbaustelle</li>\\n</ul>\\n\",\"type\":\"string\"},\"identifier\":{\"format\":\"byte\",\"type\":\"string\"},\"isBlocked\":{\"type\":\"string\"},\"lorryParkingFeatureIcons\":{\"items\":{\"example\":{\"description\":\"Picknickmöglichkeiten\",\"icon\":\"almofont almo-picnic_facility\",\"style\":\"\"},\"properties\":{\"description\":{\"type\":\"string\"},\"icon\":{\"type\":\"string\"},\"style\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"point\":{\"description\":\"Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84). Identisch zu Coordinate, jedoch sind rundungsbedingte Abweichungen möglich.\",\"example\":\"10.729057,54.006057\",\"pattern\":\"-?\\\\d+(?:\\\\.\\\\d+)?,\\\\s*-?\\\\d+(?:\\\\.\\\\d+)?\",\"type\":\"string\"},\"routeRecommendation\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"subtitle\":{\"type\":\"string\"},\"title\":{\"type\":\"string\"}},\"type\":\"object\"}],\"example\":{\"coordinate\":{\"lat\":\"54.362572\",\"long\":\"10.979850\"},\"description\":[\"PKW Stellplätze: 21 \",\"LKW Stellplätze: 20 \"],\"display_type\":\"PARKING\",\"extent\":\"10.979849815368652,54.362571716308594,10.979849815368652,54.362571716308594\",\"footer\":[],\"future\":false,\"icon\":\"314-50\",\"identifier\":\"UEFSS0lOR19fbWRtLmxvcnJ5LnBhcmtpbmdfX0RFLVNILTAwMTEwOA==\",\"isBlocked\":\"false\",\"lorryParkingFeatureIcons\":[{\"description\":\"Picknickmöglichkeiten\",\"icon\":\"almofont almo-picnic_facility\",\"style\":\"\"},{\"description\":\"Toilette vorhanden\",\"icon\":\"almofont almo-restroom\",\"style\":\"\"}],\"point\":\"10.979850,54.362572\",\"routeRecommendation\":[],\"subtitle\":\"(Ostseeblick S)\",\"title\":\"A 1 | Richtung Puttgarden\"}}}},\"description\":\"Success\"},\"204\":{\"description\":\"Not found.\"},\"400\":{\"description\":\"Internal server error.\"},\"404\":{\"description\":\"Not found.\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -833,6 +939,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /{roadId}/services/roadworks",
+                    "json": "{\"operationId\":\"list-roadworks\",\"parameters\":[{\"in\":\"path\",\"name\":\"roadId\",\"required\":true,\"schema\":{\"description\":\"Kann jede gültige Straßenbezeichnung sein (nicht auf Autobahnen beschränkt). Die Gültigkeit wird nicht überprüft: Abfragen mit nicht existierenden Straßenbezeichnungen liefern einen leeren Datensatz zurück. Die Schreibweise kann von der sonst üblichen Form abweichen (z.B. S1234 statt St1234 für Staatsstraßen).\\n\",\"example\":\"A1\",\"pattern\":\"[A-Z][A-Za-z]*[1-9]([0-9]{1,3})?(\\\\/[A-Z][A-Za-z]*[1-9]([0-9]{1,3})?)?\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"roadworks\":{\"items\":{\"allOf\":[{\"allOf\":[{\"properties\":{\"coordinate\":{\"description\":\"Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84). Identisch zu Point, jedoch sind rundungsbedingte Abweichungen möglich.\",\"example\":{\"lat\":\"54.006057\",\"long\":\"10.729057\"},\"properties\":{\"lat\":{\"pattern\":\"-?\\\\d+(?:\\\\.\\\\d+)?\",\"type\":\"string\"},\"long\":{\"pattern\":\"-?\\\\d+(?:\\\\.\\\\d+)?\",\"type\":\"string\"}},\"type\":\"object\"},\"description\":{\"example\":[\"Beginn: 29.06.2021 09:00\",\"Ende: 28.11.2021 17:00\",\"\",\"Art der Maßnahme:Asphaltdeckenerneuerung\",\"Einschränkungen:Es steht nur 1 Fahrstreifen zur Verfügung.\\n\\nVollsperrung der AS Eutin Ostseite vom 17.07.2021 - 15.09.2021.\\n\\nVollsperrung der AS Scharbeutz Ostseite vom 16.09.2021 - 17.11.2021.\",\"Maximale Durchfahrsbreite: 3.25\\n\"],\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"display_type\":{\"enum\":[\"ROADWORKS\",\"WEBCAM\",\"PARKING\",\"WARNING\",\"WEIGHT_LIMIT_35\",\"CLOSURE\",\"CLOSURE_ENTRY_EXIT\",\"STRONG_ELECTRIC_CHARGING_STATION\",\"SHORT_TERM_ROADWORKS\",\"ELECTRIC_CHARGING_STATION\"],\"type\":\"string\"},\"extent\":{\"description\":\"Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt.\",\"example\":\"10.728384054665147,54.00605746113356,10.775848767524598,54.09436740278899\",\"pattern\":\"-?\\\\d+(?:\\\\.\\\\d+)?,\\\\s*-?\\\\d+(?:\\\\.\\\\d+)?,\\\\s*-?\\\\d+(?:\\\\.\\\\d+)?,\\\\s*-?\\\\d+(?:\\\\.\\\\d+)?\",\"type\":\"string\"},\"footer\":{\"example\":[\"Beginn: 29.06.2021 09:00\",\"Ende: 28.11.2021 17:00\",\"\",\"Art der Maßnahme:Asphaltdeckenerneuerung\",\"Einschränkungen:Es steht nur 1 Fahrstreifen zur Verfügung.\\n\\nVollsperrung der AS Eutin Ostseite vom 17.07.2021 - 15.09.2021.\\n\\nVollsperrung der AS Scharbeutz Ostseite vom 16.09.2021 - 17.11.2021.\",\"Maximale Durchfahrsbreite: 3.25\\n\"],\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"future\":{\"type\":\"boolean\"},\"icon\":{\"description\":\"Sinnbild, das die Art des Eintrags beschreibt. Größtenteils sind diese dem offiziellen Verkehrszeichenkatalog entnommen, teilweise allerdings mit abweichender Bedeutung und/oder nicht offiziellen Unternummern. Wo kein passendes Verkehrszeichen existiert, werden nicht-numerische Werte verwendet:\\n<ul>\\n<li>101: Gefahr</li>\\n<li>123: Bauarbeiten</li>\\n<li>250: Sperrung</li>\\n<li>262-2: Max. 3,5t</li>\\n<li>314-50: Park-/Rastplatz (Pkw/Lkw)</li>\\n<li>314-50-2: Park-/Rastplatz (nur Pkw)</li>\\n<li>448: Anschlussstelle gesperrt</li>\\n<li>charging_plug_strong: Schnellladestation für E-Fahrzeuge</li>\\n<li>warnkegel: Kurzzeitbaustelle</li>\\n</ul>\\n\",\"type\":\"string\"},\"identifier\":{\"format\":\"byte\",\"type\":\"string\"},\"isBlocked\":{\"type\":\"string\"},\"lorryParkingFeatureIcons\":{\"items\":{\"example\":{\"description\":\"Picknickmöglichkeiten\",\"icon\":\"almofont almo-picnic_facility\",\"style\":\"\"},\"properties\":{\"description\":{\"type\":\"string\"},\"icon\":{\"type\":\"string\"},\"style\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"point\":{\"description\":\"Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84). Identisch zu Coordinate, jedoch sind rundungsbedingte Abweichungen möglich.\",\"example\":\"10.729057,54.006057\",\"pattern\":\"-?\\\\d+(?:\\\\.\\\\d+)?,\\\\s*-?\\\\d+(?:\\\\.\\\\d+)?\",\"type\":\"string\"},\"routeRecommendation\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"subtitle\":{\"type\":\"string\"},\"title\":{\"type\":\"string\"}},\"type\":\"object\"},{\"properties\":{\"startTimestamp\":{\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}]}],\"example\":{\"coordinate\":{\"lat\":\"54.006057\",\"long\":\"10.729057\"},\"description\":[\"Beginn: 29.06.2021 09:00\",\"Ende: 28.11.2021 17:00\",\"\",\"Art der Maßnahme:Asphaltdeckenerneuerung\",\"Einschränkungen:Es steht nur 1 Fahrstreifen zur Verfügung.\\n\\nVollsperrung der AS Eutin Ostseite vom 17.07.2021 - 15.09.2021.\\n\\nVollsperrung der AS Scharbeutz Ostseite vom 16.09.2021 - 17.11.2021.\",\"Maximale Durchfahrsbreite: 3.25\\n\"],\"display_type\":\"ROADWORKS\",\"extent\":\"10.728384054665147,54.00605746113356,10.775848767524598,54.09436740278899\",\"footer\":[],\"future\":false,\"icon\":\"123\",\"identifier\":\"Uk9BRFdPUktTX19tZG0uc2hfXzYzMTU=\",\"isBlocked\":\"false\",\"lorryParkingFeatureIcons\":[],\"point\":\"10.729057,54.006057\",\"routeRecommendation\":[],\"startTimestamp\":\"2021-06-29T09:00:00.000+0200\",\"subtitle\":\"Lübeck Richtung Fehmarn\",\"title\":\"A1 | AS Pansdorf (17) - AS Neustadt-Mitte (14)\"}},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Success\"},\"204\":{\"description\":\"Not found.\"},\"400\":{\"description\":\"Internal server error.\"},\"404\":{\"description\":\"Not found.\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/{roadId}/services/roadworks",
@@ -882,6 +994,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /details/roadworks/{roadworkId}",
+                    "json": "{\"operationId\":\"get-roadwork\",\"parameters\":[{\"in\":\"path\",\"name\":\"roadworkId\",\"required\":true,\"schema\":{\"example\":\"Uk9BRFdPUktTX19tZG0ubndfXzAyLTgwMDAwIEQgNzEgMTkgMDkvS0xCV1JO\",\"format\":\"byte\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"allOf\":[{\"allOf\":[{\"properties\":{\"coordinate\":{\"description\":\"Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84). Identisch zu Point, jedoch sind rundungsbedingte Abweichungen möglich.\",\"example\":{\"lat\":\"54.006057\",\"long\":\"10.729057\"},\"properties\":{\"lat\":{\"pattern\":\"-?\\\\d+(?:\\\\.\\\\d+)?\",\"type\":\"string\"},\"long\":{\"pattern\":\"-?\\\\d+(?:\\\\.\\\\d+)?\",\"type\":\"string\"}},\"type\":\"object\"},\"description\":{\"example\":[\"Beginn: 29.06.2021 09:00\",\"Ende: 28.11.2021 17:00\",\"\",\"Art der Maßnahme:Asphaltdeckenerneuerung\",\"Einschränkungen:Es steht nur 1 Fahrstreifen zur Verfügung.\\n\\nVollsperrung der AS Eutin Ostseite vom 17.07.2021 - 15.09.2021.\\n\\nVollsperrung der AS Scharbeutz Ostseite vom 16.09.2021 - 17.11.2021.\",\"Maximale Durchfahrsbreite: 3.25\\n\"],\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"display_type\":{\"enum\":[\"ROADWORKS\",\"WEBCAM\",\"PARKING\",\"WARNING\",\"WEIGHT_LIMIT_35\",\"CLOSURE\",\"CLOSURE_ENTRY_EXIT\",\"STRONG_ELECTRIC_CHARGING_STATION\",\"SHORT_TERM_ROADWORKS\",\"ELECTRIC_CHARGING_STATION\"],\"type\":\"string\"},\"extent\":{\"description\":\"Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt.\",\"example\":\"10.728384054665147,54.00605746113356,10.775848767524598,54.09436740278899\",\"pattern\":\"-?\\\\d+(?:\\\\.\\\\d+)?,\\\\s*-?\\\\d+(?:\\\\.\\\\d+)?,\\\\s*-?\\\\d+(?:\\\\.\\\\d+)?,\\\\s*-?\\\\d+(?:\\\\.\\\\d+)?\",\"type\":\"string\"},\"footer\":{\"example\":[\"Beginn: 29.06.2021 09:00\",\"Ende: 28.11.2021 17:00\",\"\",\"Art der Maßnahme:Asphaltdeckenerneuerung\",\"Einschränkungen:Es steht nur 1 Fahrstreifen zur Verfügung.\\n\\nVollsperrung der AS Eutin Ostseite vom 17.07.2021 - 15.09.2021.\\n\\nVollsperrung der AS Scharbeutz Ostseite vom 16.09.2021 - 17.11.2021.\",\"Maximale Durchfahrsbreite: 3.25\\n\"],\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"future\":{\"type\":\"boolean\"},\"icon\":{\"description\":\"Sinnbild, das die Art des Eintrags beschreibt. Größtenteils sind diese dem offiziellen Verkehrszeichenkatalog entnommen, teilweise allerdings mit abweichender Bedeutung und/oder nicht offiziellen Unternummern. Wo kein passendes Verkehrszeichen existiert, werden nicht-numerische Werte verwendet:\\n<ul>\\n<li>101: Gefahr</li>\\n<li>123: Bauarbeiten</li>\\n<li>250: Sperrung</li>\\n<li>262-2: Max. 3,5t</li>\\n<li>314-50: Park-/Rastplatz (Pkw/Lkw)</li>\\n<li>314-50-2: Park-/Rastplatz (nur Pkw)</li>\\n<li>448: Anschlussstelle gesperrt</li>\\n<li>charging_plug_strong: Schnellladestation für E-Fahrzeuge</li>\\n<li>warnkegel: Kurzzeitbaustelle</li>\\n</ul>\\n\",\"type\":\"string\"},\"identifier\":{\"format\":\"byte\",\"type\":\"string\"},\"isBlocked\":{\"type\":\"string\"},\"lorryParkingFeatureIcons\":{\"items\":{\"example\":{\"description\":\"Picknickmöglichkeiten\",\"icon\":\"almofont almo-picnic_facility\",\"style\":\"\"},\"properties\":{\"description\":{\"type\":\"string\"},\"icon\":{\"type\":\"string\"},\"style\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"point\":{\"description\":\"Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84). Identisch zu Coordinate, jedoch sind rundungsbedingte Abweichungen möglich.\",\"example\":\"10.729057,54.006057\",\"pattern\":\"-?\\\\d+(?:\\\\.\\\\d+)?,\\\\s*-?\\\\d+(?:\\\\.\\\\d+)?\",\"type\":\"string\"},\"routeRecommendation\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"subtitle\":{\"type\":\"string\"},\"title\":{\"type\":\"string\"}},\"type\":\"object\"},{\"properties\":{\"startTimestamp\":{\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}]}],\"example\":{\"coordinate\":{\"lat\":\"54.006057\",\"long\":\"10.729057\"},\"description\":[\"Beginn: 29.06.2021 09:00\",\"Ende: 28.11.2021 17:00\",\"\",\"Art der Maßnahme:Asphaltdeckenerneuerung\",\"Einschränkungen:Es steht nur 1 Fahrstreifen zur Verfügung.\\n\\nVollsperrung der AS Eutin Ostseite vom 17.07.2021 - 15.09.2021.\\n\\nVollsperrung der AS Scharbeutz Ostseite vom 16.09.2021 - 17.11.2021.\",\"Maximale Durchfahrsbreite: 3.25\\n\"],\"display_type\":\"ROADWORKS\",\"extent\":\"10.728384054665147,54.00605746113356,10.775848767524598,54.09436740278899\",\"footer\":[],\"future\":false,\"icon\":\"123\",\"identifier\":\"Uk9BRFdPUktTX19tZG0uc2hfXzYzMTU=\",\"isBlocked\":\"false\",\"lorryParkingFeatureIcons\":[],\"point\":\"10.729057,54.006057\",\"routeRecommendation\":[],\"startTimestamp\":\"2021-06-29T09:00:00.000+0200\",\"subtitle\":\"Lübeck Richtung Fehmarn\",\"title\":\"A1 | AS Pansdorf (17) - AS Neustadt-Mitte (14)\"}}}},\"description\":\"Success\"},\"204\":{\"description\":\"Not found.\"},\"400\":{\"description\":\"Internal server error.\"},\"404\":{\"description\":\"Not found.\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1047,6 +1165,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /{roadId}/services/warning",
+                    "json": "{\"operationId\":\"list-warnings\",\"parameters\":[{\"in\":\"path\",\"name\":\"roadId\",\"required\":true,\"schema\":{\"description\":\"Kann jede gültige Straßenbezeichnung sein (nicht auf Autobahnen beschränkt). Die Gültigkeit wird nicht überprüft: Abfragen mit nicht existierenden Straßenbezeichnungen liefern einen leeren Datensatz zurück. Die Schreibweise kann von der sonst üblichen Form abweichen (z.B. S1234 statt St1234 für Staatsstraßen).\\n\",\"example\":\"A1\",\"pattern\":\"[A-Z][A-Za-z]*[1-9]([0-9]{1,3})?(\\\\/[A-Z][A-Za-z]*[1-9]([0-9]{1,3})?)?\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"warning\":{\"items\":{\"allOf\":[{\"allOf\":[{\"properties\":{\"coordinate\":{\"description\":\"Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84). Identisch zu Point, jedoch sind rundungsbedingte Abweichungen möglich.\",\"example\":{\"lat\":\"54.006057\",\"long\":\"10.729057\"},\"properties\":{\"lat\":{\"pattern\":\"-?\\\\d+(?:\\\\.\\\\d+)?\",\"type\":\"string\"},\"long\":{\"pattern\":\"-?\\\\d+(?:\\\\.\\\\d+)?\",\"type\":\"string\"}},\"type\":\"object\"},\"description\":{\"example\":[\"Beginn: 29.06.2021 09:00\",\"Ende: 28.11.2021 17:00\",\"\",\"Art der Maßnahme:Asphaltdeckenerneuerung\",\"Einschränkungen:Es steht nur 1 Fahrstreifen zur Verfügung.\\n\\nVollsperrung der AS Eutin Ostseite vom 17.07.2021 - 15.09.2021.\\n\\nVollsperrung der AS Scharbeutz Ostseite vom 16.09.2021 - 17.11.2021.\",\"Maximale Durchfahrsbreite: 3.25\\n\"],\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"display_type\":{\"enum\":[\"ROADWORKS\",\"WEBCAM\",\"PARKING\",\"WARNING\",\"WEIGHT_LIMIT_35\",\"CLOSURE\",\"CLOSURE_ENTRY_EXIT\",\"STRONG_ELECTRIC_CHARGING_STATION\",\"SHORT_TERM_ROADWORKS\",\"ELECTRIC_CHARGING_STATION\"],\"type\":\"string\"},\"extent\":{\"description\":\"Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt.\",\"example\":\"10.728384054665147,54.00605746113356,10.775848767524598,54.09436740278899\",\"pattern\":\"-?\\\\d+(?:\\\\.\\\\d+)?,\\\\s*-?\\\\d+(?:\\\\.\\\\d+)?,\\\\s*-?\\\\d+(?:\\\\.\\\\d+)?,\\\\s*-?\\\\d+(?:\\\\.\\\\d+)?\",\"type\":\"string\"},\"footer\":{\"example\":[\"Beginn: 29.06.2021 09:00\",\"Ende: 28.11.2021 17:00\",\"\",\"Art der Maßnahme:Asphaltdeckenerneuerung\",\"Einschränkungen:Es steht nur 1 Fahrstreifen zur Verfügung.\\n\\nVollsperrung der AS Eutin Ostseite vom 17.07.2021 - 15.09.2021.\\n\\nVollsperrung der AS Scharbeutz Ostseite vom 16.09.2021 - 17.11.2021.\",\"Maximale Durchfahrsbreite: 3.25\\n\"],\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"future\":{\"type\":\"boolean\"},\"icon\":{\"description\":\"Sinnbild, das die Art des Eintrags beschreibt. Größtenteils sind diese dem offiziellen Verkehrszeichenkatalog entnommen, teilweise allerdings mit abweichender Bedeutung und/oder nicht offiziellen Unternummern. Wo kein passendes Verkehrszeichen existiert, werden nicht-numerische Werte verwendet:\\n<ul>\\n<li>101: Gefahr</li>\\n<li>123: Bauarbeiten</li>\\n<li>250: Sperrung</li>\\n<li>262-2: Max. 3,5t</li>\\n<li>314-50: Park-/Rastplatz (Pkw/Lkw)</li>\\n<li>314-50-2: Park-/Rastplatz (nur Pkw)</li>\\n<li>448: Anschlussstelle gesperrt</li>\\n<li>charging_plug_strong: Schnellladestation für E-Fahrzeuge</li>\\n<li>warnkegel: Kurzzeitbaustelle</li>\\n</ul>\\n\",\"type\":\"string\"},\"identifier\":{\"format\":\"byte\",\"type\":\"string\"},\"isBlocked\":{\"type\":\"string\"},\"lorryParkingFeatureIcons\":{\"items\":{\"example\":{\"description\":\"Picknickmöglichkeiten\",\"icon\":\"almofont almo-picnic_facility\",\"style\":\"\"},\"properties\":{\"description\":{\"type\":\"string\"},\"icon\":{\"type\":\"string\"},\"style\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"point\":{\"description\":\"Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84). Identisch zu Coordinate, jedoch sind rundungsbedingte Abweichungen möglich.\",\"example\":\"10.729057,54.006057\",\"pattern\":\"-?\\\\d+(?:\\\\.\\\\d+)?,\\\\s*-?\\\\d+(?:\\\\.\\\\d+)?\",\"type\":\"string\"},\"routeRecommendation\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"subtitle\":{\"type\":\"string\"},\"title\":{\"type\":\"string\"}},\"type\":\"object\"},{\"properties\":{\"startTimestamp\":{\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}]}],\"example\":{\"coordinate\":{\"lat\":\"53.005070\",\"long\":\"8.699040\"},\"description\":[\"Beginn: 25.05.2021 00:00\",\"Ende: 30.11.2021 23:59\",\"\",\"A1 Bremen Richtung Osnabrück\",\"zwischen Dreieck Stuhr und Groß Ippener\",\"Fahrbahnverengung, geänderte Verkehrsführung, Staugefahr, bis voraussichtlich 30.11.2021\",\"Erweiterung PWC Kiekut.\"],\"display_type\":\"WARNING\",\"extent\":\"8.61785,52.97344,8.69904,53.00507\",\"footer\":[],\"future\":false,\"icon\":\"101\",\"identifier\":\"V0FSTklOR19fbWRtLnZpel9fTE1TLU5JL3JfTE1TLU5JLzIxMjI2MF9EICBOSSBMTVMtTkkgIC4w\",\"isBlocked\":\"false\",\"lorryParkingFeatureIcons\":[],\"point\":\"8.699040,53.005070\",\"routeRecommendation\":[],\"startTimestamp\":\"2021-05-25T00:00:00.000+0200\",\"subtitle\":\"Bremen Richtung Osnabrück\",\"title\":\"A1 | AS Delmenhorst-Ost (58b) - AS Groß Ippener (59)\"}},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Success\"},\"204\":{\"description\":\"Not found.\"},\"400\":{\"description\":\"Internal server error.\"},\"404\":{\"description\":\"Not found.\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/{roadId}/services/warning",
@@ -1096,6 +1220,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /details/warning/{warningId}",
+                    "json": "{\"operationId\":\"get-warning\",\"parameters\":[{\"in\":\"path\",\"name\":\"warningId\",\"required\":true,\"schema\":{\"example\":\"V0FSTklOR19fbWRtLnZpel9fTE1TLU5XL3JfTE1TLU5XLzMyNDE3OV9EICBOVyBMTVMtTlcuMA==\",\"format\":\"byte\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"allOf\":[{\"allOf\":[{\"properties\":{\"coordinate\":{\"description\":\"Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84). Identisch zu Point, jedoch sind rundungsbedingte Abweichungen möglich.\",\"example\":{\"lat\":\"54.006057\",\"long\":\"10.729057\"},\"properties\":{\"lat\":{\"pattern\":\"-?\\\\d+(?:\\\\.\\\\d+)?\",\"type\":\"string\"},\"long\":{\"pattern\":\"-?\\\\d+(?:\\\\.\\\\d+)?\",\"type\":\"string\"}},\"type\":\"object\"},\"description\":{\"example\":[\"Beginn: 29.06.2021 09:00\",\"Ende: 28.11.2021 17:00\",\"\",\"Art der Maßnahme:Asphaltdeckenerneuerung\",\"Einschränkungen:Es steht nur 1 Fahrstreifen zur Verfügung.\\n\\nVollsperrung der AS Eutin Ostseite vom 17.07.2021 - 15.09.2021.\\n\\nVollsperrung der AS Scharbeutz Ostseite vom 16.09.2021 - 17.11.2021.\",\"Maximale Durchfahrsbreite: 3.25\\n\"],\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"display_type\":{\"enum\":[\"ROADWORKS\",\"WEBCAM\",\"PARKING\",\"WARNING\",\"WEIGHT_LIMIT_35\",\"CLOSURE\",\"CLOSURE_ENTRY_EXIT\",\"STRONG_ELECTRIC_CHARGING_STATION\",\"SHORT_TERM_ROADWORKS\",\"ELECTRIC_CHARGING_STATION\"],\"type\":\"string\"},\"extent\":{\"description\":\"Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt.\",\"example\":\"10.728384054665147,54.00605746113356,10.775848767524598,54.09436740278899\",\"pattern\":\"-?\\\\d+(?:\\\\.\\\\d+)?,\\\\s*-?\\\\d+(?:\\\\.\\\\d+)?,\\\\s*-?\\\\d+(?:\\\\.\\\\d+)?,\\\\s*-?\\\\d+(?:\\\\.\\\\d+)?\",\"type\":\"string\"},\"footer\":{\"example\":[\"Beginn: 29.06.2021 09:00\",\"Ende: 28.11.2021 17:00\",\"\",\"Art der Maßnahme:Asphaltdeckenerneuerung\",\"Einschränkungen:Es steht nur 1 Fahrstreifen zur Verfügung.\\n\\nVollsperrung der AS Eutin Ostseite vom 17.07.2021 - 15.09.2021.\\n\\nVollsperrung der AS Scharbeutz Ostseite vom 16.09.2021 - 17.11.2021.\",\"Maximale Durchfahrsbreite: 3.25\\n\"],\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"future\":{\"type\":\"boolean\"},\"icon\":{\"description\":\"Sinnbild, das die Art des Eintrags beschreibt. Größtenteils sind diese dem offiziellen Verkehrszeichenkatalog entnommen, teilweise allerdings mit abweichender Bedeutung und/oder nicht offiziellen Unternummern. Wo kein passendes Verkehrszeichen existiert, werden nicht-numerische Werte verwendet:\\n<ul>\\n<li>101: Gefahr</li>\\n<li>123: Bauarbeiten</li>\\n<li>250: Sperrung</li>\\n<li>262-2: Max. 3,5t</li>\\n<li>314-50: Park-/Rastplatz (Pkw/Lkw)</li>\\n<li>314-50-2: Park-/Rastplatz (nur Pkw)</li>\\n<li>448: Anschlussstelle gesperrt</li>\\n<li>charging_plug_strong: Schnellladestation für E-Fahrzeuge</li>\\n<li>warnkegel: Kurzzeitbaustelle</li>\\n</ul>\\n\",\"type\":\"string\"},\"identifier\":{\"format\":\"byte\",\"type\":\"string\"},\"isBlocked\":{\"type\":\"string\"},\"lorryParkingFeatureIcons\":{\"items\":{\"example\":{\"description\":\"Picknickmöglichkeiten\",\"icon\":\"almofont almo-picnic_facility\",\"style\":\"\"},\"properties\":{\"description\":{\"type\":\"string\"},\"icon\":{\"type\":\"string\"},\"style\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"point\":{\"description\":\"Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84). Identisch zu Coordinate, jedoch sind rundungsbedingte Abweichungen möglich.\",\"example\":\"10.729057,54.006057\",\"pattern\":\"-?\\\\d+(?:\\\\.\\\\d+)?,\\\\s*-?\\\\d+(?:\\\\.\\\\d+)?\",\"type\":\"string\"},\"routeRecommendation\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"subtitle\":{\"type\":\"string\"},\"title\":{\"type\":\"string\"}},\"type\":\"object\"},{\"properties\":{\"startTimestamp\":{\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}]}],\"example\":{\"coordinate\":{\"lat\":\"53.005070\",\"long\":\"8.699040\"},\"description\":[\"Beginn: 25.05.2021 00:00\",\"Ende: 30.11.2021 23:59\",\"\",\"A1 Bremen Richtung Osnabrück\",\"zwischen Dreieck Stuhr und Groß Ippener\",\"Fahrbahnverengung, geänderte Verkehrsführung, Staugefahr, bis voraussichtlich 30.11.2021\",\"Erweiterung PWC Kiekut.\"],\"display_type\":\"WARNING\",\"extent\":\"8.61785,52.97344,8.69904,53.00507\",\"footer\":[],\"future\":false,\"icon\":\"101\",\"identifier\":\"V0FSTklOR19fbWRtLnZpel9fTE1TLU5JL3JfTE1TLU5JLzIxMjI2MF9EICBOSSBMTVMtTkkgIC4w\",\"isBlocked\":\"false\",\"lorryParkingFeatureIcons\":[],\"point\":\"8.699040,53.005070\",\"routeRecommendation\":[],\"startTimestamp\":\"2021-05-25T00:00:00.000+0200\",\"subtitle\":\"Bremen Richtung Osnabrück\",\"title\":\"A1 | AS Delmenhorst-Ost (58b) - AS Groß Ippener (59)\"}}}},\"description\":\"Success\"},\"204\":{\"description\":\"Not found.\"},\"400\":{\"description\":\"Internal server error.\"},\"404\":{\"description\":\"Not found.\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1280,6 +1410,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /{roadId}/services/webcam",
+                    "json": "{\"operationId\":\"list-webcams\",\"parameters\":[{\"in\":\"path\",\"name\":\"roadId\",\"required\":true,\"schema\":{\"description\":\"Kann jede gültige Straßenbezeichnung sein (nicht auf Autobahnen beschränkt). Die Gültigkeit wird nicht überprüft: Abfragen mit nicht existierenden Straßenbezeichnungen liefern einen leeren Datensatz zurück. Die Schreibweise kann von der sonst üblichen Form abweichen (z.B. S1234 statt St1234 für Staatsstraßen).\\n\",\"example\":\"A1\",\"pattern\":\"[A-Z][A-Za-z]*[1-9]([0-9]{1,3})?(\\\\/[A-Z][A-Za-z]*[1-9]([0-9]{1,3})?)?\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"webcam\":{\"items\":{\"allOf\":[{\"properties\":{\"coordinate\":{\"description\":\"Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84). Identisch zu Point, jedoch sind rundungsbedingte Abweichungen möglich.\",\"example\":{\"lat\":\"54.006057\",\"long\":\"10.729057\"},\"properties\":{\"lat\":{\"pattern\":\"-?\\\\d+(?:\\\\.\\\\d+)?\",\"type\":\"string\"},\"long\":{\"pattern\":\"-?\\\\d+(?:\\\\.\\\\d+)?\",\"type\":\"string\"}},\"type\":\"object\"},\"description\":{\"example\":[\"Beginn: 29.06.2021 09:00\",\"Ende: 28.11.2021 17:00\",\"\",\"Art der Maßnahme:Asphaltdeckenerneuerung\",\"Einschränkungen:Es steht nur 1 Fahrstreifen zur Verfügung.\\n\\nVollsperrung der AS Eutin Ostseite vom 17.07.2021 - 15.09.2021.\\n\\nVollsperrung der AS Scharbeutz Ostseite vom 16.09.2021 - 17.11.2021.\",\"Maximale Durchfahrsbreite: 3.25\\n\"],\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"display_type\":{\"enum\":[\"ROADWORKS\",\"WEBCAM\",\"PARKING\",\"WARNING\",\"WEIGHT_LIMIT_35\",\"CLOSURE\",\"CLOSURE_ENTRY_EXIT\",\"STRONG_ELECTRIC_CHARGING_STATION\",\"SHORT_TERM_ROADWORKS\",\"ELECTRIC_CHARGING_STATION\"],\"type\":\"string\"},\"extent\":{\"description\":\"Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt.\",\"example\":\"10.728384054665147,54.00605746113356,10.775848767524598,54.09436740278899\",\"pattern\":\"-?\\\\d+(?:\\\\.\\\\d+)?,\\\\s*-?\\\\d+(?:\\\\.\\\\d+)?,\\\\s*-?\\\\d+(?:\\\\.\\\\d+)?,\\\\s*-?\\\\d+(?:\\\\.\\\\d+)?\",\"type\":\"string\"},\"footer\":{\"example\":[\"Beginn: 29.06.2021 09:00\",\"Ende: 28.11.2021 17:00\",\"\",\"Art der Maßnahme:Asphaltdeckenerneuerung\",\"Einschränkungen:Es steht nur 1 Fahrstreifen zur Verfügung.\\n\\nVollsperrung der AS Eutin Ostseite vom 17.07.2021 - 15.09.2021.\\n\\nVollsperrung der AS Scharbeutz Ostseite vom 16.09.2021 - 17.11.2021.\",\"Maximale Durchfahrsbreite: 3.25\\n\"],\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"future\":{\"type\":\"boolean\"},\"icon\":{\"description\":\"Sinnbild, das die Art des Eintrags beschreibt. Größtenteils sind diese dem offiziellen Verkehrszeichenkatalog entnommen, teilweise allerdings mit abweichender Bedeutung und/oder nicht offiziellen Unternummern. Wo kein passendes Verkehrszeichen existiert, werden nicht-numerische Werte verwendet:\\n<ul>\\n<li>101: Gefahr</li>\\n<li>123: Bauarbeiten</li>\\n<li>250: Sperrung</li>\\n<li>262-2: Max. 3,5t</li>\\n<li>314-50: Park-/Rastplatz (Pkw/Lkw)</li>\\n<li>314-50-2: Park-/Rastplatz (nur Pkw)</li>\\n<li>448: Anschlussstelle gesperrt</li>\\n<li>charging_plug_strong: Schnellladestation für E-Fahrzeuge</li>\\n<li>warnkegel: Kurzzeitbaustelle</li>\\n</ul>\\n\",\"type\":\"string\"},\"identifier\":{\"format\":\"byte\",\"type\":\"string\"},\"isBlocked\":{\"type\":\"string\"},\"lorryParkingFeatureIcons\":{\"items\":{\"example\":{\"description\":\"Picknickmöglichkeiten\",\"icon\":\"almofont almo-picnic_facility\",\"style\":\"\"},\"properties\":{\"description\":{\"type\":\"string\"},\"icon\":{\"type\":\"string\"},\"style\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"point\":{\"description\":\"Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84). Identisch zu Coordinate, jedoch sind rundungsbedingte Abweichungen möglich.\",\"example\":\"10.729057,54.006057\",\"pattern\":\"-?\\\\d+(?:\\\\.\\\\d+)?,\\\\s*-?\\\\d+(?:\\\\.\\\\d+)?\",\"type\":\"string\"},\"routeRecommendation\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"subtitle\":{\"type\":\"string\"},\"title\":{\"type\":\"string\"}},\"type\":\"object\"},{\"properties\":{\"imageurl\":{\"format\":\"uri\",\"type\":\"string\"},\"linkurl\":{\"format\":\"uri\",\"type\":\"string\"},\"operator\":{\"type\":\"string\"}},\"type\":\"object\"}],\"example\":{\"coordinate\":{\"lat\":\"50.987423\",\"long\":\"6.861151\"},\"description\":[],\"display_type\":\"WEBCAM\",\"extent\":\"6.861151,50.987423,6.861151,50.987423\",\"footer\":[\"ID: WEBCAM__NRW_Sila-Signalbau_10108109881648294854\"],\"future\":false,\"icon\":\"webcam\",\"identifier\":\"V0VCQ0FNX19OUldfU2lsYS1TaWduYWxiYXVfMTAxMDgxMDk4ODE2NDgyOTQ4NTQ=\",\"imageurl\":\"https://www.verkehr.nrw/webcams/10108109881648294854.jpg\",\"isBlocked\":\"false\",\"linkurl\":\"https://www.blitzvideoserver.de/player_strassennrw.html?serverip=62.113.210.7&serverapp=strassennrw-rtplive&streamname=10108109881648294854\",\"lorryParkingFeatureIcons\":[],\"operator\":\"NRW\",\"point\":\"6.861151,50.987423\",\"routeRecommendation\":[],\"subtitle\":\"Blickrichtung Dortmund\",\"title\":\"A1 | ID005 AK Köln-Nord\"}},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Success\"},\"204\":{\"description\":\"Not found.\"},\"400\":{\"description\":\"Internal server error.\"},\"404\":{\"description\":\"Not found.\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/{roadId}/services/webcam",
@@ -1330,6 +1466,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /details/webcam/{webcamId}",
+                    "json": "{\"operationId\":\"get-webcam\",\"parameters\":[{\"in\":\"path\",\"name\":\"webcamId\",\"required\":true,\"schema\":{\"example\":\"V0VCQ0FNX19OUldfU2lsYS1TaWduYWxiYXVfMTAxMDgxNDE3MjM4ODYzOTk5MTU=\",\"format\":\"byte\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"allOf\":[{\"properties\":{\"coordinate\":{\"description\":\"Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84). Identisch zu Point, jedoch sind rundungsbedingte Abweichungen möglich.\",\"example\":{\"lat\":\"54.006057\",\"long\":\"10.729057\"},\"properties\":{\"lat\":{\"pattern\":\"-?\\\\d+(?:\\\\.\\\\d+)?\",\"type\":\"string\"},\"long\":{\"pattern\":\"-?\\\\d+(?:\\\\.\\\\d+)?\",\"type\":\"string\"}},\"type\":\"object\"},\"description\":{\"example\":[\"Beginn: 29.06.2021 09:00\",\"Ende: 28.11.2021 17:00\",\"\",\"Art der Maßnahme:Asphaltdeckenerneuerung\",\"Einschränkungen:Es steht nur 1 Fahrstreifen zur Verfügung.\\n\\nVollsperrung der AS Eutin Ostseite vom 17.07.2021 - 15.09.2021.\\n\\nVollsperrung der AS Scharbeutz Ostseite vom 16.09.2021 - 17.11.2021.\",\"Maximale Durchfahrsbreite: 3.25\\n\"],\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"display_type\":{\"enum\":[\"ROADWORKS\",\"WEBCAM\",\"PARKING\",\"WARNING\",\"WEIGHT_LIMIT_35\",\"CLOSURE\",\"CLOSURE_ENTRY_EXIT\",\"STRONG_ELECTRIC_CHARGING_STATION\",\"SHORT_TERM_ROADWORKS\",\"ELECTRIC_CHARGING_STATION\"],\"type\":\"string\"},\"extent\":{\"description\":\"Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt.\",\"example\":\"10.728384054665147,54.00605746113356,10.775848767524598,54.09436740278899\",\"pattern\":\"-?\\\\d+(?:\\\\.\\\\d+)?,\\\\s*-?\\\\d+(?:\\\\.\\\\d+)?,\\\\s*-?\\\\d+(?:\\\\.\\\\d+)?,\\\\s*-?\\\\d+(?:\\\\.\\\\d+)?\",\"type\":\"string\"},\"footer\":{\"example\":[\"Beginn: 29.06.2021 09:00\",\"Ende: 28.11.2021 17:00\",\"\",\"Art der Maßnahme:Asphaltdeckenerneuerung\",\"Einschränkungen:Es steht nur 1 Fahrstreifen zur Verfügung.\\n\\nVollsperrung der AS Eutin Ostseite vom 17.07.2021 - 15.09.2021.\\n\\nVollsperrung der AS Scharbeutz Ostseite vom 16.09.2021 - 17.11.2021.\",\"Maximale Durchfahrsbreite: 3.25\\n\"],\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"future\":{\"type\":\"boolean\"},\"icon\":{\"description\":\"Sinnbild, das die Art des Eintrags beschreibt. Größtenteils sind diese dem offiziellen Verkehrszeichenkatalog entnommen, teilweise allerdings mit abweichender Bedeutung und/oder nicht offiziellen Unternummern. Wo kein passendes Verkehrszeichen existiert, werden nicht-numerische Werte verwendet:\\n<ul>\\n<li>101: Gefahr</li>\\n<li>123: Bauarbeiten</li>\\n<li>250: Sperrung</li>\\n<li>262-2: Max. 3,5t</li>\\n<li>314-50: Park-/Rastplatz (Pkw/Lkw)</li>\\n<li>314-50-2: Park-/Rastplatz (nur Pkw)</li>\\n<li>448: Anschlussstelle gesperrt</li>\\n<li>charging_plug_strong: Schnellladestation für E-Fahrzeuge</li>\\n<li>warnkegel: Kurzzeitbaustelle</li>\\n</ul>\\n\",\"type\":\"string\"},\"identifier\":{\"format\":\"byte\",\"type\":\"string\"},\"isBlocked\":{\"type\":\"string\"},\"lorryParkingFeatureIcons\":{\"items\":{\"example\":{\"description\":\"Picknickmöglichkeiten\",\"icon\":\"almofont almo-picnic_facility\",\"style\":\"\"},\"properties\":{\"description\":{\"type\":\"string\"},\"icon\":{\"type\":\"string\"},\"style\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"point\":{\"description\":\"Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84). Identisch zu Coordinate, jedoch sind rundungsbedingte Abweichungen möglich.\",\"example\":\"10.729057,54.006057\",\"pattern\":\"-?\\\\d+(?:\\\\.\\\\d+)?,\\\\s*-?\\\\d+(?:\\\\.\\\\d+)?\",\"type\":\"string\"},\"routeRecommendation\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"},\"subtitle\":{\"type\":\"string\"},\"title\":{\"type\":\"string\"}},\"type\":\"object\"},{\"properties\":{\"imageurl\":{\"format\":\"uri\",\"type\":\"string\"},\"linkurl\":{\"format\":\"uri\",\"type\":\"string\"},\"operator\":{\"type\":\"string\"}},\"type\":\"object\"}],\"example\":{\"coordinate\":{\"lat\":\"50.987423\",\"long\":\"6.861151\"},\"description\":[],\"display_type\":\"WEBCAM\",\"extent\":\"6.861151,50.987423,6.861151,50.987423\",\"footer\":[\"ID: WEBCAM__NRW_Sila-Signalbau_10108109881648294854\"],\"future\":false,\"icon\":\"webcam\",\"identifier\":\"V0VCQ0FNX19OUldfU2lsYS1TaWduYWxiYXVfMTAxMDgxMDk4ODE2NDgyOTQ4NTQ=\",\"imageurl\":\"https://www.verkehr.nrw/webcams/10108109881648294854.jpg\",\"isBlocked\":\"false\",\"linkurl\":\"https://www.blitzvideoserver.de/player_strassennrw.html?serverip=62.113.210.7&serverapp=strassennrw-rtplive&streamname=10108109881648294854\",\"lorryParkingFeatureIcons\":[],\"operator\":\"NRW\",\"point\":\"6.861151,50.987423\",\"routeRecommendation\":[],\"subtitle\":\"Blickrichtung Dortmund\",\"title\":\"A1 | ID005 AK Köln-Nord\"}}}},\"description\":\"Success\"},\"204\":{\"description\":\"Not found.\"},\"400\":{\"description\":\"Internal server error.\"},\"404\":{\"description\":\"Not found.\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/details/webcam/{webcamId}",
@@ -1368,13 +1510,223 @@
         }
       },
       "feature": {
+        "ratelimit": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "burst": 5,
+              "rate": 5
+            },
+            "optspec": {
+              "now": "`$FUNCTION`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "ratelimit",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Client-side rate limiting via a token bucket",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
+        "retry": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "factor": 2,
+              "maxDelay": 2000,
+              "minDelay": 50,
+              "retries": 2,
+              "statuses": [
+                408,
+                425,
+                429,
+                500,
+                502,
+                503,
+                504
+              ]
+            },
+            "optspec": {
+              "jitter": "`$BOOLEAN`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "retry",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Automatic retry of transient failures with exponential backoff",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
         "test": {
           "active": true,
           "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "config": {
             "options": {
               "active": false
-            }
+            },
+            "optspec": {
+              "entity": "`$MAP`",
+              "net": "`$MAP`"
+            },
+            "strict": false
           },
           "hook": {
             "GetData": {
@@ -1464,6 +1816,102 @@
           },
           "title": "In-memory mock transport for testing without a live server",
           "transport": "base",
+          "version": "0.0.1"
+        },
+        "timeout": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "ms": 30000
+            },
+            "optspec": {
+              "clearTimer": "`$FUNCTION`",
+              "setTimer": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "timeout",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Per-request timeout with transport abort",
+          "transport": "wrap",
           "version": "0.0.1"
         }
       },
@@ -1816,6 +2264,48 @@
         "x-office": "Bundesministerium für Digitales und Verkehr"
       },
       "option": {},
+      "optspec": {
+        "allow": {
+          "method": "GET,PUT,POST,PATCH,DELETE,OPTIONS",
+          "op": "create,update,load,list,remove,command,direct,graphql"
+        },
+        "apikey": "",
+        "auth": {
+          "basic": false,
+          "prefix": ""
+        },
+        "base": "http://localhost:8000",
+        "clean": {
+          "keys": "key,token,id"
+        },
+        "entity": {
+          "`$CHILD`": {
+            "`$OPEN`": true,
+            "active": false,
+            "alias": {}
+          }
+        },
+        "extend": "`$ANY`",
+        "headers": {
+          "`$CHILD`": "`$STRING`"
+        },
+        "prefix": "",
+        "secret": "",
+        "server": {
+          "`$CHILD`": ""
+        },
+        "suffix": "",
+        "system": {
+          "fetch": "`$ANY`"
+        },
+        "test": {
+          "active": false,
+          "entity": {
+            "`$OPEN`": true
+          }
+        },
+        "utility": {}
+      },
       "repo": {
         "host": "github.com",
         "path": ""
@@ -2370,6 +2860,7 @@
           },
           "package": "@voxgig/sdkgen",
           "provides": {
+            "schema": true,
             "sekreto": true
           },
           "publish": {
@@ -2411,7 +2902,7 @@
         "live": {
           "app": false,
           "base": "",
-          "strict": false
+          "strict": true
         }
       }
     }

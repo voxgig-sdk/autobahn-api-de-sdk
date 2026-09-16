@@ -80,5 +80,432 @@
         "title": "s28f"
       }
     }
+  },
+  "requests": {
+    "GET /{roadId}/services/closure": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "list-closures",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "roadId",
+            "required": true,
+            "schema": {
+              "description": "Kann jede gültige Straßenbezeichnung sein (nicht auf Autobahnen beschränkt). Die Gültigkeit wird nicht überprüft: Abfragen mit nicht existierenden Straßenbezeichnungen liefern einen leeren Datensatz zurück. Die Schreibweise kann von der sonst üblichen Form abweichen (z.B. S1234 statt St1234 für Staatsstraßen).\n",
+              "example": "A1",
+              "pattern": "[A-Z][A-Za-z]*[1-9]([0-9]{1,3})?(\\/[A-Z][A-Za-z]*[1-9]([0-9]{1,3})?)?",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "closure": {
+                      "items": {
+                        "allOf": [
+                          {
+                            "allOf": [
+                              {
+                                "properties": {
+                                  "coordinate": {
+                                    "description": "Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84). Identisch zu Point, jedoch sind rundungsbedingte Abweichungen möglich.",
+                                    "example": {
+                                      "lat": "54.006057",
+                                      "long": "10.729057"
+                                    },
+                                    "properties": {
+                                      "lat": {
+                                        "pattern": "-?\\d+(?:\\.\\d+)?",
+                                        "type": "string"
+                                      },
+                                      "long": {
+                                        "pattern": "-?\\d+(?:\\.\\d+)?",
+                                        "type": "string"
+                                      }
+                                    },
+                                    "type": "object"
+                                  },
+                                  "description": {
+                                    "example": [
+                                      "Beginn: 29.06.2021 09:00",
+                                      "Ende: 28.11.2021 17:00",
+                                      "",
+                                      "Art der Maßnahme:Asphaltdeckenerneuerung",
+                                      "Einschränkungen:Es steht nur 1 Fahrstreifen zur Verfügung.\n\nVollsperrung der AS Eutin Ostseite vom 17.07.2021 - 15.09.2021.\n\nVollsperrung der AS Scharbeutz Ostseite vom 16.09.2021 - 17.11.2021.",
+                                      "Maximale Durchfahrsbreite: 3.25\n"
+                                    ],
+                                    "items": {
+                                      "type": "string"
+                                    },
+                                    "type": "array"
+                                  },
+                                  "display_type": {
+                                    "enum": [
+                                      "ROADWORKS",
+                                      "WEBCAM",
+                                      "PARKING",
+                                      "WARNING",
+                                      "WEIGHT_LIMIT_35",
+                                      "CLOSURE",
+                                      "CLOSURE_ENTRY_EXIT",
+                                      "STRONG_ELECTRIC_CHARGING_STATION",
+                                      "SHORT_TERM_ROADWORKS",
+                                      "ELECTRIC_CHARGING_STATION"
+                                    ],
+                                    "type": "string"
+                                  },
+                                  "extent": {
+                                    "description": "Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt.",
+                                    "example": "10.728384054665147,54.00605746113356,10.775848767524598,54.09436740278899",
+                                    "pattern": "-?\\d+(?:\\.\\d+)?,\\s*-?\\d+(?:\\.\\d+)?,\\s*-?\\d+(?:\\.\\d+)?,\\s*-?\\d+(?:\\.\\d+)?",
+                                    "type": "string"
+                                  },
+                                  "footer": {
+                                    "example": [
+                                      "Beginn: 29.06.2021 09:00",
+                                      "Ende: 28.11.2021 17:00",
+                                      "",
+                                      "Art der Maßnahme:Asphaltdeckenerneuerung",
+                                      "Einschränkungen:Es steht nur 1 Fahrstreifen zur Verfügung.\n\nVollsperrung der AS Eutin Ostseite vom 17.07.2021 - 15.09.2021.\n\nVollsperrung der AS Scharbeutz Ostseite vom 16.09.2021 - 17.11.2021.",
+                                      "Maximale Durchfahrsbreite: 3.25\n"
+                                    ],
+                                    "items": {
+                                      "type": "string"
+                                    },
+                                    "type": "array"
+                                  },
+                                  "future": {
+                                    "type": "boolean"
+                                  },
+                                  "icon": {
+                                    "description": "Sinnbild, das die Art des Eintrags beschreibt. Größtenteils sind diese dem offiziellen Verkehrszeichenkatalog entnommen, teilweise allerdings mit abweichender Bedeutung und/oder nicht offiziellen Unternummern. Wo kein passendes Verkehrszeichen existiert, werden nicht-numerische Werte verwendet:\n<ul>\n<li>101: Gefahr</li>\n<li>123: Bauarbeiten</li>\n<li>250: Sperrung</li>\n<li>262-2: Max. 3,5t</li>\n<li>314-50: Park-/Rastplatz (Pkw/Lkw)</li>\n<li>314-50-2: Park-/Rastplatz (nur Pkw)</li>\n<li>448: Anschlussstelle gesperrt</li>\n<li>charging_plug_strong: Schnellladestation für E-Fahrzeuge</li>\n<li>warnkegel: Kurzzeitbaustelle</li>\n</ul>\n",
+                                    "type": "string"
+                                  },
+                                  "identifier": {
+                                    "format": "byte",
+                                    "type": "string"
+                                  },
+                                  "isBlocked": {
+                                    "type": "string"
+                                  },
+                                  "lorryParkingFeatureIcons": {
+                                    "items": {
+                                      "example": {
+                                        "description": "Picknickmöglichkeiten",
+                                        "icon": "almofont almo-picnic_facility",
+                                        "style": ""
+                                      },
+                                      "properties": {
+                                        "description": {
+                                          "type": "string"
+                                        },
+                                        "icon": {
+                                          "type": "string"
+                                        },
+                                        "style": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "type": "object"
+                                    },
+                                    "type": "array"
+                                  },
+                                  "point": {
+                                    "description": "Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84). Identisch zu Coordinate, jedoch sind rundungsbedingte Abweichungen möglich.",
+                                    "example": "10.729057,54.006057",
+                                    "pattern": "-?\\d+(?:\\.\\d+)?,\\s*-?\\d+(?:\\.\\d+)?",
+                                    "type": "string"
+                                  },
+                                  "routeRecommendation": {
+                                    "items": {
+                                      "type": "object"
+                                    },
+                                    "type": "array"
+                                  },
+                                  "subtitle": {
+                                    "type": "string"
+                                  },
+                                  "title": {
+                                    "type": "string"
+                                  }
+                                },
+                                "type": "object"
+                              },
+                              {
+                                "properties": {
+                                  "startTimestamp": {
+                                    "format": "date-time",
+                                    "type": "string"
+                                  }
+                                },
+                                "type": "object"
+                              }
+                            ]
+                          }
+                        ],
+                        "example": {
+                          "coordinate": {
+                            "lat": "51.036440",
+                            "long": "6.964910"
+                          },
+                          "description": [
+                            "Beginn: 20.06.2021 14:19",
+                            "Ende: 31.12.2025 23:59",
+                            "",
+                            "A1 Dortmund - Köln",
+                            "Leverkusener Brücke",
+                            "in beiden Richtungen gesperrt für LKW über 3,5 t, bis 31.12.2025"
+                          ],
+                          "display_type": "WEIGHT_LIMIT_35",
+                          "extent": "6.95325,51.02996,6.96491,51.03644",
+                          "footer": [],
+                          "future": false,
+                          "icon": "262-2",
+                          "identifier": "Q0xPU1VSRV9fbWRtLnZpel9fTE1TLU5XL3JfTE1TLU5XLzMxNTEyMV9EICBOVyBMTVMtTlcuMA==",
+                          "isBlocked": "false",
+                          "lorryParkingFeatureIcons": [],
+                          "point": "6.964910,51.036440",
+                          "routeRecommendation": [],
+                          "startTimestamp": "2021-06-20T14:19:26.000+0200",
+                          "subtitle": "Dortmund Richtung Köln",
+                          "title": "A1 | AK Leverkusen-West (99) - AS Köln-Niehl (100)"
+                        }
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "204": {
+            "description": "Not found."
+          },
+          "400": {
+            "description": "Internal server error."
+          },
+          "404": {
+            "description": "Not found."
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /details/closure/{closureId}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "get-closure",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "closureId",
+            "required": true,
+            "schema": {
+              "example": "Q0xPU1VSRV9fbWRtLnZpel9fTE1TLU5XL3JfVElDLU5SV0JMSy8zOS9OUldCTEsvMTAgMzUgMjEgRCAwOTI0Mi0wMV9EICBOVyBMTVMtTlcuMA==",
+              "format": "byte",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "allOf": [
+                        {
+                          "properties": {
+                            "coordinate": {
+                              "description": "Beginn des betroffenen Streckenabschnitts (Koordinaten in WGS84). Identisch zu Point, jedoch sind rundungsbedingte Abweichungen möglich.",
+                              "example": {
+                                "lat": "54.006057",
+                                "long": "10.729057"
+                              },
+                              "properties": {
+                                "lat": {
+                                  "pattern": "-?\\d+(?:\\.\\d+)?",
+                                  "type": "string"
+                                },
+                                "long": {
+                                  "pattern": "-?\\d+(?:\\.\\d+)?",
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "description": {
+                              "example": [
+                                "Beginn: 29.06.2021 09:00",
+                                "Ende: 28.11.2021 17:00",
+                                "",
+                                "Art der Maßnahme:Asphaltdeckenerneuerung",
+                                "Einschränkungen:Es steht nur 1 Fahrstreifen zur Verfügung.\n\nVollsperrung der AS Eutin Ostseite vom 17.07.2021 - 15.09.2021.\n\nVollsperrung der AS Scharbeutz Ostseite vom 16.09.2021 - 17.11.2021.",
+                                "Maximale Durchfahrsbreite: 3.25\n"
+                              ],
+                              "items": {
+                                "type": "string"
+                              },
+                              "type": "array"
+                            },
+                            "display_type": {
+                              "enum": [
+                                "ROADWORKS",
+                                "WEBCAM",
+                                "PARKING",
+                                "WARNING",
+                                "WEIGHT_LIMIT_35",
+                                "CLOSURE",
+                                "CLOSURE_ENTRY_EXIT",
+                                "STRONG_ELECTRIC_CHARGING_STATION",
+                                "SHORT_TERM_ROADWORKS",
+                                "ELECTRIC_CHARGING_STATION"
+                              ],
+                              "type": "string"
+                            },
+                            "extent": {
+                              "description": "Rechteck (in WGS84-Koordinaten), das den betroffenen Streckenabschnitt umschließt.",
+                              "example": "10.728384054665147,54.00605746113356,10.775848767524598,54.09436740278899",
+                              "pattern": "-?\\d+(?:\\.\\d+)?,\\s*-?\\d+(?:\\.\\d+)?,\\s*-?\\d+(?:\\.\\d+)?,\\s*-?\\d+(?:\\.\\d+)?",
+                              "type": "string"
+                            },
+                            "footer": {
+                              "example": [
+                                "Beginn: 29.06.2021 09:00",
+                                "Ende: 28.11.2021 17:00",
+                                "",
+                                "Art der Maßnahme:Asphaltdeckenerneuerung",
+                                "Einschränkungen:Es steht nur 1 Fahrstreifen zur Verfügung.\n\nVollsperrung der AS Eutin Ostseite vom 17.07.2021 - 15.09.2021.\n\nVollsperrung der AS Scharbeutz Ostseite vom 16.09.2021 - 17.11.2021.",
+                                "Maximale Durchfahrsbreite: 3.25\n"
+                              ],
+                              "items": {
+                                "type": "string"
+                              },
+                              "type": "array"
+                            },
+                            "future": {
+                              "type": "boolean"
+                            },
+                            "icon": {
+                              "description": "Sinnbild, das die Art des Eintrags beschreibt. Größtenteils sind diese dem offiziellen Verkehrszeichenkatalog entnommen, teilweise allerdings mit abweichender Bedeutung und/oder nicht offiziellen Unternummern. Wo kein passendes Verkehrszeichen existiert, werden nicht-numerische Werte verwendet:\n<ul>\n<li>101: Gefahr</li>\n<li>123: Bauarbeiten</li>\n<li>250: Sperrung</li>\n<li>262-2: Max. 3,5t</li>\n<li>314-50: Park-/Rastplatz (Pkw/Lkw)</li>\n<li>314-50-2: Park-/Rastplatz (nur Pkw)</li>\n<li>448: Anschlussstelle gesperrt</li>\n<li>charging_plug_strong: Schnellladestation für E-Fahrzeuge</li>\n<li>warnkegel: Kurzzeitbaustelle</li>\n</ul>\n",
+                              "type": "string"
+                            },
+                            "identifier": {
+                              "format": "byte",
+                              "type": "string"
+                            },
+                            "isBlocked": {
+                              "type": "string"
+                            },
+                            "lorryParkingFeatureIcons": {
+                              "items": {
+                                "example": {
+                                  "description": "Picknickmöglichkeiten",
+                                  "icon": "almofont almo-picnic_facility",
+                                  "style": ""
+                                },
+                                "properties": {
+                                  "description": {
+                                    "type": "string"
+                                  },
+                                  "icon": {
+                                    "type": "string"
+                                  },
+                                  "style": {
+                                    "type": "string"
+                                  }
+                                },
+                                "type": "object"
+                              },
+                              "type": "array"
+                            },
+                            "point": {
+                              "description": "Beginn des betroffenen Streckenabschnitts (Längengrad und Breitengrad in WGS84). Identisch zu Coordinate, jedoch sind rundungsbedingte Abweichungen möglich.",
+                              "example": "10.729057,54.006057",
+                              "pattern": "-?\\d+(?:\\.\\d+)?,\\s*-?\\d+(?:\\.\\d+)?",
+                              "type": "string"
+                            },
+                            "routeRecommendation": {
+                              "items": {
+                                "type": "object"
+                              },
+                              "type": "array"
+                            },
+                            "subtitle": {
+                              "type": "string"
+                            },
+                            "title": {
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        {
+                          "properties": {
+                            "startTimestamp": {
+                              "format": "date-time",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        }
+                      ]
+                    }
+                  ],
+                  "example": {
+                    "coordinate": {
+                      "lat": "51.036440",
+                      "long": "6.964910"
+                    },
+                    "description": [
+                      "Beginn: 20.06.2021 14:19",
+                      "Ende: 31.12.2025 23:59",
+                      "",
+                      "A1 Dortmund - Köln",
+                      "Leverkusener Brücke",
+                      "in beiden Richtungen gesperrt für LKW über 3,5 t, bis 31.12.2025"
+                    ],
+                    "display_type": "WEIGHT_LIMIT_35",
+                    "extent": "6.95325,51.02996,6.96491,51.03644",
+                    "footer": [],
+                    "future": false,
+                    "icon": "262-2",
+                    "identifier": "Q0xPU1VSRV9fbWRtLnZpel9fTE1TLU5XL3JfTE1TLU5XLzMxNTEyMV9EICBOVyBMTVMtTlcuMA==",
+                    "isBlocked": "false",
+                    "lorryParkingFeatureIcons": [],
+                    "point": "6.964910,51.036440",
+                    "routeRecommendation": [],
+                    "startTimestamp": "2021-06-20T14:19:26.000+0200",
+                    "subtitle": "Dortmund Richtung Köln",
+                    "title": "A1 | AK Leverkusen-West (99) - AS Köln-Niehl (100)"
+                  }
+                }
+              }
+            },
+            "description": "Success"
+          },
+          "204": {
+            "description": "Not found."
+          },
+          "400": {
+            "description": "Internal server error."
+          },
+          "404": {
+            "description": "Not found."
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }
