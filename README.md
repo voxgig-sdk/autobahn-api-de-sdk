@@ -105,12 +105,12 @@ local results, err = client:Roadwork():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/autobahn-api-de-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/autobahn-api-de-sdk/releases) |
-| Python | `voxgig-sdk-autobahn-api-de` | publish pending — [install from git tag](https://github.com/voxgig-sdk/autobahn-api-de-sdk/releases) |
-| PHP | `voxgig-sdk/autobahn-api-de` | publish pending — [install from git tag](https://github.com/voxgig-sdk/autobahn-api-de-sdk/releases) |
+| TypeScript | `@voxgig-sdk/autobahn-api-de-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/autobahn-api-de-sdk/tags) |
+| Python | `voxgig-sdk-autobahn-api-de` | publish pending — [install from git tag](https://github.com/voxgig-sdk/autobahn-api-de-sdk/tags) |
+| PHP | `voxgig-sdk/autobahn-api-de` | publish pending — [install from git tag](https://github.com/voxgig-sdk/autobahn-api-de-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/autobahn-api-de-sdk/go` | `go get github.com/voxgig-sdk/autobahn-api-de-sdk/go@latest` |
-| Ruby | `voxgig-sdk-autobahn-api-de` | publish pending — [install from git tag](https://github.com/voxgig-sdk/autobahn-api-de-sdk/releases) |
-| Lua | `voxgig-sdk-autobahn-api-de` | publish pending — [install from git tag](https://github.com/voxgig-sdk/autobahn-api-de-sdk/releases) |
+| Ruby | `voxgig-sdk-autobahn-api-de` | publish pending — [install from git tag](https://github.com/voxgig-sdk/autobahn-api-de-sdk/tags) |
+| Lua | `voxgig-sdk-autobahn-api-de` | publish pending — [install from git tag](https://github.com/voxgig-sdk/autobahn-api-de-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/autobahn-api-de-sdk/go-cli` | `go install github.com/voxgig-sdk/autobahn-api-de-sdk/go-cli/cmd/autobahn-api-de@latest` |
 | Go MCP server | `github.com/voxgig-sdk/autobahn-api-de-sdk/go-mcp` | `go get github.com/voxgig-sdk/autobahn-api-de-sdk/go-mcp@latest` |
 

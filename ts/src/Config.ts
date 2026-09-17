@@ -127,27 +127,27 @@ class Config {
 
     entity: {
       
-      closure: {
-      },
-
-      electric_charging_station: {
-      },
-
-      list_autobahnen: {
-      },
-
-      parking_lorry: {
-      },
-
-      roadwork: {
-      },
-
-      warning: {
-      },
-
-      webcam: {
-      },
-
+        closure: {
+        },
+  
+        electric_charging_station: {
+        },
+  
+        list_autobahnen: {
+        },
+  
+        parking_lorry: {
+        },
+  
+        roadwork: {
+        },
+  
+        warning: {
+        },
+  
+        webcam: {
+        },
+  
     }
   }
 

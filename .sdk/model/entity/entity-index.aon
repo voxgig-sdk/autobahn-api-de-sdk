@@ -1,9 +1,9 @@
 # Entity Models
 
-@"closure.aon"
-@"electric_charging_station.aon"
-@"list_autobahnen.aon"
-@"parking_lorry.aon"
-@"roadwork.aon"
-@"warning.aon"
-@"webcam.aon"
+@"./closure.aon"
+@"./electric_charging_station.aon"
+@"./list_autobahnen.aon"
+@"./parking_lorry.aon"
+@"./roadwork.aon"
+@"./warning.aon"
+@"./webcam.aon"

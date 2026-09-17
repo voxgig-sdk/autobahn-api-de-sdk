@@ -1,9 +1,9 @@
 # Flows
 
-@"BasicClosureFlow.aon"
-@"BasicElectricChargingStationFlow.aon"
-@"BasicListAutobahnenFlow.aon"
-@"BasicParkingLorryFlow.aon"
-@"BasicRoadworkFlow.aon"
-@"BasicWarningFlow.aon"
-@"BasicWebcamFlow.aon"
+@"./BasicClosureFlow.aon"
+@"./BasicElectricChargingStationFlow.aon"
+@"./BasicListAutobahnenFlow.aon"
+@"./BasicParkingLorryFlow.aon"
+@"./BasicRoadworkFlow.aon"
+@"./BasicWarningFlow.aon"
+@"./BasicWebcamFlow.aon"
